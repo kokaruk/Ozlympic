@@ -6,4 +6,5 @@ package MODEL;
 public class GameParticipant {
     private String participantId;
     private String participantName;
+    private int participantAge;
 }
