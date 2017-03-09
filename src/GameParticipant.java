@@ -6,4 +6,9 @@ public class GameParticipant {
     private String participantName;
     private int participantAge;
     private static String participantState = "Australia";
+
+    public GameParticipant(String participantId, String participantName, int participantAge) {
+    }
 }
+
+
