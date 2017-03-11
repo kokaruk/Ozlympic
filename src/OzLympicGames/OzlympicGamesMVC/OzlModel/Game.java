@@ -1,9 +1,9 @@
-package ozlympicModel;
+package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
  */
-public class Game {
+class Game {
     private GameSports gameSports;
     private GameParticipant[] participants = new GameParticipant[8];
     private String gameId;

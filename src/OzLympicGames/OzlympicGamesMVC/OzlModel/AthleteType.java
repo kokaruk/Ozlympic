@@ -1,8 +1,9 @@
-package ozlympicModel;
+package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
  */
-public enum AtheleteType {
+
+ enum AthleteType {
     swimmer, cyclist, sprinter, superAthlete
 }

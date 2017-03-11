@@ -1,8 +1,8 @@
-package ozlympicModel;
+package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
  */
-public enum GameSports extends Game {
+ enum GameSports {
     swimming, cycling, running
 }
