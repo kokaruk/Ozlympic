@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f3db089-026d-4325-aa7d-e7dee9099bd3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/GamesClassessDesign.uml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AtheleteType.java" afterPath="$PROJECT_DIR$/src/ozlympicModel/AtheleteType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/ozlympicModel/Game.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameParticipant.java" afterPath="$PROJECT_DIR$/src/ozlympicModel/GameParticipant.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSports.java" afterPath="$PROJECT_DIR$/src/ozlympicModel/GameSports.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GamesAthlete.java" afterPath="$PROJECT_DIR$/src/ozlympicModel/GamesAthlete.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GamesOfficial.java" afterPath="$PROJECT_DIR$/src/ozlympicModel/GamesOfficial.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameParticipant.java" afterPath="$PROJECT_DIR$/src/GameParticipant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameSports.java" afterPath="$PROJECT_DIR$/src/GameSports.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GamesAthlete.java" afterPath="$PROJECT_DIR$/src/GamesAthlete.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,20 +26,20 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="GameParticipant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameParticipant.java">
+        <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameParticipant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="91" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="91" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AtheleteType.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AtheleteType.java">
+      <file leaf-file-name="AtheleteType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ozlympicModel/AtheleteType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -50,44 +52,38 @@
               <ID>JAVA</ID>
               <OriginalElement />
               <nodes>
-                <node x="0.0" y="376.0">au.edu.rmit.student.s36668804.Main</node>
-                <node x="368.7013888888889" y="0.0">GameParticipant</node>
-                <node x="3.75" y="190.0">GamesAthlete</node>
-                <node x="761.4097222222222" y="22.5">GameSports</node>
-                <node x="609.75" y="202.0">Game</node>
-                <node x="312.75" y="223.5">GamesOfficial</node>
-                <node x="0.0" y="11.5">AtheleteType</node>
+                <node x="341.5" y="363.0">ozlympicModel.GamesOfficial</node>
+                <node x="707.0" y="181.5">ozlympicModel.Game</node>
+                <node x="-24.5" y="169.5">ozlympicModel.GamesAthlete</node>
+                <node x="1050.5" y="192.5">ozlympicModel.GameSports</node>
+                <node x="44.0" y="-18.5">ozlympicModel.AtheleteType</node>
+                <node x="355.0" y="170.0">ozlympicModel.GameParticipant</node>
+                <node x="756.0" y="374.5">Main</node>
               </nodes>
               <notes />
               <edges>
-                <edge source="GamesAthlete" target="AtheleteType">
-                  <point x="-72.25" y="-70.5" />
-                  <point x="0.0" y="58.5" />
-                </edge>
-                <edge source="GamesAthlete" target="GameParticipant">
-                  <point x="72.25" y="-70.5" />
-                  <point x="220.5" y="170.0" />
-                  <point x="399.9513888888889" y="170.0" />
-                  <point x="-93.75" y="70.0" />
-                </edge>
-                <edge source="GamesOfficial" target="GameParticipant">
+                <edge source="ozlympicModel.GamesOfficial" target="ozlympicModel.GameParticipant">
                   <point x="0.0" y="-37.0" />
-                  <point x="451.25" y="170.0" />
-                  <point x="462.4513888888889" y="170.0" />
-                  <point x="-31.25" y="70.0" />
+                  <point x="0.0" y="70.0" />
                 </edge>
-                <edge source="Game" target="GameSports">
-                  <point x="88.66666666666663" y="-58.5" />
-                  <point x="0.0" y="47.5" />
+                <edge source="ozlympicModel.Game" target="ozlympicModel.GameParticipant">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
                 </edge>
-                <edge source="Game" target="GameParticipant">
-                  <point x="-88.66666666666674" y="-58.5" />
-                  <point x="654.0833333333333" y="170.0" />
-                  <point x="524.9513888888889" y="170.0" />
-                  <point x="31.25" y="70.0" />
+                <edge source="ozlympicModel.Game" target="ozlympicModel.GameSports">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="ozlympicModel.GamesAthlete" target="ozlympicModel.AtheleteType">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="ozlympicModel.GamesAthlete" target="ozlympicModel.GameParticipant">
+                  <point x="144.5" y="0.0" />
+                  <point x="-125.0" y="0.0" />
                 </edge>
               </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="231.5" y="38.0" />
+              <settings layout="Hierarchic Group" zoom="1.0" x="-277.0" y="9.5" />
               <SelectedNodes />
               <Categories>
                 <Category>Fields</Category>
@@ -104,38 +100,48 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="120">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GamesAthlete.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamesAthlete.java">
+      <file leaf-file-name="GameSports.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameSports.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GamesAthlete.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GamesAthlete.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game.java">
+        <entry file="file://$PROJECT_DIR$/src/ozlympicModel/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="GamesOfficial.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamesOfficial.java">
+        <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GamesOfficial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -168,6 +174,8 @@
         <option value="$PROJECT_DIR$/src/Game.java" />
         <option value="$PROJECT_DIR$/src/GamesAthlete.java" />
         <option value="$PROJECT_DIR$/src/GamesOfficial.java" />
+        <option value="$PROJECT_DIR$/src/ozlympic/GameSports.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -178,10 +186,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1281" />
-    <option name="y" value="22" />
-    <option name="width" value="1279" />
-    <option name="height" value="1414" />
+    <option name="width" value="2560" />
+    <option name="height" value="1440" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -239,7 +245,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ozlympicModel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,6 +268,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -662,7 +673,7 @@
       <workItem from="1489067824524" duration="3010000" />
       <workItem from="1489071062895" duration="2519000" />
       <workItem from="1489073808291" duration="879000" />
-      <workItem from="1489074709421" duration="1333000" />
+      <workItem from="1489074709421" duration="3160000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <created>1489068994868</created>
@@ -682,7 +693,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7741000" />
+    <option name="totallyTimeSpent" value="9568000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -694,16 +705,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1281" y="22" width="1279" height="1414" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980332" sideWeight="0.49717057" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.49717057" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980332" sideWeight="0.50282943" order="7" side_tool="true" content_ui="tabs" x="1613" y="511" width="615" height="436" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31824818" sideWeight="0.50282943" order="7" side_tool="true" content_ui="tabs" x="1613" y="511" width="615" height="436" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.49717057" order="7" side_tool="false" content_ui="tabs" />
@@ -711,9 +722,9 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.49717057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25788197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12668785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.49717057" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -749,7 +760,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GameParticipant.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameParticipant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -757,7 +768,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
@@ -765,7 +776,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamesAthlete.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GamesAthlete.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -773,7 +784,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameSports.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameSports.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
@@ -788,7 +799,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="34" />
@@ -796,7 +807,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameParticipant.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameParticipant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
@@ -804,7 +815,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamesAthlete.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GamesAthlete.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
@@ -812,7 +823,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameSports.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameSports.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -838,14 +849,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamesClassessDesign.uml" />
-    <entry file="file://$PROJECT_DIR$/src/GameSports.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OzLympicGames.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -871,34 +874,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/AtheleteType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameParticipant.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameParticipant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="91" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="91" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamesAthlete.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GamesOfficial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamesOfficial.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GameSports.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -909,44 +928,38 @@
           <ID>JAVA</ID>
           <OriginalElement />
           <nodes>
-            <node x="0.0" y="376.0">au.edu.rmit.student.s36668804.Main</node>
-            <node x="368.7013888888889" y="0.0">GameParticipant</node>
-            <node x="3.75" y="190.0">GamesAthlete</node>
-            <node x="761.4097222222222" y="22.5">GameSports</node>
-            <node x="609.75" y="202.0">Game</node>
-            <node x="312.75" y="223.5">GamesOfficial</node>
-            <node x="0.0" y="11.5">AtheleteType</node>
+            <node x="341.5" y="363.0">ozlympicModel.GamesOfficial</node>
+            <node x="707.0" y="181.5">ozlympicModel.Game</node>
+            <node x="-24.5" y="169.5">ozlympicModel.GamesAthlete</node>
+            <node x="1050.5" y="192.5">ozlympicModel.GameSports</node>
+            <node x="44.0" y="-18.5">ozlympicModel.AtheleteType</node>
+            <node x="355.0" y="170.0">ozlympicModel.GameParticipant</node>
+            <node x="756.0" y="374.5">Main</node>
           </nodes>
           <notes />
           <edges>
-            <edge source="GamesAthlete" target="AtheleteType">
-              <point x="-72.25" y="-70.5" />
-              <point x="0.0" y="58.5" />
-            </edge>
-            <edge source="GamesAthlete" target="GameParticipant">
-              <point x="72.25" y="-70.5" />
-              <point x="220.5" y="170.0" />
-              <point x="399.9513888888889" y="170.0" />
-              <point x="-93.75" y="70.0" />
-            </edge>
-            <edge source="GamesOfficial" target="GameParticipant">
+            <edge source="ozlympicModel.GamesOfficial" target="ozlympicModel.GameParticipant">
               <point x="0.0" y="-37.0" />
-              <point x="451.25" y="170.0" />
-              <point x="462.4513888888889" y="170.0" />
-              <point x="-31.25" y="70.0" />
+              <point x="0.0" y="70.0" />
             </edge>
-            <edge source="Game" target="GameSports">
-              <point x="88.66666666666663" y="-58.5" />
-              <point x="0.0" y="47.5" />
+            <edge source="ozlympicModel.Game" target="ozlympicModel.GameParticipant">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
-            <edge source="Game" target="GameParticipant">
-              <point x="-88.66666666666674" y="-58.5" />
-              <point x="654.0833333333333" y="170.0" />
-              <point x="524.9513888888889" y="170.0" />
-              <point x="31.25" y="70.0" />
+            <edge source="ozlympicModel.Game" target="ozlympicModel.GameSports">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="ozlympicModel.GamesAthlete" target="ozlympicModel.AtheleteType">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="ozlympicModel.GamesAthlete" target="ozlympicModel.GameParticipant">
+              <point x="144.5" y="0.0" />
+              <point x="-125.0" y="0.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="231.5" y="38.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-277.0" y="9.5" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
@@ -959,18 +972,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/ozlympicModel/GamesAthlete.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AtheleteType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>

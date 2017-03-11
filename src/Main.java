@@ -1,6 +1,6 @@
-package au.edu.rmit.student.s36668804;
+import ozlympicModel.Game;
 
-public class Main extends Game {
+public class Main {
 
     public static void main(String[] args) {
 	// write your code here

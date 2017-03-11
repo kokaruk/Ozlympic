@@ -1,3 +1,5 @@
+package ozlympicModel;
+
 /**
  * Created by dimi on 10/3/17.
  */
