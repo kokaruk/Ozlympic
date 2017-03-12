@@ -11,6 +11,5 @@ class OzlGame {
     private int gameScore;
 
     public OzlGame(){
-     ;
     }
 }

@@ -6,13 +6,18 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 class GamesAthlete extends GameParticipant implements SportsPerson {
     private AthleteType athleteType;
     private int totalPoints;
-    private int gamePoints;
 
-    public GamesAthlete(String participantId, String participantName, int participantAge) {
-        super( participantId,  participantName,  participantAge);
+    public GamesAthlete( String participantName, int participantAge) {
+        super(  participantName,  participantAge);
+        this.athleteType = generateAthleteType();
     }
 
     public int compete() {
         return 0;
     }
+
+    private AthleteType generateAthleteType(){
+        return null;
+    }
+
 }

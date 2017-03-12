@@ -12,11 +12,15 @@ final class OzlGamesORM {
 
     public static OzlGame[] getGames(){
 
-        // some logic that reads from database from initial game start,
+        // some logic and extensive sql that reads from database for the initial game start,
         // if nothing found generates random 20 games
 
         OzlGame myGame = new OzlGame();
         return new OzlGame[]{myGame};
+    }
+
+    private static OzlGame[] generateRandomGames(){
+        return null;
     }
 
 
