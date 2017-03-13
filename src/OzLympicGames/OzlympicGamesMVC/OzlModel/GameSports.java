@@ -10,6 +10,15 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
     private final int min;
     private final int max;
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
     GameSports(int min, int max){
         this.min = min;
         this.max = max;

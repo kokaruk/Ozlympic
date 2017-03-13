@@ -11,12 +11,12 @@ class GamesOfficialTest {
 
     String gamesScore = "Games Score String";
     OzlGame myOzlGame = new OzlGame();
-    GameParticipant newFakeOfficial = new GamesOfficial("Alex Foo", 55);
+    GameParticipant newOfficialSequence = new GamesOfficial("Alex Foo", 55);
 
-
+// see if returns string
     @Test
-    void gameScore() {
-      assertEquals(gamesScore, ((GamesOfficial) newFakeOfficial).gameScore(myOzlGame));
+    void gameScoreString() {
+     // assertNotNull(((GamesOfficial) newOfficialSequence).gameScore());
+      assertTrue(((GamesOfficial) newOfficialSequence).gameScore().getClass().equals(String.class));
     }
-
 }

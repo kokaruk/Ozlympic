@@ -23,7 +23,5 @@ final class OzlGamesORM {
         return null;
     }
 
-
-
 }
 

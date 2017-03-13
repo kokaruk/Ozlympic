@@ -10,8 +10,8 @@ class GamesOfficial extends GameParticipant implements Referee {
         super( participantName,  participantAge);
     }
 
-    // returns score of a game
-    public String gameScore(OzlGame myOzlGame) {
+    // returns score of a game as a formatted string
+    public String gameScore() {
         return null;
     }
 }

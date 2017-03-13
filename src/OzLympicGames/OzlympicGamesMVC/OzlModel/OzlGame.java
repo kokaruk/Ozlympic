@@ -5,6 +5,11 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  */
 class OzlGame {
     private GameSports gameSports;
+    public GameSports getGameSports() {
+        return gameSports;
+    }
+
+
     private GameParticipant[] participants = new GameParticipant[8];
     private String gameId;
     private static int minParticipants = 4;
