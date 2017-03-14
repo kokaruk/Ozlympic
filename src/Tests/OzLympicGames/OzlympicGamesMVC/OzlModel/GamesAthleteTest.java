@@ -19,15 +19,15 @@ class GamesAthleteTest {
 
     @Test
     void getTotalPoints() {
-       assertTrue(((GamesAthlete) newAthlete).getTotalPoints().getClass().equals(Integer.class));
+       assertEquals(new Integer(0), ((GamesAthlete)newAthlete).getTotalPoints());
     }
 
     @Test
-    void compete() {
+    void compete() throws MyOzlGameNotDefinedException{
         int minTime = newAthlete.getMyOzlGame().getGameSports().getMin();
         int maxTime = newAthlete.getMyOzlGame().getGameSports().getMax();
 
-        assertTrue( (((GamesAthlete)newAthlete).compete() >= minTime ) && (((GamesAthlete)newAthlete).compete() <= minTime ) );
+        assertTrue( (((GamesAthlete)newAthlete).compete() >= minTime ) && (((GamesAthlete)newAthlete).compete() <= maxTime ) );
 
     }
 

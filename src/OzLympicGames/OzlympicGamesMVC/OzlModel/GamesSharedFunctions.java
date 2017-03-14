@@ -27,7 +27,7 @@ final class GamesSharedFunctions {
     }
 
 
-    private static int getRandomNumberInRange(int min, int max) {
+    static int getRandomNumberInRange(int min, int max) {
 
         Random myRandomNumber = new Random();
         return myRandomNumber.ints(min, (max + 1)).findFirst().getAsInt();

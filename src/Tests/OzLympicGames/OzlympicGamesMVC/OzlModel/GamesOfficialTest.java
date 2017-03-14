@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GamesOfficialTest {
 
     String gamesScore = "Games Score String";
-    OzlGame myOzlGame = new OzlGame();
+    OzlGame myOzlGame = new OzlGame("GameID");
     GameParticipant newOfficialSequence = new GamesOfficial("Alex Foo", 55);
 
 // see if returns string

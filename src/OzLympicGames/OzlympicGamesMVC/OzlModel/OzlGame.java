@@ -15,6 +15,23 @@ class OzlGame {
     private static int minParticipants = 4;
     private int gameScore;
 
-    public OzlGame(){
+    // Constructor
+    public OzlGame(String gameId){
+        // Game ID, to be set by games
+        this.gameId = gameId;
+
     }
+
+    // Method to Generate GameSports based on ID string
+    private GameSports generateSport(String gameId){
+        String sportsLetter = gameId.substring(0,0);
+
+        for (GameSports sports : GameSports.values()) {
+            // do what you want
+        }
+
+
+        return null;
+    }
+
 }

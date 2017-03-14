@@ -3,33 +3,44 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 /**
  * Created by dimi on 10/3/17.
  */
-class GamesAthlete extends GameParticipant implements SportsPerson {
-    private AthleteType athleteType;
+final class GamesAthlete extends GameParticipant implements SportsPerson {
 
-    // Getter, lazy instantiate athlete type, avoids super constructor override
+    // type of athlete
+    private AthleteType athleteType;
+    // Getter
     public AthleteType getAthleteType() {
-        if (this.athleteType == null) this.athleteType = generateAthleteType();
         return athleteType;
     }
 
     // Display total point of athlete, acquired in all the games.
+    // Zero (0) at init time
     private Integer totalPoints = 0;
-    // Getter
-    public Integer getTotalPoints() {
-        return totalPoints;
-    }
+    // Getter & Setter
+    public Integer getTotalPoints() { return totalPoints;  }
+    public void setTotalPoints(Integer totalPoints) { this.totalPoints = totalPoints; }
 
     // constructor
-    public GamesAthlete(String participantName, int participantAge) { super(participantName, participantAge); }
+    public GamesAthlete(String participantName, int participantAge) {
+        super(participantName, participantAge);
+        this.athleteType = generateAthleteType();
+    }
 
     // compete method. returns a random int in a preset range
-    // based on the athlete type.
-    public int compete() {
-        return 0;
+    // based on the game type enumeration
+    public int compete() throws MyOzlGameNotDefinedException {
+        if (super.getMyOzlGame() == null){
+            throw new MyOzlGameNotDefinedException("Games Athlete not Assigned to a Game, Can't compete yet");
+        }
+        int competeTime = GamesSharedFunctions.getRandomNumberInRange(
+                            super.getMyOzlGame().getGameSports().getMin(),
+                            super.getMyOzlGame().getGameSports().getMax()
+        );
+        return competeTime;
     }
 
+    // method to randomise athlete type
     private AthleteType generateAthleteType(){
-        return null;
+        int randomNumber = GamesSharedFunctions.getRandomNumberInRange(0, AthleteType.values().length-1);
+        return AthleteType.values()[randomNumber];
     }
-
 }
