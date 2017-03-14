@@ -26,9 +26,21 @@ class OzlGame {
     private GameSports generateSport(String gameId){
         String sportsLetter = gameId.substring(0,0);
 
+        /* List<String> list = GameSports.values().   //Arrays.asList(1, 10, 3, 7, 5);
+        int a = list.stream()
+                .peek(num -> System.out.println("will filter " + num))
+                .filter(x -> x > 5)
+                .findFirst()
+                .get();
+        System.out.println(a);
+        */
+
+
         for (GameSports sports : GameSports.values()) {
             // do what you want
         }
+
+
 
 
         return null;
