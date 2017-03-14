@@ -1,5 +1,10 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Optional;
+
+
 /**
  * Created by dimi on 10/3/17.
  */
@@ -19,31 +24,17 @@ class OzlGame {
     public OzlGame(String gameId){
         // Game ID, to be set by games
         this.gameId = gameId;
+        this.gameSports = generateSport(gameId);
 
     }
 
     // Method to Generate GameSports based on ID string
-    private GameSports generateSport(String gameId){
-        String sportsLetter = gameId.substring(0,0);
+    private GameSports generateSport(String gameId)  {
+        String sportsLetter = gameId.substring(0,1).toLowerCase();
+        GameSports mySportWrapper = Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().get();
 
-        /* List<String> list = GameSports.values().   //Arrays.asList(1, 10, 3, 7, 5);
-        int a = list.stream()
-                .peek(num -> System.out.println("will filter " + num))
-                .filter(x -> x > 5)
-                .findFirst()
-                .get();
-        System.out.println(a);
-        */
+        return mySportWrapper;
 
-
-        for (GameSports sports : GameSports.values()) {
-            // do what you want
-        }
-
-
-
-
-        return null;
     }
 
 }

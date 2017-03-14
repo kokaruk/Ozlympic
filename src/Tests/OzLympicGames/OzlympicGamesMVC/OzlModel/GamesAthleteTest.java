@@ -11,6 +11,7 @@ class GamesAthleteTest {
 
 
     GameParticipant newAthlete = new GamesAthlete("Alex Foo", 55);
+    OzlGame myOzlGame = new OzlGame("R01");
 
     @Test
     void getAthleteType() {
@@ -24,6 +25,7 @@ class GamesAthleteTest {
 
     @Test
     void compete() throws MyOzlGameNotDefinedException{
+        this.newAthlete.setMyOzlGame(myOzlGame);
         int minTime = newAthlete.getMyOzlGame().getGameSports().getMin();
         int maxTime = newAthlete.getMyOzlGame().getGameSports().getMax();
 

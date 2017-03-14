@@ -11,7 +11,7 @@ class GameParticipantTest {
     String participantName = "Alex Foo";
     Integer participantAge = 55;
     GameParticipant myParticipant = new GameParticipant(participantName, participantAge);
-    OzlGame myOzlGame = new OzlGame("GameID");
+    OzlGame myOzlGame = new OzlGame("C01");
 
     @Test
     void getMyOzlGame() {
