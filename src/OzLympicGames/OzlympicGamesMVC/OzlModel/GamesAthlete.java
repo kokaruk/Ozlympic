@@ -17,7 +17,13 @@ final class GamesAthlete extends GameParticipant implements SportsPerson {
     private Integer totalPoints = 0;
     // Getter & Setter
     public Integer getTotalPoints() { return totalPoints;  }
-    public void setTotalPoints(Integer totalPoints) { this.totalPoints = totalPoints; }
+    public void setTotalPoints(Integer totalPoints) { this.totalPoints += totalPoints; }
+
+    private int lastGameCompeteTime = 0;
+
+    public int getLastGameCompeteTime() {
+        return lastGameCompeteTime;
+    }
 
     // constructor
     public GamesAthlete(String participantName, int participantAge) {
@@ -31,11 +37,10 @@ final class GamesAthlete extends GameParticipant implements SportsPerson {
         if (super.getMyOzlGame() == null){
             throw new MyOzlGameNotDefinedException("Games Athlete not Assigned to a Game, Can't compete yet");
         }
-        int competeTime = GamesSharedFunctions.getRandomNumberInRange(
-                            super.getMyOzlGame().getGameSports().getMin(),
-                            super.getMyOzlGame().getGameSports().getMax()
-        );
-        return competeTime;
+        lastGameCompeteTime = GamesSharedFunctions.getRandomNumberInRange(
+                              super.getMyOzlGame().getGameSportType().getMin(),
+                              super.getMyOzlGame().getGameSportType().getMax());
+        return lastGameCompeteTime;
     }
 
     // method to randomise athlete type

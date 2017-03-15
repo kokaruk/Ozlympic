@@ -26,8 +26,8 @@ class GamesAthleteTest {
     @Test
     void compete() throws MyOzlGameNotDefinedException{
         this.newAthlete.setMyOzlGame(myOzlGame);
-        int minTime = newAthlete.getMyOzlGame().getGameSports().getMin();
-        int maxTime = newAthlete.getMyOzlGame().getGameSports().getMax();
+        int minTime = newAthlete.getMyOzlGame().getGameSportType().getMin();
+        int maxTime = newAthlete.getMyOzlGame().getGameSportType().getMax();
 
         assertTrue( (((GamesAthlete)newAthlete).compete() >= minTime ) && (((GamesAthlete)newAthlete).compete() <= maxTime ) );
 
