@@ -33,6 +33,7 @@
 /out/
 .idea/
 out/
+/
 
 
 # mpeltonen/sbt-idea plugin
