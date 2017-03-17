@@ -31,6 +31,7 @@ class OzlGame {
     public String getGameId() {
         return gameId;
     }
+
     // minimum participants in a game, sate from config file, populate at init, and getter
     private final int minParticipants;
     public int getMinParticipants() {

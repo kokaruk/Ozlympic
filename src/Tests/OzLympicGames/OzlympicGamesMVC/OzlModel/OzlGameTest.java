@@ -1,5 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class OzlGameTest {
 
-    OzlGame myOzlGame = new OzlGame("C01");
+    String gameId = "C01";
+    OzlGame myOzlGame = new OzlGame(gameId);
 
     @Test
     void getGameSports() {
@@ -18,22 +20,20 @@ class OzlGameTest {
 
     @Test
     void getParticipants() {
+        GameParticipant[] mYreferee = new GameParticipant[]{new GamesOfficial("Alex Foo", 55)};
+        myOzlGame.setParticipants(mYreferee);
 
-    }
-
-    @Test
-    void setParticipants() {
-
+        assertEquals(mYreferee[0], myOzlGame.getParticipants()[0]);
     }
 
     @Test
     void getGameId() {
-
+        assertEquals("C01", myOzlGame.getGameId());
     }
 
     @Test
     void getMinParticipants() {
-
+        assertEquals(4, myOzlGame.getMinParticipants());
     }
 
 }

@@ -3,7 +3,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 /**
  * Created by dimi on 10/3/17.
  */
-final class GamesAthlete extends GameParticipant implements SportsPerson {
+class GamesAthlete extends GameParticipant implements SportsPerson {
 
     // type of athlete
     private AthleteType athleteType;

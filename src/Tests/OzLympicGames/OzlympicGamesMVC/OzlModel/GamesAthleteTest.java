@@ -9,9 +9,41 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class GamesAthleteTest {
 
+    String participantName = "Alex Foo";
+    Integer participantAge = 55;
 
-    GameParticipant newAthlete = new GamesAthlete("Alex Foo", 55);
+    GameParticipant newAthlete = new GamesAthlete(participantName, participantAge);
     OzlGame myOzlGame = new OzlGame("R01");
+
+
+    @Test
+    void getMyOzlGame() {
+        newAthlete.setMyOzlGame(myOzlGame);
+        assertEquals(myOzlGame, newAthlete.getMyOzlGame());
+        newAthlete.setMyOzlGame(null);
+    }
+
+    @Test
+    void getParticipantId() {
+        String someFakeID = "SomeID";
+        newAthlete.setParticipantId(someFakeID);
+        assertEquals(someFakeID, newAthlete.getParticipantId());
+    }
+
+    @Test
+    void getParticipantName() {
+        assertEquals(participantName, newAthlete.getParticipantName());
+    }
+
+    @Test
+    void getParticipantAge() {
+        assertEquals(participantAge, newAthlete.getParticipantAge());
+    }
+
+    @Test
+    void getParticipantState() {
+        assertEquals("Australia", newAthlete.getParticipantState());
+    }
 
     @Test
     void getAthleteType() {

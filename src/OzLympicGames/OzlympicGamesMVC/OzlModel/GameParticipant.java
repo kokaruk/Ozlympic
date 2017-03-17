@@ -3,7 +3,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 /**
  * Created by dimi on 10/3/17.
  */
-class GameParticipant {
+abstract class GameParticipant {
 
     //field for assigned game. Null if not assigned to a game.
     // can be null, it means the object has been instantiated but not yest assigned to a game
