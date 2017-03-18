@@ -1,7 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -9,54 +8,65 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class GamesAthleteTest {
 
-    String participantName = "Alex Foo";
-    Integer participantAge = 55;
+    GameParticipant newAthlete;
+    OzlGame myOzlGame;
+    String participantName;
+    Integer participantAge;
 
-    GameParticipant newAthlete = new GamesAthlete(participantName, participantAge);
-    OzlGame myOzlGame = new OzlGame("R01");
+    @BeforeEach
+    void setupAthlete(){
+        participantName = "Alex Foo";
+        participantAge = 55;
+        newAthlete = new GamesAthlete(participantName, participantAge);
+        String gameId = "R01";
+        myOzlGame = new OzlGame(gameId);
+    }
 
 
     @Test
-    void getMyOzlGame() {
+    void getMyOzlGame_newOzlGameClass_AthleteReturnsSameOzlGameObject() {
         newAthlete.setMyOzlGame(myOzlGame);
+
         assertEquals(myOzlGame, newAthlete.getMyOzlGame());
-        newAthlete.setMyOzlGame(null);
     }
 
     @Test
-    void getParticipantId() {
-        String someFakeID = "SomeID";
+    void getParticipantId_SetParticipantIdString_GetterReturnsSameValue() {
+        String someFakeID = ((GamesAthlete)newAthlete).getAthleteType().toString().substring(0,1).toUpperCase() + "01";
         newAthlete.setParticipantId(someFakeID);
+
         assertEquals(someFakeID, newAthlete.getParticipantId());
     }
 
     @Test
-    void getParticipantName() {
+    void getParticipantName_SetParticipantName_GetterReturnsSameValue() {
         assertEquals(participantName, newAthlete.getParticipantName());
     }
 
     @Test
-    void getParticipantAge() {
+    void getParticipantAge_setParticipantAge_GetterReturnsSameValue() {
         assertEquals(participantAge, newAthlete.getParticipantAge());
     }
 
     @Test
-    void getParticipantState() {
+    void getParticipantState_StateReturnsAustralia() {
+        newAthlete.setConfigReader(OzlConfigReadFakeAlwaysReturnsHardcodedValues.getInstance());
+
         assertEquals("Australia", newAthlete.getParticipantState());
     }
 
     @Test
-    void getAthleteType() {
+    void getAthleteType_GameAthleteType_ReturnTypeOfGamesAthlete() {
         assertTrue(((GamesAthlete) newAthlete).getAthleteType().getClass().equals(AthleteType.class));
     }
 
     @Test
-    void getTotalPoints() {
+    void getTotalPoints_NewStateAthlete_ReturnsZeroPoints() {
        assertEquals(new Integer(0), ((GamesAthlete)newAthlete).getTotalPoints());
     }
 
     @Test
-    void compete() throws MyOzlGameNotDefinedException{
+    void compete_setOzlGameToAthlete_ReturnedRandomWithinRange_True() throws MyOzlGameNotDefinedException{
         this.newAthlete.setMyOzlGame(myOzlGame);
         int minTime = newAthlete.getMyOzlGame().getGameSportType().getMin();
         int maxTime = newAthlete.getMyOzlGame().getGameSportType().getMax();
@@ -66,3 +76,4 @@ class GamesAthleteTest {
     }
 
 }
+

@@ -1,6 +1,7 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,8 +11,23 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class OzlGameTest {
 
-    String gameId = "C01";
-    OzlGame myOzlGame = new OzlGame(gameId);
+    String gameId;
+    OzlGame myOzlGame;
+    String participantName;
+    Integer participantAge;
+    String participantId;
+
+
+
+    @BeforeEach
+    void setupGame(){
+        gameId = "C01";
+        myOzlGame = new OzlGame(gameId);
+        participantName = "Alex Foo";
+        participantAge = 55;
+        participantId = "O01";
+    }
+
 
     @Test
     void getGameSports() {
@@ -20,10 +36,10 @@ class OzlGameTest {
 
     @Test
     void getParticipants() {
-        GameParticipant[] mYreferee = new GameParticipant[]{new GamesOfficial("Alex Foo", 55)};
-        myOzlGame.setParticipants(mYreferee);
+        GameParticipant[] myReferee = new GameParticipant[]{new GamesOfficial(participantName, participantAge, participantId)};
+        myOzlGame.setParticipants(myReferee);
 
-        assertEquals(mYreferee[0], myOzlGame.getParticipants()[0]);
+        assertEquals(myReferee[0], myOzlGame.getParticipants()[0]);
     }
 
     @Test
@@ -33,6 +49,8 @@ class OzlGameTest {
 
     @Test
     void getMinParticipants() {
+        myOzlGame.setConfigReader(OzlConfigReadFakeAlwaysReturnsHardcodedValues.getInstance());
+
         assertEquals(4, myOzlGame.getMinParticipants());
     }
 

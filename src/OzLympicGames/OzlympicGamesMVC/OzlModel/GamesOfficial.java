@@ -6,11 +6,12 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 class GamesOfficial extends GameParticipant implements Referee {
 
     //constructor
-    public GamesOfficial(String participantName, int participantAge) {
-        super( participantName,  participantAge);
+    public GamesOfficial(String participantName, int participantAge, String participantId) {
+        super( participantName,  participantAge, participantId);
     }
 
     // returns score of a game as a formatted string
+    @Override
     public String gameScore() {
         return null;
     }

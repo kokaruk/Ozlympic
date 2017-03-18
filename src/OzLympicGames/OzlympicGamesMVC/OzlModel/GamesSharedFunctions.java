@@ -3,15 +3,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-
 /**
  *
  * Created by dimi on 12/3/17.
- * abstract shared funcions between classes
+ * Static shared functions for classes
  * class is final and cannot be instantiated
  */
 final class GamesSharedFunctions {
-    // constructor is private
+    // private constructor
     private GamesSharedFunctions() {}
 
     // string array

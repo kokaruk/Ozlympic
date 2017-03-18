@@ -13,17 +13,14 @@ class GamesAthlete extends GameParticipant implements SportsPerson {
     }
 
     // Display total point of athlete, acquired in all the games.
-    // Zero (0) at init time
-    private Integer totalPoints = 0;
+    private static Integer DEFAULT_POINTS_OF_NEW_ATHLETE = 0;
+    private Integer totalPoints = DEFAULT_POINTS_OF_NEW_ATHLETE;
     // Getter & Setter
     public Integer getTotalPoints() { return totalPoints;  }
     public void setTotalPoints(Integer totalPoints) { this.totalPoints += totalPoints; }
 
-    private int lastGameCompeteTime = 0;
-
-    public int getLastGameCompeteTime() {
-        return lastGameCompeteTime;
-    }
+    private int lastGameCompeteTime;
+    public int getLastGameCompeteTime() { return lastGameCompeteTime; }
 
     // constructor
     public GamesAthlete(String participantName, int participantAge) {
@@ -33,13 +30,14 @@ class GamesAthlete extends GameParticipant implements SportsPerson {
 
     // compete method. returns a random int in a preset range
     // based on the game type enumeration
+    @Override
     public int compete() throws MyOzlGameNotDefinedException {
         if (super.getMyOzlGame() == null){
             throw new MyOzlGameNotDefinedException("Games Athlete not Assigned to a Game, Can't compete yet");
         }
         lastGameCompeteTime = GamesSharedFunctions.getRandomNumberInRange(
-                              super.getMyOzlGame().getGameSportType().getMin(),
-                              super.getMyOzlGame().getGameSportType().getMax());
+                super.getMyOzlGame().getGameSportType().getMin(),
+                super.getMyOzlGame().getGameSportType().getMax());
         return lastGameCompeteTime;
     }
 

@@ -3,12 +3,19 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 /**
  * Created by dimi on 10/3/17.
  */
-abstract class GameParticipant {
+class GameParticipant {
 
-    //field for assigned game. Null if not assigned to a game.
-    // can be null, it means the object has been instantiated but not yest assigned to a game
+    //property with private getter for configuration reader.
+    //Lazy Instantiates Config Reader Singleton
+    // Allows dependency injection for testing
+    private IOzlConfigRead configReader;
+    public void setConfigReader(IOzlConfigRead configReader) {
+        this.configReader = configReader;
+    }
+
+    //property for assigned game. Returns Null if not assigned to a game.
+    // Allowed to be null, it means the Participant has been instantiated but not yest assigned to a game
     private OzlGame myOzlGame;
-    //setter/getter fot ozl game, should be invoked at time of assignment to a game.
     public void setMyOzlGame(OzlGame myOzlGame) {
         this.myOzlGame = myOzlGame;
     }
@@ -16,14 +23,14 @@ abstract class GameParticipant {
         return myOzlGame;
     }
 
-    // field ID and getter / setter. To Be Assigned by Games at the time of assignment to a game
+    // field ID. Participant ID to be set by Games Class at the time of assignment to participants array
     private String participantId;
     void setParticipantId(String participantId) {
         this.participantId = participantId;
     }
-    public String getParticipantId() {    return participantId; }
+    public String getParticipantId() { return participantId; }
 
-    // field & public getter for name
+    // readOnly field for name
     private String participantName;
     public String getParticipantName() {
         return participantName;
@@ -38,8 +45,8 @@ abstract class GameParticipant {
     // participant State field and lazy instantiation
     private String participantState;
     public String getParticipantState() {
-        if ((this.participantState == null) || (this.participantState.isEmpty())) {
-            this.participantState = "Australia";
+        if ((participantState == null) || (this.participantState.isEmpty())) {
+            participantState = configReader.getConfigString("participantDefaultState");
         }
         return this.participantState;
     }
@@ -48,7 +55,15 @@ abstract class GameParticipant {
     public GameParticipant(String participantName, int participantAge) {
         this.participantName = participantName;
         this.participantAge = participantAge;
+        configReader = OzlConfigRead.getInstance();
+
     }
+    // constructor with ID string
+    public GameParticipant(String participantName, int participantAge, String participantId) {
+        this(participantName, participantAge);
+        this.participantId = participantId;
+    }
+
 }
 
 

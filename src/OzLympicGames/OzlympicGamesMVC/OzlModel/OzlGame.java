@@ -1,16 +1,22 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 import java.util.Arrays;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 
 /**
  * Created by dimi on 10/3/17.
  */
 class OzlGame {
-    // gamesportType of enum
+
+    //property with private getter for configuration reader.
+    //Lazy Instantiates Config Reader Singleton
+    // Allows dependency injection for testing
+    private IOzlConfigRead configReader;
+    public void setConfigReader(IOzlConfigRead configReader) {
+        this.configReader = configReader;
+    }
+
+    // gameSportType of enum
     private GameSports gameSportType;
     // public getter with lazy instantiation
     public GameSports getGameSportType() {
@@ -41,28 +47,14 @@ class OzlGame {
     private int gameScore;
 
     // Constructor
-    public OzlGame(String gameId){
+    public OzlGame(String gameId) {
         // Game ID, to be set by games
         this.gameId = gameId;
-        this.minParticipants = this.minParticipants();
-    }
-    // read properties file and set final value for minimum participants
-    private int minParticipants(){
-        Properties myProp = new Properties();
-        InputStream in = getClass().getResourceAsStream("config.properties");
-        int minParticipants=0;
-        try {
-            myProp.load(in);
-            in.close();
-            minParticipants = Integer.parseInt (
-                                     myProp.getProperty("minParticipants"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return minParticipants;
+        configReader = OzlConfigRead.getInstance();
+        minParticipants = configReader.getConfigInt("minParticipants");
     }
 
-    // Method to Generate GameSports member based on based on ID string
+    // Method to Generate GameSports enum based on ID string
     private GameSports generateSport(String gameId)  {
         String sportsLetter = gameId.substring(0,1).toLowerCase();
         GameSports mySportWrapper = Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().get();
