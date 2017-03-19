@@ -18,14 +18,16 @@ final class OzlConfigRead implements IOzlConfigRead {
     // singleton instance
     private static OzlConfigRead instance;
     // lazy instantiation
-    public static OzlConfigRead getInstance(){
+    static OzlConfigRead getInstance(){
         if(instance == null){
             instance = new OzlConfigRead();
         }
         return instance;
     }
 
-        public int getConfigInt(String myPropertyName){
+     // returns integer from config file
+    @Override
+    public int getConfigInt(String myPropertyName){
             Properties myProp = new Properties();
             InputStream in = getClass().getResourceAsStream("config.properties");
             int configInt=0;
@@ -40,6 +42,8 @@ final class OzlConfigRead implements IOzlConfigRead {
             return configInt;
         }
 
+    // returns string from config file
+    @Override
     public String getConfigString(String myPropertyName){
         Properties myProp = new Properties();
         InputStream in = getClass().getResourceAsStream("config.properties");
@@ -53,6 +57,4 @@ final class OzlConfigRead implements IOzlConfigRead {
         }
         return myPropertyString;
     }
-
-
-    }
+}

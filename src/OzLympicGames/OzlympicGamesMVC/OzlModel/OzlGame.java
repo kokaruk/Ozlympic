@@ -1,57 +1,70 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 
 
 /**
  * Created by dimi on 10/3/17.
  */
-class OzlGame {
+class OzlGame implements IOzlGame{
 
-    //property with private getter for configuration reader.
-    //Lazy Instantiates Config Reader Singleton
+    // property with public setter for configuration reader.
+    // Lazy Instantiates Config Reader Singleton
     // Allows dependency injection for testing
     private IOzlConfigRead configReader;
-    public void setConfigReader(IOzlConfigRead configReader) {
+    void setConfigReader(IOzlConfigRead configReader) {
         this.configReader = configReader;
     }
 
-    // gameSportType of enum
+    // gameSportType of enum. public getter with lazy instantiation
     private GameSports gameSportType;
-    // public getter with lazy instantiation
-    public GameSports getGameSportType() {
+    GameSports getGameSportType() {
         if (this.gameSportType == null) this.gameSportType = generateSport(gameId);
         return gameSportType;
     }
-    // array of game participants. participant at index 0 is always the official and getter/setter
-    private GameParticipant[] participants = new GameParticipant[8];
-    public GameParticipant[] getParticipants() {
-        return participants;
+
+    // property array of game gameParticipants. participant at index 0 is always the official
+    private GamesParticipant[] gameParticipants;
+    GamesParticipant[] getGameParticipants() {
+        return gameParticipants;
     }
-    public void setParticipants(GameParticipant[] participants) {
-        this.participants = participants;
+    void setGameParticipants(GamesParticipant[] gameParticipants) {
+        this.gameParticipants = gameParticipants;
     }
 
-    // game ID. readonly getter
+    // game ID. Public only getter
     private String gameId;
+    @Override
     public String getGameId() {
         return gameId;
     }
 
-    // minimum participants in a game, sate from config file, populate at init, and getter
+    // minimum gameParticipants in a game, sate from config file, populate at init, and getter
     private final int minParticipants;
     public int getMinParticipants() {
         return minParticipants;
     }
 
-    private int gameScore;
+    // user prediction. Set to zero if user hasn't predicted
+    private String userPrediction = "";
+    @Override
+    public void setUserPrediction(int userPrediction) {
+        if (gameParticipants.length > 1 && gameParticipants.length >= userPrediction) this.userPrediction = gameParticipants[userPrediction].getParticipantId();
+    }
+
 
     // Constructor
-    public OzlGame(String gameId) {
+    OzlGame(String gameId) {
         // Game ID, to be set by games
         this.gameId = gameId;
         configReader = OzlConfigRead.getInstance();
         minParticipants = configReader.getConfigInt("minParticipants");
+        int maxParticipants = configReader.getConfigInt("maxParticipants");
+        gameParticipants = new GamesParticipant[maxParticipants+1]; // +1 for index 0 referee
     }
 
     // Method to Generate GameSports enum based on ID string
@@ -60,7 +73,68 @@ class OzlGame {
         GameSports mySportWrapper = Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().get();
 
         return mySportWrapper;
-
     }
 
+    // method to play game
+    String gamePlayGetScore() {
+        int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
+                                                 .filter(s -> s != null)
+                                                 .filter( s -> s instanceof GamesAthlete).count());
+
+        if (totalPlayers > minParticipants) {
+            ArrayList<GamesAthlete> gameWinners = (ArrayList<GamesAthlete>)getWinners().clone();
+            String winnersResult = "";
+            int counter = 1;
+            for (GamesAthlete champion : gameWinners){
+                winnersResult += String.format("%1$d: %2$s (%5$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
+                        counter,
+                        champion.getParticipantName(),
+                        champion.getLastGameCompeteTime(),
+                        champion.getTotalPoints(),
+                        champion.getParticipantState());
+                counter++;
+            }
+
+            return userPrediction.equals(gameWinners.get(0).getParticipantId()) ?
+                    winnersResult + "Spot On! You predicted the winner! Well Done!" :
+                    winnersResult;
+        }
+
+        else
+        {
+            return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
+        }
+    }
+    // method to to return winners
+    private ArrayList<GamesAthlete> getWinners(){
+        // reset gameParticipants to total participants, removing Null placeholders
+        gameParticipants = Arrays.stream(gameParticipants).filter(s -> s != null).toArray(GamesParticipant[]::new);
+        //set Game for each player
+        Arrays.stream(gameParticipants).forEach(s -> s.setMyOzlGame(this));
+        // Make each athlete compete
+        Arrays.stream(gameParticipants).filter( s -> s instanceof GamesAthlete).forEach(s -> {
+            try {
+                ((GamesAthlete) s).compete();
+            } catch (MyOzlGameNotDefinedException e) {
+                System.out.println(e.toString());
+            }
+        });
+
+        //find first three winners
+        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+                .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
+        ArrayList<GamesParticipant> gameWinners =
+                Arrays.stream(gameParticipants)
+                        .filter( s -> s instanceof GamesAthlete)
+                        .sorted(byLastGameTime)
+                        .limit(3)
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+        int[] awardPoints = new int[]{5, 2, 1};
+        for (int i = 0; i < awardPoints.length; i++) {
+            ((GamesAthlete)gameWinners.get(i)).setTotalPoints(awardPoints[i]);
+        }
+
+        return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
+    }
 }

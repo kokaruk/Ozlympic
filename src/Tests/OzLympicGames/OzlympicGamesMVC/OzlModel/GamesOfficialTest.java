@@ -11,18 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class GamesOfficialTest {
 
     String gamesScore;
-    GameParticipant newOfficialSequence;
+    GamesParticipant newOfficialSequence;
     OzlGame myOzlGame;
-    String participantName;
-    Integer participantAge;
     String participantId;
 
     @BeforeEach
     void setupOfficial(){
-        participantName = "Alex Foo";
-        participantAge = 55;
-        participantId = "O01";
-        newOfficialSequence = new GamesOfficial(participantName, participantAge, participantId);
+        participantId = "O0001";
+        newOfficialSequence = OzlGamesORM.getGameOfficial(participantId);
         String gameId = "R01";
         myOzlGame = new OzlGame(gameId);
     }

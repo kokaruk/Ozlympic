@@ -2,6 +2,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 19/3/17.
+ * Fake Stub to implement tests without file-system dependency
  */
 
 final class OzlConfigReadFakeAlwaysReturnsHardcodedValues implements IOzlConfigRead {
@@ -19,6 +20,6 @@ final class OzlConfigReadFakeAlwaysReturnsHardcodedValues implements IOzlConfigR
 
     @Override
     public String getConfigString(String myPropertyName) {
-        return "Australia";
+        return "Victoria";
     }
 }

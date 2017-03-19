@@ -8,16 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class GamesAthleteTest {
 
-    GameParticipant newAthlete;
+    GamesParticipant newAthlete;
     OzlGame myOzlGame;
-    String participantName;
-    Integer participantAge;
+
 
     @BeforeEach
     void setupAthlete(){
-        participantName = "Alex Foo";
-        participantAge = 55;
-        newAthlete = new GamesAthlete(participantName, participantAge);
+       newAthlete = OzlGamesORM.getGameAthlete();
         String gameId = "R01";
         myOzlGame = new OzlGame(gameId);
     }
@@ -38,22 +35,6 @@ class GamesAthleteTest {
         assertEquals(someFakeID, newAthlete.getParticipantId());
     }
 
-    @Test
-    void getParticipantName_SetParticipantName_GetterReturnsSameValue() {
-        assertEquals(participantName, newAthlete.getParticipantName());
-    }
-
-    @Test
-    void getParticipantAge_setParticipantAge_GetterReturnsSameValue() {
-        assertEquals(participantAge, newAthlete.getParticipantAge());
-    }
-
-    @Test
-    void getParticipantState_StateReturnsAustralia() {
-        newAthlete.setConfigReader(OzlConfigReadFakeAlwaysReturnsHardcodedValues.getInstance());
-
-        assertEquals("Australia", newAthlete.getParticipantState());
-    }
 
     @Test
     void getAthleteType_GameAthleteType_ReturnTypeOfGamesAthlete() {
@@ -61,7 +42,7 @@ class GamesAthleteTest {
     }
 
     @Test
-    void getTotalPoints_NewStateAthlete_ReturnsZeroPoints() {
+    void getTotalPoints_NewAthlete_ReturnsZeroPoints() {
        assertEquals(new Integer(0), ((GamesAthlete)newAthlete).getTotalPoints());
     }
 

@@ -3,67 +3,54 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 /**
  * Created by dimi on 10/3/17.
  */
-class GameParticipant {
-
-    //property with private getter for configuration reader.
-    //Lazy Instantiates Config Reader Singleton
-    // Allows dependency injection for testing
-    private IOzlConfigRead configReader;
-    public void setConfigReader(IOzlConfigRead configReader) {
-        this.configReader = configReader;
-    }
+//abstract game participant
+abstract class GamesParticipant implements IGameParticipant {
 
     //property for assigned game. Returns Null if not assigned to a game.
     // Allowed to be null, it means the Participant has been instantiated but not yest assigned to a game
     private OzlGame myOzlGame;
-    public void setMyOzlGame(OzlGame myOzlGame) {
+    void setMyOzlGame(OzlGame myOzlGame) {
         this.myOzlGame = myOzlGame;
     }
-    public OzlGame getMyOzlGame() {
+    OzlGame getMyOzlGame() {
         return myOzlGame;
     }
 
-    // field ID. Participant ID to be set by Games Class at the time of assignment to participants array
+    // Participant ID. to be set by Games Class at the time of assignment to participants array
+    // If GamesOfficial then ID to be set by constructor
     private String participantId;
-    void setParticipantId(String participantId) {
+    @Override
+    public void setParticipantId(String participantId) {
         this.participantId = participantId;
     }
+    @Override
     public String getParticipantId() { return participantId; }
 
     // readOnly field for name
     private String participantName;
+    @Override
     public String getParticipantName() {
         return participantName;
     }
 
     // field and public getter for Age
     private Integer participantAge;
+    @Override
     public Integer getParticipantAge() {
         return participantAge;
     }
 
     // participant State field and lazy instantiation
     private String participantState;
+    @Override
     public String getParticipantState() {
-        if ((participantState == null) || (this.participantState.isEmpty())) {
-            participantState = configReader.getConfigString("participantDefaultState");
-        }
         return this.participantState;
     }
 
     // constructor
-    public GameParticipant(String participantName, int participantAge) {
+    GamesParticipant(String participantName, int participantAge, String participantState) {
         this.participantName = participantName;
         this.participantAge = participantAge;
-        configReader = OzlConfigRead.getInstance();
-
+        this.participantState = participantState;
     }
-    // constructor with ID string
-    public GameParticipant(String participantName, int participantAge, String participantId) {
-        this(participantName, participantAge);
-        this.participantId = participantId;
-    }
-
 }
-
-
