@@ -47,7 +47,7 @@ class GamesAthleteTest {
     }
 
     @Test
-    void compete_setOzlGameToAthlete_ReturnedRandomWithinRange_True() throws MyOzlGameNotDefinedException{
+    void compete_setOzlGameToAthlete_ReturnedRandomWithinRange_True(){
         this.newAthlete.setMyOzlGame(myOzlGame);
         int minTime = newAthlete.getMyOzlGame().getGameSportType().getMin();
         int maxTime = newAthlete.getMyOzlGame().getGameSportType().getMax();

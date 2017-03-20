@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class OzlGameTest {
 
-    String gameId;
-    OzlGame myOzlGame;
-    String participantId;
+    private String gameId;
+    private OzlGame myOzlGame;
+    private String participantId;
 
     @BeforeEach
     void setupGame(){
@@ -63,9 +63,9 @@ class OzlGameTest {
 
     @Test
     void playGame_ExpectErrorMessageForNotEnoughPlayersOnly3() {
-        GamesParticipant athlete1 = getMyNewAthlete("cyclist");
-        GamesParticipant athlete2 = getMyNewAthlete("cyclist");
-        GamesParticipant athlete3 = getMyNewAthlete("cyclist");
+        GamesParticipant athlete1 = getMyNewAthlete();
+        GamesParticipant athlete2 = getMyNewAthlete();
+        GamesParticipant athlete3 = getMyNewAthlete();
         GamesParticipant[] myReferee = new GamesParticipant[]{OzlGamesORM.getGameOfficial(participantId),
         athlete1, athlete2, athlete3};
         myOzlGame.setGameParticipants(myReferee);
@@ -81,26 +81,57 @@ class OzlGameTest {
 
     @Test
     void playGame_getResultsMessage() {
-        GamesParticipant athlete1 = getMyNewAthlete("cyclist");
-        GamesParticipant athlete2 = getMyNewAthlete("cyclist");
-        GamesParticipant athlete3 = getMyNewAthlete("cyclist");
-        GamesParticipant athlete4 = getMyNewAthlete("cyclist");
-        GamesParticipant athlete5 = getMyNewAthlete("cyclist");
-        GamesParticipant[] myReferee = new GamesParticipant[]{OzlGamesORM.getGameOfficial(participantId),
+        GamesParticipant athlete1 = getMyNewAthlete();
+        GamesParticipant athlete2 = getMyNewAthlete();
+        GamesParticipant athlete3 = getMyNewAthlete();
+        GamesParticipant athlete4 = getMyNewAthlete();
+        GamesParticipant athlete5 = getMyNewAthlete();
+        GamesParticipant[] participants = new GamesParticipant[]{OzlGamesORM.getGameOfficial(participantId),
                 athlete1, athlete2, athlete3, athlete4, athlete5};
-        myOzlGame.setGameParticipants(myReferee);
+        myOzlGame.setGameParticipants(participants);
         System.out.println("Participant (Including Officials): " + myOzlGame.getGameParticipants().length);
 
         String messageResult = myOzlGame.gamePlayGetScore();
         System.out.println(messageResult);
+
         assertTrue(messageResult.getClass().equals(String.class));
     }
 
+    @Test
+    void getGamesParticipants_ReturnsNoParticipantsMessage() {
+        String warnMessage = myOzlGame.getGamePlayersList();
+        System.out.println(warnMessage);
+        assertTrue(warnMessage.getClass().equals(String.class));
+    }
+    @Test
+    void getGamesParticipants_ReturnsPlayersMessage() {
+
+        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
+
+        String theMessage = myOzlGame.getGamePlayersList();
+        System.out.println(theMessage);
+        assertTrue(theMessage.getClass().equals(String.class));
+    }
 
 
-    private GamesParticipant getMyNewAthlete(String athleteTypeString){
+    private GamesParticipant[] getOfficialAndAthleteArray(){
+        GamesParticipant[] myParticipants = new GamesParticipant[6];
+        myParticipants[0] = OzlGamesORM.getGameOfficial(participantId);
+
+        for(int i = 1; i < myParticipants.length; i++) {
+            GamesParticipant athlete = getMyNewAthlete();
+            athlete.setParticipantId(String.format("%s%03d", Character.toUpperCase(
+                    ((GamesAthlete)athlete).getAthleteType().name().charAt(0)),
+                    i));
+            myParticipants[i] = athlete;
+        }
+        return myParticipants;
+    }
+
+    private GamesParticipant getMyNewAthlete(){
         GamesParticipant newAthlete = OzlGamesORM.getGameAthlete();
-        return ((GamesAthlete)newAthlete).getAthleteType().name().equals(athleteTypeString) ? newAthlete : getMyNewAthlete(athleteTypeString);
+        return ((GamesAthlete)newAthlete).getAthleteType().getSport().length > 1 ||
+                ((GamesAthlete)newAthlete).getAthleteType().getSport()[0].equals(myOzlGame.getGameSportType()) ? newAthlete : getMyNewAthlete();
     }
 
 

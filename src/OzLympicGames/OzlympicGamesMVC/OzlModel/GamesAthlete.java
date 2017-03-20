@@ -17,32 +17,32 @@ class GamesAthlete extends GamesParticipant implements IGamesAthlete {
     private Integer totalPoints = DEFAULT_POINTS_OF_NEW_ATHLETE;
     // Getter & Setter
     Integer getTotalPoints() { return totalPoints;  }
-    public void setTotalPoints(Integer totalPoints) { this.totalPoints += totalPoints; }
+    void setTotalPoints(Integer totalPoints) { this.totalPoints += totalPoints; }
 
     private int lastGameCompeteTime;
-    public Integer getLastGameCompeteTime() { return lastGameCompeteTime; }
+    Integer getLastGameCompeteTime() { return lastGameCompeteTime; }
 
     // constructor
     GamesAthlete(String participantName, int participantAge, String participantState) {
         super(participantName, participantAge, participantState);
-        this.athleteType = generateAthleteType();
+        this.athleteType = generateRandomAthleteType();
     }
 
     // compete method. returns a random int in a preset range
     // based on the game type enumeration
     @Override
-    public int compete() throws MyOzlGameNotDefinedException {
-        if (getMyOzlGame() == null){
-            throw new MyOzlGameNotDefinedException("Games Athlete not Assigned to a Game, Can't compete yet");
+    public int compete() {
+        if (getMyOzlGame() != null){
+            // game assigned, compete
+            lastGameCompeteTime = GamesSharedFunctions.getRandomNumberInRange(
+                    getMyOzlGame().getGameSportType().getMin(),
+                    getMyOzlGame().getGameSportType().getMax());
         }
-        lastGameCompeteTime = GamesSharedFunctions.getRandomNumberInRange(
-                              getMyOzlGame().getGameSportType().getMin(),
-                              getMyOzlGame().getGameSportType().getMax());
         return lastGameCompeteTime;
     }
 
     // method to randomise athlete type
-    private AthleteType generateAthleteType(){
+    private AthleteType generateRandomAthleteType(){
         int randomNumber = GamesSharedFunctions.getRandomNumberInRange(0, AthleteType.values().length-1);
         return AthleteType.values()[randomNumber];
     }

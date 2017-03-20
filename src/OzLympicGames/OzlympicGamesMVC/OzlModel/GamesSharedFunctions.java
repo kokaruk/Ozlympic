@@ -45,5 +45,10 @@ final class GamesSharedFunctions {
         return myRandomNumber.ints(min, (max + 1)).findFirst().getAsInt();
     }
 
+    //method to capitalise first letter in string
+    static String firsLetterToUpper(String myString){
+        return Character.toUpperCase(myString.charAt(0)) + myString.substring(1);
+    }
+
 }
 
