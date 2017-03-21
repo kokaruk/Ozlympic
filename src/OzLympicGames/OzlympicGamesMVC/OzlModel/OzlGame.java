@@ -169,7 +169,13 @@ class OzlGame implements IOzlGame{
         // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
         return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
     }
-}
 
 
 // some comment for git
+
+    private void upload() {
+        int a = 0;
+    }
+
+}
+
