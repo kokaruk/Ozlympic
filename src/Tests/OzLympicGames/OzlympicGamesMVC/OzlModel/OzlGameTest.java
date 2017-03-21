@@ -106,27 +106,6 @@ class OzlGameTest {
     @Test
     void getGamesParticipants_ReturnsPlayersMessage() {
 
-<<<<<<< HEAD
-
-
-
-        String theMessage = myOzlGame.getGamePlayersList();
-        System.out.println(theMessage);
-        assertTrue(theMessage.getClass().equals(String.class));
-    }
-
-/*
-    private GamesParticipant getOfficialAndAthleteArray(){
-        GamesParticipant[] myParticipants = new GamesParticipant[6];
-        myParticipants[0] = OzlGamesORM.getGameOfficial(participantId);
-
-        for(int i = 1; i > myParticipants.length-1; i++) {
-            GamesParticipant athlete = getMyNewAthlete();
-            athlete.setParticipantId(String.format("%03d", ));
-        }
-    }
-*/
-=======
         myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
 
         String theMessage = myOzlGame.getGamePlayersList();
@@ -149,7 +128,6 @@ class OzlGameTest {
         return myParticipants;
     }
 
->>>>>>> origin/master
     private GamesParticipant getMyNewAthlete(){
         GamesParticipant newAthlete = OzlGamesORM.getGameAthlete();
         return ((GamesAthlete)newAthlete).getAthleteType().getSport().length > 1 ||
