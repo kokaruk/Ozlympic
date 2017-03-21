@@ -1,5 +1,11 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 /**
  * Created by dimi on 10/3/17.
  */
@@ -23,6 +29,7 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
     }
 }
 
+<<<<<<< HEAD
 /*
 
 ArrayList<GamesAthlete> gameWinners = getWinners();
@@ -44,6 +51,16 @@ ArrayList<GamesAthlete> gameWinners = getWinners();
     private ArrayList<GamesAthlete> getWinners(){
         // reset gameParticipants to total participants, removing Null placeholders
         gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(GamesParticipant[]::new);
+=======
+
+
+
+    // method to to return winners
+    @SuppressWarnings("unchecked")
+    private ArrayList<GamesAthlete> getWinners(){
+        // reset gameParticipants to total participants, removing Null placeholders
+        getMyOzlGame().gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(GamesParticipant[]::new);
+>>>>>>> origin/master
         //set Game for each player
         Arrays.stream(gameParticipants).forEach(s -> s.setMyOzlGame(this));
         // Make each athlete compete
@@ -66,4 +83,25 @@ ArrayList<GamesAthlete> gameWinners = getWinners();
         // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
         return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
     }
+<<<<<<< HEAD
+=======
+
+
+/*
+
+ArrayList<GamesAthlete> gameWinners = getWinners();
+            String winnersResult = "";
+            int counter = 1;
+            for (GamesAthlete champion : gameWinners){
+                winnersResult += String.format("%1$d: %2$s (%5$s from %6$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
+                        counter,
+                        champion.getParticipantName(),
+                        champion.getLastGameCompeteTime(),
+                        champion.getTotalPoints(),
+                        Character.toUpperCase(champion.getAthleteType().name().charAt(0)) + champion.getAthleteType().name().substring(1),
+                        champion.getParticipantState());
+                counter++;
+            }
+/*
+>>>>>>> origin/master
  */

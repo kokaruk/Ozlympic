@@ -26,7 +26,8 @@ class GamesOfficialTest {
 // see if returns string
     @Test
     void gameScoreString() {
-     // assertNotNull(((GamesOfficial) newOfficialSequence).gameScore());
-      assertTrue(((GamesOfficial) newOfficialSequence).gameScore().getClass().equals(String.class));
+        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).gameScore();
+        System.out.println(gameWinnersMessage);
+        assertTrue(gameWinnersMessage.getClass().equals(String.class));
     }
 }
