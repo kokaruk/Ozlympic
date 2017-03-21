@@ -112,46 +112,6 @@ class OzlGame implements IOzlGame{
 
     }
 
-
-    // method to list players for user predictions
-    String getGamePlayersList(){
-
-       String NoPlayersMessage = String.format("No Players Assigned to %1$s: %2$s",
-                gameId,
-                GamesSharedFunctions.firsLetterToUpper(this.getGameSportType().name())
-       );
-
-        int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
-                .filter(Objects::nonNull)
-                .filter( s -> s instanceof GamesAthlete).count());
-
-        if (totalPlayers > 0){
-            Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
-                    .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
-            ArrayList<GamesParticipant> gamePlayers =
-                    Arrays.stream(gameParticipants)
-                            .filter( s -> s instanceof GamesAthlete)
-                            .sorted(byLastGameTime)
-                            .collect(Collectors.toCollection(ArrayList::new));
-            String allGamePlayers = "";
-            for (GamesParticipant champion : gamePlayers){
-                allGamePlayers += String.format("%1$s: %2$s (%3$s from %4$s). \r\n",
-                        champion.getParticipantId(),
-                        champion.getParticipantName(),
-                        Character.toUpperCase(((GamesAthlete)champion).getAthleteType().name().charAt(0)) +
-                                ((GamesAthlete)champion).getAthleteType().name().substring(1),
-                        champion.getParticipantState());
-
-            }
-            return allGamePlayers;
-        }
-        else {
-            return NoPlayersMessage;
-        }
-
-    }
-
-
     // method to play game
     String gamePlayGetScore() {
         int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
