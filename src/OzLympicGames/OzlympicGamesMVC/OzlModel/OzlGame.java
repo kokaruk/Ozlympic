@@ -3,6 +3,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -49,7 +50,7 @@ class OzlGame implements IOzlGame{
         return minParticipants;
     }
 
-    // user prediction. Set to zero if user hasn't predicted
+    // user prediction. Set to empty if user hasn't predicted
     private String userPrediction = "";
     @Override
     public void setUserPrediction(int userPrediction) {
@@ -70,55 +71,87 @@ class OzlGame implements IOzlGame{
     // Method to Generate GameSports enum based on ID string
     private GameSports generateSport(String gameId)  {
         String sportsLetter = gameId.substring(0,1).toLowerCase();
-        GameSports mySportWrapper = Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().get();
 
-        return mySportWrapper;
+        return Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().get();
     }
+    // method to list players for user predictions
+    String getGamePlayersList(){
+
+       String NoPlayersMessage = String.format("No Players Assigned to %1$s: %2$s",
+                gameId,
+                GamesSharedFunctions.firsLetterToUpper(this.getGameSportType().name())
+       );
+
+        int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
+                .filter(Objects::nonNull)
+                .filter( s -> s instanceof GamesAthlete).count());
+
+        if (totalPlayers > 0){
+            Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+                    .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
+            ArrayList<GamesParticipant> gamePlayers =
+                    Arrays.stream(gameParticipants)
+                            .filter( s -> s instanceof GamesAthlete)
+                            .sorted(byLastGameTime)
+                            .collect(Collectors.toCollection(ArrayList::new));
+            String allGamePlayers = "";
+            for (GamesParticipant champion : gamePlayers){
+                allGamePlayers += String.format("%1$s: %2$s (%3$s from %4$s). \r\n",
+                        champion.getParticipantId(),
+                        champion.getParticipantName(),
+                        Character.toUpperCase(((GamesAthlete)champion).getAthleteType().name().charAt(0)) +
+                                ((GamesAthlete)champion).getAthleteType().name().substring(1),
+                        champion.getParticipantState());
+
+            }
+            return allGamePlayers;
+        }
+        else {
+            return NoPlayersMessage;
+        }
+
+    }
+
 
     // method to play game
     String gamePlayGetScore() {
         int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
-                                                 .filter(s -> s != null)
+                                                 .filter(Objects::nonNull)
                                                  .filter( s -> s instanceof GamesAthlete).count());
 
         if (totalPlayers > minParticipants) {
-            ArrayList<GamesAthlete> gameWinners = (ArrayList<GamesAthlete>)getWinners().clone();
-            String winnersResult = "";
+            ArrayList<GamesAthlete> gamePlayers = getPlayersScore();
+            String gameResult = "";
             int counter = 1;
-            for (GamesAthlete champion : gameWinners){
-                winnersResult += String.format("%1$d: %2$s (%5$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
+            for (GamesAthlete champion : gamePlayers){
+                gameResult += String.format("%1$d: %2$s (%5$s from %6$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
                         counter,
                         champion.getParticipantName(),
                         champion.getLastGameCompeteTime(),
                         champion.getTotalPoints(),
+                        GamesSharedFunctions.firsLetterToUpper(champion.getAthleteType().name()),
                         champion.getParticipantState());
                 counter++;
             }
 
-            return userPrediction.equals(gameWinners.get(0).getParticipantId()) ?
-                    winnersResult + "Spot On! You predicted the winner! Well Done!" :
-                    winnersResult;
+            return userPrediction.equals(gamePlayers.get(0).getParticipantId()) ?
+                    gameResult + "Spot On! You predicted the winner! Well Done!" :
+                    gameResult;
         }
 
-        else
-        {
+        else {
             return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
         }
     }
     // method to to return winners
-    private ArrayList<GamesAthlete> getWinners(){
+    @SuppressWarnings("unchecked")
+    private ArrayList<GamesAthlete> getPlayersScore(){
         // reset gameParticipants to total participants, removing Null placeholders
-        gameParticipants = Arrays.stream(gameParticipants).filter(s -> s != null).toArray(GamesParticipant[]::new);
+        gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(GamesParticipant[]::new);
         //set Game for each player
         Arrays.stream(gameParticipants).forEach(s -> s.setMyOzlGame(this));
         // Make each athlete compete
-        Arrays.stream(gameParticipants).filter( s -> s instanceof GamesAthlete).forEach(s -> {
-            try {
-                ((GamesAthlete) s).compete();
-            } catch (MyOzlGameNotDefinedException e) {
-                System.out.println(e.toString());
-            }
-        });
+        Arrays.stream(gameParticipants).filter( s -> s instanceof GamesAthlete).forEach(s -> ((GamesAthlete) s).compete());
 
         //find first three winners
         Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
@@ -127,14 +160,14 @@ class OzlGame implements IOzlGame{
                 Arrays.stream(gameParticipants)
                         .filter( s -> s instanceof GamesAthlete)
                         .sorted(byLastGameTime)
-                        .limit(3)
                         .collect(Collectors.toCollection(ArrayList::new));
 
+        // award points
         int[] awardPoints = new int[]{5, 2, 1};
         for (int i = 0; i < awardPoints.length; i++) {
             ((GamesAthlete)gameWinners.get(i)).setTotalPoints(awardPoints[i]);
         }
-
+        // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
         return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
     }
 }

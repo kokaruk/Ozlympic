@@ -13,7 +13,7 @@ final class OzlGamesORM {
     static OzlGame[] getGames(){
 
         // some logic and extensive sql that reads from database for the initial game start,
-        // if nothing found generates random 20 games
+        // if nothing found generates random 10 games
         OzlGame[] myGames = new OzlGame[1];
         myGames[0] = null;
 
