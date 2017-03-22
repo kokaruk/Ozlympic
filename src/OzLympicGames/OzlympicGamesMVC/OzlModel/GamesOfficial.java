@@ -1,9 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -23,47 +20,11 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
         if (getMyOzlGame() == null){
            return "Games Official not Assigned to a Game, Can't compete yet";
         }
-
-
-        return null;
-    }
-}
-
-/*
-
-
-    // method to to return winners
-    @SuppressWarnings("unchecked")
-    private ArrayList<GamesAthlete> getWinners(){
-        // reset gameParticipants to total participants, removing Null placeholders
-        getMyOzlGame().gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(GamesParticipant[]::new);
-        //set Game for each player
-        Arrays.stream(gameParticipants).forEach(s -> s.setMyOzlGame(this));
-        // Make each athlete compete
-        Arrays.stream(gameParticipants).filter( s -> s instanceof GamesAthlete).forEach(s -> ((GamesAthlete) s).compete());
-
-        //find first three winners
-        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
-                .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
-        ArrayList<GamesParticipant> gameWinners =
-                Arrays.stream(gameParticipants)
-                        .filter( s -> s instanceof GamesAthlete)
-                        .sorted(byLastGameTime)
-                        .limit(3)
-                        .collect(Collectors.toCollection(ArrayList::new));
-
-        int[] awardPoints = new int[]{5, 2, 1};
-        for (int i = 0; i < awardPoints.length; i++) {
-            ((GamesAthlete)gameWinners.get(i)).setTotalPoints(awardPoints[i]);
+        else if (!getMyOzlGame().isGameHasBeenPlayed()) {
+            return "Game has not been played";
         }
-        // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
-        return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
-    }
-
-
-/*
-
-ArrayList<GamesAthlete> gameWinners = getWinners();
+        else {
+            List<GamesAthlete> gameWinners = getWinners();
             String winnersResult = "";
             int counter = 1;
             for (GamesAthlete champion : gameWinners){
@@ -76,5 +37,23 @@ ArrayList<GamesAthlete> gameWinners = getWinners();
                         champion.getParticipantState());
                 counter++;
             }
-/*
- */
+            return winnersResult;
+        }
+    }
+
+    // method to to return winners
+    @SuppressWarnings("unchecked")
+    private ArrayList<GamesAthlete> getWinners(){
+        //find first three winners
+        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+                .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
+        ArrayList<GamesParticipant> gameWinners =
+                Arrays.stream(getMyOzlGame().getGameParticipants())
+                        .filter( s -> s instanceof GamesAthlete)
+                        .sorted(byLastGameTime)
+                        .limit(3)
+                        .collect(Collectors.toCollection(ArrayList::new));
+        // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
+        return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
+    }
+}

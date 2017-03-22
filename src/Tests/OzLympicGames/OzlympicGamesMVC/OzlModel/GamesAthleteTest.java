@@ -10,11 +10,11 @@ class GamesAthleteTest {
 
     GamesParticipant newAthlete;
     OzlGame myOzlGame;
-
+    final private IOzlGamesORM ormDataReader = OzlGamesORMFake.getInstance();
 
     @BeforeEach
     void setupAthlete(){
-       newAthlete = OzlGamesORM.getGameAthlete();
+       newAthlete = ormDataReader.getGameAthlete();
         String gameId = "R01";
         myOzlGame = new OzlGame(gameId);
     }

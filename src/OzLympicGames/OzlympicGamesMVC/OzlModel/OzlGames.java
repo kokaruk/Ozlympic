@@ -5,8 +5,11 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  */
 public class OzlGames {
     private OzlGame[] myOzlGames;
+
+    private IOzlGamesORM dataReaderORM = OzlGamesORMFake.getInstance();
+
     public OzlGame[] getMyOzlGames() {
-        if (myOzlGames.length == 0) myOzlGames = OzlGamesORM.getGames();
+        if (myOzlGames.length == 0) myOzlGames = dataReaderORM.getGames();
         return myOzlGames;
     }
 

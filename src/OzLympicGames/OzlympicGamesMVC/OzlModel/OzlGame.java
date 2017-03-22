@@ -13,6 +13,11 @@ import java.util.stream.Collectors;
  */
 class OzlGame implements IOzlGame{
 
+    private boolean gameHasBeenPlayed;
+    public boolean isGameHasBeenPlayed() {
+        return gameHasBeenPlayed;
+    }
+
     // property with public setter for configuration reader.
     // Lazy Instantiates Config Reader Singleton
     // Allows dependency injection for testing
@@ -113,15 +118,19 @@ class OzlGame implements IOzlGame{
     }
 
     // method to play game
-    String gamePlayGetScore() {
+    String gamePlayGetResults() {
+        //count total sportsmen assigned to the game
         int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
                                                  .filter(Objects::nonNull)
                                                  .filter( s -> s instanceof GamesAthlete).count());
-
+        //confirm minimum threshold is met, play game
         if (totalPlayers > minParticipants) {
+            gameHasBeenPlayed = true;
+            // make players compete and get results
             ArrayList<GamesAthlete> gamePlayers = getPlayersScore();
             String gameResult = "";
             int counter = 1;
+            // build results string
             for (GamesAthlete champion : gamePlayers){
                 gameResult += String.format("%1$d: %2$s (%5$s from %6$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
                         counter,
@@ -142,9 +151,9 @@ class OzlGame implements IOzlGame{
             return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
         }
     }
-    // method to to return winners
+    // method to to make players compete, arrange by finish time, award points to winners
     @SuppressWarnings("unchecked")
-    private ArrayList<GamesAthlete> getPlayersScore(){
+    private ArrayList<GamesAthlete> getPlayersScore() {
         // reset gameParticipants to total participants, removing Null placeholders
         gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(GamesParticipant[]::new);
         //set Game for each player
@@ -152,8 +161,9 @@ class OzlGame implements IOzlGame{
         // Make each athlete compete
         Arrays.stream(gameParticipants).filter( s -> s instanceof GamesAthlete).forEach(s -> ((GamesAthlete) s).compete());
 
-        //find first three winners
-        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+        // arrange by finish time
+        Comparator<GamesParticipant> byLastGameTime = Comparator
+                .<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
                 .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
         ArrayList<GamesParticipant> gameWinners =
                 Arrays.stream(gameParticipants)

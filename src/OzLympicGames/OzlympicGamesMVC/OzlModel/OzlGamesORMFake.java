@@ -2,15 +2,26 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 12/3/17.
- * Object Relation Mapper. Will speak to dataLayer Factory Class which should return data from DataSource.
- * As Current Project Scope Doesn't require access to XML ot DataBase, this class will contain either hardcoded data
- * or random generation
+ * Fake Object Relation Mapper.
  */
-final class OzlGamesORM {
+final class OzlGamesORMFake implements IOzlGamesORM {
 
-    private OzlGamesORM() {}
 
-    static OzlGame[] getGames(){
+    // private constructor
+    private OzlGamesORMFake() {}
+
+    // singleton instance
+    private static OzlGamesORMFake instance;
+    // lazy instantiation
+    static OzlGamesORMFake getInstance(){
+        if(instance == null){
+            instance = new OzlGamesORMFake();
+        }
+        return instance;
+    }
+
+    @Override
+    public OzlGame[] getGames(){
 
         // some logic and extensive sql that reads from database for the initial game start,
         // if nothing found generates random 10 games
@@ -22,7 +33,8 @@ final class OzlGamesORM {
 
 
     // method to generate game official
-    static GamesParticipant getGameOfficial(String participantId) {
+    @Override
+    public GamesParticipant getGameOfficial(String participantId) {
         GamesParticipant newGameOfficial =
                 new GamesOfficial(GamesSharedFunctions.getRandomName(),
                         GamesSharedFunctions.getRandomAge(),
@@ -32,7 +44,8 @@ final class OzlGamesORM {
     }
 
     // method to generate game Athlete
-    static GamesParticipant getGameAthlete(){
+    @Override
+    public GamesParticipant getGameAthlete(){
         GamesParticipant newGameAthlete =
                 new GamesAthlete(GamesSharedFunctions.getRandomName(),
                         GamesSharedFunctions.getRandomAge(),

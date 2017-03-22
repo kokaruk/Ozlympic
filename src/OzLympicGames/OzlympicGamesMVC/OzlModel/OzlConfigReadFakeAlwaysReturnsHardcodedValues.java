@@ -9,7 +9,7 @@ final class OzlConfigReadFakeAlwaysReturnsHardcodedValues implements IOzlConfigR
 
     private OzlConfigReadFakeAlwaysReturnsHardcodedValues(){}
     private static final OzlConfigReadFakeAlwaysReturnsHardcodedValues instance = new OzlConfigReadFakeAlwaysReturnsHardcodedValues();
-    public static OzlConfigReadFakeAlwaysReturnsHardcodedValues getInstance(){
+    public static IOzlConfigRead getInstance(){
         return instance;
     }
 
