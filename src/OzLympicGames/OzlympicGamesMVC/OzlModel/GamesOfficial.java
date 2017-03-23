@@ -33,7 +33,10 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
                         champion.getParticipantName(),
                         champion.getLastGameCompeteTime(),
                         champion.getTotalPoints(),
-                        Character.toUpperCase(champion.getAthleteType().name().charAt(0)) + champion.getAthleteType().name().substring(1),
+                        GamesSharedFunctions.firsLetterToUpper(
+                                String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))
+                        )
+                        ,
                         champion.getParticipantState());
                 counter++;
             }

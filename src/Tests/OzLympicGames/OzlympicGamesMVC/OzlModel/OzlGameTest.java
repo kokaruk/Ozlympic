@@ -83,14 +83,8 @@ class OzlGameTest {
 
     @Test
     void playGame_getResultsMessage() {
-        GamesParticipant athlete1 = getMyNewAthlete();
-        GamesParticipant athlete2 = getMyNewAthlete();
-        GamesParticipant athlete3 = getMyNewAthlete();
-        GamesParticipant athlete4 = getMyNewAthlete();
-        GamesParticipant athlete5 = getMyNewAthlete();
-        GamesParticipant[] participants = new GamesParticipant[]{ormDataReader.getGameOfficial(participantId),
-                athlete1, athlete2, athlete3, athlete4, athlete5};
-        myOzlGame.setGameParticipants(participants);
+
+        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
         System.out.println("Participant (Including Officials): " + myOzlGame.getGameParticipants().length);
 
         String messageResult = myOzlGame.gamePlayGetResults();
@@ -117,7 +111,8 @@ class OzlGameTest {
 
 
     private GamesParticipant[] getOfficialAndAthleteArray(){
-        GamesParticipant[] myParticipants = new GamesParticipant[6];
+        Integer gameParticipantsBounds = myOzlGame.getGameParticipants().length;
+        GamesParticipant[] myParticipants = new GamesParticipant[gameParticipantsBounds];
         myParticipants[0] = ormDataReader.getGameOfficial(participantId);
 
         for(int i = 1; i < myParticipants.length; i++) {

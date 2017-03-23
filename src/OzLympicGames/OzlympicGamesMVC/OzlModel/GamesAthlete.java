@@ -41,7 +41,7 @@ class GamesAthlete extends GamesParticipant implements IGamesAthlete {
         return lastGameCompeteTime;
     }
 
-    // method to randomise athlete type
+    // method to randomise athlete type at the instantioantion for more fun
     private AthleteType generateRandomAthleteType(){
         int randomNumber = GamesSharedFunctions.getRandomNumberInRange(0, AthleteType.values().length-1);
         return AthleteType.values()[randomNumber];

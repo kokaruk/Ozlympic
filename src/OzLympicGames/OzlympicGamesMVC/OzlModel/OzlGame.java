@@ -1,6 +1,7 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
@@ -94,8 +95,8 @@ class OzlGame implements IOzlGame{
         if (totalPlayers > 0){
             Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
                     .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
-            ArrayList<GamesParticipant> gamePlayers =
-                    Arrays.stream(gameParticipants)
+            List<GamesParticipant> gamePlayers;
+            gamePlayers = Arrays.stream(gameParticipants)
                             .filter( s -> s instanceof GamesAthlete)
                             .sorted(byLastGameTime)
                             .collect(Collectors.toCollection(ArrayList::new));
@@ -104,8 +105,10 @@ class OzlGame implements IOzlGame{
                 allGamePlayers += String.format("%1$s: %2$s (%3$s from %4$s). \r\n",
                         champion.getParticipantId(),
                         champion.getParticipantName(),
-                        Character.toUpperCase(((GamesAthlete)champion).getAthleteType().name().charAt(0)) +
-                                ((GamesAthlete)champion).getAthleteType().name().substring(1),
+                        GamesSharedFunctions.firsLetterToUpper(
+                                String.join(" ",
+                                        ((GamesAthlete)champion).getAthleteType().name().split("(?=\\p{Lu})"))
+                        ),
                         champion.getParticipantState());
 
             }
@@ -132,13 +135,16 @@ class OzlGame implements IOzlGame{
             int counter = 1;
             // build results string
             for (GamesAthlete champion : gamePlayers){
-                gameResult += String.format("%1$d: %2$s (%5$s from %6$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
+                gameResult += String.format("%1$d: %2$s (%5$s from %6$s. Age: %7$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
                         counter,
                         champion.getParticipantName(),
                         champion.getLastGameCompeteTime(),
                         champion.getTotalPoints(),
-                        GamesSharedFunctions.firsLetterToUpper(champion.getAthleteType().name()),
-                        champion.getParticipantState());
+                        GamesSharedFunctions.firsLetterToUpper(
+                            String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))
+                        ),
+                        champion.getParticipantState(),
+                        champion.getParticipantAge());
                 counter++;
             }
 
