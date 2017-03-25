@@ -5,11 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by dimi on 13/3/17.
+ * Athlete Participant Test
  */
 class GamesAthleteTest {
 
-    GamesParticipant newAthlete;
-    OzlGame myOzlGame;
+    private GamesParticipant newAthlete;
+    private OzlGame myOzlGame;
     final private IOzlGamesORM ormDataReader = OzlGamesORMFake.getInstance();
 
     @BeforeEach

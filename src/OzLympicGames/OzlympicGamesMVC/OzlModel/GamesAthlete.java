@@ -2,25 +2,26 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
+ * Athlete Class. Extends Game Participant
  */
 class GamesAthlete extends GamesParticipant implements IGamesAthlete {
 
     // type of athlete
-    private AthleteType athleteType;
+    final private AthleteType athleteType;
     // Getter
     AthleteType getAthleteType() {
         return athleteType;
     }
 
     // Display total point of athlete, acquired in all the games.
-    private static Integer DEFAULT_POINTS_OF_NEW_ATHLETE = 0;
+    private final Integer DEFAULT_POINTS_OF_NEW_ATHLETE = 0;
     private Integer totalPoints = DEFAULT_POINTS_OF_NEW_ATHLETE;
     // Getter & Setter
     Integer getTotalPoints() { return totalPoints;  }
     void setTotalPoints(Integer totalPoints) { this.totalPoints += totalPoints; }
 
-    private int lastGameCompeteTime;
-    Integer getLastGameCompeteTime() { return lastGameCompeteTime; }
+    private double lastGameCompeteTime;
+    double getLastGameCompeteTime() { return lastGameCompeteTime; }
 
     // constructor
     GamesAthlete(String participantName, int participantAge, String participantState) {
@@ -31,19 +32,19 @@ class GamesAthlete extends GamesParticipant implements IGamesAthlete {
     // compete method. returns a random int in a preset range
     // based on the game type enumeration
     @Override
-    public int compete() {
+    public double compete() {
         if (getMyOzlGame() != null){
             // game assigned, compete
-            lastGameCompeteTime = GamesSharedFunctions.getRandomNumberInRange(
+            lastGameCompeteTime = GamesHelperFunctions.getRandomDoubleInRange(
                     getMyOzlGame().getGameSportType().getMin(),
                     getMyOzlGame().getGameSportType().getMax());
         }
         return lastGameCompeteTime;
     }
 
-    // method to randomise athlete type at the instantioantion for more fun
+    // method to randomise athlete type at the instantiation for more fun
     private AthleteType generateRandomAthleteType(){
-        int randomNumber = GamesSharedFunctions.getRandomNumberInRange(0, AthleteType.values().length-1);
+        int randomNumber = Math.round (GamesHelperFunctions.getRandomNumberInRange(0, AthleteType.values().length-1));
         return AthleteType.values()[randomNumber];
     }
 }

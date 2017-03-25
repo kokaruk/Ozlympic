@@ -2,6 +2,8 @@ package OzLympicGames.OzlympicGamesMVC.OzlView;
 
 /**
  * Created by dimi on 11/3/17.
+ * Strings for view controller
+ *
  */
 class GameViewStrings {
     private String mainMenu;
@@ -16,7 +18,7 @@ class GameViewStrings {
         return null;
     }
 
-    public String diplayAllPointsScores() {
+    public String displayAllPointsScores() {
         return null;
     }
 }

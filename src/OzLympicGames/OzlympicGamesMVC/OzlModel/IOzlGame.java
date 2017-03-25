@@ -9,5 +9,5 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 interface IOzlGame {
     String getGameId();
     int getMinParticipants();
-    void setUserPrediction(int userPrediction);
+    void setUserPrediction(int wuserPrediction);
 }

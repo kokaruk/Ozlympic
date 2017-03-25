@@ -8,5 +8,5 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  *
  */
  interface IGamesOfficial {
-    String gameScore();
+    String getGameScore();
 }

@@ -7,18 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by dimi on 13/3/17.
+ *  Referee test class
  */
 class GamesOfficialTest {
 
-    String gamesScore;
-    GamesParticipant newOfficialSequence;
-    OzlGame myOzlGame;
-    String participantId;
+    private GamesParticipant newOfficialSequence;
+    private OzlGame myOzlGame;
     final private IOzlGamesORM ormDataReader = OzlGamesORMFake.getInstance();
 
     @BeforeEach
     void setupOfficial(){
-        participantId = "O0001";
+        String participantId = "O0001";
         newOfficialSequence = ormDataReader.getGameOfficial(participantId);
         String gameId = "R01";
         myOzlGame = new OzlGame(gameId);
@@ -26,7 +25,7 @@ class GamesOfficialTest {
 
     @Test
     void gameScoreString_notAssigned() {
-        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).gameScore();
+        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
         System.out.println(gameWinnersMessage);
         assertTrue(gameWinnersMessage.getClass().equals(String.class));
     }
@@ -35,7 +34,7 @@ class GamesOfficialTest {
     void gameScoreString_gamePlay_gameNeverPlayed() {
         newOfficialSequence.setMyOzlGame(myOzlGame);
         myOzlGame.setGameParticipants(new GamesParticipant[]{newOfficialSequence});
-        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).gameScore();
+        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
         System.out.println(gameWinnersMessage);
         assertTrue(gameWinnersMessage.getClass().equals(String.class));
     }
@@ -45,7 +44,7 @@ class GamesOfficialTest {
         newOfficialSequence.setMyOzlGame(myOzlGame);
         myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
         myOzlGame.gamePlayGetResults();
-        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).gameScore();
+        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
         System.out.println(gameWinnersMessage);
         assertTrue(gameWinnersMessage.getClass().equals(String.class));
     }

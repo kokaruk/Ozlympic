@@ -2,12 +2,15 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
 
 /**
  * Created by dimi on 16/3/17.
+ * Test class for OzlGame
  */
 class OzlGameTest {
 
@@ -43,7 +46,7 @@ class OzlGameTest {
     }
 
     @Test
-    void getMinParticipants_ExpectedFourAsPerconfig() {
+    void getMinParticipants_ExpectedFourAsPerConfig() {
         myOzlGame.setConfigReader(OzlConfigReadFakeAlwaysReturnsHardcodedValues.getInstance());
 
         assertEquals(4, myOzlGame.getMinParticipants());
@@ -103,19 +106,49 @@ class OzlGameTest {
     void getGamesParticipants_ReturnsPlayersMessage() {
 
         myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
-
         String theMessage = myOzlGame.getGamePlayersList();
         System.out.println(theMessage);
+
         assertTrue(theMessage.getClass().equals(String.class));
     }
+
+    @Test
+    void setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest(){
+        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
+        String theMessage = myOzlGame.getGamePlayersList();
+        System.out.println("Game Players: \n" + theMessage);
+
+        myOzlGame.setUserPrediction(2);
+        String gameResults = myOzlGame.gamePlayGetResults();
+
+        System.out.println("Game Result: \n" + gameResults);
+
+        String resultFromOfficial = ((GamesOfficial)myOzlGame.getGameParticipants()[0]).getGameScore();
+        System.out.println("Game Winners: \n" + resultFromOfficial);
+
+        System.out.println("Replay \r\n");
+        myOzlGame.setUserPrediction(3);
+        gameResults = myOzlGame.gamePlayGetResults();
+
+        System.out.println("Game Result: \n" + gameResults);
+
+
+        resultFromOfficial = ((GamesOfficial)myOzlGame.getGameParticipants()[0]).getGameScore();
+        System.out.println("Game Winners: \n" + resultFromOfficial);
+
+        assertTrue(theMessage.getClass().equals(String.class));
+    }
+
 
 
     private GamesParticipant[] getOfficialAndAthleteArray(){
         Integer gameParticipantsBounds = myOzlGame.getGameParticipants().length;
         GamesParticipant[] myParticipants = new GamesParticipant[gameParticipantsBounds];
         myParticipants[0] = ormDataReader.getGameOfficial(participantId);
+        myParticipants[0].setMyOzlGame(myOzlGame);
 
         for(int i = 1; i < myParticipants.length; i++) {
+
             GamesParticipant athlete = getMyNewAthlete();
             athlete.setParticipantId(String.format("%s%03d", Character.toUpperCase(
                     ((GamesAthlete)athlete).getAthleteType().name().charAt(0)),
@@ -127,6 +160,7 @@ class OzlGameTest {
 
     private GamesParticipant getMyNewAthlete(){
         GamesParticipant newAthlete = ormDataReader.getGameAthlete();
+        newAthlete.setMyOzlGame(myOzlGame);
         return   Math.toIntExact(((GamesAthlete)newAthlete).getAthleteType().getSport().size()) > 1 ||
                 ((GamesAthlete)newAthlete).getAthleteType().getSport().get(0).equals(myOzlGame.getGameSportType()) ? newAthlete : getMyNewAthlete();
     }

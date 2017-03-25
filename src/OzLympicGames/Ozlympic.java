@@ -3,7 +3,7 @@ package OzLympicGames;
 
 import OzLympicGames.OzlympicGamesMVC.OzlController.*;
 
-public class Ozlympic {
+class OzLympic {
 
     public static void main(String[] args) {
 	// write your code here

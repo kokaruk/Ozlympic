@@ -5,5 +5,5 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  * Each athlete should have a compete() method
  */
  interface IGamesAthlete {
-    int compete();
+    double compete();
 }

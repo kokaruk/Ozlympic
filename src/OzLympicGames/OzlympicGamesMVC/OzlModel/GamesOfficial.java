@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 /**
  * Created by dimi on 10/3/17.
+ * referee class
+ *
  */
 class GamesOfficial extends GamesParticipant implements IGamesOfficial {
 
@@ -16,7 +18,7 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
 
     // returns score of a game as a formatted string
     @Override
-    public String gameScore() {
+    public String getGameScore() {
         if (getMyOzlGame() == null){
            return "Games Official not Assigned to a Game, Can't compete yet";
         }
@@ -25,22 +27,31 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
         }
         else {
             List<GamesAthlete> gameWinners = getWinners();
-            String winnersResult = "";
+            StringBuilder winnersResult = new StringBuilder();
             int counter = 1;
             for (GamesAthlete champion : gameWinners){
-                winnersResult += String.format("%1$d: %2$s (%5$s from %6$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
+                winnersResult.append( String.format("%1$d: %2$s (%5$s | %6$s).  Result: %3$,.2f seconds. Game Score: %4$d \r\n",
                         counter,
                         champion.getParticipantName(),
                         champion.getLastGameCompeteTime(),
                         champion.getTotalPoints(),
-                        GamesSharedFunctions.firsLetterToUpper(
+                        GamesHelperFunctions.firsLetterToUpper(
                                 String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))
                         )
                         ,
-                        champion.getParticipantState());
+                        champion.getParticipantState())
+                );
                 counter++;
             }
-            return winnersResult;
+            if (!this.getMyOzlGame().getUserPrediction().isEmpty()
+                    && this.getMyOzlGame().getUserPrediction().equals(gameWinners.get(0).getParticipantId()) ){
+                //add congrats message if picked correct player
+                winnersResult.append("Spot On! You predicted the winner! Well Done!\r\n");
+                // reset user prediction
+                getMyOzlGame().setUserPrediction(0);
+            }
+
+            return winnersResult.toString();
         }
     }
 
@@ -48,9 +59,9 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
     @SuppressWarnings("unchecked")
     private ArrayList<GamesAthlete> getWinners(){
         //find first three winners
-        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
-                .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
-        ArrayList<GamesParticipant> gameWinners =
+        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingDouble(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+                .thenComparingDouble(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
+        List<GamesParticipant> gameWinners =
                 Arrays.stream(getMyOzlGame().getGameParticipants())
                         .filter( s -> s instanceof GamesAthlete)
                         .sorted(byLastGameTime)

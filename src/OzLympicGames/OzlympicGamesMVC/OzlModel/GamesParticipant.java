@@ -2,6 +2,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
+ * abstrac game participant class
  */
 //abstract game participant
 abstract class GamesParticipant implements IGameParticipant {
@@ -27,21 +28,21 @@ abstract class GamesParticipant implements IGameParticipant {
     public String getParticipantId() { return participantId; }
 
     // readOnly field for name
-    private String participantName;
+    private final String participantName;
     @Override
     public String getParticipantName() {
         return participantName;
     }
 
     // field and public getter for Age
-    private Integer participantAge;
+    private final Integer participantAge;
     @Override
     public Integer getParticipantAge() {
         return participantAge;
     }
 
     // participant State field and lazy instantiation
-    private String participantState;
+    private final String participantState;
     @Override
     public String getParticipantState() {
         return this.participantState;

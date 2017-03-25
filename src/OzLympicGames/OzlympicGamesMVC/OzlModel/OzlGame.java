@@ -7,15 +7,14 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-
-
 /**
  * Created by dimi on 10/3/17.
+ * A Game Class
  */
 class OzlGame implements IOzlGame{
 
     private boolean gameHasBeenPlayed;
-    public boolean isGameHasBeenPlayed() {
+    boolean isGameHasBeenPlayed() {
         return gameHasBeenPlayed;
     }
 
@@ -44,7 +43,7 @@ class OzlGame implements IOzlGame{
     }
 
     // game ID. Public only getter
-    private String gameId;
+    private final String gameId;
     @Override
     public String getGameId() {
         return gameId;
@@ -60,9 +59,16 @@ class OzlGame implements IOzlGame{
     private String userPrediction = "";
     @Override
     public void setUserPrediction(int userPrediction) {
-        if (gameParticipants.length > 1 && gameParticipants.length >= userPrediction) this.userPrediction = gameParticipants[userPrediction].getParticipantId();
+        if (userPrediction == 0) {
+            this.userPrediction = ""; // reset user prediction and get out
+            return;
+        }
+        if (gameParticipants.length > 1 && gameParticipants.length >= userPrediction)
+            this.userPrediction = gameParticipants[userPrediction].getParticipantId();
     }
-
+    public String getUserPrediction() {
+        return userPrediction;
+    }
 
     // Constructor
     OzlGame(String gameId) {
@@ -74,90 +80,92 @@ class OzlGame implements IOzlGame{
         gameParticipants = new GamesParticipant[maxParticipants+1]; // +1 for index 0 referee
     }
 
-    // Method to Generate GameSports enum based on ID string
+    // Method to Generate GameSports enum based on ID string for constructor
     private GameSports generateSport(String gameId)  {
         String sportsLetter = gameId.substring(0,1).toLowerCase();
 
-        return Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().get();
+        return Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().orElse(null);
     }
-    // method to list players for user predictions
+    // method to list Athletes
     String getGamePlayersList(){
 
-       String NoPlayersMessage = String.format("No Players Assigned to %1$s: %2$s",
-                gameId,
-                GamesSharedFunctions.firsLetterToUpper(this.getGameSportType().name())
-       );
-
-        int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
+       int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
                 .filter(Objects::nonNull)
                 .filter( s -> s instanceof GamesAthlete).count());
 
         if (totalPlayers > 0){
-            Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
-                    .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
+
             List<GamesParticipant> gamePlayers;
             gamePlayers = Arrays.stream(gameParticipants)
                             .filter( s -> s instanceof GamesAthlete)
-                            .sorted(byLastGameTime)
                             .collect(Collectors.toCollection(ArrayList::new));
-            String allGamePlayers = "";
+            StringBuilder allGamePlayers = new StringBuilder();
             for (GamesParticipant champion : gamePlayers){
-                allGamePlayers += String.format("%1$s: %2$s (%3$s from %4$s). \r\n",
+                allGamePlayers.append( String.format("%1$s: %2$s (%3$s | %4$s | Age: %5$d) \r\n",
                         champion.getParticipantId(),
                         champion.getParticipantName(),
-                        GamesSharedFunctions.firsLetterToUpper(
+                        GamesHelperFunctions.firsLetterToUpper(
                                 String.join(" ",
                                         ((GamesAthlete)champion).getAthleteType().name().split("(?=\\p{Lu})"))
                         ),
-                        champion.getParticipantState());
+                        champion.getParticipantState(),
+                        champion.getParticipantAge())
+                );
 
             }
-            return allGamePlayers;
+            return allGamePlayers.toString();
         }
         else {
-            return NoPlayersMessage;
+
+            return String.format("No Players Assigned to %1$s: %2$s",
+                    gameId,
+                    GamesHelperFunctions.firsLetterToUpper(this.getGameSportType().name())
+            );
         }
 
     }
 
-    // method to play game
+    // method to make athlete to compete
     String gamePlayGetResults() {
-        //count total sportsmen assigned to the game
+        //count total athletes assigned to the game
         int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
                                                  .filter(Objects::nonNull)
                                                  .filter( s -> s instanceof GamesAthlete).count());
         //confirm minimum threshold is met, play game
         if (totalPlayers > minParticipants) {
+            // string to hold games result
+            StringBuilder gameResult = new StringBuilder();
+            // Play the game
+            List<GamesAthlete> gamePlayers = getPlayersScore();
+            //mark game as played
             gameHasBeenPlayed = true;
-            // make players compete and get results
-            ArrayList<GamesAthlete> gamePlayers = getPlayersScore();
-            String gameResult = "";
+            // see if user prediction is correct
+
             int counter = 1;
             // build results string
             for (GamesAthlete champion : gamePlayers){
-                gameResult += String.format("%1$d: %2$s (%5$s from %6$s. Age: %7$s).  Result: %3$d seconds. Game Score: %4$d \r\n",
+                gameResult.append( String.format("%1$d: %2$s (%5$s | %6$s | Age: %7$s).  Result: %3$,.2f seconds. Game Score: %4$d \r\n",
                         counter,
                         champion.getParticipantName(),
                         champion.getLastGameCompeteTime(),
                         champion.getTotalPoints(),
-                        GamesSharedFunctions.firsLetterToUpper(
+                        GamesHelperFunctions.firsLetterToUpper(
                             String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))
                         ),
                         champion.getParticipantState(),
-                        champion.getParticipantAge());
+                        champion.getParticipantAge())
+                );
                 counter++;
             }
 
-            return userPrediction.equals(gamePlayers.get(0).getParticipantId()) ?
-                    gameResult + "Spot On! You predicted the winner! Well Done!" :
-                    gameResult;
+            return gameResult.toString();
         }
 
         else {
             return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
         }
     }
-    // method to to make players compete, arrange by finish time, award points to winners
+    // method to arrange by finish time, award points to winners
     @SuppressWarnings("unchecked")
     private ArrayList<GamesAthlete> getPlayersScore() {
         // reset gameParticipants to total participants, removing Null placeholders
@@ -169,8 +177,8 @@ class OzlGame implements IOzlGame{
 
         // arrange by finish time
         Comparator<GamesParticipant> byLastGameTime = Comparator
-                .<GamesParticipant>comparingInt(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
-                .thenComparingInt(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
+                .<GamesParticipant>comparingDouble(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+                .thenComparingDouble(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
         ArrayList<GamesParticipant> gameWinners =
                 Arrays.stream(gameParticipants)
                         .filter( s -> s instanceof GamesAthlete)

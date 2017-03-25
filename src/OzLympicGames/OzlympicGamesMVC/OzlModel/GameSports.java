@@ -2,8 +2,9 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
+ * enumerator  sports with values for competing methods
  */
-// enumerator with values for competing methods
+
  enum GameSports {
     swimming(100, 200),
     cycling (500, 800),

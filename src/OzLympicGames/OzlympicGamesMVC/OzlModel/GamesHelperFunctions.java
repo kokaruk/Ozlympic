@@ -7,14 +7,18 @@ import java.util.*;
  * Static shared functions for classes
  * class is final and cannot be instantiated
  */
-final class GamesSharedFunctions {
+final class GamesHelperFunctions {
     // private constructor
-    private GamesSharedFunctions() {}
+    private GamesHelperFunctions() {}
 
-    // method to randomly generate an integer within passed set range
+    // Java 8 method to randomly generate an integer within passed set range
     static int getRandomNumberInRange(int min, int max) {
-        Random myRandomNumber = new Random();
-        return myRandomNumber.ints(min, (max + 1)).findFirst().getAsInt();
+        return new Random().nextInt((max - min) + 1) + min;
+    }
+
+    // method to randomly generate an double within passed set range
+    static double getRandomDoubleInRange(int min, int max) {
+        return min + new Random().nextDouble() * (max - min);
     }
 
     //method to capitalise first letter in string
