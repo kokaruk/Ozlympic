@@ -20,12 +20,10 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
     @Override
     public String getGameScore() {
         if (getMyOzlGame() == null){
-           return "Games Official not Assigned to a Game, Can't compete yet";
-        }
-        else if (!getMyOzlGame().isGameHasBeenPlayed()) {
+            return "Games Official not Assigned to a Game, Can't compete yet";
+        }  else if (!((OzlGame)getMyOzlGame()).isGameHasBeenPlayed()) {
             return "Game has not been played";
-        }
-        else {
+        }  else {
             List<GamesAthlete> gameWinners = getWinners();
             StringBuilder winnersResult = new StringBuilder();
             int counter = 1;
@@ -43,14 +41,13 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
                 );
                 counter++;
             }
-            if (!this.getMyOzlGame().getUserPrediction().isEmpty()
-                    && this.getMyOzlGame().getUserPrediction().equals(gameWinners.get(0).getParticipantId()) ){
+            if (!((OzlGame)getMyOzlGame()).getUserPrediction().isEmpty() &&
+                    ((OzlGame)getMyOzlGame()).getUserPrediction().equals(gameWinners.get(0).getParticipantId()) ){
                 //add congrats message if picked correct player
                 winnersResult.append("Spot On! You predicted the winner! Well Done!\r\n");
                 // reset user prediction
                 getMyOzlGame().setUserPrediction(0);
             }
-
             return winnersResult.toString();
         }
     }
@@ -59,10 +56,10 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
     @SuppressWarnings("unchecked")
     private ArrayList<GamesAthlete> getWinners(){
         //find first three winners
-        Comparator<GamesParticipant> byLastGameTime = Comparator.<GamesParticipant>comparingDouble(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+        Comparator<IGamesParticipant> byLastGameTime = Comparator.<IGamesParticipant>comparingDouble(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
                 .thenComparingDouble(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
-        List<GamesParticipant> gameWinners =
-                Arrays.stream(getMyOzlGame().getGameParticipants())
+        List<IGamesParticipant> gameWinners =
+                Arrays.stream(((OzlGame)getMyOzlGame()).getGameParticipants())
                         .filter( s -> s instanceof GamesAthlete)
                         .sorted(byLastGameTime)
                         .limit(3)

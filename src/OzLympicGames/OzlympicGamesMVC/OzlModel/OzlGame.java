@@ -29,16 +29,15 @@ class OzlGame implements IOzlGame{
     // gameSportType of enum. public getter with lazy instantiation
     private GameSports gameSportType;
     GameSports getGameSportType() {
-        if (this.gameSportType == null) this.gameSportType = generateSport(gameId);
         return gameSportType;
     }
 
     // property array of game gameParticipants. participant at index 0 is always the official
-    private GamesParticipant[] gameParticipants;
-    GamesParticipant[] getGameParticipants() {
+    private IGamesParticipant[] gameParticipants;
+    IGamesParticipant[] getGameParticipants() {
         return gameParticipants;
     }
-    void setGameParticipants(GamesParticipant[] gameParticipants) {
+    void setGameParticipants(IGamesParticipant[] gameParticipants) {
         this.gameParticipants = gameParticipants;
     }
 
@@ -63,8 +62,10 @@ class OzlGame implements IOzlGame{
             this.userPrediction = ""; // reset user prediction and get out
             return;
         }
-        if (gameParticipants.length > 1 && gameParticipants.length >= userPrediction)
+
+        if (gameParticipants.length > 1 && gameParticipants.length >= userPrediction) {
             this.userPrediction = gameParticipants[userPrediction].getParticipantId();
+        }
     }
     public String getUserPrediction() {
         return userPrediction;
@@ -77,7 +78,8 @@ class OzlGame implements IOzlGame{
         configReader = OzlConfigRead.getInstance();
         minParticipants = configReader.getConfigInt("minParticipants");
         int maxParticipants = configReader.getConfigInt("maxParticipants");
-        gameParticipants = new GamesParticipant[maxParticipants+1]; // +1 for index 0 referee
+        gameParticipants = new IGamesParticipant[maxParticipants+1]; // +1 for index 0 referee
+        gameSportType = generateSport(gameId);
     }
 
     // Method to Generate GameSports enum based on ID string for constructor
@@ -93,14 +95,14 @@ class OzlGame implements IOzlGame{
                 .filter(Objects::nonNull)
                 .filter( s -> s instanceof GamesAthlete).count());
 
-        if (totalPlayers > 0){
+       if (totalPlayers > 0){
 
-            List<GamesParticipant> gamePlayers;
-            gamePlayers = Arrays.stream(gameParticipants)
-                            .filter( s -> s instanceof GamesAthlete)
-                            .collect(Collectors.toCollection(ArrayList::new));
-            StringBuilder allGamePlayers = new StringBuilder();
-            for (GamesParticipant champion : gamePlayers){
+           List<IGamesParticipant> gamePlayers;
+           gamePlayers = Arrays.stream(gameParticipants)
+                           .filter( s -> s instanceof GamesAthlete)
+                           .collect(Collectors.toCollection(ArrayList::new));
+           StringBuilder allGamePlayers = new StringBuilder();
+           for (IGamesParticipant champion : gamePlayers){
                 allGamePlayers.append( String.format("%1$s: %2$s (%3$s | %4$s | Age: %5$d) \r\n",
                         champion.getParticipantId(),
                         champion.getParticipantName(),
@@ -112,16 +114,15 @@ class OzlGame implements IOzlGame{
                         champion.getParticipantAge())
                 );
 
-            }
-            return allGamePlayers.toString();
-        }
-        else {
+           }
+           return allGamePlayers.toString();
+       } else {
 
             return String.format("No Players Assigned to %1$s: %2$s",
                     gameId,
                     GamesHelperFunctions.firsLetterToUpper(this.getGameSportType().name())
             );
-        }
+       }
 
     }
 
@@ -135,11 +136,10 @@ class OzlGame implements IOzlGame{
         if (totalPlayers > minParticipants) {
             // string to hold games result
             StringBuilder gameResult = new StringBuilder();
-            // Play the game
+            // Play the game, call getPlayersScore method
             List<GamesAthlete> gamePlayers = getPlayersScore();
             //mark game as played
             gameHasBeenPlayed = true;
-            // see if user prediction is correct
 
             int counter = 1;
             // build results string
@@ -159,9 +159,7 @@ class OzlGame implements IOzlGame{
             }
 
             return gameResult.toString();
-        }
-
-        else {
+        } else {
             return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
         }
     }
@@ -169,17 +167,17 @@ class OzlGame implements IOzlGame{
     @SuppressWarnings("unchecked")
     private ArrayList<GamesAthlete> getPlayersScore() {
         // reset gameParticipants to total participants, removing Null placeholders
-        gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(GamesParticipant[]::new);
+        gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(IGamesParticipant[]::new);
         //set Game for each player
-        Arrays.stream(gameParticipants).forEach(s -> s.setMyOzlGame(this));
+        Arrays.stream(gameParticipants).forEach(s -> ((GamesParticipant)s).setMyOzlGame(this));
         // Make each athlete compete
         Arrays.stream(gameParticipants).filter( s -> s instanceof GamesAthlete).forEach(s -> ((GamesAthlete) s).compete());
 
         // arrange by finish time
-        Comparator<GamesParticipant> byLastGameTime = Comparator
-                .<GamesParticipant>comparingDouble(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
+        Comparator<IGamesParticipant> byLastGameTime = Comparator
+                .<IGamesParticipant>comparingDouble(g1 -> ((GamesAthlete)g1).getLastGameCompeteTime() )
                 .thenComparingDouble(g2 -> ((GamesAthlete)g2).getLastGameCompeteTime());
-        ArrayList<GamesParticipant> gameWinners =
+        ArrayList<IGamesParticipant> gameWinners =
                 Arrays.stream(gameParticipants)
                         .filter( s -> s instanceof GamesAthlete)
                         .sorted(byLastGameTime)
@@ -193,6 +191,5 @@ class OzlGame implements IOzlGame{
         // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
         return (ArrayList<GamesAthlete>)(ArrayList<?>)gameWinners;
     }
-
 }
 

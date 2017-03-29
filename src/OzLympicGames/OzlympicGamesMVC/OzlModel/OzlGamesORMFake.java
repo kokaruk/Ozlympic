@@ -1,8 +1,8 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 /**
  * Created by dimi on 12/3/17.
@@ -10,13 +10,37 @@ import java.util.List;
  */
 final class OzlGamesORMFake implements IOzlGamesORM {
 
+    // counter for game athlete types
+    private Map<AthleteType, Integer> sportsCounterMap = new EnumMap<AthleteType, Integer>(AthleteType.class);
+    // list to hold all the athletes
+    private List<GamesAthlete> myGamesAthletes = new LinkedList<>();
+    @Override
+    public Map<AthleteType, Integer> getSportsCounterMap() {
+        return sportsCounterMap;
+    }
+    @Override
+    public List<GamesAthlete> getMyGamesAthletes() {
+        return myGamesAthletes;
+    }
+
+    // string array of random names
+    // using linked list, as there will be a lot of resizing of data
+    private static List<String> randomNames;
 
     // private constructor
-    private OzlGamesORMFake() {}
+    private OzlGamesORMFake() {
+        // read names list
+        randomNames = getAllNames();
+        // init counter for game athletes sports types, needed for id generation
+        for (AthleteType sportType : AthleteType.values()){
+            sportsCounterMap.put(sportType, sportsCounterMap.getOrDefault(sportType, 0));
+        }
+    }
 
     // singleton instance
+    // this is a mock object of a database read, rather be a singleton.
     private static OzlGamesORMFake instance;
-    // lazy instantiation
+    // lazy instantiation pattern for singleton call
     static OzlGamesORMFake getInstance(){
         if(instance == null){
             instance = new OzlGamesORMFake();
@@ -24,26 +48,26 @@ final class OzlGamesORMFake implements IOzlGamesORM {
         return instance;
     }
 
-    // string array of 150 random names
-    private final static List<String> randomNames = new LinkedList<>(
-            Arrays.asList("Abdul Axelrod", "Maya Matthies", "Toshia Tinker", "Jamee Jesus", "Laurette Lesh", "Ebony Exley", "Myesha Marcin", "Tyisha Tallmadge", "Markita Mccallister", "Eboni Engles", "Boyce Bitton", "Stasia Scarberry", "Christine Creger", "Argelia Asmussen", "Alesha Aquilar", "Dominque Deeds", "Maryann Muldowney", "Becky Betancourt", "Connie Carta", "Jerlene Jobst", "Sondra Sedillo", "Rey Riggs", "Celine Cormack", "Davina Desouza", "Aurelio Abadie", "Rueben Ricco", "Breana Bratt", "Augustina Amsden", "Chau Choi", "Wilma Whitefield", "Iola Ivory", "Elnora Eggebrecht", "Juliana Jenner", "Chery Chunn", "Heather Hammell", "Shandi Striegel", "Tamiko Tellier", "Chauncey Cai", "Sung Spiers", "Lala Lacefield", "Julee Journey", "Tova Tibbetts", "Morton Maass", "Willena Weeden", "Lashunda Lippold", "Charmaine Carter", "Elba Ellefson", "Ginette Goodwill", "Elicia Elsey", "Olimpia Oshea", "Natividad Nyquist", "Ceola Chmiel", "Kimbra Kirkwood", "Almeta Argo", "Marshall Mcclintock", "Madlyn Morais", "Jamika Jarmon", "Camelia Clavette", "Nathalie Niday", "Alexandria Alvarenga", "Vernie Veal", "Landon Lesure", "Maple Millward", "Kacey Kealoha", "Andera Audia", "Samual Sandell", "Mitzie Markle", "Shu Summy", "Karey Kerlin", "Odis Oconner", "Kylee Khang", "Cameron Corby", "Vanita Vitale", "Demetrice Donahue", "Gayla Greaney", "Marisha Mallory", "Toni Tindle", "Freda Federico", "Mandie Melgarejo", "Darcie Danzy", "Lennie Loney", "Ione Ingham", "Vicki Viars", "Azucena Albright", "Russel Rocco", "Maynard Mitchel", "Mose Mccaul", "Alycia Atencio", "Alejandrina Altizer", "Marylouise Marcinkowski", "Dina Difranco", "Lelia Lieb", "Houston Hedlund", "Cary Condon", "Frederick Fung", "Roselee Ronning", "Ilene Iliff", "Sherice Soliman", "Elmira Ethridge", "Pamila Penman", "Janis Juares", "Florence Frisch", "Eloisa Elmer", "Honey Howton", "Wayne Weld", "Chadwick Chitwood", "Marylou Matthes", "Iva Isherwood", "Janell Joines", "Lisha Legge", "Eugene Edenfield", "Dominga Dunnington", "Yuk Yamashita", "Odelia Oakman", "Marti Mccune", "Sheri Schlosser", "Yvette Yorke", "Jackie Jacox", "Tonie Truitt", "Wilhemina Wedge", "Ken Krohn", "Tomeka Tores", "Mallory Minter", "Sau Sisson", "Abraham Asbury", "Phillis Polo", "Nicky Northcott", "Robin Rockey", "Pamala Pardo", "Tiffaney Tsosie", "Edison Elks", "Arianna Arena", "Juana Jeppson", "Babette Biel", "Camie Custis", "Kimberlee Kunze", "Gina Giefer", "Eliana Eads", "Sade Schurg", "Melinda Moraga", "Criselda Connolly", "Florentino Figeroa", "Charlotte Coldwell", "Sol Schmidtke", "Merle Mansfield", "Darby Dumlao", "Ji July", "Genie Gonzalez", "Louise Lustig", "Keisha Kibbe")
-    );
-
-    //method to return a random name
-    private static String getRandomName(){
-        int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, randomNames.size()-1);
-        String randomName = randomNames.get(randomArrayIndex);
-        randomNames.remove(randomArrayIndex); //remove name to avoid duplicates
-        return randomName;
+    //method to return a random name from hardcoded values, makes sure no names repeated
+    public static String getRandomName(){
+        //see if random names list has names, return any
+        if (randomNames.size() > 0) {
+            int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, randomNames.size() - 1);
+            String randomName = randomNames.get(randomArrayIndex);
+            randomNames.remove(randomArrayIndex); //remove name to avoid duplicates
+            return randomName;
+        } else return null;
     }
 
-    // Method to return Random State
-    private final static String[] ausssieStates = new String[]{"Australian Capital Territory", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory"};
+    // Method to return Random State. Hardcoded, as its only 7 values and no worth to put in a separate file.
+    private final static String[] ausssieStates = new String[]{"Australian Capital Territory", "New South Wales",
+            "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory"};
     private static String getRandomState(){
         int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, ausssieStates.length-1);
         return ausssieStates[randomArrayIndex];
     }
 
+    // random age integer for preset values
     private static int getRandomAge(){
         IOzlConfigRead configReader = OzlConfigRead.getInstance();
         int minAge = configReader.getConfigInt("minAge");
@@ -51,39 +75,108 @@ final class OzlGamesORMFake implements IOzlGamesORM {
         return GamesHelperFunctions.getRandomNumberInRange(minAge, maxAge);
     }
 
-    @Override
-    public OzlGame[] getGames(){
-
-        // some logic and extensive sql that reads from database for the initial game start,
-        // if nothing found generates random 10 games
-        OzlGame[] myGames = new OzlGame[1];
-        myGames[0] = null;
-
-        return myGames;
-    }
-
-
-    // method to generate game official
+    // method to generate game official, override from interface contract
     @Override
     public GamesParticipant getGameOfficial(String participantId) {
-
-        return new GamesOfficial(getRandomName(),
-                        getRandomAge(),
-                        participantId,
-                        getRandomState());
+        String myRandomName = getRandomName();
+        return (myRandomName != null) ? new GamesOfficial(myRandomName, getRandomAge(), participantId, getRandomState())
+                                      : null;
     }
 
     // method to generate game Athlete
     @Override
     public GamesParticipant getGameAthlete(){
-        return new GamesAthlete(getRandomName(),
-                        getRandomAge(),
-                        getRandomState());
+        String myRandomName = getRandomName();
+        return (myRandomName != null) ? new GamesAthlete(myRandomName, getRandomAge(),getRandomState())
+                                      : null;
     }
 
-    private static OzlGame getOzlGame(String gameID) {
-        // OzlGame
-        return null;
+
+    // method to mock read of games from database, returns a list of 15 games, 5 for each sport
+    @Override
+    public List<IOzlGame> getGames(){
+        // OzlGame list
+        List<IOzlGame> myGames = new LinkedList<>();
+        for (int i = 1; i <= 5; i++ ) {
+            for (GameSports sport : GameSports.values()){
+                // instantiate game with id Sport letter + Number
+                OzlGame myOzlGame = new OzlGame( String.format("%s%03d", Character.toUpperCase(sport.name().charAt(0)), i));
+                myOzlGame.setGameParticipants(getOfficialAndAthleteArray(myOzlGame, i)); // passing i as needed for referee counter
+                // make all games to play
+                myOzlGame.gamePlayGetResults();
+                myGames.add(myOzlGame);
+            }
+        }
+        return myGames;
      }
+
+    // build array of official and participant
+    private GamesParticipant[] getOfficialAndAthleteArray(OzlGame myOzlGame, int i){
+        int gameParticipantsBounds = myOzlGame.getGameParticipants().length;
+        GamesParticipant[] myParticipants = new GamesParticipant[gameParticipantsBounds];
+        // add new official to game and vice<>versa
+        myParticipants[0] = getGameOfficial(String.format("REF%03d", i));
+        myParticipants[0].setMyOzlGame(myOzlGame);
+        // create athlete, add to myGame, add myGame to athlete
+        for(int ii = 1; ii < myParticipants.length; ii++) {
+            GamesParticipant athlete = getMyNewAthlete(myOzlGame);
+            if (athlete == null) break; //break the loop, out of names list
+            myParticipants[ii] = athlete;
+            myParticipants[ii].setMyOzlGame(myOzlGame);
+        }
+        return myParticipants;
+    }
+
+    // method to generate a random Athlete type
+    // if type is different from required for the game, simply add to the pull
+    private GamesParticipant getMyNewAthlete(OzlGame myOzlGame){
+        //  new athlete variable
+        GamesAthlete newAthlete;
+        //see if can get required athlete from list of available athletes
+        newAthlete = myGamesAthletes.stream()
+                     .filter(s -> s.getAthleteType().getSport()
+                     .contains(myOzlGame.getGameSportType()))
+                     .filter(s -> s.getMyOzlGame() == null)
+                     .findFirst().orElse(null);
+        // if nothing found
+        if ( newAthlete == null ) {
+            // create new athlete
+            newAthlete = (GamesAthlete) getGameAthlete();
+            // increment type counter
+            sportsCounterMap.put(newAthlete.getAthleteType(),
+                    (sportsCounterMap.getOrDefault( newAthlete.getAthleteType(), 0) + 1));
+            // set id based on sport type and counter
+            newAthlete.setParticipantId(String.format("%s%03d",
+                    newAthlete.getAthleteType().name().substring(0,3).toUpperCase(),
+                    sportsCounterMap.get(newAthlete.getAthleteType())));
+            // add athlete to pull of athletes
+            myGamesAthletes.add(newAthlete);
+
+            // check if sport type is what we need
+            // fits for game requirement, i.e. superAthlete or game sport type athlete,
+            // if not, recursively call this method
+            // not very safe as may potentially run out of names but should work
+            if ( !((newAthlete.getAthleteType().getSport().size() > 1) ||
+                    (newAthlete.getAthleteType().getSport().contains(myOzlGame.getGameSportType())) )) {
+                return getMyNewAthlete(myOzlGame);
+            }
+        }
+        return newAthlete;
+    }
+
+    // private method to read string of fake names
+    private LinkedList<String> getAllNames(){
+        Properties myProp = new Properties();
+        InputStream in = getClass().getResourceAsStream("names.config.properties");
+        String myPropertyString = "";
+        try {
+            myProp.load(in);
+            in.close();
+            myPropertyString = myProp.getProperty("names");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+      return new LinkedList<>(Arrays.asList(myPropertyString.split(",")));
+    }
 }
 

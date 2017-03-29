@@ -9,29 +9,30 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class GamesAthleteTest {
 
-    private GamesParticipant newAthlete;
-    private OzlGame myOzlGame;
+    private IGamesParticipant newAthlete;
+    private IOzlGame myOzlGame;
     final private IOzlGamesORM ormDataReader = OzlGamesORMFake.getInstance();
+    private String someFakeID;
 
     @BeforeEach
     void setupAthlete(){
-       newAthlete = ormDataReader.getGameAthlete();
+        someFakeID = "S001";
+        newAthlete = ormDataReader.getGameAthlete();
+        newAthlete.setParticipantId(someFakeID);
         String gameId = "R01";
         myOzlGame = new OzlGame(gameId);
+        ((GamesParticipant)newAthlete).setMyOzlGame(myOzlGame);
     }
 
 
     @Test
     void getMyOzlGame_newOzlGameClass_AthleteReturnsSameOzlGameObject() {
-        newAthlete.setMyOzlGame(myOzlGame);
 
-        assertEquals(myOzlGame, newAthlete.getMyOzlGame());
+        assertEquals(myOzlGame, ((GamesParticipant)newAthlete).getMyOzlGame());
     }
 
     @Test
     void getParticipantId_SetParticipantIdString_GetterReturnsSameValue() {
-        String someFakeID = ((GamesAthlete)newAthlete).getAthleteType().toString().substring(0,1).toUpperCase() + "01";
-        newAthlete.setParticipantId(someFakeID);
 
         assertEquals(someFakeID, newAthlete.getParticipantId());
     }
@@ -49,9 +50,9 @@ class GamesAthleteTest {
 
     @Test
     void compete_setOzlGameToAthlete_ReturnedRandomWithinRange_True(){
-        this.newAthlete.setMyOzlGame(myOzlGame);
-        int minTime = newAthlete.getMyOzlGame().getGameSportType().getMin();
-        int maxTime = newAthlete.getMyOzlGame().getGameSportType().getMax();
+        ((GamesParticipant)newAthlete).setMyOzlGame(myOzlGame);
+        int minTime = ((OzlGame)((GamesParticipant)newAthlete).getMyOzlGame()).getGameSportType().getMin();
+        int maxTime = ((OzlGame)((GamesParticipant)newAthlete).getMyOzlGame()).getGameSportType().getMax();
 
         assertTrue( (((GamesAthlete)newAthlete).compete() >= minTime ) && (((GamesAthlete)newAthlete).compete() <= maxTime ) );
 

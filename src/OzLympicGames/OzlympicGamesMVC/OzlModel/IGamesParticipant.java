@@ -11,8 +11,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  * age
  * the state (of Australia) they represent.
  */
-
-interface IGameParticipant {
+interface IGamesParticipant {
 
     //ID get/set
     void setParticipantId(String participantId);

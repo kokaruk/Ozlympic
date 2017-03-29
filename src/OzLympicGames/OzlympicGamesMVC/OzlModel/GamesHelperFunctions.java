@@ -1,4 +1,5 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
+
 import java.util.*;
 
 /**
@@ -8,6 +9,7 @@ import java.util.*;
  * class is final and cannot be instantiated
  */
 final class GamesHelperFunctions {
+
     // private constructor
     private GamesHelperFunctions() {}
 

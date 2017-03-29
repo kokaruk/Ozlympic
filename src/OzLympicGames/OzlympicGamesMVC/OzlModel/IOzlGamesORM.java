@@ -1,18 +1,26 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by dimi on 22/3/17.
  * ORM Mapping Interface
  */
 interface IOzlGamesORM {
+    // get all athletes
+    List<GamesAthlete> getMyGamesAthletes();
 
-    OzlGame[] getGames();
-
+    // get all games
+    List<IOzlGame> getGames();
 
     // method to generate game official
-    GamesParticipant getGameOfficial(String participantId);
+    IGamesParticipant getGameOfficial(String participantId);
 
-    // method to generate game Athlete
-    GamesParticipant getGameAthlete();
+    // method to generate game Athlete without ID
+    IGamesParticipant getGameAthlete();
+
+    // sports type counter
+    Map<AthleteType, Integer> getSportsCounterMap();
 
 }

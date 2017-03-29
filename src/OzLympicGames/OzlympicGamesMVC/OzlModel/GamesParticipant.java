@@ -2,18 +2,17 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
  * Created by dimi on 10/3/17.
- * abstrac game participant class
+ * abstract game participant class
  */
-//abstract game participant
-abstract class GamesParticipant implements IGameParticipant {
+abstract class GamesParticipant implements IGamesParticipant {
 
     //property for assigned game. Returns Null if not assigned to a game.
     // Allowed to be null, it means the Participant has been instantiated but not yest assigned to a game
-    private OzlGame myOzlGame;
-    void setMyOzlGame(OzlGame myOzlGame) {
+    private IOzlGame myOzlGame;
+    void setMyOzlGame(IOzlGame myOzlGame) {
         this.myOzlGame = myOzlGame;
     }
-    OzlGame getMyOzlGame() {
+    IOzlGame getMyOzlGame() {
         return myOzlGame;
     }
 

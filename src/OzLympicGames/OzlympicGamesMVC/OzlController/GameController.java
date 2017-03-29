@@ -7,7 +7,7 @@ import OzLympicGames.OzlympicGamesMVC.OzlModel.*;
 
 
 public class GameController {
-    private OzlGames myOzlGames = new OzlGames();
+    private OzlGamesController myOzlGames = new OzlGamesController();
     public void startGames(){}
 
 }

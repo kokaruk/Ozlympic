@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class GamesOfficialTest {
 
-    private GamesParticipant newOfficialSequence;
-    private OzlGame myOzlGame;
+    private IGamesParticipant newOfficialSequence;
+    private IOzlGame myOzlGame;
     final private IOzlGamesORM ormDataReader = OzlGamesORMFake.getInstance();
 
     @BeforeEach
@@ -21,6 +21,7 @@ class GamesOfficialTest {
         newOfficialSequence = ormDataReader.getGameOfficial(participantId);
         String gameId = "R01";
         myOzlGame = new OzlGame(gameId);
+        ((GamesParticipant)newOfficialSequence).setMyOzlGame(myOzlGame);
     }
 
     @Test
@@ -32,35 +33,34 @@ class GamesOfficialTest {
 
     @Test
     void gameScoreString_gamePlay_gameNeverPlayed() {
-        newOfficialSequence.setMyOzlGame(myOzlGame);
-        myOzlGame.setGameParticipants(new GamesParticipant[]{newOfficialSequence});
+
+        ((OzlGame)myOzlGame).setGameParticipants(new IGamesParticipant[]{newOfficialSequence});
         String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
         System.out.println(gameWinnersMessage);
-        assertTrue(gameWinnersMessage.getClass().equals(String.class));
+        assertEquals("Game has not been played", gameWinnersMessage);
     }
 
     @Test
     void gameScoreString_gamePlay_gamePlayed() {
-        newOfficialSequence.setMyOzlGame(myOzlGame);
-        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
-        myOzlGame.gamePlayGetResults();
+        ((OzlGame)myOzlGame).setGameParticipants(getOfficialAndAthleteArray());
+        ((OzlGame)myOzlGame).gamePlayGetResults();
         String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
         System.out.println(gameWinnersMessage);
         assertTrue(gameWinnersMessage.getClass().equals(String.class));
     }
 
-    private GamesParticipant getMyNewAthlete(){
-        GamesParticipant newAthlete = ormDataReader.getGameAthlete();
+    private IGamesParticipant getMyNewAthlete(){
+        IGamesParticipant newAthlete = ormDataReader.getGameAthlete();
         return   Math.toIntExact(((GamesAthlete)newAthlete).getAthleteType().getSport().size()) > 1 ||
-                ((GamesAthlete)newAthlete).getAthleteType().getSport().get(0).equals(myOzlGame.getGameSportType()) ? newAthlete : getMyNewAthlete();
+                ((GamesAthlete)newAthlete).getAthleteType().getSport().contains(((OzlGame)myOzlGame).getGameSportType()) ? newAthlete : getMyNewAthlete();
     }
 
-    private GamesParticipant[] getOfficialAndAthleteArray(){
-        GamesParticipant[] myParticipants = new GamesParticipant[6];
+    private IGamesParticipant[] getOfficialAndAthleteArray(){
+        IGamesParticipant[] myParticipants = new IGamesParticipant[6];
         myParticipants[0] = newOfficialSequence;
 
         for(int i = 1; i < myParticipants.length; i++) {
-            GamesParticipant athlete = getMyNewAthlete();
+            IGamesParticipant athlete = getMyNewAthlete();
             athlete.setParticipantId(String.format("%s%03d", Character.toUpperCase(
                     ((GamesAthlete)athlete).getAthleteType().name().charAt(0)),
                     i));

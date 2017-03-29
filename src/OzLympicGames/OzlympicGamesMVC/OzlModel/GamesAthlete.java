@@ -4,7 +4,7 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  * Created by dimi on 10/3/17.
  * Athlete Class. Extends Game Participant
  */
-class GamesAthlete extends GamesParticipant implements IGamesAthlete {
+class GamesAthlete extends GamesParticipant implements IGamesAthlete  {
 
     // type of athlete
     final private AthleteType athleteType;
@@ -14,8 +14,7 @@ class GamesAthlete extends GamesParticipant implements IGamesAthlete {
     }
 
     // Display total point of athlete, acquired in all the games.
-    private final Integer DEFAULT_POINTS_OF_NEW_ATHLETE = 0;
-    private Integer totalPoints = DEFAULT_POINTS_OF_NEW_ATHLETE;
+    private Integer totalPoints = 0; //DEFAULT_POINTS_OF_NEW_ATHLETE;
     // Getter & Setter
     Integer getTotalPoints() { return totalPoints;  }
     void setTotalPoints(Integer totalPoints) { this.totalPoints += totalPoints; }
@@ -23,10 +22,16 @@ class GamesAthlete extends GamesParticipant implements IGamesAthlete {
     private double lastGameCompeteTime;
     double getLastGameCompeteTime() { return lastGameCompeteTime; }
 
-    // constructor
+    // constructor with random athlete type
     GamesAthlete(String participantName, int participantAge, String participantState) {
         super(participantName, participantAge, participantState);
         this.athleteType = generateRandomAthleteType();
+    }
+
+    // constructor with athlete type
+    GamesAthlete(String participantName, int participantAge, String participantState, AthleteType athleteType) {
+        super(participantName, participantAge, participantState);
+        this.athleteType = athleteType;
     }
 
     // compete method. returns a random int in a preset range
@@ -36,8 +41,8 @@ class GamesAthlete extends GamesParticipant implements IGamesAthlete {
         if (getMyOzlGame() != null){
             // game assigned, compete
             lastGameCompeteTime = GamesHelperFunctions.getRandomDoubleInRange(
-                    getMyOzlGame().getGameSportType().getMin(),
-                    getMyOzlGame().getGameSportType().getMax());
+                    ((OzlGame)getMyOzlGame()).getGameSportType().getMin(),
+                    ((OzlGame)getMyOzlGame()).getGameSportType().getMax());
         }
         return lastGameCompeteTime;
     }

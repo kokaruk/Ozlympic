@@ -2,40 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f3db089-026d-4325-aa7d-e7dee9099bd3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesSharedFunctions.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesSharedFunctions.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/Ozlympic.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/Ozlympic.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesController.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IGameParticipant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGameParticipant.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesParticipant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/ClassessUML.uml" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/ClassessUML.uml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlController/GameController.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlController/GameController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.class" afterPath="$PROJECT_DIR$/out/production/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.class" afterPath="$PROJECT_DIR$/out/test/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.class" afterPath="$PROJECT_DIR$/out/test/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.class" afterPath="$PROJECT_DIR$/out/test/OzLympicGames/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/ClassessUML.uml" afterPath="$PROJECT_DIR$/src/OzLympicGames/ClassessUML.uml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/Ozlympic.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/Ozlympic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlController/GameController.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlController/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGame.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.java" afterPath="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java" afterPath="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java" afterPath="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.java" afterPath="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.java" />
@@ -56,6 +58,12 @@
     <SUITE FILE_PATH="coverage/assignment1---OzLympicGames$GamesAthleteTest_compete.coverage" NAME="GamesAthleteTest.compete Coverage Results" MODIFIED="1489502519849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>OzLympicGames.OzlympicGamesMVC.OzlModel.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/assignment1___OzLympicGames$OzlGamesORMTest_getOzlGames_GetFakeList_ORMReturns15Games.coverage" NAME="OzlGamesControllerORMTest.getOzlGames_GetFakeList_ORMReturns15Games Coverage Results" MODIFIED="1490793117365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>OzLympicGames.OzlympicGamesMVC.OzlModel.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/assignment1___OzLympicGames$OzlGamesControllerORMTest_getOzlGames_GetFakeListOfGames_ORMReturns15Games.coverage" NAME="OzlGamesControllerORMTest.getOzlGames_GetFakeListOfGames_ORMReturns15Games Coverage Results" MODIFIED="1490797362998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>OzLympicGames.OzlympicGamesMVC.OzlModel.*</FILTER>
+    </SUITE>
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -69,66 +77,23 @@
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="OzLympicGames" />
     <favorites_list name="CodeIris Favorites" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="OzlGameTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="961">
-              <caret line="130" column="8" lean-forward="false" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setupGame#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getGameSports_setSportToCycling_ReturnGamSportsCycling#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getParticipants_setGameRefereeToFakeReferee_gameRefereeEqualsToFake#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getMinParticipants_ExpectedFourAsPerConfig#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#playGame_ExpectErrorMessageForNotEnoughPlayers#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#playGame_ExpectErrorMessageForNotEnoughPlayersOnly3#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#playGame_getResultsMessage#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getGamesParticipants_ReturnsNoParticipantsMessage#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getGamesParticipants_ReturnsPlayersMessage#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getOfficialAndAthleteArray#0;class#OzlGameTest#0" expanded="false" />
-                <element signature="method#getMyNewAthlete#0;class#OzlGameTest#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamesOfficialTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-107">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamesOfficial.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-              <folding>
-                <element signature="e#2441#2459#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Tag Library Descriptor" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -137,7 +102,19 @@
       <find>format</find>
       <find>bol</find>
       <find>final</find>
+      <find>integer</find>
+      <find>totalPlayers \= Math\.toIntExact\(Arrays\.stream\(gameParticipants\)\n                \.filter\(Objects\:\:nonNull\)\n                \.filter\( s \-\&gt; s instanceof GamesAthlete\)\.count\(\)\)\;</find>
+      <find>orelseget</find>
+      <find>f</find>
+      <find>finf</find>
+      <find>fin</find>
+      <find>constr</find>
       <find>find</find>
+      <find>s</find>
+      <find>su</find>
+      <find>sub</find>
+      <find>subs</find>
+      <find>substr</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -154,12 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/OzlympicGamesMVC/OzlModel/Game.java" />
-        <option value="$PROJECT_DIR$/src/OzlympicGamesMVC/OzlModel/SportsPerson.java" />
-        <option value="$PROJECT_DIR$/src/OzlympicGamesMVC/OzlController/GameController.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/Main.java" />
-        <option value="$PROJECT_DIR$/src/HelloWorldView.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/Game.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlView/GameViews.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameParticipantAbstractFunctions.java" />
@@ -178,33 +149,39 @@
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/MyOzlGameNotDefinedException.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/Referee.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/SportsPerson.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGameParticipant.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/config.properties" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameParticipant.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORM.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlConfigRead.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesSharedFunctions.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlController/GameController.java" />
-        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/Ozlympic.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGame.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.java" />
-        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.java" />
-        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.java" />
         <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGame.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.java" />
+        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.java" />
+        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGameParticipant.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesParticipant.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.java" />
+        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMTest.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesController.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.java" />
+        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesControllerORMTest.java" />
         <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.java" />
+        <option value="$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFakeTest.java" />
+        <option value="$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/names.config.properties" />
       </list>
     </option>
   </component>
@@ -229,60 +206,33 @@
             <id />
           </State>
           <State>
-            <id>Class structureJava</id>
-          </State>
-          <State>
-            <id>Code maturity issuesJava</id>
-          </State>
-          <State>
             <id>Code style issuesJava</id>
           </State>
           <State>
-            <id>Declaration redundancyJava</id>
+            <id>Error handlingJava</id>
+          </State>
+          <State>
+            <id>General</id>
           </State>
           <State>
             <id>Google Web Toolkit issues</id>
           </State>
           <State>
-            <id>JUnit issuesJava</id>
+            <id>Inheritance issuesJava</id>
           </State>
           <State>
             <id>Java</id>
           </State>
           <State>
-            <id>Java 5Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 7Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 8Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java language level migration aidsJava</id>
-          </State>
-          <State>
             <id>Javadoc issuesJava</id>
-          </State>
-          <State>
-            <id>Performance issuesJava</id>
-          </State>
-          <State>
-            <id>Spring</id>
-          </State>
-          <State>
-            <id>Spring AOPSpring</id>
           </State>
           <State>
             <id>TestNGJava</id>
           </State>
-          <State>
-            <id>Threading issuesJava</id>
-          </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>unused</id>
+            <id>DanglingJavadoc</id>
           </State>
         </selected-state>
       </profile-state>
@@ -321,6 +271,28 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Problems">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="OzLympicGames">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="OzlympicGamesMVC/OzlModel">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -404,6 +376,10 @@
               <option name="myItemId" value="OzlympicGamesMVC" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OzlView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -431,26 +407,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Problems">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment1---OzLympicGames" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="OzLympicGames">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment1---OzLympicGames" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="OzlympicGamesMVC/OzlModel">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OzLympicGames" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OzlympicGamesMVC" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -464,12 +440,12 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="SearchEverywhereHistoryKey" value="&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FullScreen" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -494,8 +470,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest">
-    <configuration default="false" name="GamesOfficialTest.gameScoreString_gamePlay_gamePlayed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All">
+    <configuration default="false" name="OzlGamesORMFakeTest.getParticipants_MakeFakeListOfAthletes_PlayersArrayMoreThan100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="OzLympicGames.OzlympicGamesMVC.OzlModel.*" />
@@ -506,8 +482,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel" />
-      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" />
-      <option name="METHOD_NAME" value="gameScoreString_gamePlay_gamePlayed" />
+      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFakeTest" />
+      <option name="METHOD_NAME" value="getParticipants_MakeFakeListOfAthletes_PlayersArrayMoreThan100" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -521,7 +497,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="OzlGameTest.getGamesParticipants_ReturnsPlayersMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="OzlGamesORMFakeTest.getOzlGames_GetFakeListOfGames_ORMReturns15Games" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="OzLympicGames.OzlympicGamesMVC.OzlModel.*" />
@@ -532,8 +508,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel" />
-      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" />
-      <option name="METHOD_NAME" value="getGamesParticipants_ReturnsPlayersMessage" />
+      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFakeTest" />
+      <option name="METHOD_NAME" value="getOzlGames_GetFakeListOfGames_ORMReturns15Games" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -547,7 +523,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="OzlGamesORMFakeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="OzLympicGames.OzlympicGamesMVC.OzlModel.*" />
@@ -558,61 +534,9 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel" />
-      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" />
-      <option name="METHOD_NAME" value="setUserPrediction_setPrediction_getCongratsMessage" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="OzlGameTest.playGame_getResultsMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="OzLympicGames.OzlympicGamesMVC.OzlModel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="OzLympicGames" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel" />
-      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" />
-      <option name="METHOD_NAME" value="playGame_getResultsMessage" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="OzLympicGames.OzlympicGamesMVC.OzlModel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="OzLympicGames" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel" />
-      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" />
-      <option name="METHOD_NAME" value="setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFakeTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -1012,18 +936,18 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="All in OzLympicGames" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <configuration default="false" name="All" type="JUnit" factoryName="JUnit" repeat_mode="N Times">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="OzLympicGames" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -1033,26 +957,25 @@
       <patterns />
       <method />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.All in OzLympicGames" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.GamesOfficialTest.gameScoreString_gamePlay_gamePlayed" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.OzlGameTest.getGamesParticipants_ReturnsPlayersMessage" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.OzlGameTest.playGame_getResultsMessage" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.OzlGamesORMFakeTest.getParticipants_MakeFakeListOfAthletes_PlayersArrayMoreThan100" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.OzlGamesORMFakeTest.getOzlGames_GetFakeListOfGames_ORMReturns15Games" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.OzlGamesORMFakeTest" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.OzlGameTest.playGame_getResultsMessage" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.GamesOfficialTest.gameScoreString_gamePlay_gamePlayed" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.OzlGameTest.getGamesParticipants_ReturnsPlayersMessage" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.OzlGamesORMFakeTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.OzlGamesORMFakeTest.getOzlGames_GetFakeListOfGames_ORMReturns15Games" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.OzlGamesORMFakeTest.getParticipants_MakeFakeListOfAthletes_PlayersArrayMoreThan100" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="user defined" created="1490787730738" text="orelseget" recursive="true" caseInsensitive="true" type="JAVA" history="1" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -1125,6 +1048,17 @@
       <workItem from="1490445773816" duration="22000" />
       <workItem from="1490445827685" duration="23000" />
       <workItem from="1490446010031" duration="13182000" />
+      <workItem from="1490568700541" duration="11000" />
+      <workItem from="1490585881911" duration="17000" />
+      <workItem from="1490585970508" duration="115000" />
+      <workItem from="1490586275870" duration="373000" />
+      <workItem from="1490619917497" duration="892000" />
+      <workItem from="1490666856381" duration="2682000" />
+      <workItem from="1490692037679" duration="647000" />
+      <workItem from="1490704275522" duration="10048000" />
+      <workItem from="1490753097037" duration="5334000" />
+      <workItem from="1490785547081" duration="12190000" />
+      <workItem from="1490797967866" duration="2306000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <created>1489068994868</created>
@@ -1144,39 +1078,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 02h 58m 36s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 00m 00s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 02h 59m 05s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 05m 29s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 02h 59m 13s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 06m 25s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 03h 00m 21s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 07m 20s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 03h 25m 26s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 09m 50s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 03h 27m 57s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 11m 28s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 03h 28m 10s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="All - 2017.03.30 at 02h 14m 21s.xml">
+      <configuration name="All" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage - 2017.03.26 at 03h 30m 38s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage" configurationId="JUnit" />
+    <history-entry file="OzlGamesORMFakeTest - 2017.03.30 at 02h 01m 10s.xml">
+      <configuration name="OzlGamesORMFakeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest - 2017.03.26 at 03h 34m 33s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest" configurationId="JUnit" />
+    <history-entry file="OzlGamesORMFakeTest_getOzlGames_GetFakeListOfGames_ORMReturns15Games - 2017.03.30 at 02h 00m 55s.xml">
+      <configuration name="OzlGamesORMFakeTest.getOzlGames_GetFakeListOfGames_ORMReturns15Games" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OzlGameTest_setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest - 2017.03.26 at 03h 36m 46s.xml">
-      <configuration name="OzlGameTest.setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest" configurationId="JUnit" />
+    <history-entry file="OzlGamesORMFakeTest_getParticipants_MakeFakeListOfAthletes_PlayersArrayMoreThan100 - 2017.03.30 at 02h 00m 18s.xml">
+      <configuration name="OzlGamesORMFakeTest.getParticipants_MakeFakeListOfAthletes_PlayersArrayMoreThan100" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187452000" />
+    <option name="totallyTimeSpent" value="222067000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1189,34 +1123,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33094043" sideWeight="0.32851562" order="8" side_tool="true" content_ui="tabs" x="1613" y="511" width="615" height="436" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23314285" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14813344" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2488426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39781022" sideWeight="0.6347656" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.48888007" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3248175" sideWeight="0.41601562" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3240876" sideWeight="0.41601562" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43138686" sideWeight="0.67148435" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33094043" sideWeight="0.32851562" order="8" side_tool="true" content_ui="tabs" x="1613" y="511" width="615" height="436" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919708" sideWeight="0.48768863" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43065694" sideWeight="0.67148435" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919708" sideWeight="0.4285147" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22756156" sideWeight="0.73705584" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3131387" sideWeight="0.42929688" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287868" sideWeight="0.46523437" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24781573" sideWeight="0.73705584" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17591241" sideWeight="0.42929688" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23314285" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14806867" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2488426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30301827" sideWeight="0.26294416" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39781022" sideWeight="0.6347656" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953864" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1224,9 +1155,11 @@
       <window_info id="Properties Pane" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5373609" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2601271" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.46523437" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="false" weight="0.40263632" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="836" y="457" width="284" height="40" />
       <window_info id="Message Pane" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980332" sideWeight="0.49790293" order="12" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1286,16 +1219,28 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java</url>
-          <line>69</line>
+          <url>file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java</url>
+          <line>33</line>
           <properties />
-          <option name="timeStamp" value="46" />
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFakeTest.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="97" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="71" />
+      <option name="time" value="98" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1304,35 +1249,8 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GamesClassessDesign.uml" />
-    <entry file="uml://JAVA/GameParticipant">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>GameParticipant</OriginalElement>
-          <nodes>
-            <node x="" y="">GameParticipant</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="67.0" y="15.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClassUMLDiagram.uml" />
     <entry file="file:///private/var/folders/29/x9xj3bzd5cx48_pzx003m57c0000gn/T/modules.uml" />
     <entry file="file://$PROJECT_DIR$/src/HelloWorldView.java" />
-    <entry file="file://$PROJECT_DIR$/OzLympicGames.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.java" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/junit/lib/junit-jupiter-api-5.0.0-M3.jar!/org/junit/jupiter/api/AssertionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1381,104 +1299,10 @@
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/lang/String.java" />
     <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/ConfigReadFake.java" />
     <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/MyOzlGameNotDefinedException.java" />
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlConfigRead.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/ClassessUML.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="40.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/Ozlympic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/Random.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="76" column="6" lean-forward="false" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1486,31 +1310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGameParticipant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1522,110 +1321,288 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="33" column="74" lean-forward="false" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/ClassessUML.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesOfficial</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesAthlete</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.IGameParticipant</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGames</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame</node>
+            <node x="" y="">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.32075930883426623" x="2666.0" y="1896.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesAthlete.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesOfficial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlConfigRead.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlView/GameViewStrings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/Ozlympic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OzLympicGames.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesParticipant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GameSports.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthleteTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IGamesParticipant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesAthlete.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="149" column="51" lean-forward="false" selection-start-line="149" selection-start-column="51" selection-end-line="149" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#OzlGame#0;class#OzlGame#0" expanded="false" />
-            <element signature="method#generateSport#0;class#OzlGame#0" expanded="false" />
-            <element signature="e#7156#7174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesHelperFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="465">
+          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+        <state relative-caret-position="390">
+          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
           <folding>
-            <element signature="e#2441#2459#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#904#905#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigReadFakeAlwaysReturnsHardcodedValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesControllerORMTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGameTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="961">
-          <caret line="130" column="8" lean-forward="false" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
+        <state relative-caret-position="1290">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setupGame#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getGameSports_setSportToCycling_ReturnGamSportsCycling#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getParticipants_setGameRefereeToFakeReferee_gameRefereeEqualsToFake#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getMinParticipants_ExpectedFourAsPerConfig#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#playGame_ExpectErrorMessageForNotEnoughPlayers#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#playGame_ExpectErrorMessageForNotEnoughPlayersOnly3#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#playGame_getResultsMessage#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getGamesParticipants_ReturnsNoParticipantsMessage#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getGamesParticipants_ReturnsPlayersMessage#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getOfficialAndAthleteArray#0;class#OzlGameTest#0" expanded="false" />
-            <element signature="method#getMyNewAthlete#0;class#OzlGameTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/IOzlGamesORM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlConfigRead.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="56" column="5" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="56" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="9" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/AthleteType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#601#602#0" expanded="false" />
+            <element signature="e#630#631#0" expanded="false" />
+            <element signature="e#691#692#0" expanded="false" />
+            <element signature="e#727#728#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/GamesOfficialTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFake.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="method#OzlGamesORMFake#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getInstance#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getRandomName#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getRandomAge#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getGameOfficial#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getGameAthlete#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getGames#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getOfficialAndAthleteArray#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getMyNewAthlete#0;class#OzlGamesORMFake#0" expanded="false" />
+            <element signature="method#getAllNames#0;class#OzlGamesORMFake#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OzLympicGames/OzlympicGamesMVC/OzlModel/names.config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8616" lean-forward="false" selection-start-line="0" selection-start-column="8616" selection-end-line="0" selection-end-column="8616" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/OzLympicGames/OzlympicGamesMVC/OzlModel/OzlGamesORMFakeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="67" lean-forward="false" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1687,6 +1664,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

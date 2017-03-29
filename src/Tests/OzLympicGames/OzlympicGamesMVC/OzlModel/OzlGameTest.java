@@ -3,19 +3,17 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-
-
-
 /**
  * Created by dimi on 16/3/17.
  * Test class for OzlGame
  */
+import static org.junit.jupiter.api.Assertions.*;
+
+
 class OzlGameTest {
 
     private String gameId;
-    private OzlGame myOzlGame;
+    private IOzlGame myOzlGame;
     private String participantId;
     final private IOzlGamesORM ormDataReader = OzlGamesORMFake.getInstance();
 
@@ -30,14 +28,14 @@ class OzlGameTest {
 
     @Test
     void getGameSports_setSportToCycling_ReturnGamSportsCycling() {
-        assertEquals(GameSports.cycling, myOzlGame.getGameSportType());
+        assertEquals(GameSports.cycling, ((OzlGame)myOzlGame).getGameSportType());
     }
 
     @Test
     void getParticipants_setGameRefereeToFakeReferee_gameRefereeEqualsToFake() {
-        GamesParticipant[] myReferee = new GamesParticipant[]{ormDataReader.getGameOfficial(participantId)};
-        myOzlGame.setGameParticipants(myReferee);
-        assertEquals(myReferee[0], myOzlGame.getGameParticipants()[0]);
+        IGamesParticipant[] myReferee = new IGamesParticipant[]{ormDataReader.getGameOfficial(participantId)};
+        ((OzlGame)myOzlGame).setGameParticipants(myReferee);
+        assertEquals(myReferee[0], ((OzlGame)myOzlGame).getGameParticipants()[0]);
     }
 
     @Test
@@ -47,31 +45,32 @@ class OzlGameTest {
 
     @Test
     void getMinParticipants_ExpectedFourAsPerConfig() {
-        myOzlGame.setConfigReader(OzlConfigReadFakeAlwaysReturnsHardcodedValues.getInstance());
+        ((OzlGame)myOzlGame).setConfigReader(OzlConfigReadFakeAlwaysReturnsHardcodedValues.getInstance());
 
         assertEquals(4, myOzlGame.getMinParticipants());
     }
 
     @Test
     void playGame_ExpectErrorMessageForNotEnoughPlayers() {
-        GamesParticipant[] myReferee = new GamesParticipant[]{ormDataReader.getGameOfficial(participantId)};
-        myOzlGame.setGameParticipants(myReferee);
-        System.out.println("Players: " + myOzlGame.getGameParticipants().length);
+        IGamesParticipant[] myReferee = new IGamesParticipant[]{ormDataReader.getGameOfficial(participantId)};
+        ((OzlGame)myOzlGame).setGameParticipants(myReferee);
+        System.out.println("Players: " + ((OzlGame)myOzlGame).getGameParticipants().length);
         String expectMessage = String.format("The game %1$s has %2$d players, less than required minimum of %3$d",
                 myOzlGame.getGameId(),
-                myOzlGame.getGameParticipants().length-1,
+                ((OzlGame)myOzlGame).getGameParticipants().length-1,
                 myOzlGame.getMinParticipants());
         System.out.println(expectMessage);
 
-        assertEquals(expectMessage, myOzlGame.gamePlayGetResults());
+        assertEquals(expectMessage, ((OzlGame)myOzlGame).gamePlayGetResults());
     }
 
     @Test
     void playGame_ExpectErrorMessageForNotEnoughPlayersOnly3() {
-        GamesParticipant athlete1 = getMyNewAthlete();
-        GamesParticipant athlete2 = getMyNewAthlete();
-        GamesParticipant athlete3 = getMyNewAthlete();
-        GamesParticipant[] myReferee = new GamesParticipant[]{ormDataReader.getGameOfficial(participantId),
+        OzlGame  myOzlGame = new OzlGame(gameId);
+        IGamesParticipant athlete1 = getMyNewAthlete();
+        IGamesParticipant athlete2 = getMyNewAthlete();
+        IGamesParticipant athlete3 = getMyNewAthlete();
+        IGamesParticipant[] myReferee = new IGamesParticipant[]{ormDataReader.getGameOfficial(participantId),
         athlete1, athlete2, athlete3};
         myOzlGame.setGameParticipants(myReferee);
         System.out.println("Players: " + myOzlGame.getGameParticipants().length);
@@ -87,10 +86,10 @@ class OzlGameTest {
     @Test
     void playGame_getResultsMessage() {
 
-        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
-        System.out.println("Participant (Including Officials): " + myOzlGame.getGameParticipants().length);
+        ((OzlGame)myOzlGame).setGameParticipants(getOfficialAndAthleteArray());
+        System.out.println("Participant (Including Officials): " + ((OzlGame)myOzlGame).getGameParticipants().length);
 
-        String messageResult = myOzlGame.gamePlayGetResults();
+        String messageResult = ((OzlGame)myOzlGame).gamePlayGetResults();
         System.out.println(messageResult);
 
         assertTrue(messageResult.getClass().equals(String.class));
@@ -98,15 +97,15 @@ class OzlGameTest {
 
     @Test
     void getGamesParticipants_ReturnsNoParticipantsMessage() {
-        String warnMessage = myOzlGame.getGamePlayersList();
+        String warnMessage = ((OzlGame)myOzlGame).getGamePlayersList();
         System.out.println(warnMessage);
         assertTrue(warnMessage.getClass().equals(String.class));
     }
     @Test
     void getGamesParticipants_ReturnsPlayersMessage() {
 
-        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
-        String theMessage = myOzlGame.getGamePlayersList();
+        ((OzlGame)myOzlGame).setGameParticipants(getOfficialAndAthleteArray());
+        String theMessage = ((OzlGame)myOzlGame).getGamePlayersList();
         System.out.println(theMessage);
 
         assertTrue(theMessage.getClass().equals(String.class));
@@ -114,26 +113,26 @@ class OzlGameTest {
 
     @Test
     void setUserPrediction_setPrediction_getCongratsMessage_IntegrationTest(){
-        myOzlGame.setGameParticipants(getOfficialAndAthleteArray());
-        String theMessage = myOzlGame.getGamePlayersList();
+        ((OzlGame)myOzlGame).setGameParticipants(getOfficialAndAthleteArray());
+        String theMessage = ((OzlGame)myOzlGame).getGamePlayersList();
         System.out.println("Game Players: \n" + theMessage);
 
         myOzlGame.setUserPrediction(2);
-        String gameResults = myOzlGame.gamePlayGetResults();
+        String gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
 
         System.out.println("Game Result: \n" + gameResults);
 
-        String resultFromOfficial = ((GamesOfficial)myOzlGame.getGameParticipants()[0]).getGameScore();
+        String resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
         System.out.println("Game Winners: \n" + resultFromOfficial);
 
         System.out.println("Replay \r\n");
         myOzlGame.setUserPrediction(3);
-        gameResults = myOzlGame.gamePlayGetResults();
+        gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
 
         System.out.println("Game Result: \n" + gameResults);
 
 
-        resultFromOfficial = ((GamesOfficial)myOzlGame.getGameParticipants()[0]).getGameScore();
+        resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
         System.out.println("Game Winners: \n" + resultFromOfficial);
 
         assertTrue(theMessage.getClass().equals(String.class));
@@ -141,15 +140,15 @@ class OzlGameTest {
 
 
 
-    private GamesParticipant[] getOfficialAndAthleteArray(){
-        Integer gameParticipantsBounds = myOzlGame.getGameParticipants().length;
-        GamesParticipant[] myParticipants = new GamesParticipant[gameParticipantsBounds];
+    private IGamesParticipant[] getOfficialAndAthleteArray(){
+        Integer gameParticipantsBounds = ((OzlGame)myOzlGame).getGameParticipants().length;
+        IGamesParticipant[] myParticipants = new GamesParticipant[gameParticipantsBounds];
         myParticipants[0] = ormDataReader.getGameOfficial(participantId);
-        myParticipants[0].setMyOzlGame(myOzlGame);
+        ((GamesParticipant)myParticipants[0]).setMyOzlGame(myOzlGame);
 
         for(int i = 1; i < myParticipants.length; i++) {
 
-            GamesParticipant athlete = getMyNewAthlete();
+            IGamesParticipant athlete = getMyNewAthlete();
             athlete.setParticipantId(String.format("%s%03d", Character.toUpperCase(
                     ((GamesAthlete)athlete).getAthleteType().name().charAt(0)),
                     i));
@@ -158,11 +157,13 @@ class OzlGameTest {
         return myParticipants;
     }
 
-    private GamesParticipant getMyNewAthlete(){
-        GamesParticipant newAthlete = ormDataReader.getGameAthlete();
-        newAthlete.setMyOzlGame(myOzlGame);
+    private IGamesParticipant getMyNewAthlete(){
+        IGamesParticipant newAthlete = ormDataReader.getGameAthlete();
+        ((GamesParticipant)newAthlete).setMyOzlGame(myOzlGame);
+        // recursive call to get required athlete sports type.
+        // not very safe as may potentially run out of names but should work
         return   Math.toIntExact(((GamesAthlete)newAthlete).getAthleteType().getSport().size()) > 1 ||
-                ((GamesAthlete)newAthlete).getAthleteType().getSport().get(0).equals(myOzlGame.getGameSportType()) ? newAthlete : getMyNewAthlete();
+                ((GamesAthlete)newAthlete).getAthleteType().getSport().contains(((OzlGame)myOzlGame).getGameSportType()) ? newAthlete : getMyNewAthlete();
     }
 
 

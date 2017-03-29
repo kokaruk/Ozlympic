@@ -1,8 +1,8 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
-
-
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -10,21 +10,20 @@ import java.util.stream.Stream;
  * Created by dimi on 10/3/17.
  * Enumerator for athlete type
  */
-
 enum AthleteType {
-    swimmer( Stream.of(GameSports.swimming).collect(Collectors.toCollection(ArrayList<GameSports>::new))),
-    cyclist( Stream.of(GameSports.cycling).collect(Collectors.toCollection(ArrayList<GameSports>::new))) ,
-    sprinter(Stream.of(GameSports.running).collect(Collectors.toCollection(ArrayList<GameSports>::new))),
-    superAthlete(Stream.of(GameSports.cycling, GameSports.running, GameSports.swimming).collect(Collectors.toCollection(ArrayList<GameSports>::new)));
+    swimmer( EnumSet.of(GameSports.swimming)),
+    cyclist( EnumSet.of(GameSports.cycling)) ,
+    sprinter(EnumSet.of(GameSports.running)),
+    superAthlete(EnumSet.allOf(GameSports.class) );
 
     // enum accessors
-    private final List<GameSports> sports;
-    public List<GameSports> getSport() {
+    private final Set<GameSports> sports;
+    public Set<GameSports> getSport() {
         return sports;
     }
 
     // constructor
-    AthleteType(ArrayList<GameSports> sports){
+    AthleteType(Set<GameSports> sports){
         this.sports = sports;
     }
 }
