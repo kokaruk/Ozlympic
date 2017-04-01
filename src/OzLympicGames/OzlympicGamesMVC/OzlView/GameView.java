@@ -11,28 +11,32 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GameView {
 
-    private final IMenu currentMenu;
-
-    public IMenu getCurrentMenu() {
-        return currentMenu;
+    private GameMenu currentMenu;
+    public void setCurrentMenu(GameMenu currentMenu){
+        this.currentMenu = currentMenu;
     }
 
     // constructor
     public GameView(){
-        currentMenu = new mainMenu();
     }
 
-    //
+    // no variables
+    public void updateScreen(){
+        String menuContentString = currentMenu.getMyContent();
+        displayCurrentMenu(menuContentString);
+    }
+
+    // one variable format
     public void updateScreen(String modelMessage) {
-        clearScreen();
-        displayCurrentMenu(modelMessage);
+        String menuContentString = String.format(currentMenu.getMyContent(), modelMessage);
+        displayCurrentMenu(menuContentString);
     }
 
-    private void displayCurrentMenu(String modelMessage){
-        String menuContentString = String.format(currentMenu.getMyContent(), modelMessage);
+    private void displayCurrentMenu(String menuContentString){
+        clearScreen();
         List<String> menuContent =  Arrays.asList(menuContentString.split(","));
         for (String menuLine : menuContent) {
-            System.out.println(menuLine);
+            System.out.println("\033[0m" + menuLine);
         }
     }
 
@@ -43,40 +47,4 @@ public class GameView {
         System.out.print(ANSI_CLS + ANSI_HOME);
         System.out.flush();
     }
-
-    private class mainMenu extends gameMenu {
-
-        private final Map<Integer, IMenu> mySubmenus = new ConcurrentHashMap<>();
-
-        mainMenu(){
-            super("mainMenu");
-            mySubmenus.put(1, new submenu() );
-            mySubmenus.put(2, new submenu() );
-            mySubmenus.put(3, new submenu() );
-            mySubmenus.put(4, new submenu() );
-            mySubmenus.put(5, new submenu() );
-            mySubmenus.put(6, new submenu() );
-        }
-
-        @Override
-        public Map<Integer, IMenu> getMySubmenus() {
-            return mySubmenus;
-        }
-    }
-
-    private class submenu extends gameMenu {
-
-        private final Map<Integer, IMenu> mySubmenus = new ConcurrentHashMap<>();
-
-        submenu(){
-            super("some");
-
-        }
-
-        @Override
-        public Map<Integer, IMenu> getMySubmenus() {
-            return mySubmenus;
-        }
-    }
-
 }

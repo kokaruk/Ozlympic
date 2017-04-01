@@ -1,10 +1,12 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
+
 /**
  * Created by dimi on 10/3/17.
  * Athlete Class. Extends Game Participant
  */
-class GamesAthlete extends GamesParticipant implements IGamesAthlete  {
+public class GamesAthlete extends GamesParticipant implements IGamesAthlete  {
 
     // type of athlete
     final private AthleteType athleteType;

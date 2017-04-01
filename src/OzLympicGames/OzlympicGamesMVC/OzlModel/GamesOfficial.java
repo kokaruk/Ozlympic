@@ -1,5 +1,7 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
+
 import java.util.*;
 import java.util.stream.Collectors;
 

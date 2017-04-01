@@ -1,5 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.IOzlConfigRead;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.OzlConfigRead;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.configFileMissingException;

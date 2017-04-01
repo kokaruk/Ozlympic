@@ -1,9 +1,15 @@
 package OzLympicGames.OzlympicGamesMVC.OzlController;
 
+import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
+import OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete;
+import OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame;
 import OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesModel;
+import OzLympicGames.OzlympicGamesMVC.OzlView.GameMenu;
 import OzLympicGames.OzlympicGamesMVC.OzlView.GameView;
 
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Created by dimi on 11/3/17.
@@ -15,48 +21,128 @@ public class GameController {
     private final GameView view;
     private OzlGamesModel model1;
 
+    private MenuController currentMenuController;
+
     public GameController(OzlGamesModel model, GameView view) {
         this.model1 = model;
         this.view = view;
     }
 
     public void startGames()  {
-        updateView(mainMenuMessage());
-        userIntInput();
+        currentMenuController = new mainMenuController();
+        currentMenuController.takeControl();
     }
 
-    private void updateView(String message) {
-        view.updateScreen(message);
-    }
 
-    private String mainMenuMessage(){
-        return String.format("Games recorded: %d | Athletes: %d ",
-                model1.getMyOzlGames().size(),
-                model1.getmYgamesAthletes().size());
-    }
 
-    // scan for user input, call recursively, unit received an integer.
-    private int userIntInput() {
-        System.out.println("");
-        System.out.println("");
-        System.out.print("\033[32mMake a choice: "); //green
-        Scanner scanner = new Scanner(System.in);
-        String menuSelectionString = scanner.nextLine().replaceAll(" +", "");
+    private class mainMenuController extends MenuController {
 
-        int menuSelection;
+        private OzlGame currentActiveGame;
 
-        try {
-            menuSelection = Integer.parseInt (menuSelectionString);
-        } catch (NumberFormatException e) {
-            System.out.println("\033[31mInvalid input format.\r\nNumbers Only."); //red
-            return userIntInput();
+        // constructor
+        private mainMenuController(){
+            super(new HashMap<Integer, MenuController>() {{
+                put(1, null);
+                put(2, null);
+                put(3, null);
+                put(4, null);
+                put(5, null);
+                put(6, new subMenuControllerExit());
+            }});
         }
 
-        if (menuSelection > view.getCurrentMenu().getMySubmenus().size()){
-            System.out.println("\033[31mNo such option."); //red
-            return userIntInput();
-        } else {
-            return menuSelection;
+        @Override
+        void updateViewMenu() {
+            view.setCurrentMenu(
+                    new GameMenu("mainMenu")
+            );
+        }
+
+        @Override
+        void takeControl(){
+            updateViewMenu();
+            updateView();
+            setParentForSubmenus();
+            int userInput = getUserIntInput();
+            currentMenuController = getSubMenuControllers().get(userInput);
+            currentMenuController.takeControl();
+        }
+
+        @Override
+        void updateView() {
+            view.updateScreen(
+                    getMenuMessage()
+            );
+        }
+
+        String getMenuMessage() {
+            return currentActiveGame == null ? String.format("\n\rGames recorded: %d | Athletes: %d ",
+                    model1.getMyOzlGames().size(),
+                    model1.getmYgamesAthletes().size())
+                    : String.format("\n\r%s $s Total Players: %d", currentActiveGame.getGameId(),
+                                GamesHelperFunctions.firsLetterToUpper(currentActiveGame.getGameSportType().name()),
+                    Math.toIntExact(Arrays.stream(currentActiveGame.getGameParticipants())
+                            .filter(Objects::nonNull)
+                            .filter( s -> s instanceof GamesAthlete).count())
+                    );
+        }
+
+
+        // set parent for submenus
+        void setParentForSubmenus(){
+            getSubMenuControllers().values().stream().filter(Objects::nonNull).forEach(menuController -> menuController.setParentMenuController(this));
+        }
+
+    }
+
+    private class subMenuControllerExit extends MenuController {
+
+        //using default constructor
+
+        @Override
+        void updateViewMenu() {
+            view.setCurrentMenu(
+                    new GameMenu("exit")
+            );
+        }
+
+        @Override
+        void takeControl() {
+            updateViewMenu();
+            updateView();
+            System.exit(0);
+        }
+
+        @Override
+        void updateView() {
+            view.updateScreen();
+        }
+    }
+
+    private class subMenuControllerGameSelect extends MenuController {
+
+        //using default constructor
+
+        @Override
+        void updateViewMenu() {
+            view.setCurrentMenu(
+                    new GameMenu("exit")
+            );
+        }
+
+        @Override
+        void takeControl() {
+            updateViewMenu();
+            updateView();
+            System.exit(0);
+        }
+
+        @Override
+        void updateView() {
+            view.updateScreen();
         }
     }
 }
+
+
+

@@ -1,5 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
  * Created by dimi on 10/3/17.
  * A Game Class
  */
-class OzlGame implements IOzlGame{
+public class OzlGame implements IOzlGame{
 
     private boolean gameHasBeenPlayed;
     boolean isGameHasBeenPlayed() {
@@ -30,13 +31,13 @@ class OzlGame implements IOzlGame{
 
     // gameSportType of enum. public getter with lazy instantiation
     private final GameSports gameSportType;
-    GameSports getGameSportType() {
+    public GameSports getGameSportType() {
         return gameSportType;
     }
 
     // property array of game gameParticipants. participant at index 0 is always the official
     private IGamesParticipant[] gameParticipants;
-    IGamesParticipant[] getGameParticipants() {
+    public IGamesParticipant[] getGameParticipants() {
         return gameParticipants;
     }
     void setGameParticipants(IGamesParticipant[] gameParticipants) {
@@ -164,6 +165,7 @@ class OzlGame implements IOzlGame{
             return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
         }
     }
+
     // method to arrange by finish time, award points to winners
     @SuppressWarnings("unchecked")
     private ArrayList<GamesAthlete> getPlayersScore() {
