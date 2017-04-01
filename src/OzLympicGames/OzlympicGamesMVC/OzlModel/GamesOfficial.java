@@ -44,7 +44,7 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
             if (!((OzlGame)getMyOzlGame()).getUserPrediction().isEmpty() &&
                     ((OzlGame)getMyOzlGame()).getUserPrediction().equals(gameWinners.get(0).getParticipantId()) ){
                 //add congrats message if picked correct player
-                winnersResult.append("Spot On! You predicted the winner! Well Done!\r\n");
+                winnersResult.append("\r\nSpot On! You predicted the winner! Well Done!\r\n");
                 // reset user prediction
                 getMyOzlGame().setUserPrediction(0);
             }

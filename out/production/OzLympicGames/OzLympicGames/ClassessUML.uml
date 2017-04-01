@@ -3,337 +3,208 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="4328.5" y="652.0">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake</node>
-    <node x="4981.0" y="-8.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial</node>
-    <node x="4159.5" y="134.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesOfficial</node>
-    <node x="1304.0" y="2038.5">OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType</node>
-    <node x="2715.5" y="2766.0">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest</node>
-    <node x="-8.5" y="3854.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesAthlete</node>
-    <node x="1475.5" y="3101.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IGameParticipant</node>
-    <node x="2298.5" y="1289.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues</node>
-    <node x="1580.5" y="1758.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports</node>
-    <node x="1070.0" y="3336.0">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant</node>
-    <node x="4417.5" y="221.0">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions</node>
-    <node x="2924.0" y="1523.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead</node>
-    <node x="2892.5" y="1689.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead</node>
-    <node x="3781.5" y="2580.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGames</node>
-    <node x="1003.5" y="878.0">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest</node>
-    <node x="4326.0" y="3766.0">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest</node>
-    <node x="271.0" y="3743.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete</node>
-    <node x="1671.5" y="2712.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame</node>
-    <node x="1955.5" y="2117.0">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame</node>
-    <node x="3377.5" y="2832.0">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM</node>
+    <node x="1276.5" y="705.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake</node>
+    <node x="1053.5" y="625.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial</node>
+    <node x="1052.0" y="505.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesOfficial</node>
+    <node x="1579.0" y="825.5">OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType</node>
+    <node x="-17.0" y="985.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFakeTest</node>
+    <node x="439.5" y="185.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest</node>
+    <node x="434.5" y="905.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesController</node>
+    <node x="731.5" y="825.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesAthlete</node>
+    <node x="856.5" y="-14.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues</node>
+    <node x="842.0" y="705.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant</node>
+    <node x="1578.0" y="105.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports</node>
+    <node x="224.5" y="985.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions</node>
+    <node x="1289.0" y="-14.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead</node>
+    <node x="1490.5" y="-14.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead</node>
+    <node x="255.0" y="345.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest</node>
+    <node x="680.0" y="345.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest</node>
+    <node x="1293.0" y="825.5">OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete</node>
+    <node x="67.0" y="185.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame</node>
+    <node x="1308.5" y="105.5">OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame</node>
+    <node x="680.5" y="185.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant</node>
+    <node x="449.0" y="345.5">OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM</node>
   </nodes>
   <notes />
   <edges>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports">
-      <point x="96.0" y="-0.0" />
-      <point x="1640.0" y="2120.0" />
-      <point x="-40.0" y="81.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="0.0" y="-114.0" />
-      <point x="2920.0" y="2440.0" />
-      <point x="284.5" y="120.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="-20.0" y="148.0" />
-      <point x="4540.0" y="3440.0" />
-      <point x="170.0" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake">
-      <point x="0.0" y="-114.0" />
-      <point x="0.0" y="148.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial">
-      <point x="234.0" y="-0.0" />
-      <point x="5140.0" y="3880.0" />
-      <point x="-20.0" y="48.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="170.0" y="-70.0" />
-      <point x="2240.0" y="3370.0" />
-      <point x="0.0" y="203.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions">
-      <point x="0.0" y="-136.5" />
-      <point x="480.0" y="280.0" />
-      <point x="-142.5" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
-      <point x="-284.5" y="-0.0" />
-      <point x="580.0" y="2320.0" />
-      <point x="100.0" y="-136.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
-      <point x="-60.0" y="148.0" />
-      <point x="4500.0" y="2880.0" />
-      <point x="182.5" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports">
-      <point x="-284.5" y="-40.0" />
-      <point x="1680.0" y="2280.0" />
-      <point x="0.0" y="81.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions">
-      <point x="0.0" y="-203.0" />
-      <point x="2240.0" y="320.0" />
-      <point x="-142.5" y="40.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="-182.5" y="40.0" />
-      <point x="3320.0" y="2920.0" />
-      <point x="3320.0" y="3430.0" />
-      <point x="170.0" y="-10.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="-236.5" y="40.0" />
-      <point x="960.0" y="1120.0" />
-      <point x="960.0" y="3400.0" />
-      <point x="-170.0" y="-40.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead">
-      <point x="40.0" y="70.5" />
-      <point x="3080.0" y="1960.0" />
-      <point x="3360.0" y="1960.0" />
-      <point x="3360.0" y="1786.6666666666665" />
-      <point x="147.5" y="26.666666666666515" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="160.0" y="-136.5" />
-      <point x="640.0" y="3440.0" />
-      <point x="-170.0" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="-234.0" y="-13.333333333333343" />
-      <point x="880.0" y="3866.6666666666665" />
-      <point x="880.0" y="2600.0" />
-      <point x="2120.0" y="2600.0" />
-      <point x="-120.0" y="203.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesOfficial">
-      <point x="-120.0" y="48.5" />
-      <point x="5040.0" y="160.0" />
-      <point x="80.5" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="-234.0" y="-53.33333333333334" />
-      <point x="1000.0" y="3826.6666666666665" />
-      <point x="1000.0" y="3520.0" />
-      <point x="-170.0" y="80.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
-      <point x="-40.0" y="-148.0" />
-      <point x="4520.0" y="600.0" />
-      <point x="500.0" y="600.0" />
-      <point x="20.0" y="-136.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake">
-      <point x="231.5" y="-80.0" />
-      <point x="5000.0" y="720.0" />
-      <point x="5000.0" y="440.0" />
-      <point x="4640.0" y="440.0" />
-      <point x="80.0" y="-148.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
-      <point x="0.0" y="48.5" />
-      <point x="5160.0" y="4080.0" />
-      <point x="480.0" y="4080.0" />
-      <point x="0.0" y="136.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead">
-      <point x="-160.0" y="148.0" />
-      <point x="4400.0" y="1760.0" />
-      <point x="147.5" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="-40.0" y="-48.0" />
-      <point x="3520.0" y="2360.0" />
-      <point x="284.5" y="40.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial">
-      <point x="0.0" y="-202.0" />
-      <point x="1240.0" y="40.0" />
-      <point x="-179.0" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGames" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake">
-      <point x="138.5" y="-0.0" />
-      <point x="4480.0" y="2640.0" />
-      <point x="-80.0" y="148.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGameParticipant">
-      <point x="170.0" y="-80.0" />
-      <point x="1600.0" y="3360.0" />
-      <point x="0.0" y="58.5" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports">
-      <point x="40.0" y="202.0" />
-      <point x="1280.0" y="1840.0" />
-      <point x="-99.5" y="-0.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGames" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
-      <point x="-138.5" y="40.0" />
-      <point x="3560.0" y="2680.0" />
-      <point x="0.0" y="-48.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGames" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="-138.5" y="-0.0" />
-      <point x="3560.0" y="2640.0" />
-      <point x="3560.0" y="2346.666666666667" />
-      <point x="284.5" y="26.666666666666742" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
-      <point x="-234.0" y="-80.0" />
-      <point x="3560.0" y="3800.0" />
-      <point x="0.0" y="48.0" />
-    </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="284.5" y="160.0" />
-      <point x="2600.0" y="2480.0" />
-      <point x="2600.0" y="3380.0" />
-      <point x="170.0" y="-60.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
-      <point x="204.5" y="-0.0" />
-      <point x="-182.5" y="-0.0" />
+      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant">
+      <point x="-51.5" y="6.0" />
+      <point x="760.0" y="126.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
+      <point x="0.0" y="-14.5" />
+      <point x="520.0" y="124.0" />
+      <point x="-51.5" y="4.0" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead">
-      <point x="80.0" y="-203.0" />
-      <point x="2320.0" y="1640.0" />
-      <point x="3000.0" y="1640.0" />
-      <point x="-40.0" y="36.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions">
-      <point x="-100.0" y="48.5" />
-      <point x="5060.0" y="280.0" />
-      <point x="142.5" y="-0.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
+      <point x="-83.5" y="0.0" />
+      <point x="78.0" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake">
-      <point x="40.0" y="114.0" />
-      <point x="2960.0" y="3040.0" />
-      <point x="4520.0" y="3040.0" />
-      <point x="-40.0" y="148.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant">
+      <point x="40.0" y="-14.5" />
+      <point x="360.0" y="280.0" />
+      <point x="720.0" y="280.0" />
+      <point x="-40.0" y="14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant">
+      <point x="0.0" y="-14.5" />
+      <point x="920.0" y="200.0" />
+      <point x="79.5" y="0.0" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesAthlete">
-      <point x="-209.0" y="-0.0" />
-      <point x="88.5" y="-0.0" />
+      <point x="-67.0" y="0.0" />
+      <point x="68.5" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="0.0" y="114.0" />
-      <point x="2920.0" y="3400.0" />
-      <point x="170.0" y="-40.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesController" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesHelperFunctions">
-      <point x="0.0" y="-148.0" />
-      <point x="0.0" y="59.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant">
+      <point x="80.5" y="0.0" />
+      <point x="-79.5" y="0.0" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial">
-      <point x="231.5" y="-0.0" />
-      <point x="5080.0" y="800.0" />
-      <point x="-80.0" y="48.5" />
+      <point x="-40.0" y="-14.5" />
+      <point x="1320.0" y="640.0" />
+      <point x="66.5" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues">
-      <point x="160.0" y="202.0" />
-      <point x="1400.0" y="1360.0" />
-      <point x="-261.5" y="-0.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
+      <point x="-20.0" y="-14.5" />
+      <point x="1340.0" y="440.0" />
+      <point x="560.0" y="440.0" />
+      <point x="40.0" y="14.5" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
-      <point x="-234.0" y="-0.0" />
-      <point x="209.0" y="-0.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GameSports">
+      <point x="51.5" y="0.0" />
+      <point x="-62.0" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead">
-      <point x="-231.5" y="40.0" />
-      <point x="3040.0" y="840.0" />
-      <point x="0.0" y="-36.5" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
+      <point x="0.0" y="14.5" />
+      <point x="320.0" y="480.0" />
+      <point x="880.0" y="480.0" />
+      <point x="-40.0" y="-14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame">
+      <point x="0.0" y="14.5" />
+      <point x="760.0" y="520.0" />
+      <point x="140.0" y="520.0" />
+      <point x="20.0" y="14.5" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="-120.0" y="148.0" />
-      <point x="4440.0" y="2040.0" />
-      <point x="2400.0" y="2040.0" />
-      <point x="160.0" y="-203.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame">
-      <point x="-40.0" y="203.0" />
-      <point x="2200.0" y="2760.0" />
-      <point x="88.5" y="-0.0" />
+      <point x="-51.5" y="0.0" />
+      <point x="120.0" y="120.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame">
+      <point x="-65.0" y="0.0" />
+      <point x="160.0" y="360.0" />
+      <point x="40.0" y="14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
+      <point x="-67.0" y="-8.0" />
+      <point x="920.0" y="832.0" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant">
-      <point x="-60.0" y="48.5" />
-      <point x="5100.0" y="3600.0" />
-      <point x="1320.0" y="3600.0" />
-      <point x="80.0" y="104.0" />
+      <point x="0.0" y="14.5" />
+      <point x="1120.0" y="712.0" />
+      <point x="78.0" y="-8.0" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
+      <point x="80.0" y="0.0" />
+      <point x="1320.0" y="360.0" />
+      <point x="-40.0" y="14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesController" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame">
+      <point x="-85.5" y="0.0" />
+      <point x="0.0" y="920.0" />
+      <point x="0.0" y="200.0" />
+      <point x="-53.0" y="0.0" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesParticipant" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame">
+      <point x="-78.0" y="0.0" />
+      <point x="120.0" y="720.0" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame">
-      <point x="80.0" y="202.0" />
-      <point x="1320.0" y="1680.0" />
-      <point x="2160.0" y="1680.0" />
-      <point x="-80.0" y="-203.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="320.0" y="122.0" />
+      <point x="-51.5" y="2.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType">
-      <point x="-204.5" y="-0.0" />
-      <point x="1400.0" y="2880.0" />
-      <point x="0.0" y="81.5" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
+      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficial" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesOfficial">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead">
-      <point x="0.0" y="-70.5" />
-      <point x="0.0" y="36.5" />
+      <point x="-69.5" y="0.0" />
+      <point x="71.0" y="0.0" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
-      <point x="236.5" y="-0.0" />
-      <point x="4120.0" y="1080.0" />
-      <point x="4120.0" y="2840.0" />
-      <point x="182.5" y="-40.0" />
+      <point x="65.0" y="0.0" />
+      <point x="-71.0" y="0.0" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead">
-      <point x="261.5" y="40.0" />
-      <point x="3000.0" y="1400.0" />
-      <point x="-40.0" y="-36.5" />
+      <point x="183.5" y="0.0" />
+      <point x="-71.0" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
-      <point x="-236.5" y="-0.0" />
-      <point x="520.0" y="1080.0" />
-      <point x="40.0" y="-136.5" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesController" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
+      <point x="85.5" y="-8.0" />
+      <point x="1360.0" y="912.0" />
+      <point x="0.0" y="14.5" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigReadFakeAlwaysReturnsHardcodedValues">
-      <point x="261.5" y="-40.0" />
-      <point x="2880.0" y="1320.0" />
-      <point x="2880.0" y="1200.0" />
-      <point x="2600.0" y="1200.0" />
-      <point x="40.0" y="-70.5" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake" target="OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType">
+      <point x="83.5" y="0.0" />
+      <point x="1600.0" y="720.0" />
+      <point x="-40.0" y="-14.5" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGameTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesORMFake">
-      <point x="40.0" y="-202.0" />
-      <point x="1280.0" y="800.0" />
-      <point x="-231.5" y="-0.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame">
+      <point x="-80.5" y="0.0" />
+      <point x="53.0" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame" target="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlConfigRead">
-      <point x="120.0" y="-203.0" />
-      <point x="2360.0" y="1760.0" />
-      <point x="-147.5" y="-0.0" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant">
+      <point x="80.0" y="-8.0" />
+      <point x="880.0" y="352.0" />
+      <point x="880.0" y="208.0" />
+      <point x="79.5" y="8.0" />
     </edge>
     <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete" target="OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType">
-      <point x="60.0" y="-136.5" />
-      <point x="540.0" y="2120.0" />
-      <point x="-96.0" y="-0.0" />
+      <point x="67.0" y="0.0" />
+      <point x="-61.0" y="0.0" />
     </edge>
-    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthleteTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete">
-      <point x="-40.0" y="114.0" />
-      <point x="2880.0" y="3040.0" />
-      <point x="600.0" y="3040.0" />
-      <point x="120.0" y="-136.5" />
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGamesController" target="OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType">
+      <point x="85.5" y="0.0" />
+      <point x="1640.0" y="920.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="OzLympicGames.OzlympicGamesMVC.OzlModel.GamesOfficialTest" target="OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGamesORM">
+      <point x="-80.0" y="0.0" />
+      <point x="71.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.32075930883426623" x="2665.0" y="2035.5" />
-  <SelectedNodes>
-    <node>OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlConfigRead</node>
-  </SelectedNodes>
-  <Categories>
-    <Category>Fields</Category>
-    <Category>Inner Classes</Category>
-    <Category>Constructors</Category>
-    <Category>Properties</Category>
-    <Category>Methods</Category>
-  </Categories>
+  <settings layout="Hierarchic Group" zoom="0.27394781939865837" x="1399.5874579597967" y="808.9411545712128" />
+  <SelectedNodes />
+  <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>

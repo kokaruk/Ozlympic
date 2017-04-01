@@ -1,7 +1,9 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-import java.io.IOException;
-import java.io.InputStream;
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.IOzlConfigRead;
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.OzlConfigRead;
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.configFileMissingException;
+
 import java.util.*;
 
 /**
@@ -11,9 +13,9 @@ import java.util.*;
 final class OzlGamesORMFake implements IOzlGamesORM {
 
     // counter for game athlete types
-    private Map<AthleteType, Integer> sportsCounterMap = new EnumMap<AthleteType, Integer>(AthleteType.class);
+    private final Map<AthleteType, Integer> sportsCounterMap = new EnumMap<>(AthleteType.class);
     // list to hold all the athletes
-    private List<GamesAthlete> myGamesAthletes = new LinkedList<>();
+    private final List<GamesAthlete> myGamesAthletes = new LinkedList<>();
     @Override
     public Map<AthleteType, Integer> getSportsCounterMap() {
         return sportsCounterMap;
@@ -23,14 +25,23 @@ final class OzlGamesORMFake implements IOzlGamesORM {
         return myGamesAthletes;
     }
 
+    //
+    private final IOzlConfigRead configReader = OzlConfigRead.getInstance();
+
     // string array of random names
     // using linked list, as there will be a lot of resizing of data
-    private static List<String> randomNames;
+    private List<String> randomNames;
+
 
     // private constructor
     private OzlGamesORMFake() {
         // read names list
-        randomNames = getAllNames();
+        try {
+            randomNames = getAllNames();
+        } catch (configFileMissingException err){
+            err.getMissingFile();
+            System.exit(1);
+        }
         // init counter for game athletes sports types, needed for id generation
         for (AthleteType sportType : AthleteType.values()){
             sportsCounterMap.put(sportType, sportsCounterMap.getOrDefault(sportType, 0));
@@ -49,29 +60,37 @@ final class OzlGamesORMFake implements IOzlGamesORM {
     }
 
     //method to return a random name from hardcoded values, makes sure no names repeated
-    public static String getRandomName(){
+    private String getRandomName(){
         //see if random names list has names, return any
         if (randomNames.size() > 0) {
             int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, randomNames.size() - 1);
             String randomName = randomNames.get(randomArrayIndex);
             randomNames.remove(randomArrayIndex); //remove name to avoid duplicates
             return randomName;
-        } else return null;
+        } else {   // looks like run out of names, lets repopulate
+            // read names list and recursive call to self
+            try {
+                randomNames = getAllNames();
+            } catch (configFileMissingException err){
+                err.getMissingFile();
+                System.exit(1);
+            }
+            return getRandomName();
+        }
     }
 
     // Method to return Random State. Hardcoded, as its only 7 values and no worth to put in a separate file.
-    private final static String[] ausssieStates = new String[]{"Australian Capital Territory", "New South Wales",
+    private final String[] ausssieStates = new String[]{"Australian Capital Territory", "New South Wales",
             "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory"};
-    private static String getRandomState(){
+    private String getRandomState(){
         int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, ausssieStates.length-1);
         return ausssieStates[randomArrayIndex];
     }
 
     // random age integer for preset values
-    private static int getRandomAge(){
-        IOzlConfigRead configReader = OzlConfigRead.getInstance();
-        int minAge = configReader.getConfigInt("minAge");
-        int maxAge = configReader.getConfigInt("maxAge");
+    private int getRandomAge(){
+        int minAge = configReader.getConfigInt("minAge", modelPackageConfig.gamesConfig);
+        int maxAge = configReader.getConfigInt("maxAge", modelPackageConfig.gamesConfig);
         return GamesHelperFunctions.getRandomNumberInRange(minAge, maxAge);
     }
 
@@ -116,6 +135,7 @@ final class OzlGamesORMFake implements IOzlGamesORM {
         GamesParticipant[] myParticipants = new GamesParticipant[gameParticipantsBounds];
         // add new official to game and vice<>versa
         myParticipants[0] = getGameOfficial(String.format("REF%03d", i));
+        assert myParticipants[0] != null;
         myParticipants[0].setMyOzlGame(myOzlGame);
         // create athlete, add to myGame, add myGame to athlete
         for(int ii = 1; ii < myParticipants.length; ii++) {
@@ -143,6 +163,7 @@ final class OzlGamesORMFake implements IOzlGamesORM {
             // create new athlete
             newAthlete = (GamesAthlete) getGameAthlete();
             // increment type counter
+            assert newAthlete != null;
             sportsCounterMap.put(newAthlete.getAthleteType(),
                     (sportsCounterMap.getOrDefault( newAthlete.getAthleteType(), 0) + 1));
             // set id based on sport type and counter
@@ -165,18 +186,12 @@ final class OzlGamesORMFake implements IOzlGamesORM {
     }
 
     // private method to read string of fake names
-    private LinkedList<String> getAllNames(){
-        Properties myProp = new Properties();
-        InputStream in = getClass().getResourceAsStream("names.config.properties");
-        String myPropertyString = "";
-        try {
-            myProp.load(in);
-            in.close();
-            myPropertyString = myProp.getProperty("names");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-      return new LinkedList<>(Arrays.asList(myPropertyString.split(",")));
+    private LinkedList<String> getAllNames() throws configFileMissingException{
+            return new LinkedList<>(Arrays.asList(
+                    configReader.getConfigString("names", "names.properties")
+                            .split(","))
+            );
+
     }
 }
 

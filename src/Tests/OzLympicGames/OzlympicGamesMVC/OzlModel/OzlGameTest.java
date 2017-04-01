@@ -1,15 +1,14 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.OzlConfigReadFakeAlwaysReturnsHardcodedValues;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by dimi on 16/3/17.
  * Test class for OzlGame
  */
-import static org.junit.jupiter.api.Assertions.*;
-
-
 class OzlGameTest {
 
     private String gameId;
@@ -59,7 +58,7 @@ class OzlGameTest {
                 myOzlGame.getGameId(),
                 ((OzlGame)myOzlGame).getGameParticipants().length-1,
                 myOzlGame.getMinParticipants());
-        System.out.println(expectMessage);
+        System.err.println(expectMessage);
 
         assertEquals(expectMessage, ((OzlGame)myOzlGame).gamePlayGetResults());
     }
@@ -98,9 +97,10 @@ class OzlGameTest {
     @Test
     void getGamesParticipants_ReturnsNoParticipantsMessage() {
         String warnMessage = ((OzlGame)myOzlGame).getGamePlayersList();
-        System.out.println(warnMessage);
+        System.err.println(warnMessage);
         assertTrue(warnMessage.getClass().equals(String.class));
     }
+
     @Test
     void getGamesParticipants_ReturnsPlayersMessage() {
 
@@ -119,7 +119,6 @@ class OzlGameTest {
 
         myOzlGame.setUserPrediction(2);
         String gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
-
         System.out.println("Game Result: \n" + gameResults);
 
         String resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
@@ -128,10 +127,28 @@ class OzlGameTest {
         System.out.println("Replay \r\n");
         myOzlGame.setUserPrediction(3);
         gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
-
         System.out.println("Game Result: \n" + gameResults);
+        resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
+        System.out.println("Game Winners: \n" + resultFromOfficial);
 
+        System.out.println("Replay \r\n");
+        myOzlGame.setUserPrediction(3);
+        gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
+        System.out.println("Game Result: \n" + gameResults);
+        resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
+        System.out.println("Game Winners: \n" + resultFromOfficial);
 
+        System.out.println("Replay \r\n");
+        myOzlGame.setUserPrediction(3);
+        gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
+        System.out.println("Game Result: \n" + gameResults);
+        resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
+        System.out.println("Game Winners: \n" + resultFromOfficial);
+
+        System.out.println("Replay \r\n");
+        myOzlGame.setUserPrediction(3);
+        gameResults = ((OzlGame)myOzlGame).gamePlayGetResults();
+        System.out.println("Game Result: \n" + gameResults);
         resultFromOfficial = ((GamesOfficial)((OzlGame)myOzlGame).getGameParticipants()[0]).getGameScore();
         System.out.println("Game Winners: \n" + resultFromOfficial);
 

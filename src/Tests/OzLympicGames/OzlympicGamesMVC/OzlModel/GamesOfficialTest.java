@@ -26,9 +26,10 @@ class GamesOfficialTest {
 
     @Test
     void gameScoreString_notAssigned() {
+        newOfficialSequence = ormDataReader.getGameOfficial("O0002");
         String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
         System.out.println(gameWinnersMessage);
-        assertTrue(gameWinnersMessage.getClass().equals(String.class));
+        assertEquals("Games Official not Assigned to a Game, Can't compete yet", gameWinnersMessage );
     }
 
     @Test

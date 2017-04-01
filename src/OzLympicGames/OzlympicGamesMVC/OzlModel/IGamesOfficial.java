@@ -8,5 +8,6 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  *
  */
  interface IGamesOfficial {
+    @SuppressWarnings("unused")
     String getGameScore();
 }

@@ -1,5 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -21,13 +22,14 @@ class OzlGame implements IOzlGame{
     // property with public setter for configuration reader.
     // Lazy Instantiates Config Reader Singleton
     // Allows dependency injection for testing
-    private IOzlConfigRead configReader;
+    private IOzlConfigRead configReader = OzlConfigRead.getInstance();
+
     void setConfigReader(IOzlConfigRead configReader) {
         this.configReader = configReader;
     }
 
     // gameSportType of enum. public getter with lazy instantiation
-    private GameSports gameSportType;
+    private final GameSports gameSportType;
     GameSports getGameSportType() {
         return gameSportType;
     }
@@ -75,9 +77,8 @@ class OzlGame implements IOzlGame{
     OzlGame(String gameId) {
         // Game ID, to be set by games
         this.gameId = gameId;
-        configReader = OzlConfigRead.getInstance();
-        minParticipants = configReader.getConfigInt("minParticipants");
-        int maxParticipants = configReader.getConfigInt("maxParticipants");
+        minParticipants = configReader.getConfigInt("minParticipants", modelPackageConfig.gamesConfig);
+        int maxParticipants = configReader.getConfigInt("maxParticipants", modelPackageConfig.gamesConfig);
         gameParticipants = new IGamesParticipant[maxParticipants+1]; // +1 for index 0 referee
         gameSportType = generateSport(gameId);
     }
