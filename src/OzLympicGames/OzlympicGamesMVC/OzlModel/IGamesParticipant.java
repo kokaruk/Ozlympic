@@ -13,9 +13,10 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  */
 public interface IGamesParticipant {
 
+    String getParticipantId();
+
     //ID get/set
     void setParticipantId(String participantId);
-    String getParticipantId();
 
     // Get Only Name
     String getParticipantName();

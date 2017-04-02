@@ -6,9 +6,12 @@ package OzLympicGames.OzlympicGamesMVC.OzlGamesData;
  */
 public final class OzlConfigReadFakeAlwaysReturnsHardcodedValues implements IOzlConfigRead {
 
-    private OzlConfigReadFakeAlwaysReturnsHardcodedValues(){}
     private static final OzlConfigReadFakeAlwaysReturnsHardcodedValues instance = new OzlConfigReadFakeAlwaysReturnsHardcodedValues();
-    public static IOzlConfigRead getInstance(){
+
+    private OzlConfigReadFakeAlwaysReturnsHardcodedValues() {
+    }
+
+    public static IOzlConfigRead getInstance() {
         return instance;
     }
 

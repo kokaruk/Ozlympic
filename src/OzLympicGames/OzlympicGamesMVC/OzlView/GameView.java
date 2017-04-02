@@ -1,27 +1,27 @@
 package OzLympicGames.OzlympicGamesMVC.OzlView;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
  * Created by dimi on 11/3/17.
  * Strings for view controller
- *
  */
 public class GameView {
 
     private GameMenu currentMenu;
-    public void setCurrentMenu(GameMenu currentMenu){
+
+    // constructor
+    public GameView() {
+    }
+
+    public void setCurrentMenu(GameMenu currentMenu) {
         this.currentMenu = currentMenu;
     }
 
-    // constructor
-    public GameView(){
-    }
-
     // no variables
-    public void updateScreen(){
+    public void updateScreen() {
         String menuContentString = currentMenu.getMyContent();
         displayCurrentMenu(menuContentString);
     }
@@ -32,9 +32,9 @@ public class GameView {
         displayCurrentMenu(menuContentString);
     }
 
-    private void displayCurrentMenu(String menuContentString){
+    private void displayCurrentMenu(String menuContentString) {
         clearScreen();
-        List<String> menuContent =  Arrays.asList(menuContentString.split(","));
+        List<String> menuContent = Arrays.asList(menuContentString.split(","));
         for (String menuLine : menuContent) {
             System.out.println("\033[0m" + menuLine);
         }

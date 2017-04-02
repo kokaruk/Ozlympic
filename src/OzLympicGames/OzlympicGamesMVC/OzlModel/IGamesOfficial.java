@@ -5,9 +5,8 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  *
  * referee interface
  * Official is the one that can summarise the score each game.
- *
  */
- interface IGamesOfficial {
+public interface IGamesOfficial {
     @SuppressWarnings("unused")
     String getGameScore();
 }

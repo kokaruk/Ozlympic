@@ -1,10 +1,5 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-import OzLympicGames.OzlympicGamesMVC.OzlModel.AthleteType;
-import OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete;
-import OzLympicGames.OzlympicGamesMVC.OzlModel.IGamesParticipant;
-import OzLympicGames.OzlympicGamesMVC.OzlModel.IOzlGame;
-
 import java.util.List;
 import java.util.Map;
 
@@ -27,5 +22,8 @@ interface IOzlGamesORM {
 
     // sports type counter
     Map<AthleteType, Integer> getSportsCounterMap();
+
+    // array of official + athletes
+    GamesParticipant[] getOfficialAndAthleteArray(OzlGame myOzlGame);
 
 }

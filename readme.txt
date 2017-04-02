@@ -1,0 +1,1 @@
+Make sure to transfer *.config files if compiling in other location

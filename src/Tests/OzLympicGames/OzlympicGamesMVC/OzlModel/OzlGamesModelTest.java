@@ -1,7 +1,6 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by dimz on 30/3/17.
+ * Test fixture to test games model tom class
  */
 class OzlGamesModelTest {
 

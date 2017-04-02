@@ -1,9 +1,8 @@
 package OzLympicGames.OzlympicGamesMVC;
 
-import java.util.*;
+import java.util.Random;
 
 /**
- *
  * Created by dimi on 12/3/17.
  * Static shared functions for classes
  * class is final and cannot be instantiated
@@ -11,7 +10,8 @@ import java.util.*;
 public final class GamesHelperFunctions {
 
     // private constructor
-    private GamesHelperFunctions() {}
+    private GamesHelperFunctions() {
+    }
 
     // Java 8 method to randomly generate an integer within passed set range
     public static int getRandomNumberInRange(int min, int max) {
@@ -24,7 +24,7 @@ public final class GamesHelperFunctions {
     }
 
     //method to capitalise first letter in string
-    public static String firsLetterToUpper(String myString){
+    public static String firsLetterToUpper(String myString) {
         return Character.toUpperCase(myString.charAt(0)) + myString.substring(1);
     }
 
