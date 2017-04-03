@@ -1,5 +1,10 @@
 package OzLympicGames.OzlympicGamesMVC;
 
+import OzLympicGames.OzlympicGamesMVC.OzlModel.GamesAthlete;
+import OzLympicGames.OzlympicGamesMVC.OzlModel.OzlGame;
+
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -26,6 +31,13 @@ public final class GamesHelperFunctions {
     //method to capitalise first letter in string
     public static String firsLetterToUpper(String myString) {
         return Character.toUpperCase(myString.charAt(0)) + myString.substring(1);
+    }
+
+    // count total athletes for a game
+    public static Integer athletesCount(OzlGame myGame){
+        return Math.toIntExact(Arrays.stream(myGame.getGameParticipants())
+                .filter(Objects::nonNull)
+                .filter(GamesAthlete.class::isInstance).count());
     }
 
 }

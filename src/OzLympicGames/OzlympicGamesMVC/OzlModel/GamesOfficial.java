@@ -26,7 +26,10 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
         if (getMyOzlGame() == null) {
             return "Games Official not Assigned to a Game, Can't compete yet";
         } else if (!((OzlGame) getMyOzlGame()).isGameHasBeenPlayed()) {
-            return "Game has not been played";
+            return String.format(",%s:  %s > Game has not been played,",
+                    getMyOzlGame().getGameId(),
+                    ((OzlGame) getMyOzlGame()).getGameSportType());
+
         } else {
             List<GamesAthlete> gameWinners = getWinners();
             StringBuilder winnersResult = new StringBuilder();
@@ -59,18 +62,19 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
     }
 
     // method to to return winners
-    @SuppressWarnings("unchecked")
+
     private ArrayList<GamesAthlete> getWinners() {
         //find first three winners
         Comparator<IGamesParticipant> byLastGameTime = Comparator.<IGamesParticipant>comparingDouble(g1 -> ((GamesAthlete) g1).getLastGameCompeteTime())
                 .thenComparingDouble(g2 -> ((GamesAthlete) g2).getLastGameCompeteTime());
-        List<IGamesParticipant> gameWinners =
+        ArrayList<GamesAthlete> gameWinners =
                 Arrays.stream(((OzlGame) getMyOzlGame()).getGameParticipants())
-                        .filter(s -> s instanceof GamesAthlete)
+                        .filter(GamesAthlete.class::isInstance)
+                        .map(GamesAthlete.class::cast)
                         .sorted(byLastGameTime)
                         .limit(3)
                         .collect(Collectors.toCollection(ArrayList::new));
         // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
-        return (ArrayList<GamesAthlete>) (ArrayList<?>) gameWinners;
+        return gameWinners;
     }
 }

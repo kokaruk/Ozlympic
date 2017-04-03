@@ -147,7 +147,8 @@ final class OzlGamesORMFake implements IOzlGamesORM {
 
     // method to generate a random Athlete type
     // if type is different from required for the game, simply add to the pull
-    private GamesParticipant getMyNewAthlete(OzlGame myOzlGame) {
+    // recursively calls for self
+    public GamesParticipant getMyNewAthlete(OzlGame myOzlGame) {
         //  new athlete variable
         GamesAthlete newAthlete;
         //see if can get required athlete from list of available athletes

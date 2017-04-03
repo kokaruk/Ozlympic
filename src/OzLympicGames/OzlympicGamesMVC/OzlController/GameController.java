@@ -1,6 +1,8 @@
 package OzLympicGames.OzlympicGamesMVC.OzlController;
 
 import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.IOzlConfigRead;
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.OzlConfigRead;
 import OzLympicGames.OzlympicGamesMVC.OzlModel.*;
 import OzLympicGames.OzlympicGamesMVC.OzlView.GameMenu;
 import OzLympicGames.OzlympicGamesMVC.OzlView.GameView;
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 public class GameController {
     private final GameView view;
     private final OzlGamesModel model;
-
+    private IOzlConfigRead configReader = OzlConfigRead.getInstance();
     private MenuController currentMenuController;
 
     public GameController(OzlGamesModel model, GameView view) {
@@ -32,6 +34,7 @@ public class GameController {
 
     // abstract for all menus controller
     private abstract class MenuController {
+        private final int BACK_OPTION_COUNT = configReader.getConfigInt("BACK_OPTION_COUNT", "config.properties");
         // Menu Option Property to get from data file
         private String menuOption = "";
 
@@ -45,7 +48,6 @@ public class GameController {
 
         // parent sub menu
         private MenuController parentMenuController;
-
         private void setParentMenuController(MenuController parentMenuController) {
             this.parentMenuController = parentMenuController;
         }
@@ -66,7 +68,7 @@ public class GameController {
             updateView();
             int userInput = getUserIntInput();
             currentMenuController = userInput <= subMenuControllers.size()
-                    ? subMenuControllers.get(userInput)
+                    ? subMenuControllers.get(userInput) // Note to self: It a map!!!! Not List. User Input is key
                     : parentMenuController;
             currentMenuController.takeControl();
         }
@@ -146,8 +148,6 @@ public class GameController {
     // Main Menu
     private class MainMenuController extends MenuController {
 
-        private OzlGame currentActiveGame;
-
         // constructor
         private MainMenuController() {
             super(new HashMap<Integer, MenuController>() {{
@@ -171,7 +171,7 @@ public class GameController {
 
         String getMenuMessage() {
             StringBuilder mainMenuMessage = new StringBuilder();
-            if (currentActiveGame == null) {
+            if (model.getCurrentActiveGame() == null) {
                 mainMenuMessage.append(String.format("\n\rGames recorded: %d | Athletes: %d ",
                         model.getMyOzlGames().size(),
                         model.getMyGamesAthletes().size())
@@ -182,23 +182,29 @@ public class GameController {
                         model.getMyOzlGames().size(),
                         model.getMyGamesAthletes().size())
                 );
+                int gameAthletesCount = GamesHelperFunctions.athletesCount(model.getCurrentActiveGame());
+                if (gameAthletesCount > 0){
+                    mainMenuMessage.append(String.format("\n\rCurrent Active Game: %s %s \n\rAssigned athletes: %d" +
+                                    "\n\rReferee: %s %s (%s | Age: %d)",
+                            model.getCurrentActiveGame().getGameId(),
+                            GamesHelperFunctions.firsLetterToUpper(model.getCurrentActiveGame().getGameSportType().name()),
+                            gameAthletesCount,
+                            model.getCurrentActiveGame().getGameParticipants()[0].getParticipantId(),
+                            model.getCurrentActiveGame().getGameParticipants()[0].getParticipantName(),
+                            model.getCurrentActiveGame().getGameParticipants()[0].getParticipantState(),
+                            model.getCurrentActiveGame().getGameParticipants()[0].getParticipantAge())
+                    );
+                }  else {
+                    mainMenuMessage.append(String.format("\n\rCurrent Active Game: %s %s \n\rAssigned athletes: %d",
+                            model.getCurrentActiveGame().getGameId(),
+                            GamesHelperFunctions.firsLetterToUpper(model.getCurrentActiveGame().getGameSportType().name()),
+                            gameAthletesCount)
+                    );
+                }
 
-                int gamePlayers = Math.toIntExact(Arrays.stream(currentActiveGame.getGameParticipants())
-                        .filter(Objects::nonNull)
-                        .filter(s -> s instanceof GamesAthlete).count());
-                mainMenuMessage.append(String.format("\n\rCurrent Active Game: %s %s \n\rAssigned athletes: %d" +
-                                "\n\rReferee: %s %s (%s | Age: %d)",
-                        currentActiveGame.getGameId(),
-                        GamesHelperFunctions.firsLetterToUpper(currentActiveGame.getGameSportType().name()),
-                        gamePlayers,
-                        currentActiveGame.getGameParticipants()[0].getParticipantId(),
-                        currentActiveGame.getGameParticipants()[0].getParticipantName(),
-                        currentActiveGame.getGameParticipants()[0].getParticipantState(),
-                        currentActiveGame.getGameParticipants()[0].getParticipantAge())
-                );
-                if (!currentActiveGame.getUserPrediction().equals("")) {
+                if (!model.getCurrentActiveGame().getUserPrediction().equals("")) {
                     mainMenuMessage.append("\n\rUser Prediction Athlete ID: ");
-                    mainMenuMessage.append(currentActiveGame.getUserPrediction());
+                    mainMenuMessage.append(model.getCurrentActiveGame().getUserPrediction());
                 }
 
             }
@@ -206,7 +212,7 @@ public class GameController {
         }
     }
 
-    // option 1
+    // option 1: Select a game to run
     private class SubMenuControllerGameSelect extends MenuController {
 
         private SubMenuControllerGameSelect() {
@@ -221,8 +227,18 @@ public class GameController {
 
     // option 1_1
     private class SubMenuControllerNewGame extends MenuController {
+
+        //constructor
+        private SubMenuControllerNewGame(){
+            super(new HashMap<Integer, MenuController>() {{
+                      put(1, new SubMenuNewGamePlayersAdd() );
+                  }}
+            );
+        }
+
         @Override
         void takeControl() {
+            if (super.subMenuControllers != null) setParentForSubmenus();
             updateViewMenu();
             updateView();
             int userInput = getUserIntInput();
@@ -231,22 +247,19 @@ public class GameController {
                 currentMenuController = super.parentMenuController;
             } else {
                 // set up a new game with game sport
-                ((MainMenuController) super.parentMenuController.parentMenuController).currentActiveGame
-                        = model.newGameWithSport(
-                        GameSports.values()[userInput - 1]
-                );
-                //exit to main menu
-                currentMenuController = super.parentMenuController.parentMenuController;
+                model.newGameWithSport( GameSports.values()[userInput - 1]);
+                //exit to manual or auto input
+                currentMenuController = super.subMenuControllers.get(1);
             }
 
             currentMenuController.takeControl();
         }
 
-        // set menu to view
+        // set menu to view. Need to override when there is no submenus
         @Override
         void updateViewMenu() {
             int sportsCount = 1;
-            StringBuilder mySports = new StringBuilder("System will summon new participants for you," +
+            StringBuilder mySports = new StringBuilder("Select sport you want to run," +
                     "===================================,");
             for (GameSports sport : GameSports.values()) {
                 mySports.append(
@@ -287,7 +300,131 @@ public class GameController {
         }
     }
 
-    // option 1_2
+    //option 1_1_1: new game select
+    private class SubMenuNewGamePlayersAdd extends MenuController{
+        // constructor
+        private SubMenuNewGamePlayersAdd() {
+            super(new HashMap<Integer, MenuController>() {{
+                    put(1, new SubMenuPlayersAddAuto());
+                    put(2, new SubMenuPlayersAddManual() );
+            }}
+            );
+            setMenuOption("newGameAthletes");
+        }
+    }
+
+    // option 1_1_1_1 new game fully populated
+    private class SubMenuPlayersAddAuto extends MenuController {
+        // constant for going back option menu
+
+        @Override
+        void takeControl() {
+            model.autoSetupParticipantsNewGame();
+            updateViewMenu();
+            updateView();
+            getUserIntOneInput(); // user input always returns 1
+            currentMenuController = super.parentMenuController.parentMenuController.parentMenuController.parentMenuController;
+            currentMenuController.takeControl();
+        }
+
+        @Override
+        void updateViewMenu() {
+                StringBuilder myAthletesGames = new StringBuilder("Recorded Athletes," +
+                        "===================================,");
+                myAthletesGames.append(
+                        model.getCurrentActiveGame().getGamePlayersList()
+                );
+
+                view.setCurrentMenu(
+                        new GameMenu( super.BACK_OPTION_COUNT, myAthletesGames.toString().substring(0, myAthletesGames.length() - 1))
+                ); //remove last comma from string builder
+        }
+    }
+
+    // option 1_1_1_2 new game manually populated
+    private class SubMenuPlayersAddManual extends MenuController {
+        private final int BACK_OPTION_COUNT = 2; //constant two options
+        // get max athletes allowed
+        private int currentEnrollment;
+        private int maxPlayesAllowed;
+
+        @Override
+        void takeControl() {
+            // get current athletes count
+            currentEnrollment = GamesHelperFunctions.athletesCount(model.getCurrentActiveGame());
+            maxPlayesAllowed = model.getCurrentActiveGame().getGameParticipants().length - 1;
+
+            updateViewMenu();
+            updateView();
+            int userInput = getUserIntInput();
+            if ( currentEnrollment != maxPlayesAllowed && userInput == 1) {
+                model.autoSetupAthlete();
+            }   /*else if ( currentEnrollment <= maxPlayesAllowed && userInput == 2) {
+                currentMenuController = super.parentMenuController;
+            }*/ else {
+                currentMenuController = super.parentMenuController.parentMenuController.parentMenuController.parentMenuController;
+            }
+            currentMenuController.takeControl();
+        }
+
+
+        @Override
+        void updateViewMenu() {
+
+            // see if can add more
+            if (currentEnrollment <= maxPlayesAllowed ){
+                // get model to generate new athlete
+
+                StringBuilder myAthletes = new StringBuilder("Add A New Athlete," +
+                        "===================================,");
+                myAthletes.append(
+                        currentEnrollment == 0 ? "" : model.getCurrentActiveGame().getGamePlayersList()
+                );
+                myAthletes.append( currentEnrollment >= maxPlayesAllowed ?  "" : ",1. Add new athlete");
+
+                view.setCurrentMenu(
+                        new GameMenu( currentEnrollment >= maxPlayesAllowed ? super.BACK_OPTION_COUNT : BACK_OPTION_COUNT,
+                                myAthletes.toString())
+                ); //remove last comma from string builder
+            }
+        }
+
+        @Override
+        int getUserIntInput() {
+            System.out.println("");
+            System.out.println("");
+            System.out.print("\033[32mMake a choice: "); //green
+            Scanner scanner = new Scanner(System.in);
+            String menuSelectionString = scanner.nextLine().replaceAll(" +", "");
+
+            int menuSelection;
+
+            try {
+                menuSelection = Integer.parseInt(menuSelectionString);
+            } catch (NumberFormatException e) {
+                System.out.println("\033[31mInvalid input format.\r\nNumbers Only."); //red
+                return getUserIntInput();
+            }
+
+            int maxInputInt;
+            if (currentEnrollment == maxPlayesAllowed ){
+                maxInputInt = 1;
+            }   else {
+                maxInputInt = BACK_OPTION_COUNT;
+            }
+
+            if (menuSelection > maxInputInt || menuSelection < 1) {
+                System.out.println("\033[31mNo such option."); //red
+                return getUserIntInput();
+            } else {
+                return menuSelection;
+            }
+        }
+
+    }
+
+
+    // option 1_2: Replay a previous game
     private class SubMenuControllerPreviousGame extends MenuController {
         @Override
         void takeControl() {
@@ -299,8 +436,9 @@ public class GameController {
                 currentMenuController = super.parentMenuController;
             } else {
                 // set up a new game with game sport
-                ((MainMenuController) super.parentMenuController.parentMenuController).currentActiveGame
-                        = (OzlGame) model.getMyOzlGames().get(userInput - 1);
+                model.setCurrentActiveGame(
+                        (OzlGame) model.getMyOzlGames().get(userInput - 1)
+                );
                 //exit to main menu
                 currentMenuController = super.parentMenuController.parentMenuController;
             }
@@ -353,25 +491,23 @@ public class GameController {
         }
     }
 
-    // option 2
+    // option 2: Predict a winner
     private class SubMenuControllerSetPrediction extends MenuController {
         @Override
         void takeControl() {
             updateViewMenu();
             updateView();
             int userInput = getUserIntInput();
-            if (((MainMenuController) super.parentMenuController).currentActiveGame == null) {
+            if ( model.getCurrentActiveGame() == null) {
                 // go back
                 currentMenuController = super.parentMenuController;
             } else {
-                if (userInput > Math.toIntExact(Arrays.stream(((MainMenuController) super.parentMenuController).currentActiveGame.getGameParticipants())
-                        .filter(Objects::nonNull)
-                        .filter(s -> s instanceof GamesAthlete).count())) {
+                if (userInput > GamesHelperFunctions.athletesCount(model.getCurrentActiveGame())) {
                     // go back
                     currentMenuController = super.parentMenuController;
                 } else {
                     // set user prediction
-                    ((MainMenuController) super.parentMenuController).currentActiveGame.setUserPrediction(userInput);
+                    model.getCurrentActiveGame().setUserPrediction(userInput);
                     // go back
                     currentMenuController = super.parentMenuController;
                 }
@@ -382,14 +518,12 @@ public class GameController {
         // set menu to view
         @Override
         void updateViewMenu() {
-            if (((MainMenuController) super.parentMenuController).currentActiveGame != null) {
-                int athletesCount = Math.toIntExact(Arrays.stream(((MainMenuController) super.parentMenuController).currentActiveGame.getGameParticipants())
-                        .filter(Objects::nonNull)
-                        .filter(s -> s instanceof GamesAthlete).count());
+            if ( model.getCurrentActiveGame() != null) {
+                int athletesCount = GamesHelperFunctions.athletesCount(model.getCurrentActiveGame());
                 StringBuilder myGames = new StringBuilder("Recorded Athletes," +
                         "===================================,");
                 myGames.append(
-                        ((MainMenuController) super.parentMenuController).currentActiveGame.getGamePlayersList()
+                        model.getCurrentActiveGame().getGamePlayersList()
                 );
 
                 view.setCurrentMenu(
@@ -419,10 +553,8 @@ public class GameController {
                 return getUserIntInput();
             }
             int maxInputInt = 1;
-            if (((MainMenuController) super.parentMenuController).currentActiveGame != null) {
-                maxInputInt += Math.toIntExact(Arrays.stream(((MainMenuController) super.parentMenuController).currentActiveGame.getGameParticipants())
-                        .filter(Objects::nonNull)
-                        .filter(s -> s instanceof GamesAthlete).count());
+            if (model.getCurrentActiveGame() != null) {
+                maxInputInt += GamesHelperFunctions.athletesCount(model.getCurrentActiveGame());
             }
             if (menuSelection > maxInputInt || menuSelection < 1) {
                 System.out.println("\033[31mNo such option."); //red
@@ -433,7 +565,7 @@ public class GameController {
         }
     }
 
-    // option 3
+    // option 3: Start the game
     private class SubMenuControllerStartGame extends MenuController {
         @Override
         void takeControl() {
@@ -447,17 +579,17 @@ public class GameController {
         // set menu to view
         @Override
         void updateViewMenu() {
-            if (((MainMenuController) super.parentMenuController).currentActiveGame != null) {
+            if (model.getCurrentActiveGame() != null) {
 
                 StringBuilder myGameResults = new StringBuilder("Game Results," +
                         "===================================,");
                 myGameResults.append(
-                        ((MainMenuController) super.parentMenuController).currentActiveGame.gamePlayGetResults()
+                        model.getCurrentActiveGame().gamePlayGetResults()
                 );
 
                 // append winner final score with prediction
                 myGameResults.append(
-                        ((IGamesOfficial) ((MainMenuController) super.parentMenuController).currentActiveGame.getGameParticipants()[0]).getGameScore()
+                        ((IGamesOfficial)model.getCurrentActiveGame().getGameParticipants()[0]).getGameScore()
                 );
 
                 view.setCurrentMenu(
@@ -471,8 +603,11 @@ public class GameController {
         }
     }
 
-    // option 4
+    // option 4: Display the final results of all games
     private class SubMenuControllerFinalResults extends MenuController {
+        // constant for going back option menu
+
+
         @Override
         void takeControl() {
             updateViewMenu();
@@ -491,12 +626,15 @@ public class GameController {
                         "===================================,");
 
                 for (IOzlGame myGame : model.getMyOzlGames()) {
-                    myGameResults.append(
-                            ((IGamesOfficial) ((OzlGame) myGame).getGameParticipants()[0]).getGameScore()
-                    );
+                    // if game has athletes
+                    if ( GamesHelperFunctions.athletesCount((OzlGame)myGame) > 0) {
+                        myGameResults.append(
+                                ((IGamesOfficial) ((OzlGame) myGame).getGameParticipants()[0]).getGameScore()
+                        );
+                    }
                 }
                 view.setCurrentMenu(
-                        new GameMenu(1, myGameResults.toString().substring(0, myGameResults.length() - 1))
+                        new GameMenu(super.BACK_OPTION_COUNT , myGameResults.toString().substring(0, myGameResults.length() - 1))
                 ); //remove last comma from string builder
             } else {
                 view.setCurrentMenu(
@@ -506,7 +644,7 @@ public class GameController {
         }
     }
 
-    // option 5
+    // option 5: Display all points
     private class SubMenuControllerAllPoints extends MenuController {
         @Override
         void takeControl() {
@@ -537,7 +675,7 @@ public class GameController {
                     myGameResults.append(String.format("%s | Total Points: %d\r\n", athlete.getParticipantName(), athlete.getTotalPoints()));
                 }
                 view.setCurrentMenu(
-                        new GameMenu(1, myGameResults.toString().substring(0, myGameResults.length() - 1))
+                        new GameMenu(super.BACK_OPTION_COUNT , myGameResults.toString().substring(0, myGameResults.length() - 1))
                 ); //remove last comma from string builder
             } else {
                 view.setCurrentMenu(
@@ -565,6 +703,8 @@ public class GameController {
         }
 
     }
+
+
 
 }
 

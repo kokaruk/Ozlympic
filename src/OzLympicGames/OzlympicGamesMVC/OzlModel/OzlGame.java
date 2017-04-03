@@ -16,17 +16,36 @@ public class OzlGame implements IOzlGame {
 
     // gameSportType of enum. public getter with lazy instantiation
     private final GameSports gameSportType;
+    public GameSports getGameSportType() {
+        return gameSportType;
+    }
     // game ID. Public only getter
     private final String gameId;
     // minimum gameParticipants in a game, sate from config file, populate at init, and getter
     private final int minParticipants;
     private boolean gameHasBeenPlayed;
+    boolean isGameHasBeenPlayed() {
+        return gameHasBeenPlayed;
+    }
     // property with public setter for configuration reader.
     // Lazy Instantiates Config Reader Singleton
     // Allows dependency injection for testing
     private IOzlConfigRead configReader = OzlConfigRead.getInstance();
+    void setConfigReader(IOzlConfigRead configReader) {
+        this.configReader = configReader;
+    }
     // property array of game gameParticipants. participant at index 0 is always the official
     private IGamesParticipant[] gameParticipants;
+    public IGamesParticipant[] getGameParticipants() {
+        return gameParticipants;
+    }
+    void setAthlete(IGamesParticipant participant){
+        int currentEnrollment = GamesHelperFunctions.athletesCount(this);
+        // if reached max capacity will ignore all calls
+        if (participant instanceof GamesAthlete && currentEnrollment < gameParticipants.length-1){
+            gameParticipants[++currentEnrollment] = participant;
+        }
+    }
     // user prediction. Set to empty if user hasn't predicted
     private String userPrediction = "";
 
@@ -38,22 +57,6 @@ public class OzlGame implements IOzlGame {
         int maxParticipants = configReader.getConfigInt("maxParticipants", modelPackageConfig.gamesConfig);
         gameParticipants = new IGamesParticipant[maxParticipants + 1]; // +1 for index 0 referee
         gameSportType = generateSport(gameId);
-    }
-
-    boolean isGameHasBeenPlayed() {
-        return gameHasBeenPlayed;
-    }
-
-    void setConfigReader(IOzlConfigRead configReader) {
-        this.configReader = configReader;
-    }
-
-    public GameSports getGameSportType() {
-        return gameSportType;
-    }
-
-    public IGamesParticipant[] getGameParticipants() {
-        return gameParticipants;
     }
 
     void setGameParticipants(IGamesParticipant[] gameParticipants) {
@@ -95,15 +98,13 @@ public class OzlGame implements IOzlGame {
     // method to list Athletes
     public String getGamePlayersList() {
 
-        int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
-                .filter(Objects::nonNull)
-                .filter(s -> s instanceof GamesAthlete).count());
+        int totalPlayers = GamesHelperFunctions.athletesCount(this);;
 
         if (totalPlayers > 0) {
 
             List<IGamesParticipant> gamePlayers;
             gamePlayers = Arrays.stream(gameParticipants)
-                    .filter(s -> s instanceof GamesAthlete)
+                    .filter(GamesAthlete.class::isInstance)
                     .collect(Collectors.toCollection(ArrayList::new));
             StringBuilder allGamePlayers = new StringBuilder();
             int counter = 1;
@@ -135,11 +136,9 @@ public class OzlGame implements IOzlGame {
     // method to make athlete to compete
     public String gamePlayGetResults() {
         //count total athletes assigned to the game
-        int totalPlayers = Math.toIntExact(Arrays.stream(gameParticipants)
-                .filter(Objects::nonNull)
-                .filter(s -> s instanceof GamesAthlete).count());
+        int totalPlayers = GamesHelperFunctions.athletesCount(this);;
         //confirm minimum threshold is met, play game
-        if (totalPlayers > minParticipants) {
+        if (totalPlayers >= minParticipants) {
             // string to hold games result
             StringBuilder gameResult = new StringBuilder();
             // Play the game, call getPlayersScore method
@@ -166,37 +165,37 @@ public class OzlGame implements IOzlGame {
 
             return gameResult.toString();
         } else {
-            return String.format("The game %1$s has %2$d players, less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
+            return String.format("The game %1$s has %2$d players,less than required minimum of %3$d", gameId, totalPlayers, minParticipants);
         }
     }
 
     // method to arrange by finish time, award points to winners
-    @SuppressWarnings("unchecked")
     private ArrayList<GamesAthlete> getPlayersScore() {
         // reset gameParticipants to total participants, removing Null placeholders
         gameParticipants = Arrays.stream(gameParticipants).filter(Objects::nonNull).toArray(IGamesParticipant[]::new);
         //set Game for each player
         Arrays.stream(gameParticipants).forEach(s -> ((GamesParticipant) s).setMyOzlGame(this));
         // Make each athlete compete
-        Arrays.stream(gameParticipants).filter(s -> s instanceof GamesAthlete).forEach(s -> ((GamesAthlete) s).compete());
+        Arrays.stream(gameParticipants).filter(GamesAthlete.class::isInstance).forEach(s -> ((GamesAthlete) s).compete());
 
         // arrange by finish time
         Comparator<IGamesParticipant> byLastGameTime = Comparator
                 .<IGamesParticipant>comparingDouble(g1 -> ((GamesAthlete) g1).getLastGameCompeteTime())
                 .thenComparingDouble(g2 -> ((GamesAthlete) g2).getLastGameCompeteTime());
-        ArrayList<IGamesParticipant> gameWinners =
+        ArrayList<GamesAthlete> gameWinners =
                 Arrays.stream(gameParticipants)
-                        .filter(s -> s instanceof GamesAthlete)
+                        .filter(GamesAthlete.class::isInstance)
+                        .map(GamesAthlete.class::cast)
                         .sorted(byLastGameTime)
                         .collect(Collectors.toCollection(ArrayList::new));
 
         // award points
         int[] awardPoints = new int[]{5, 2, 1};
         for (int i = 0; i < awardPoints.length; i++) {
-            ((GamesAthlete) gameWinners.get(i)).setTotalPoints(awardPoints[i]);
+            ( gameWinners.get(i)).setTotalPoints(awardPoints[i]);
         }
         // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
-        return (ArrayList<GamesAthlete>) (ArrayList<?>) gameWinners;
+        return gameWinners;
     }
 }
 

@@ -26,4 +26,8 @@ interface IOzlGamesORM {
     // array of official + athletes
     GamesParticipant[] getOfficialAndAthleteArray(OzlGame myOzlGame);
 
+    // randomly generates a player basen on game-sports needs
+    GamesParticipant getMyNewAthlete(OzlGame myOzlGame);
+
+
 }
