@@ -665,7 +665,7 @@ public class GameController {
                 // arrange by finish time
                 Comparator<GamesAthlete> byTotalPoints = Comparator
                         .comparingInt(GamesAthlete::getTotalPoints)
-                        .thenComparingDouble(GamesAthlete::getTotalPoints).reversed();
+                        .thenComparingInt(GamesAthlete::getTotalPoints).reversed();
 
                 for (GamesAthlete athlete : model.getMyGamesAthletes()
                         .stream().filter(g -> g.getTotalPoints() > 0)

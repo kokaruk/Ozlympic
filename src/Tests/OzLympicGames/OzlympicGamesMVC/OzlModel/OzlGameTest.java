@@ -54,7 +54,7 @@ class OzlGameTest {
         IGamesParticipant[] myReferee = new IGamesParticipant[]{ormDataReader.getGameOfficial(participantId)};
         ((OzlGame)myOzlGame).setGameParticipants(myReferee);
         System.out.println("Players: " + ((OzlGame)myOzlGame).getGameParticipants().length);
-        String expectMessage = String.format("The game %1$s has %2$d players, less than required minimum of %3$d",
+        String expectMessage = String.format("The game %1$s has %2$d players,less than required minimum of %3$d",
                 myOzlGame.getGameId(),
                 ((OzlGame)myOzlGame).getGameParticipants().length-1,
                 myOzlGame.getMinParticipants());
@@ -73,7 +73,7 @@ class OzlGameTest {
         athlete1, athlete2, athlete3};
         myOzlGame.setGameParticipants(myReferee);
         System.out.println("Players: " + myOzlGame.getGameParticipants().length);
-        String expectMessage = String.format("The game %1$s has %2$d players, less than required minimum of %3$d",
+        String expectMessage = String.format("The game %1$s has %2$d players,less than required minimum of %3$d",
                 myOzlGame.getGameId(),
                 myOzlGame.getGameParticipants().length-1,
                 myOzlGame.getMinParticipants());

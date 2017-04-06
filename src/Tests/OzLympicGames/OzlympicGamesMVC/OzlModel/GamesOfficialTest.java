@@ -36,9 +36,10 @@ class GamesOfficialTest {
     void gameScoreString_gamePlay_gameNeverPlayed() {
 
         ((OzlGame)myOzlGame).setGameParticipants(new IGamesParticipant[]{newOfficialSequence});
-        String gameWinnersMessage = ((GamesOfficial) newOfficialSequence).getGameScore();
-        System.out.println(gameWinnersMessage);
-        assertEquals("Game has not been played", gameWinnersMessage);
+        String expectedMessage = String.format(",%s:  %s > %s,",  ((OzlGame)myOzlGame).getGameId(),
+                ((OzlGame)myOzlGame).getGameSportType().toString(),
+                "Game has not been played");
+        assertEquals(expectedMessage, ((GamesOfficial)newOfficialSequence).getGameScore());
     }
 
     @Test
