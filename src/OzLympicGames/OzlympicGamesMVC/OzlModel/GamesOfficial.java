@@ -62,12 +62,11 @@ class GamesOfficial extends GamesParticipant implements IGamesOfficial {
     }
 
     // method to to return winners
-
     private ArrayList<GamesAthlete> getWinners() {
         //find first three winners
-        Comparator<IGamesParticipant> byLastGameTime =
-                Comparator.<IGamesParticipant>comparingDouble(g1 -> ((GamesAthlete) g1).getLastGameCompeteTime())
-                .thenComparingDouble(g2 -> ((GamesAthlete) g2).getLastGameCompeteTime());
+        Comparator<GamesAthlete> byLastGameTime =
+                Comparator.comparingDouble(GamesAthlete::getLastGameCompeteTime)
+                        .thenComparingDouble(GamesAthlete::getLastGameCompeteTime);
         ArrayList<GamesAthlete> gameWinners =
                 Arrays.stream(((OzlGame) getMyOzlGame()).getGameParticipants())
                         .filter(GamesAthlete.class::isInstance)

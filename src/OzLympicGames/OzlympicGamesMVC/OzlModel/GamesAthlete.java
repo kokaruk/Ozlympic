@@ -12,10 +12,6 @@ public class GamesAthlete extends GamesParticipant implements IGamesAthlete {
     final private AthleteType athleteType;
     // Display total point of athlete, acquired in all the games.
     private Integer totalPoints = 0; //DEFAULT_POINTS_OF_NEW_ATHLETE;
-    // Getter & Setter
-    public Integer getTotalPoints() {
-        return totalPoints;
-    }
     private double lastGameCompeteTime;
 
     // constructor with random athlete type
@@ -32,15 +28,18 @@ public class GamesAthlete extends GamesParticipant implements IGamesAthlete {
         this.athleteType = athleteType;
     }
 
-    // Getter
-    AthleteType getAthleteType() {
-        return athleteType;
+    // Getter & Setter
+    public Integer getTotalPoints() {
+        return totalPoints;
     }
-
-
 
     void setTotalPoints(Integer totalPoints) {
         this.totalPoints += totalPoints;
+    }
+
+    // Getter
+    AthleteType getAthleteType() {
+        return athleteType;
     }
 
     double getLastGameCompeteTime() {

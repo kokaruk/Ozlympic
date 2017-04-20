@@ -16,36 +16,17 @@ public class OzlGame implements IOzlGame {
 
     // gameSportType of enum. public getter with lazy instantiation
     private final GameSports gameSportType;
-    public GameSports getGameSportType() {
-        return gameSportType;
-    }
     // game ID. Public only getter
     private final String gameId;
     // minimum gameParticipants in a game, sate from config file, populate at init, and getter
     private final int minParticipants;
     private boolean gameHasBeenPlayed;
-    boolean isGameHasBeenPlayed() {
-        return gameHasBeenPlayed;
-    }
     // property with public setter for configuration reader.
     // Lazy Instantiates Config Reader Singleton
     // Allows dependency injection for testing
     private IOzlConfigRead configReader = OzlConfigRead.getInstance();
-    void setConfigReader(IOzlConfigRead configReader) {
-        this.configReader = configReader;
-    }
     // property array of game gameParticipants. participant at index 0 is always the official
     private IGamesParticipant[] gameParticipants;
-    public IGamesParticipant[] getGameParticipants() {
-        return gameParticipants;
-    }
-    void setAthlete(IGamesParticipant participant){
-        int currentEnrollment = GamesHelperFunctions.athletesCount(this);
-        // if reached max capacity will ignore all calls
-        if (participant instanceof GamesAthlete && currentEnrollment < gameParticipants.length-1){
-            gameParticipants[++currentEnrollment] = participant;
-        }
-    }
     // user prediction. Set to empty if user hasn't predicted
     private String userPrediction = "";
 
@@ -59,8 +40,32 @@ public class OzlGame implements IOzlGame {
         gameSportType = generateSport(gameId);
     }
 
+    public GameSports getGameSportType() {
+        return gameSportType;
+    }
+
+    boolean isGameHasBeenPlayed() {
+        return gameHasBeenPlayed;
+    }
+
+    void setConfigReader(IOzlConfigRead configReader) {
+        this.configReader = configReader;
+    }
+
+    public IGamesParticipant[] getGameParticipants() {
+        return gameParticipants;
+    }
+
     void setGameParticipants(IGamesParticipant[] gameParticipants) {
         this.gameParticipants = gameParticipants;
+    }
+
+    void setAthlete(IGamesParticipant participant) {
+        int currentEnrollment = GamesHelperFunctions.athletesCount(this);
+        // if reached max capacity will ignore all calls
+        if (participant instanceof GamesAthlete && currentEnrollment < gameParticipants.length - 1) {
+            gameParticipants[++currentEnrollment] = participant;
+        }
     }
 
     @Override
@@ -98,7 +103,8 @@ public class OzlGame implements IOzlGame {
     // method to list Athletes
     public String getGamePlayersList() {
 
-        int totalPlayers = GamesHelperFunctions.athletesCount(this);;
+        int totalPlayers = GamesHelperFunctions.athletesCount(this);
+        ;
 
         if (totalPlayers > 0) {
 
@@ -136,7 +142,8 @@ public class OzlGame implements IOzlGame {
     // method to make athlete to compete
     public String gamePlayGetResults() {
         //count total athletes assigned to the game
-        int totalPlayers = GamesHelperFunctions.athletesCount(this);;
+        int totalPlayers = GamesHelperFunctions.athletesCount(this);
+        ;
         //confirm minimum threshold is met, play game
         if (totalPlayers >= minParticipants) {
             // string to hold games result
@@ -192,7 +199,7 @@ public class OzlGame implements IOzlGame {
         // award points
         int[] awardPoints = new int[]{5, 2, 1};
         for (int i = 0; i < awardPoints.length; i++) {
-            ( gameWinners.get(i)).setTotalPoints(awardPoints[i]);
+            (gameWinners.get(i)).setTotalPoints(awardPoints[i]);
         }
         // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
         return gameWinners;
