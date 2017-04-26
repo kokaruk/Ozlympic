@@ -1,7 +1,5 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-import OzLympicGames.OzlympicGamesMVC.GamesHelperFunctions;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,69 +10,44 @@ import java.util.stream.Collectors;
  * Created by dimi on 10/3/17.
  * referee class
  */
-class GamesOfficial extends GamesParticipant implements IGamesOfficial {
+public class GamesOfficial extends GamesParticipant {
 
     //constructor
-    GamesOfficial(String participantName, int participantAge, String participantId, String participantState) {
-        super(participantName, participantAge, participantState);
-        this.setParticipantId(participantId);
+    public GamesOfficial(String _id, String _name, int _age, String _state) {
+        super(_id, _name, _age, _state);
     }
 
-    // returns score of a game as a formatted string
-    @Override
-    public String getGameScore() {
-        if (getMyOzlGame() == null) {
-            return "Games Official not Assigned to a Game, Can't compete yet";
-        } else if (!((OzlGame) getMyOzlGame()).isGameHasBeenPlayed()) {
-            return String.format(",%s:  %s > Game has not been played,",
-                    getMyOzlGame().getGameId(),
-                    ((OzlGame) getMyOzlGame()).getGameSportType());
-
-        } else {
-            List<GamesAthlete> gameWinners = getWinners();
-            StringBuilder winnersResult = new StringBuilder();
-            winnersResult.append(String.format("\r\nReferee: %s (%s)\r\n", getParticipantName(), getParticipantState()));
-            int counter = 1;
+    // returns comma separated list of string of a game as a formatted string
+    public List<String> getGameScore(OzlGame currentGame) throws IllegalGameException, GameNeverPlayedException {
+            if(!getMyParticipation().contains(currentGame))throw new IllegalGameException(this, currentGame);
+            if(!currentGame.isReplay()) throw new GameNeverPlayedException(currentGame);
+            List<String> winnersScore = new ArrayList<>();
+            //static call
+            List<GamesAthlete> gameWinners = GamesOfficial.getWinners(currentGame);
             for (GamesAthlete champion : gameWinners) {
+                StringBuilder winnersResult = new StringBuilder();
+                winnersResult.append(champion.getId().concat(","));
+                winnersResult.append(champion.getName().concat(","));
+                winnersResult.append(champion.getState().concat(","));
+                winnersResult.append(String.format("%.2f", champion.getLastGameCompeteTime()).concat(","));
+                winnersResult.append(champion.getTotalPoints().toString().concat(","));
+                winnersResult.append(GamesHelperFunctions.firsLetterToUpper(
+                        String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))).concat(","));
 
-                winnersResult.append(String.format("%7$s: %1$d: %2$s (%5$s | %6$s).  Result: %3$,.2f seconds. Overall Games Points: %4$d \r\n",
-                        counter,
-                        champion.getParticipantName(),
-                        champion.getLastGameCompeteTime(),
-                        champion.getTotalPoints(),
-                        GamesHelperFunctions.firsLetterToUpper(
-                                String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))),
-                        champion.getParticipantState(),
-                        champion.getParticipantId()
-                        )
-                );
-                counter++;
+                winnersScore.add(winnersResult.toString());
             }
-            if (!((OzlGame) getMyOzlGame()).getUserPrediction().isEmpty() &&
-                    ((OzlGame) getMyOzlGame()).getUserPrediction().equals(gameWinners.get(0).getParticipantId())) {
-                //add congrats message if picked correct player
-                winnersResult.append("\r\nSpot On! You predicted the winner! Well Done!\r\n");
-            }
-            // reset user prediction
-            getMyOzlGame().setUserPrediction(0);
-            return winnersResult.toString();
-        }
+            return winnersScore;
     }
 
-    // method to to return winners
-    private ArrayList<GamesAthlete> getWinners() {
-        //find first three winners
-        Comparator<GamesAthlete> byLastGameTime =
-                Comparator.comparingDouble(GamesAthlete::getLastGameCompeteTime)
-                        .thenComparingDouble(GamesAthlete::getLastGameCompeteTime);
-        ArrayList<GamesAthlete> gameWinners =
-                Arrays.stream(((OzlGame) getMyOzlGame()).getGameParticipants())
-                        .filter(GamesAthlete.class::isInstance)
-                        .map(GamesAthlete.class::cast)
-                        .sorted(byLastGameTime)
-                        .limit(3)
-                        .collect(Collectors.toCollection(ArrayList::new));
-        // suppressed warning, stream filter guarantees returned type to be GamAthlete Class
+    // static method to to return winners
+    private static List<GamesAthlete> getWinners(OzlGame currentGame) {
+        // get winners by finish time
+        List<GamesAthlete> gameWinners = GamesHelperFunctions.getGameAthletesWinnersSortedByTime(currentGame);
+        // award points
+        int[] awardPoints = new int[]{5, 2, 1};
+        for (int i = 0; i < awardPoints.length; i++) {
+            (gameWinners.get(i)).setTotalPoints(awardPoints[i]);
+        }
         return gameWinners;
     }
 }

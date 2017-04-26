@@ -7,7 +7,7 @@ import java.util.Set;
  * Created by dimi on 10/3/17.
  * Enumerator for athlete type
  */
-enum AthleteType {
+public enum AthleteType {
     swimmer(EnumSet.of(GameSports.swimming)),
     cyclist(EnumSet.of(GameSports.cycling)),
     sprinter(EnumSet.of(GameSports.running)),

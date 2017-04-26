@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /**
  * Created by dimi on 18/3/17.
- * Implementing Singleton design Patter as Object.GetClass can't be instantiated
+ * Reads Config Files
  */
 public final class OzlConfigRead implements IOzlConfigRead {
 

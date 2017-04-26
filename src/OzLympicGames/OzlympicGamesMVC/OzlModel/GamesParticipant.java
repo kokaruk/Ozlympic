@@ -1,61 +1,76 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
-/**
- * Created by dimi on 10/3/17.
- * abstract game participant class
- */
-abstract class GamesParticipant implements IGamesParticipant {
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
+/**
+ * Abstract Game Participant Class
+ * @author dimi
+ * @version 2.0
+ * @since 24/04/17
+ */
+public abstract class GamesParticipant {
+
+    // Participant ID.
+    private final String _id;
     // readOnly field for name
-    private final String participantName;
+    private final String _name;
     // field and public getter for Age
-    private final Integer participantAge;
+    private final Integer _age;
     // participant State field and lazy instantiation
-    private final String participantState;
-    //property for assigned game. Returns Null if not assigned to a game.
-    // Allowed to be null, it means the Participant has been instantiated but not yest assigned to a game
-    private IOzlGame myOzlGame;
-    // Participant ID. to be set by Games Class at the time of assignment to participants array
-    // If GamesOfficial then ID to be set by constructor
-    private String participantId;
+    private final String _state;
+    // OzlParticipation Association
+    private Set<OzlParticipation> myParticipation = new HashSet<>();
 
     // constructor
-    GamesParticipant(String participantName, int participantAge, String participantState) {
-        this.participantName = participantName;
-        this.participantAge = participantAge;
-        this.participantState = participantState;
+    public GamesParticipant(String _id, String _name, int _age, String _state) throws IllegalAustralianStateException {
+        // if illegal state, throw
+        if (!validState(_state)) throw new IllegalAustralianStateException(_state);
+        this._id = _id;
+        this._name = _name;
+        this._age = _age;
+        this._state = _state;
     }
 
-    IOzlGame getMyOzlGame() {
-        return myOzlGame;
+    public String getId() {
+        return _id;
     }
 
-    void setMyOzlGame(IOzlGame myOzlGame) {
-        this.myOzlGame = myOzlGame;
+    public String getName() {
+        return _name;
     }
 
-    @Override
-    public String getParticipantId() {
-        return participantId;
+    public Integer getAge() {
+        return _age;
     }
 
-    @Override
-    public void setParticipantId(String participantId) {
-        this.participantId = participantId;
+    public String getState() {
+        return this._state;
     }
 
-    @Override
-    public String getParticipantName() {
-        return participantName;
+    public void addParticipation(OzlParticipation aParticipation) {
+        myParticipation.add(aParticipation);
     }
 
-    @Override
-    public Integer getParticipantAge() {
-        return participantAge;
+    public void removeParticipation(OzlParticipation aParticipation) {
+        if (myParticipation.contains(aParticipation)) myParticipation.remove(aParticipation);
     }
 
-    @Override
-    public String getParticipantState() {
-        return this.participantState;
+    public Set<OzlParticipation> getMyParticipation() {
+        return myParticipation;
     }
+
+    // check if passed string state is correct
+    private boolean validState(String aState) {
+        Set<String> auStates = new HashSet<>();
+        auStates.addAll(
+                Arrays.asList("Australian Capital Territory", "New South Wales",
+                        "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory")
+        );
+
+        return auStates.contains(aState);
+
+    }
+
 }
