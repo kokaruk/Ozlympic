@@ -20,8 +20,7 @@ public abstract class GamesParticipant {
     private final Integer _age;
     // participant State field and lazy instantiation
     private final String _state;
-    // OzlParticipation Association
-    private Set<OzlParticipation> myParticipation = new HashSet<>();
+
 
     // constructor
     public GamesParticipant(String _id, String _name, int _age, String _state) throws IllegalAustralianStateException {
@@ -49,17 +48,8 @@ public abstract class GamesParticipant {
         return this._state;
     }
 
-    public void addParticipation(OzlParticipation aParticipation) {
-        myParticipation.add(aParticipation);
-    }
 
-    public void removeParticipation(OzlParticipation aParticipation) {
-        if (myParticipation.contains(aParticipation)) myParticipation.remove(aParticipation);
-    }
 
-    public Set<OzlParticipation> getMyParticipation() {
-        return myParticipation;
-    }
 
     // check if passed string state is correct
     private boolean validState(String aState) {

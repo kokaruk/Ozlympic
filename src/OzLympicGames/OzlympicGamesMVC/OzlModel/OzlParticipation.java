@@ -7,21 +7,32 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
  */
 public class OzlParticipation {
 
-    public OzlParticipation(GamesParticipant gamesParticipant, OzlGame game) {
-        this.gamesParticipant = gamesParticipant;
-        this.game = game;
-    }
-
     /**
      * Association fields. Declare them all accessible,
      * as this is essentially a struct
      */
-    private GamesParticipant gamesParticipant;
-    public OzlGame game;
-    public Double result;
-    public Integer score;
+    OzlGame game;
+    Double result; // time
+    Integer score; // game points
+    GamesAthlete gamesAthlete;
 
-    GamesParticipant getGamesParticipant() {
-        return gamesParticipant;
+    // constructor
+    public OzlParticipation(GamesAthlete gamesAthlete, OzlGame game) {
+        this.gamesAthlete = gamesAthlete;
+        this.game = game;
+    }
+
+    //getters (needed for stream object methods
+    GamesAthlete getGamesAthlete() {
+        return gamesAthlete;
+    }
+    public OzlGame getGame() {
+        return game;
+    }
+    public Double getResult() {
+        return result;
+    }
+    public Integer getScore() {
+        return score;
     }
 }

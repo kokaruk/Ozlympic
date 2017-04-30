@@ -9,7 +9,7 @@ public class NotEnoughAthletesException extends IllegalArgumentException {
         super(String.format("Not enough players to play the game %s : %s. Only %d Athletes recorded",
                 aGame.getId(),
                 GamesHelperFunctions.firsLetterToUpper(aGame.getGameSport().toString()),
-                GamesHelperFunctions.athletesCount(aGame))
+                aGame.athletesCount())
 
         );
     }
