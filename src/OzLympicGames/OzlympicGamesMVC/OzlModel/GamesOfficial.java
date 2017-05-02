@@ -56,15 +56,14 @@ public class GamesOfficial extends GamesParticipant {
         // check if game has been played
         if (!currentGame.isReplay()) throw new GameNeverPlayedException(currentGame);
         List<String> winnersScore = new ArrayList<>();
-        List<GamesAthlete> gameWinners = currentGame.getGameAthletesWinnersSortedByTime();
         StringBuilder winnersResult;
-        for (GamesAthlete champion : gameWinners) {
+        for (GamesAthlete champion : currentGame.getGameAthletesWinnersSortedByTime()) {
             winnersResult = new StringBuilder();
             winnersResult.append(champion.getId().concat(","));
             winnersResult.append(champion.getName().concat(","));
             winnersResult.append(champion.getState().concat(","));
-            winnersResult.append(String.format("%.2f", champion.getLastGameCompeteTime()).concat(","));
-            winnersResult.append(champion.getTotalPoints().toString().concat(","));
+            winnersResult.append(String.format("%.2f", champion.getGameTime(currentGame)).concat(","));
+            winnersResult.append(champion.getGameScore(currentGame).toString().concat(","));
             winnersResult.append(GamesHelperFunctions.firsLetterToUpper(
                     String.join(" ", champion.getAthleteType().name().split("(?=\\p{Lu})"))).concat(","));
             winnersScore.add(winnersResult.toString());

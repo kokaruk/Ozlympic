@@ -12,8 +12,8 @@ public class OzlParticipation {
      * as this is essentially a struct
      */
     OzlGame game;
-    Double result; // time
-    Integer score; // game points
+    Double result = 0.0; // time
+    Integer score = 0; // game points
     GamesAthlete gamesAthlete;
 
     // constructor

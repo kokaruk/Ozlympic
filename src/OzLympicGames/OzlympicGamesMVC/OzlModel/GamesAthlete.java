@@ -2,7 +2,6 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Created by dimi on 10/3/17.
@@ -13,10 +12,10 @@ public class GamesAthlete extends GamesParticipant {
     // type of athlete
     final private AthleteType _athleteType;
     // Total point of athlete, acquired in all the games.
-    private Integer _totalPoints = 0; //DEFAULT_POINTS_OF_NEW_ATHLETE;
+    private Integer _totalPoints;
     private double _lastGameCompeteTime;
     // OzlParticipation Association
-    private Set<OzlParticipation> myParticipation = new HashSet<>();
+    private Set<OzlParticipation> _participation = new HashSet<>();
 
     // constructor with athlete type
     GamesAthlete(String _id, String _name, int _age, String _state, AthleteType _athleteType) {
@@ -24,13 +23,18 @@ public class GamesAthlete extends GamesParticipant {
         this._athleteType = _athleteType;
     }
 
+    //
+    static String idPrefix(AthleteType athleteType){
+        return athleteType.name().substring(0, 3).toUpperCase();
+    }
+
     // Getter & Setter
     public Integer getTotalPoints() {
         return _totalPoints;
     }
 
-    void setTotalPoints(Integer totalPoints) {
-        this._totalPoints += totalPoints;
+    void setTotalPoints(Integer gamePoints) {
+        this._totalPoints += gamePoints;
     }
 
     // Getter
@@ -43,20 +47,20 @@ public class GamesAthlete extends GamesParticipant {
     }
 
     public void addParticipation(OzlParticipation aParticipation) {
-        myParticipation.add(aParticipation);
+        if (!_participation.contains(aParticipation)) _participation.add(aParticipation);
     }
     public void removeParticipation(OzlParticipation aParticipation) {
-        if (myParticipation.contains(aParticipation)) myParticipation.remove(aParticipation);
+        if (_participation.contains(aParticipation)) _participation.remove(aParticipation);
     }
 
-    public Set<OzlParticipation> getMyParticipation() {
-        return myParticipation;
+    public Set<OzlParticipation> getParticipation() {
+        return _participation;
     }
 
     // compete method. returns a random int in a preset range
     // based on the game type enumeration
     public double compete(OzlParticipation _participation) throws IllegalGameException {
-        if ( myParticipation.contains(_participation)) {
+        if ( this._participation.contains(_participation)) {
             // this game assigned, compete
             _lastGameCompeteTime = GamesHelperFunctions.getRandomDoubleInRange(
                     _participation.game.getGameSport().getMin(),
@@ -70,11 +74,19 @@ public class GamesAthlete extends GamesParticipant {
 
     // method to get points for a game
     Integer getGameScore(OzlGame aGame) throws IllegalGameException {
-        // see if athlete participates in this game
-        return myParticipation.stream()
+        return _participation.stream()
                 .filter( p -> p.game.equals(aGame))
                 .findAny()
                 .map(OzlParticipation::getScore)
+                .orElseThrow( () -> new IllegalGameException(this, aGame));
+    }
+
+    // method to get points for a game
+    Double getGameTime(OzlGame aGame) throws IllegalGameException {
+        return _participation.stream()
+                .filter( p -> p.game.equals(aGame))
+                .findAny()
+                .map(OzlParticipation::getResult)
                 .orElseThrow( () -> new IllegalGameException(this, aGame));
     }
 

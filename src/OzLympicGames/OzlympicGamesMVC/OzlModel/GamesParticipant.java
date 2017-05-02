@@ -1,16 +1,22 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.IOzlConfigRead;
+import OzLympicGames.OzlympicGamesMVC.OzlGamesData.modelPackageConfig;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Abstract Game Participant Class
+ *
  * @author dimi
  * @version 2.0
  * @since 24/04/17
  */
 public abstract class GamesParticipant {
+    private final int MIN_AGE;
+    private final int MAX_AGE;
 
     // Participant ID.
     private final String _id;
@@ -23,9 +29,14 @@ public abstract class GamesParticipant {
 
 
     // constructor
-    public GamesParticipant(String _id, String _name, int _age, String _state) throws IllegalAustralianStateException {
+    public GamesParticipant(String _id, String _name, int _age, String _state) throws IllegalAustralianStateException,
+            IlleagalAgeException {
         // if illegal state, throw
         if (!validState(_state)) throw new IllegalAustralianStateException(_state);
+        IOzlConfigRead configReader = GamesHelperFunctions.getConfigReader();
+        MIN_AGE = configReader.getConfigInt("MIN_AGE", modelPackageConfig.MODEL_COFIG_FILE);
+        MAX_AGE = configReader.getConfigInt("MAX_AGE", modelPackageConfig.MODEL_COFIG_FILE);
+        if (_age < MIN_AGE || _age > MAX_AGE) throw new IlleagalAgeException();
         this._id = _id;
         this._name = _name;
         this._age = _age;
@@ -47,9 +58,6 @@ public abstract class GamesParticipant {
     public String getState() {
         return this._state;
     }
-
-
-
 
     // check if passed string state is correct
     private boolean validState(String aState) {

@@ -5,6 +5,7 @@ import OzLympicGames.OzlympicGamesMVC.OzlGamesData.OzlConfigRead;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.modelPackageConfig;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -22,21 +23,17 @@ public class OzlGame {
     private final String _id;
     // is this a fresh game or replay
     private boolean gamePlayed;
-    // property with public setter for configuration reader.
-    // Lazy Instantiates Config Reader Singleton
-    // Allows dependency injection for testing
-    private IOzlConfigRead configReader = OzlConfigRead.getInstance();
     // property array of game gameParticipants
     private Set<OzlParticipation> _participation = new HashSet<>();
     private GamesOfficial _referee;
-
 
     // Constructor
     OzlGame(String _id) {
         // Game ID, to be set by controller
         this._id = _id;
-        MIN_PARTICIPANTS = configReader.getConfigInt("minParticipants", modelPackageConfig.MODEL_COFIG_FILE);
-        MAX_PARTICIPANTS = configReader.getConfigInt("maxParticipants", modelPackageConfig.MODEL_COFIG_FILE);
+        IOzlConfigRead configReader = GamesHelperFunctions.getConfigReader();
+        MIN_PARTICIPANTS = configReader.getConfigInt("MIN_PARTICIPANTS", modelPackageConfig.MODEL_COFIG_FILE);
+        MAX_PARTICIPANTS = configReader.getConfigInt("MAX_PARTICIPANTS", modelPackageConfig.MODEL_COFIG_FILE);
         _gameSport = generateSport(_id);
     }
 
@@ -67,7 +64,8 @@ public class OzlGame {
 
     // assign new participant (be it athlete or referee)
     void addParticipant(GamesParticipant participant) throws OzlGameFullException, WrongSportException {
-        if (participant instanceof GamesAthlete) {
+        // ... and check if athlete already in the game, and do nothing if already here
+        if (participant instanceof GamesAthlete && getGameAthletes().contains(participant)) {
             // if wrong type of sports assignment, throw error
             if (((GamesAthlete) participant).getAthleteType().getSport().size() == 1
                     && ((GamesAthlete) participant).getAthleteType().getSport().iterator().next() != this.getGameSport()) {
@@ -75,10 +73,14 @@ public class OzlGame {
             }
             // determine if game not full
             if ((athletesCount() + 1) > MAX_PARTICIPANTS) throw new OzlGameFullException(this);
+            // adding more athletes means game never played with new participants
+            if (gamePlayed) gamePlayed = false;
+            // create new participation
+            OzlParticipation participation = new OzlParticipation((GamesAthlete)participant, this);
             //add new participation to participation set
-            _participation.add(new OzlParticipation((GamesAthlete)participant, this));
-
-        } else {
+            _participation.add(participation);
+            ((GamesAthlete) participant).addParticipation(participation);
+        } else if (participant instanceof GamesOfficial) {
             // add referee, or (if already exists, overwrite)
             // if referee exists, remove reference from this game
             //  remove game from referee if game exist
@@ -88,12 +90,23 @@ public class OzlGame {
         }
     }
 
-    // add method to remove an athlete or participant
+    // add method to remove an athlete or referee
     void removeParticipant(GamesParticipant participant) {
-        if (participant instanceof GamesAthlete) {
-
+        Predicate<OzlParticipation> predicateAthlete =  p -> p.gamesAthlete.equals(participant);
+        if (participant instanceof GamesAthlete && _participation.stream().anyMatch(predicateAthlete)) {
+            // identify deprecated participation
+            OzlParticipation removableParticipation = _participation.stream()
+                    .filter( predicateAthlete )
+                    .findAny()
+                    .orElseThrow( () -> new IllegalGameException(participant, this));
+            // remove participation from athlete
+            ((GamesAthlete) participant).removeParticipation(removableParticipation);
+            // remove participation from game's collection
+            _participation.remove(removableParticipation);
+            // removing athletes means game never played with new participants
+            if (gamePlayed) gamePlayed = false;
         } else {
-            if (_referee != null && _referee.equals(participant)) { // if referee already exists and not the same
+            if (_referee != null && _referee.equals(participant)) { // if referee already exists and the same
                 _referee.removeGame();
             }
         }
@@ -147,8 +160,8 @@ public class OzlGame {
     }
 
     // get all athletes as list from participation object
-    public List<GamesAthlete> getGameAthletes(OzlGame game) {
-        List<GamesAthlete> gameAthletes = game.getParticipation().stream()
+    public List<GamesAthlete> getGameAthletes() {
+        List<GamesAthlete> gameAthletes = this.getParticipation().stream()
                 .filter(Objects::nonNull)
                 .map(OzlParticipation::getGamesAthlete)
                 .filter(GamesAthlete.class::isInstance)
