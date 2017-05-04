@@ -1,12 +1,12 @@
 package OzLympicGames.OzlympicGamesMVC.OzlGamesData;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
 
 /**
  * Created by dimz on 1/4/17.
  * exception if required file for config is not present.
  */
-public class configFileMissingException extends IOException {
+public class configFileMissingException extends FileNotFoundException {
 
     // throws exception if can't read config file
     private final String missingFile;

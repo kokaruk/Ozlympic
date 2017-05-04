@@ -47,7 +47,7 @@ public class GamesAthlete extends GamesParticipant {
     }
 
     public void addParticipation(OzlParticipation aParticipation) {
-        if (!_participation.contains(aParticipation)) _participation.add(aParticipation);
+        _participation.add(aParticipation);
     }
     public void removeParticipation(OzlParticipation aParticipation) {
         if (_participation.contains(aParticipation)) _participation.remove(aParticipation);
