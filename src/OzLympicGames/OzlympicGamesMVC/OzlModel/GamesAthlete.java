@@ -12,7 +12,7 @@ public class GamesAthlete extends GamesParticipant {
     // type of athlete
     final private AthleteType _athleteType;
     // Total point of athlete, acquired in all the games.
-    private Integer _totalPoints;
+    private Integer _totalPoints = 0;
     private double _lastGameCompeteTime;
     // OzlParticipation Association
     private Set<OzlParticipation> _participation = new HashSet<>();

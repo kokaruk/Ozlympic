@@ -7,21 +7,22 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * @author dimz
  * @since 30/4/17.
  */
 
-@DisplayName("Testing Abstract GameParticipant Class")
+@DisplayName("GameParticipant Abstract Class Testing")
 class GamesParticipantTest {
 
     private GamesParticipant _participant;
+    @Mock
     private static IOzlConfigRead configReaderMock;
 
     @BeforeAll
@@ -30,7 +31,7 @@ class GamesParticipantTest {
         // stubbing
         when(configReaderMock.getConfigInt("MIN_AGE", modelPackageConfig.MODEL_COFIG_FILE)).thenReturn(17);
         when(configReaderMock.getConfigInt("MAX_AGE", modelPackageConfig.MODEL_COFIG_FILE)).thenReturn(50);
-        // insert into seam
+        // insert into seam of config reader
         GamesHelperFunctions.setCustomReader(configReaderMock);
     }
 

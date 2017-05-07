@@ -37,6 +37,10 @@ public class OzlGame {
         _gameSport = generateSport(_id);
     }
 
+    GamesOfficial get_referee() {
+        return _referee;
+    }
+
     // getters and setters
 
     public GameSports getGameSport() {
@@ -47,7 +51,7 @@ public class OzlGame {
         return _id;
     }
 
-    public boolean isReplay() {
+    public boolean isGamePlayed() {
         return gamePlayed;
     }
 
@@ -56,16 +60,19 @@ public class OzlGame {
     }
 
     // Method to Generate GameSports enum based on ID string for constructor
-    private GameSports generateSport(String gameId) {
-        String sportsLetter = gameId.substring(0, 1).toLowerCase();
+    private GameSports generateSport(String gameId) throws NoSuchElementException {
+        String sportsLetter = gameId.substring(0, 2).toLowerCase();
 
-        return Arrays.stream(GameSports.values()).filter(x -> x.name().startsWith(sportsLetter)).findFirst().orElse(null);
+        return Arrays.stream(GameSports.values())
+                .filter(x -> x.name().startsWith(sportsLetter))
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     // assign new participant (be it athlete or referee)
     void addParticipant(GamesParticipant participant) throws OzlGameFullException, WrongSportException {
         // ... and check if athlete already in the game, and do nothing if already here
-        if (participant instanceof GamesAthlete && getGameAthletes().contains(participant)) {
+        if (participant instanceof GamesAthlete && !getGameAthletes().contains(participant)) {
             // if wrong type of sports assignment, throw error
             if (((GamesAthlete) participant).getAthleteType().getSport().size() == 1
                     && ((GamesAthlete) participant).getAthleteType().getSport().iterator().next() != this.getGameSport()) {
@@ -90,7 +97,7 @@ public class OzlGame {
         }
     }
 
-    // add method to remove an athlete or referee
+    // method to remove an athlete or referee
     void removeParticipant(GamesParticipant participant) {
         Predicate<OzlParticipation> predicateAthlete =  p -> p.gamesAthlete.equals(participant);
         if (participant instanceof GamesAthlete && _participation.stream().anyMatch(predicateAthlete)) {
@@ -108,15 +115,15 @@ public class OzlGame {
         } else {
             if (_referee != null && _referee.equals(participant)) { // if referee already exists and the same
                 _referee.removeGame();
+                _referee = null;
             }
         }
 
     }
 
-
     // method to make athletes to compete
     public void gamePlay() throws NotEnoughAthletesException, NoRefereeException {
-        if (athletesCount() <= MIN_PARTICIPANTS) throw new NotEnoughAthletesException(this);
+        if (athletesCount() < MIN_PARTICIPANTS) throw new NotEnoughAthletesException(this);
         // check if game has referee
         if (this._referee == null) throw new NoRefereeException(this);
         // make 'em compete
@@ -130,7 +137,7 @@ public class OzlGame {
             }
 
             // set time for game
-            aParticipation.result = (aParticipation.getGamesAthlete()).compete(aParticipation);
+            aParticipation.result = aParticipation.getGamesAthlete().compete(aParticipation);
         }
         // set game as played
         gamePlayed = true;
@@ -151,8 +158,6 @@ public class OzlGame {
                     .filter(Objects::nonNull)
                     .sorted(byLastGameTime)
                     .map(OzlParticipation::getGamesAthlete)
-                    .filter(GamesAthlete.class::isInstance)
-                    .map(GamesAthlete.class::cast)
                     .limit(3)
                     .collect(Collectors.toCollection(ArrayList::new));
         }
@@ -164,8 +169,6 @@ public class OzlGame {
         List<GamesAthlete> gameAthletes = this.getParticipation().stream()
                 .filter(Objects::nonNull)
                 .map(OzlParticipation::getGamesAthlete)
-                .filter(GamesAthlete.class::isInstance)
-                .map(GamesAthlete.class::cast)
                 .collect(Collectors.toCollection(ArrayList::new));
 
         return gameAthletes;
@@ -176,7 +179,6 @@ public class OzlGame {
         return Math.toIntExact(_participation.stream()
                 .filter(Objects::nonNull)
                 .map(OzlParticipation::getGamesAthlete)
-                .filter(GamesAthlete.class::isInstance)
                 .count()
         );
     }

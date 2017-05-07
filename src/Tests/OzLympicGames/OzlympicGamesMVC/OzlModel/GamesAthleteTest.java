@@ -3,12 +3,10 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-
-import java.util.Set;
+import org.mockito.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * @author dimz
@@ -16,15 +14,15 @@ import static org.mockito.Mockito.when;
  */
 @DisplayName("GamesAthlete Class Test")
 class GamesAthleteTest {
-
-    private GamesAthlete _athlete;
+    @Mock
     private OzlGame _game;
+    private GamesAthlete _athlete;
     private OzlParticipation _participation;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
         _athlete = new GamesAthleteWithAthleteType(AthleteType.superAthlete);
-        _game = mock(OzlGame.class);
         when(_game.getGameSport()).thenReturn(GameSports.cycling);
         when(_game.getId()).thenReturn("CY01");
         _participation = new OzlParticipation(_athlete, _game);
@@ -33,7 +31,7 @@ class GamesAthleteTest {
 
     @Nested
     @DisplayName("Method: removeParticipation")
-    class removeParticipation{
+    class removeParticipation {
         @Test
         @DisplayName("removeParticipation Athlete Has This Participation Participation Reduced")
         void removeParticipation_AthleteHasThisParticipation_ParticipationReduced() {
@@ -55,10 +53,10 @@ class GamesAthleteTest {
 
     @Nested
     @DisplayName("Method: compete")
-    class compete{
+    class compete {
 
         @BeforeEach
-        void athleteCompete(){
+        void athleteCompete() {
             _athlete.compete(_participation);
         }
 
@@ -75,12 +73,12 @@ class GamesAthleteTest {
 
         @Nested
         @DisplayName("compete exception tests")
-        class competeThrows{
+        class competeThrows {
 
             private OzlParticipation _participation2;
 
             @BeforeEach
-            void initParticipation2(){
+            void initParticipation2() {
                 _participation2 = new OzlParticipation(_athlete, _game);
             }
 
@@ -89,14 +87,14 @@ class GamesAthleteTest {
             @DisplayName("compete participation is not present throws  IllegalGameException")
             void compete_participationIsNotPresent_throwsIllegalGameException() {
 
-                assertThrows(IllegalGameException.class, () -> _athlete.compete(_participation2) );
+                assertThrows(IllegalGameException.class, () -> _athlete.compete(_participation2));
             }
 
             @Test
             @DisplayName("compete participation not set, error message ID : Name not assigned to game ID : GameSport ")
             void compete_participationIsNotPresent_throwsIllegalGameExceptionMessage() {
 
-                Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.compete(_participation2) );
+                Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.compete(_participation2));
                 String expected = String.format("%s : %s not assigned to game %s : %s ",
                         _athlete.getId(),
                         _athlete.getName(),
@@ -110,37 +108,38 @@ class GamesAthleteTest {
 
     @Nested
     @DisplayName("'getGamesCore' method tests")
-    class getGameScoreTests{
+    class getGameScoreTests {
 
         @BeforeEach
-        void athleteCompete(){
+        void athleteCompete() {
             _athlete.compete(_participation);
         }
 
         @Test
         @DisplayName("athlete never played or haven't scored points. Returns 0")
-        void getGameScore_athleteNeverPlayedOrHAsNoPoints_ExpectInt0(){
+        void getGameScore_athleteNeverPlayedOrHAsNoPoints_ExpectInt0() {
 
-            assertEquals(0, (int)_athlete.getGameScore(_game));
+            assertEquals(0, (int) _athlete.getGameScore(_game));
         }
 
         @RepeatedTest(value = 10, name = "{displayName} {currentRepetition}/{totalRepetitions}")
         @DisplayName("GetGameScore' repeated test from 1 to 10 asserts total points equals to repetition")
-        void getGameScore_setParticipationScore_athleteGetsNumber(RepetitionInfo repetitionInfo){
+        void getGameScore_setParticipationScore_athleteGetsNumber(RepetitionInfo repetitionInfo) {
             _participation.score = repetitionInfo.getCurrentRepetition();
 
-            assertEquals(repetitionInfo.getCurrentRepetition(), (int)_athlete.getGameScore(_game));
+            assertEquals(repetitionInfo.getCurrentRepetition(), (int) _athlete.getGameScore(_game));
         }
 
         @Nested
         @DisplayName("getGameScore exception tests")
-        class getGameScoreThrows{
+        class getGameScoreThrows {
 
+            @Mock
             private OzlGame _game2;
 
             @BeforeEach
-            void initParticipation2(){
-                _game2 = mock(OzlGame.class);
+            void initParticipation2() {
+                MockitoAnnotations.initMocks(this);
                 when(_game2.getGameSport()).thenReturn(GameSports.cycling);
                 when(_game2.getId()).thenReturn("CY02");
             }
@@ -149,14 +148,14 @@ class GamesAthleteTest {
             @DisplayName("GameScore required game not assigned. Throws IllegalGameException")
             void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameException() {
 
-                assertThrows(IllegalGameException.class, () -> _athlete.getGameScore(_game2) );
+                assertThrows(IllegalGameException.class, () -> _athlete.getGameScore(_game2));
             }
 
             @Test
             @DisplayName("GameScore required game not assigned. Throws IllegalGameException")
             void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameExceptionMessage() {
 
-                Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.getGameScore(_game2) );
+                Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.getGameScore(_game2));
                 String expected = String.format("%s : %s not assigned to game %s : %s ",
                         _athlete.getId(),
                         _athlete.getName(),
@@ -169,58 +168,48 @@ class GamesAthleteTest {
         }
 
     }
-
 
     @Nested
-    @DisplayName("'getGamesTime' method tests")
-    class getGameTimeTests{
+    @DisplayName("'GetGameTime' exception tests")
+    class getGameTimeThrows {
+
+        @Mock
+        private OzlGame _game2;
 
         @BeforeEach
-        void athleteCompete(){
+        void initParticipation2() {
             _athlete.compete(_participation);
+            MockitoAnnotations.initMocks(this);
+            when(_game2.getGameSport()).thenReturn(GameSports.cycling);
+            when(_game2.getId()).thenReturn("CY02");
         }
 
-        @Nested
-        @DisplayName("'GetGameTime' exception tests")
-        class getGameTimeThrows{
+        @Test
+        @DisplayName("'GetGameTime' required game not assigned. Throws IllegalGameException")
+        void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameException() {
 
-            private OzlGame _game2;
-
-            @BeforeEach
-            void initParticipation2(){
-                _game2 = mock(OzlGame.class);
-                when(_game2.getGameSport()).thenReturn(GameSports.cycling);
-                when(_game2.getId()).thenReturn("CY02");
-            }
-
-            @Test
-            @DisplayName("'GetGameTime' required game not assigned. Throws IllegalGameException")
-            void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameException() {
-
-                assertThrows(IllegalGameException.class, () -> _athlete.getGameTime(_game2) );
-            }
-
-            @Test
-            @DisplayName("'GetGameTime' required game not assigned. Throws IllegalGameException")
-            void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameExceptionMessage() {
-
-                Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.getGameTime(_game2) );
-                String expected = String.format("%s : %s not assigned to game %s : %s ",
-                        _athlete.getId(),
-                        _athlete.getName(),
-                        _game2.getId(),
-                        GamesHelperFunctions.firsLetterToUpper(_game.getGameSport().toString()));
-
-                assertEquals(expected, exception.getMessage());
-            }
-
+            assertThrows(IllegalGameException.class, () -> _athlete.getGameTime(_game2));
         }
 
+        @Test
+        @DisplayName("'GetGameTime' required game not assigned. Throws IllegalGameException assert Message")
+        void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameExceptionMessage() {
+
+            Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.getGameTime(_game2));
+            String expected = String.format("%s : %s not assigned to game %s : %s ",
+                    _athlete.getId(),
+                    _athlete.getName(),
+                    _game2.getId(),
+                    GamesHelperFunctions.firsLetterToUpper(_game.getGameSport().toString()));
+
+            assertEquals(expected, exception.getMessage());
+        }
     }
 
+
     private class GamesAthleteWithAthleteType extends GamesAthlete {
-        GamesAthleteWithAthleteType(AthleteType _athleteType){
-            super(GamesAthlete.idPrefix(_athleteType)+"01", "Foo Bar", 25, "Victoria", _athleteType );
+        GamesAthleteWithAthleteType(AthleteType _athleteType) {
+            super(GamesAthlete.idPrefix(_athleteType) + "01", "Foo Bar", 25, "Victoria", _athleteType);
         }
     }
 }
