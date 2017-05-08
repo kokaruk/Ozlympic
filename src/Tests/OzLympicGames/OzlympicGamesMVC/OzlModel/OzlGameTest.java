@@ -3,14 +3,17 @@ package OzLympicGames.OzlympicGamesMVC.OzlModel;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.IOzlConfigRead;
 import OzLympicGames.OzlympicGamesMVC.OzlGamesData.modelPackageConfig;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ContainerExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.*;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -49,6 +52,8 @@ class OzlGameTest {
         @Mock GamesAthlete superAthlete1;
         @Mock GamesOfficial referee;
 
+        List<GamesAthlete> testAthletes = new ArrayList<>();
+
         ArgumentCaptor<Integer> argInt;
         ArgumentCaptor<OzlParticipation> argParticipation;
 
@@ -68,14 +73,17 @@ class OzlGameTest {
             when(sprinter1.getAthleteType()).thenReturn(AthleteType.sprinter);
             doNothing().when(sprinter1).setTotalPoints(argInt.capture());
             testGame.addParticipant(sprinter1);
+            when(sprinter1.compete(argParticipation.capture())).thenReturn(12.05);
             // sprinter2
             when(sprinter2.getAthleteType()).thenReturn(AthleteType.sprinter);
             doNothing().when(sprinter2).setTotalPoints(argInt.capture());
             testGame.addParticipant(sprinter2);
+            when(sprinter2.compete(argParticipation.capture())).thenReturn(13.05);
             // superAthlete1
             when(superAthlete1.getAthleteType()).thenReturn(AthleteType.superAthlete);
             doNothing().when(superAthlete1).setTotalPoints(argInt.capture());
             testGame.addParticipant(superAthlete1);
+            when(superAthlete1.compete(argParticipation.capture())).thenReturn(14.05);
             // referee
             doNothing().when(referee).awardPoints(testGame);
             testGame.addParticipant(referee);
@@ -83,7 +91,7 @@ class OzlGameTest {
 
         @DisplayName("Make participants compete assert game status is played")
         @Test
-        void gamePlay_allCorrect_gamPlayedTrue(){
+        void gamePlay_allCorrect_gamePlayedTrue(){
             // assert is new game before compete
             assertFalse(testGame.isGamePlayed());
             testGame.gamePlay();
@@ -91,9 +99,60 @@ class OzlGameTest {
             assertTrue(testGame.isGamePlayed());
         }
 
+        @DisplayName("Make participants compete verify compete method is called")
+        @Test
+        void gamePlay_allCorrect_SuperAthleteAsArgument(){
+            testGame.gamePlay();
+            verify(superAthlete1).compete(argParticipation.capture());
+            verify(superAthlete1, times(1)).compete(argParticipation.getValue());
 
+            assertEquals(superAthlete1, argParticipation.getValue().gamesAthlete);
+        }
+
+        @DisplayName("Make participants compete verify referee award points is called")
+        @Test
+        void gamePlay_allCorrect_RefereeAwardPoints(){
+            testGame.gamePlay();
+
+            verify(referee, times(1)).awardPoints(testGame);
+        }
+
+        @Nested
+        @DisplayName("gamePlay exceptions tests")
+        class gamePlayExceptions {
+            @DisplayName("gamePlay throws NotEnoughAthletesException")
+            @Test
+            void gamePlay_NotEnoughAthletes_ThrowsNotEnoughAthletesException() {
+                when(configReaderMock.getConfigInt("MIN_PARTICIPANTS", modelPackageConfig.MODEL_COFIG_FILE)).thenReturn(4);
+                String GameSportsId = idBuilder(AthleteType.sprinter.getSport().iterator().next().name());
+                testGame = new OzlGame(GameSportsId);
+                testGame.addParticipant(sprinter1);
+                testGame.addParticipant(sprinter2);
+                testGame.addParticipant(superAthlete1);
+                Throwable exception = assertThrows(NotEnoughAthletesException.class, () -> testGame.gamePlay());
+                String expected = String.format("Not enough players to play the game %s : %s. Only %d Athletes recorded",
+                        testGame.getId(),
+                        GamesHelperFunctions.firsLetterToUpper(testGame.getGameSport().toString()),
+                        testGame.athletesCount());
+                assertEquals(expected, exception.getMessage());
+            }
+            @DisplayName("gamePlay throws NoRefereeException")
+            @Test
+            void gamePlay_NoReferee_ThrowsNoRefereeException() {
+                when(configReaderMock.getConfigInt("MIN_PARTICIPANTS", modelPackageConfig.MODEL_COFIG_FILE)).thenReturn(2);
+                String GameSportsId = idBuilder(AthleteType.sprinter.getSport().iterator().next().name());
+                testGame = new OzlGame(GameSportsId);
+                testGame.addParticipant(sprinter1);
+                testGame.addParticipant(sprinter2);
+                testGame.addParticipant(superAthlete1);
+                Throwable exception = assertThrows(NoRefereeException.class, () -> testGame.gamePlay());
+                String expected = String.format("No referee in game %s : %s",
+                        testGame.getId(),
+                        GamesHelperFunctions.firsLetterToUpper(testGame.getGameSport().toString()));
+                assertEquals(expected, exception.getMessage());
+            }
+        }
     }
-
 
     private String idBuilder(String sportName) {
         return sportName.substring(0, 2).toUpperCase() + "01";
