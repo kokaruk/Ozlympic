@@ -15,8 +15,6 @@ import java.util.Set;
  * @since 24/04/17
  */
 public abstract class GamesParticipant {
-    private final int MIN_AGE;
-    private final int MAX_AGE;
 
     // Participant ID.
     private final String _id;
@@ -34,8 +32,8 @@ public abstract class GamesParticipant {
         // if illegal state, throw
         if (!validState(_state)) throw new IllegalAustralianStateException(_state);
         IOzlConfigRead configReader = GamesHelperFunctions.getConfigReader();
-        MIN_AGE = configReader.getConfigInt("MIN_AGE", modelPackageConfig.MODEL_COFIG_FILE);
-        MAX_AGE = configReader.getConfigInt("MAX_AGE", modelPackageConfig.MODEL_COFIG_FILE);
+        int MIN_AGE = configReader.getConfigInt("MIN_AGE", modelPackageConfig.MODEL_COFIG_FILE);
+        int MAX_AGE = configReader.getConfigInt("MAX_AGE", modelPackageConfig.MODEL_COFIG_FILE);
         if (_age < MIN_AGE || _age > MAX_AGE) throw new IlleagalAgeException();
         this._id = _id;
         this._name = _name;

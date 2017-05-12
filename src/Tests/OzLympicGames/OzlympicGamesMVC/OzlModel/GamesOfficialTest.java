@@ -120,11 +120,6 @@ class GamesOfficialTest {
         }
     }
 
-
-    @Test
-    void getGameScore() {
-    }
-
     private List<GamesAthlete> listOfWinners(Set<OzlParticipation> participationSet){
 
         // mock list of winners

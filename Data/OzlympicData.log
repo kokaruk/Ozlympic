@@ -1,0 +1,6 @@
+/*C4*/SET SCHEMA PUBLIC
+set schema PUBLIC
+INSERT INTO PARTICIPANTS VALUES(2,'Foo Bar',22,'Victoria','superAthlete')
+COMMIT
+/*C5*/SET SCHEMA PUBLIC
+set schema PUBLIC
