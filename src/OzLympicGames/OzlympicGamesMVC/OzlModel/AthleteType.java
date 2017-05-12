@@ -4,8 +4,8 @@ import java.util.EnumSet;
 import java.util.Set;
 
 /**
- * Created by dimi on 10/3/17.
- * Enumerator for athlete type
+ * Enumeration of athlete type.
+ * @author dimz
  */
 public enum AthleteType {
     swimmer(EnumSet.of(GameSports.swimming)),
@@ -13,7 +13,6 @@ public enum AthleteType {
     sprinter(EnumSet.of(GameSports.running)),
     superAthlete(EnumSet.allOf(GameSports.class));
 
-    // enum accessors
     private final Set<GameSports> sports;
 
     // constructor
@@ -21,6 +20,11 @@ public enum AthleteType {
         this.sports = sports;
     }
 
+    /**
+     * Gets collection of sport related to athlete type.
+     * @return EnumSet of GameSports
+     * @see GameSports
+     */
     public Set<GameSports> getSport() {
         return sports;
     }

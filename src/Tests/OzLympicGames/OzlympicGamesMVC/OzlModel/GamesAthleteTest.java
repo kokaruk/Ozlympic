@@ -152,7 +152,7 @@ class GamesAthleteTest {
             }
 
             @Test
-            @DisplayName("GameScore required game not assigned. Throws IllegalGameException")
+            @DisplayName("GameScore required game not assigned. Throws IllegalGameException Message check")
             void getGameScore_athleteNoAssignedToTheGame_ThrowsIllegalGameExceptionMessage() {
 
                 Throwable exception = assertThrows(IllegalGameException.class, () -> _athlete.getGameScore(_game2));

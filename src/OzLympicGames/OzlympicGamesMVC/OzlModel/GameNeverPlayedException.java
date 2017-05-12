@@ -1,6 +1,7 @@
 package OzLympicGames.OzlympicGamesMVC.OzlModel;
 
 /**
+ * Exception thrown when referee attempts to get game winners for a game that never run
  * @author dimz
  * @since 25/4/17.
  */
