@@ -1,4 +1,3 @@
-
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -6,3 +5,9 @@
 # IntelliJ
 out/
 JavaDoc/
+
+# Integration Testing, trialing  frameworks
+quicktests/
+
+#logs
+logs/
