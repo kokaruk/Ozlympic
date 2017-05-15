@@ -1,5 +1,6 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 /**
  * Thrown if attemted to invoke methods without established association between classes
  *

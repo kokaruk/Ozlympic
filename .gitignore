@@ -7,7 +7,8 @@ out/
 JavaDoc/
 
 # Integration Testing, trialing  frameworks
-quicktests/
+quick_integration_tests/
+database_connection_test.java
 
 #logs
 logs/

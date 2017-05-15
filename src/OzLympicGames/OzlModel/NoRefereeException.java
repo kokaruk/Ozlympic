@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 /**
  * Thrown if game attempting to run a game without assigner referee
  *

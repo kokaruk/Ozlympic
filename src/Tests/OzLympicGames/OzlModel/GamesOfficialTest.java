@@ -1,5 +1,6 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 import java.util.*;

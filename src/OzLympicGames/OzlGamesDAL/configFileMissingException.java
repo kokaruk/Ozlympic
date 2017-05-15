@@ -1,4 +1,4 @@
-package OzLympicGames.OzlGamesDAO;
+package OzLympicGames.OzlGamesDAL;
 
 import java.io.FileNotFoundException;
 
@@ -12,7 +12,7 @@ public class configFileMissingException extends FileNotFoundException {
 
     public configFileMissingException(String missingFile) {
         super(String.format("\033[31mConfig file %s doesn't exist in " +
-                "OzLympicGames/OzLympicGamesMVC/OzlGamesDAO \r\n" +
+                "OzLympicGames/OzLympicGamesMVC/OzlGamesDAL \r\n" +
                 "make sure to transfer to compile folder from sources", missingFile));
     }
 }

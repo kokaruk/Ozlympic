@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 /**
  * Exception thrown when referee attempts to get game winners for a game that never run.
  *

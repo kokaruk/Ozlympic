@@ -1,7 +1,7 @@
-package OzLympicGames.OzlModel;
+package OzLympicGames;
 
-import OzLympicGames.OzlGamesDAO.IOzlConfigRead;
-import OzLympicGames.OzlGamesDAO.OzlConfigRead;
+import OzLympicGames.OzlGamesDAL.IOzlConfigRead;
+import OzLympicGames.OzlGamesDAL.OzlConfigRead;
 
 import java.util.Random;
 
@@ -27,7 +27,7 @@ public final class GamesHelperFunctions {
      * @param max Maximum bound
      * @return random double
      */
-    static double getRandomDoubleInRange(int min, int max) {
+    public static double getRandomDoubleInRange(int min, int max) {
         return min + new Random().nextDouble() * (max - min);
     }
 
@@ -37,7 +37,7 @@ public final class GamesHelperFunctions {
      * @param myString expects an instance of string
      * @return string with capitalised first letter
      */
-    static String firsLetterToUpper(String myString) {
+    public static String firsLetterToUpper(String myString) {
         return Character.toUpperCase(myString.charAt(0)) + myString.substring(1);
     }
 
@@ -48,17 +48,40 @@ public final class GamesHelperFunctions {
      * @see IOzlConfigRead
      * @see OzlConfigRead
      */
-    static IOzlConfigRead getConfigReader() {
+    public static IOzlConfigRead getConfigReader() {
         return customReader != null ? customReader : OzlConfigRead.getInstance();
     }
 
     /**
-     * Protected method to Override instance of properties reader, used for UnitTest dependency injections
+     * Method to Override instance of properties reader, used for UnitTest dependency injections
      * In reality should be removed from production code
      *
      * @param customReader expects a fake implementation of properties reader interface.
      */
-    static void setCustomReader(IOzlConfigRead customReader) {
+    public static void setCustomReader(IOzlConfigRead customReader) {
         GamesHelperFunctions.customReader = customReader;
     }
+
+    /**
+     * Build string of ? for sql, list of wildcards
+     * @param wildCards count of wildcards for sql string
+     * @return string of comma separated '?'
+     */
+    public static String buildWildCards(int wildCards){
+        StringBuilder w = new StringBuilder();
+        for (int i = 0; i<wildCards; i++){
+            w.append( i == 0 ? "?" : ",?");
+        }
+        return w.toString();
+    }
+
+    public static String selectColumnWildCardBuilder(String columns){
+        String[] columnsArray = columns.split(",[ ]*");
+        StringBuilder c = new StringBuilder();
+        for (int i = 0; i < columnsArray.length; i++){
+            c.append(i==0 ? columnsArray[i] + "=? " : "AND " + columnsArray[i] + "=? ");
+        }
+        return c.toString();
+    }
+
 }

@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 /**
  * Thrown if attempting to assign a game which already has met maximum allowed players threshold
  *

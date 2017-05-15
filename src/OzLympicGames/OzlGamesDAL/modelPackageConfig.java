@@ -1,4 +1,4 @@
-package OzLympicGames.OzlGamesDAO;
+package OzLympicGames.OzlGamesDAL;
 
 /**
  * Module-like object with reference to properties file with parameters for games.

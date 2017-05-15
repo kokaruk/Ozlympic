@@ -2,5 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/151b395f-ceb4-4337-bdf6-8c7c7bf3162d/console.sql" dialect="GenericSQL" />
+    <file url="PROJECT" dialect="HSQLDB" />
   </component>
 </project>

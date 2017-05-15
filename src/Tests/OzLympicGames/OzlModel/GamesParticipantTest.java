@@ -1,8 +1,9 @@
 package OzLympicGames.OzlModel;
 
 
-import OzLympicGames.OzlGamesDAO.IOzlConfigRead;
-import OzLympicGames.OzlGamesDAO.modelPackageConfig;
+import OzLympicGames.GamesHelperFunctions;
+import OzLympicGames.OzlGamesDAL.IOzlConfigRead;
+import OzLympicGames.OzlGamesDAL.modelPackageConfig;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;

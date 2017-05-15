@@ -1,7 +1,8 @@
 package OzLympicGames.OzlModel;
 
-import OzLympicGames.OzlGamesDAO.IOzlConfigRead;
-import OzLympicGames.OzlGamesDAO.modelPackageConfig;
+import OzLympicGames.GamesHelperFunctions;
+import OzLympicGames.OzlGamesDAL.IOzlConfigRead;
+import OzLympicGames.OzlGamesDAL.modelPackageConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

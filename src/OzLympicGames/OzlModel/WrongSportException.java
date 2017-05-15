@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 /**
  * Thrown when attempting to associate an athlete to a game with sport
  * Created by dimz on 27/4/17.

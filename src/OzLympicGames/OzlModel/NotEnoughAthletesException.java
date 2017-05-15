@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 /**
  * Thrown if attempting to run a game that doesn't meet minimum players threshold
  *

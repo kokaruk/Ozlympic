@@ -1,4 +1,4 @@
-package OzLympicGames.OzlGamesDAO;
+package OzLympicGames.OzlGamesDAL;
 
 /**
  * Interface for Config file Reader.

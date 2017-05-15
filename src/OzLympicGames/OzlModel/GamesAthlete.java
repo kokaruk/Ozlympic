@@ -1,5 +1,7 @@
 package OzLympicGames.OzlModel;
 
+import OzLympicGames.GamesHelperFunctions;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +25,7 @@ public class GamesAthlete extends GamesParticipant {
      * @param _athleteType type of athlete
      * @see AthleteType
      */
-    GamesAthlete(String _id, String _name, int _age, String _state, AthleteType _athleteType) {
+    public GamesAthlete(String _id, String _name, int _age, String _state, AthleteType _athleteType) {
         super(_id, _name, _age, _state);
         this._athleteType = _athleteType;
     }
