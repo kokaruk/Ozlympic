@@ -22,4 +22,14 @@ public interface IOzlConfigRead {
      * @throws configFileMissingException if passed URI doesn't exist
      */
     String getConfigString(String myPropertyName, String myPropFile) throws configFileMissingException;
+
+    /*/**
+     * Write to properties file
+     * @param myPropertyName property name
+     * @param myPropValue value
+     * @param myPropFile file name
+     * @throws configFileMissingException if file is missing
+     */ /*
+    void setConfigString(String myPropertyName, String myPropValue, String myPropFile) throws IOException;
+    */
 }

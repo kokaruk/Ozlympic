@@ -32,7 +32,7 @@
       <DataType>VARCHAR(15)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="15" parent="6" name="SYS_PK_10102">
+    <key id="15" parent="6" name="SYS_PK_10105">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
@@ -60,7 +60,7 @@
       <Position>5</Position>
       <DataType>INTEGER(32)|4</DataType>
     </column>
-    <key id="21" parent="7" name="SYS_PK_10124">
+    <key id="21" parent="7" name="SYS_PK_10127">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
@@ -69,7 +69,7 @@
       <ColNames>ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>GAMES</RefTableName>
-      <RefKeyName>SYS_PK_10102</RefKeyName>
+      <RefKeyName>SYS_PK_10105</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
     <foreign-key id="23" parent="7" name="GAMES_ATHLETES_PARTICIPANTS_ID_FK">
@@ -95,17 +95,17 @@
       <DataType>INTEGER(32)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="27" parent="8" name="SYS_PK_10110">
+    <key id="27" parent="8" name="SYS_PK_10113">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="28" parent="8" name="SYS_FK_10113">
+    <foreign-key id="28" parent="8" name="SYS_FK_10116">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>REF_ID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>GAMES</RefTableName>
-      <RefKeyName>SYS_PK_10102</RefKeyName>
+      <RefKeyName>SYS_PK_10105</RefKeyName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
     <column id="29" parent="9" name="ID">

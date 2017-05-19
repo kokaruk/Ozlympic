@@ -4,8 +4,7 @@ package OzLympicGames.OzlGamesDAL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -63,22 +62,37 @@ public final class OzlConfigRead implements IOzlConfigRead {
     @Override
     public String getConfigString(String myPropertyName, String myPropFile) throws configFileMissingException {
         Properties myProp = new Properties();
-        InputStream in = getClass().getResourceAsStream(myPropFile);
-        String myPropertyString = "";
-        try {
+
+        String myPropertyString;
+        try (InputStream in = getClass().getResourceAsStream(myPropFile) ){
             myProp.load(in);
-            in.close();
             myPropertyString = myProp.getProperty(myPropertyName);
         } catch (IOException ex) {
-            System.err.println(
-                    String.format("Unknown issue accessing config file. See if %s exist in " +
-                            "OzLympicGames/OzLympicGamesMVC/OzlModel", myPropFile)
-            );
-            ex.printStackTrace();
-        } catch (Exception E) {
-            logger.fatal("Missing config file " + myPropFile);
-            throw new configFileMissingException(myPropFile);
+            logger.fatal(ex.getMessage());
+            throw new configFileMissingException(String.format("Unknown issue accessing config file. See if %s exist in " +
+                    "OzLympicGames/OzLympicGamesMVC/OzlModel", myPropFile));
+
         }
         return myPropertyString;
     }
+/*
+    /**
+     * Write to properties file
+     * @param myPropertyName property name
+     * @param myPropValue value
+     * @param myPropFile file name
+     * @throws configFileMissingException if file is missing
+     */
+ /*   @Override
+    public void setConfigString(String myPropertyName, String myPropValue, String myPropFile) throws IOException {
+        Properties myProp = new Properties();
+        try (InputStream in = new FileInputStream(myPropFile)) {
+            myProp.load(in);
+        }
+        myProp.setProperty(myPropertyName, myPropValue);
+        try (Writer w = new FileWriter(myPropFile)) {
+            myProp.store(w, "");
+        }
+    }
+    */
 }

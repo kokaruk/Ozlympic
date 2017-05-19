@@ -1,36 +1,53 @@
 package OzLympicGames.OzlGamesDAL;
 
+import OzLympicGames.OzlModel.AthleteType;
+import OzLympicGames.OzlModel.GamesAthlete;
+
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Util methods to read / write CSV files
- * honestly copy/pasted with some modifications from
+ * parseLine copy/pasted with some heavy modifications from
  * https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/
  * https://agiletribe.wordpress.com/2012/11/23/the-only-class-you-need-for-csv-files/
- * @author unknown
+ * replace try-catch-finally with Java 7 try-with-resources
+ * Java 8 to read & write to files
+ *
+ * @author Dimz
  * @since 14/5/17.
  */
 public class CSVUtils {
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DEFAULT_QUOTE = '"';
-    private CSVUtils(){}
-/*
-    public static void main(String[] args) throws Exception {
 
-        String csvFile = "/Users/mkyong/csv/country2.csv";
-
-        Scanner scanner = new Scanner(new FileInputStream(csvFile));
-        while (scanner.hasNext()) {
-            List<String> line = parseLine(scanner.nextLine());
-            System.out.println("Country [id= " + line.get(0) + ", code= " + line.get(1) + " , name=" + line.get(2) + "]");
-        }
-        scanner.close();
-
+    private CSVUtils() {
     }
-*/
+
+    /*
+        public static void main(String[] args) throws Exception {
+
+            String csvFile = "/Users/mkyong/csv/country2.csv";
+
+            Scanner scanner = new Scanner(new FileInputStream(csvFile));
+            while (scanner.hasNext()) {
+                List<String> line = parseLine(scanner.nextLine());
+                System.out.println("Country [id= " + line.get(0) + ", code= " + line.get(1) + " , name=" + line.get(2) + "]");
+            }
+            scanner.close();
+
+        }
+    */
     public static List<String> parseLine(String cvsLine) {
         return parseLine(cvsLine, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
     }
@@ -123,25 +140,77 @@ public class CSVUtils {
         return result;
     }
 
-    public static void writeLine(Writer w, List<String> values) throws IOException
-    {
-        boolean firstVal = true;
-        for (String val : values)  {
-            if (!firstVal) {
-                w.write(DEFAULT_SEPARATOR);
-            }
-            w.write(DEFAULT_QUOTE);
-            for (int i=0; i<val.length(); i++) {
-                char ch = val.charAt(i);
-                if (ch==DEFAULT_QUOTE) {
-                    w.write(DEFAULT_QUOTE);  //extra quote
+    static void writeLine(List<String> values, String filename) throws IOException {
+        try (Writer w = new FileWriter(filename, true)) {
+            boolean firstVal = true;
+            for (String val : values) {
+                if (!firstVal) {
+                    w.write(DEFAULT_SEPARATOR);
                 }
-                w.write(ch);
+                w.write(DEFAULT_QUOTE);
+                for (int i = 0; i < val.length(); i++) {
+                    char ch = val.charAt(i);
+                    if (ch == DEFAULT_QUOTE) {
+                        w.write(DEFAULT_QUOTE);  //extra quote
+                    }
+                    w.write(ch);
+                }
+                w.write(DEFAULT_QUOTE);
+                firstVal = false;
             }
-            w.write(DEFAULT_QUOTE);
-                    firstVal = false;
+            w.write("\r\n");
         }
-        w.write("\r\n");
+    }
+
+    static boolean findBrokenID(String CSV_PATH, String BD_ERR_ID){
+        // check if csv file has unpopulated entries, and fix
+        Path path = Paths.get(CSV_PATH);
+        try (Stream<String> lines = Files.lines(path)) {
+            return lines.anyMatch(s -> s.contains(BD_ERR_ID));
+        } catch (IOException ex) {
+            // do nothing
+        }
+        return true;
+    }
+
+    static void fixBrokenID(String CSV_PATH, String BD_ERR_ID, String TABLE_NAME, String COLUMN_NAMES) throws IOException
+    {
+        Path path = Paths.get(CSV_PATH);
+        List<String> lines = Files.readAllLines(path);
+        try (PrintWriter output = new PrintWriter(CSV_PATH, "UTF-8")) {
+            lines.stream()
+                    .filter(Objects::nonNull)
+                    .forEachOrdered(s -> {
+                        if (s.contains(BD_ERR_ID)) {
+                            List<String> SCVline = parseLine(s);
+                            /*
+                            // List to String Array
+                            Set<String> set = saved.getAll().keySet();
+                            String[] mystring = set.toArray(new String[set.size()]);
+                             */
+                            /*
+                            Java 8
+                            // list of strings to string
+                            List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
+                            String commaSeparatedNumbers = numbers.stream()
+                                    .map(i -> i.toString())
+                                    .collect(Collectors.joining(", "));
+                             */
+                            String paramsVals = SCVline.subList(1, SCVline.size())
+                                    .stream()
+                                    .collect(Collectors.joining(","));
+                            try{
+                                Integer idNum = ConnectionFactory.insertStatement(TABLE_NAME, COLUMN_NAMES, paramsVals);
+                                AthleteType type = AthleteType.valueOf("swimmer");
+                                String ID = GamesAthlete.idPrefix(type) + String.format("S%04d", idNum);
+                                s = s.replace(BD_ERR_ID, ID);
+                            } catch (Exception e) {
+                                //do nothing
+                            }
+                        }
+                    output.println(s);
+                    });
+        }
     }
 
 }

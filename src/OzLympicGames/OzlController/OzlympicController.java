@@ -1,5 +1,6 @@
 package OzLympicGames.OzlController;
 
+import OzLympicGames.GamesHelperFunctions;
 import OzLympicGames.OzlGamesDAL.AthleteDAO;
 import OzLympicGames.OzlGamesDAL.IAthleteDAO;
 import OzLympicGames.OzlModel.AthleteType;
@@ -20,10 +21,10 @@ public class OzlympicController {
         IAthleteDAO athleteDAO = AthleteDAO.getInstance();
 
         GamesAthlete athl;
-        String name = "Foo Bar 2";
-        int age = 23;
-        String state = "Victoria";
-        AthleteType type = AthleteType.cyclist;
+        String name = GamesHelperFunctions.getRandomName();
+        int age = GamesHelperFunctions.getRandomAge();
+        String state = GamesHelperFunctions.getRandomState();
+        AthleteType type = GamesHelperFunctions.getRandomAthleteType();
         try {
             athl = athleteDAO.getNewAthlete(name, age, state, type);
             logger.trace("New Athl OK");

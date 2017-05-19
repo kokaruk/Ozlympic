@@ -7,6 +7,7 @@ package OzLympicGames.OzlGamesDAL;
  */
 public final class modelPackageConfig {
     public static final String MODEL_CONFIG_FILE = "config.properties";
+    public static final String COUNTERS_COUNFIG_FILE = "counters.properties";
     // private constructor
     private modelPackageConfig(){};
 }

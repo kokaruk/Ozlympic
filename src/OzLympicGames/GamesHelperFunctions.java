@@ -2,7 +2,15 @@ package OzLympicGames;
 
 import OzLympicGames.OzlGamesDAL.IOzlConfigRead;
 import OzLympicGames.OzlGamesDAL.OzlConfigRead;
+import OzLympicGames.OzlGamesDAL.configFileMissingException;
+import OzLympicGames.OzlGamesDAL.modelPackageConfig;
+import OzLympicGames.OzlModel.AthleteType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -13,8 +21,20 @@ import java.util.Random;
  * @since 12/3/17
  */
 public final class GamesHelperFunctions {
-
+    private static Logger logger = LogManager.getLogger();
     static private IOzlConfigRead customReader;
+    private static List<String> randomNames;
+    private static String REGEX_SPLIT_OPTION;
+    static {
+        try {
+            REGEX_SPLIT_OPTION = getConfigReader().getConfigString("REGEX_SPLIT_OPTION", modelPackageConfig.MODEL_CONFIG_FILE);;
+        } catch (configFileMissingException e) {
+            logger.fatal(e.getMessage());
+            System.exit(1);
+        }
+
+        randomNames = new LinkedList<>();
+    }
 
     // private constructor, to avoid instantiation
     private GamesHelperFunctions() {
@@ -62,26 +82,73 @@ public final class GamesHelperFunctions {
         GamesHelperFunctions.customReader = customReader;
     }
 
-    /**
-     * Build string of ? for sql, list of wildcards
-     * @param wildCards count of wildcards for sql string
-     * @return string of comma separated '?'
-     */
-    public static String buildWildCards(int wildCards){
-        StringBuilder w = new StringBuilder();
-        for (int i = 0; i<wildCards; i++){
-            w.append( i == 0 ? "?" : ",?");
-        }
-        return w.toString();
+    public static String getRandomState() {
+        String[] ausssieStates = new String[]{"Australian Capital Territory", "New South Wales",
+                "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory"};
+        int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, ausssieStates.length - 1);
+        return ausssieStates[randomArrayIndex];
     }
 
-    public static String selectColumnWildCardBuilder(String columns){
-        String[] columnsArray = columns.split(",[ ]*");
-        StringBuilder c = new StringBuilder();
-        for (int i = 0; i < columnsArray.length; i++){
-            c.append(i==0 ? columnsArray[i] + "=? " : "AND " + columnsArray[i] + "=? ");
-        }
-        return c.toString();
+    public static AthleteType getRandomAthleteType() {
+        int randomArrayIndex = GamesHelperFunctions.getRandomNumberInRange(0, AthleteType.values().length - 1);
+        return AthleteType.values()[randomArrayIndex];
     }
+
+    private static int getRandomNumberInRange(int min, int max) {
+        return new Random().nextInt((max - min) + 1) + min;
+    }
+
+    public static int getRandomAge() {
+        int minAge = getConfigReader().getConfigInt("MIN_AGE", modelPackageConfig.MODEL_CONFIG_FILE);
+        int maxAge = getConfigReader().getConfigInt("MAX_AGE", modelPackageConfig.MODEL_CONFIG_FILE);
+        return getRandomNumberInRange(minAge, maxAge);
+    }
+
+    public static String getRandomName() {
+        //see if random names list has names, return any
+        if (randomNames.size() > 0) {
+            int randomArrayIndex = getRandomNumberInRange(0, randomNames.size() - 1);
+            String randomName = randomNames.get(randomArrayIndex);
+            randomNames.remove(randomArrayIndex); //remove name to avoid duplicates
+            return randomName;
+        } else {   // looks like run out of names, lets repopulate
+            // read names list and recursive call to self
+            try {
+                randomNames = new LinkedList<>(Arrays.asList(
+                        getConfigReader().getConfigString("names", modelPackageConfig.MODEL_CONFIG_FILE)
+                                .split(REGEX_SPLIT_OPTION))
+                );
+            } catch (configFileMissingException err) {
+                logger.fatal(err.getMessage());
+                return null;
+            }
+            return getRandomName();
+        }
+    }
+/*
+    /**
+     * Reads global counter if database is not present, required for id generation
+     * @param counterName filename with counter
+     * @return integer stored in file
+     * @throws IOException
+     * @throws NumberFormatException
+     */
+ /*   public static int readGlobalCounter(String counterName) throws IOException, NumberFormatException {
+        String num = new String(Files.readAllBytes(Paths.get(counterName)));
+        return Integer.parseInt(num);
+    }
+
+    /**
+     * Add global counter if database not present
+     * @param counterName
+     * @param counter
+     * @throws IOException
+     */
+/*    public static void setGlobalCounter(String counterName, Integer counter) throws IOException {
+        List<String> lines = new ArrayList<>();
+        lines.add(counter.toString());
+        Files.write(Paths.get(counterName), lines);
+    }
+*/
 
 }

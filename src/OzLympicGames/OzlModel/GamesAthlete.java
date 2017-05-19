@@ -32,11 +32,10 @@ public class GamesAthlete extends GamesParticipant {
 
     /**
      * Static method to build prefix for athlete id.
-     *
      * @param athleteType - type of this athlete
      * @return string of id
      */
-    static String idPrefix(AthleteType athleteType) {
+    public static String idPrefix(AthleteType athleteType) {
         return athleteType.name().substring(0, 3).toUpperCase();
     }
 
