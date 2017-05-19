@@ -25,9 +25,14 @@ public class GamesAthlete extends GamesParticipant {
      * @param _athleteType type of athlete
      * @see AthleteType
      */
-    public GamesAthlete(String _id, String _name, int _age, String _state, AthleteType _athleteType) {
+    public GamesAthlete(Integer _id, String _name, int _age, String _state, String _athleteType) {
         super(_id, _name, _age, _state);
-        this._athleteType = _athleteType;
+        this._athleteType = AthleteType.valueOf(_athleteType);
+    }
+
+    @Override
+    public String getId() {
+        return idPrefix(_athleteType) + String.format("%04d", get_id());
     }
 
     /**
@@ -36,7 +41,7 @@ public class GamesAthlete extends GamesParticipant {
      * @return string of id
      */
     public static String idPrefix(AthleteType athleteType) {
-        return athleteType.name().substring(0, 3).toUpperCase();
+        return athleteType.name().substring(0, 2).toUpperCase();
     }
 
     /**

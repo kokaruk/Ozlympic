@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
-
 /**
  * @author dimz
  * @since 14/5/17.
@@ -47,6 +46,7 @@ public class ConnectionFactory{
                 logger.error(e.getMessage());
                 con.rollback();
                 con.setAutoCommit(true);
+                throw e;
             }
             con.commit();
             con.setAutoCommit(true);

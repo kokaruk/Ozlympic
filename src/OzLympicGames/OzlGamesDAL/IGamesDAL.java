@@ -1,16 +1,19 @@
 package OzLympicGames.OzlGamesDAL;
 
 import OzLympicGames.OzlModel.GamesAthlete;
+import OzLympicGames.OzlModel.GamesOfficial;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Data access layer of Athlete class.
  * @author dimz
- * @since 11//05/17
+ * @since 19/5/17.
  */
-public interface IAthleteDAO {
+public interface IGamesDAL {
+
     GamesAthlete getNewAthlete(String name, Integer age, String state, String type)
+            throws SQLException, ClassNotFoundException, IOException;
+    GamesOfficial getNewReferee(String name, Integer age, String state)
             throws SQLException, ClassNotFoundException, IOException;
 }

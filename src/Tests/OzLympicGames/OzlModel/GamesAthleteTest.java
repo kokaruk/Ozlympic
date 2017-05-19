@@ -23,7 +23,7 @@ class GamesAthleteTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        _athlete = new GamesAthleteWithAthleteType(AthleteType.superAthlete);
+        _athlete = new GamesAthleteWithAthleteType(AthleteType.superAthlete.name());
         when(_game.getGameSport()).thenReturn(GameSports.cycling);
         when(_game.getId()).thenReturn("CY01");
         _participation = new OzlParticipation(_athlete, _game);
@@ -209,8 +209,8 @@ class GamesAthleteTest {
 
 
     private class GamesAthleteWithAthleteType extends GamesAthlete {
-        GamesAthleteWithAthleteType(AthleteType _athleteType) {
-            super(GamesAthlete.idPrefix(_athleteType) + "01", "Foo Bar", 25, "Victoria", _athleteType);
+        GamesAthleteWithAthleteType(String _athleteType) {
+            super(1, "Foo Bar", 25, "Victoria", _athleteType);
         }
     }
 }

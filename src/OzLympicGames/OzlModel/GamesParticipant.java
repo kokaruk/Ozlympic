@@ -21,7 +21,7 @@ public abstract class GamesParticipant {
 
     private static Logger logger = LogManager.getLogger();
     // Participant ID.
-    private final String _id;
+    private final Integer _id;
     // readOnly field for name
     private final String _name;
     // field and public getter for Age
@@ -36,7 +36,7 @@ public abstract class GamesParticipant {
      * @throws IllegalAustralianStateException if state string is not an australian state
      * @throws IllegalAgeException             when age f participant is out of permitted bounds
      */
-    public GamesParticipant(String _id, String _name, int _age, String _state) throws IllegalAustralianStateException,
+    public GamesParticipant(Integer _id, String _name, int _age, String _state) throws IllegalAustralianStateException,
             IllegalAgeException {
         // if illegal state, throw
         if (!validState(_state)) {
@@ -56,7 +56,8 @@ public abstract class GamesParticipant {
         this._state = _state;
     }
 
-    public String getId() {
+    public abstract String getId();
+    Integer get_id(){
         return _id;
     }
 

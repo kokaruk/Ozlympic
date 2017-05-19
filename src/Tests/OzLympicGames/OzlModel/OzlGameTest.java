@@ -258,7 +258,7 @@ class OzlGameTest {
         @DisplayName("Remove Athlete particiation size 0")
         @Test
         void removeAthleteParticipationO() {
-            GamesAthlete participant = spy(new GamesAthleteWithAthleteType(AthleteType.swimmer));
+            GamesAthlete participant = spy(new GamesAthleteWithAthleteType(AthleteType.swimmer.name()));
             String GameSportsId = idBuilder(participant.getAthleteType().getSport().iterator().next().name());
             testGame = new OzlGame(GameSportsId);
             testGame.addParticipant(participant);
@@ -270,7 +270,7 @@ class OzlGameTest {
         @DisplayName("Remove Athlete from game, assert participation passed as parameter has athlete")
         @Test
         void removeAthlete_participationParameterPassedContainsAthlete() {
-            GamesAthlete participant = spy(new GamesAthleteWithAthleteType(AthleteType.swimmer));
+            GamesAthlete participant = spy(new GamesAthleteWithAthleteType(AthleteType.swimmer.name()));
             ArgumentCaptor<OzlParticipation> arg = ArgumentCaptor.forClass(OzlParticipation.class);
 
             String GameSportsId = idBuilder(participant.getAthleteType().getSport().iterator().next().name());
@@ -299,8 +299,8 @@ class OzlGameTest {
 
 
         private class GamesAthleteWithAthleteType extends GamesAthlete {
-            GamesAthleteWithAthleteType(AthleteType _athleteType) {
-                super(GamesAthlete.idPrefix(_athleteType) + "01", "Foo Bar", 25, "Victoria", _athleteType);
+            GamesAthleteWithAthleteType(String _athleteType) {
+                super(1, "Foo Bar", 25, "Victoria", _athleteType);
             }
         }
 

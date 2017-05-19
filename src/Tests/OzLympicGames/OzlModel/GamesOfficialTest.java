@@ -25,7 +25,7 @@ class GamesOfficialTest {
         MockitoAnnotations.initMocks(this);
         when(_game.getGameSport()).thenReturn(GameSports.cycling);
         participationSet = new HashSet<>();
-        officialUnderTest = new GamesOfficial("OF01", "Foo Bar", 32, "Victoria");
+        officialUnderTest = new GamesOfficial(5, "Foo Bar", 32, "Victoria");
         officialUnderTest.setGame(_game);
         listOfWinners = listOfWinners(participationSet);
 
@@ -125,9 +125,9 @@ class GamesOfficialTest {
 
         // mock list of winners
         List<GamesAthlete> winners = new ArrayList<GamesAthlete>() {{
-            add(getAthlete("CY001"));
-            add(getAthlete("CY002"));
-            add(getAthlete("CY003"));
+            add(getAthlete(1));
+            add(getAthlete(2));
+            add(getAthlete(3));
         }};
 
         // make mock list athletes with participation assignment and set time for each assignment
@@ -142,8 +142,8 @@ class GamesOfficialTest {
         return winners;
     }
 
-    private GamesAthlete getAthlete(String _id) {
-        return new GamesAthlete(_id, "Foo Bar", 25, "Victoria", AthleteType.cyclist);
+    private GamesAthlete getAthlete(Integer _id) {
+        return new GamesAthlete(_id, "Foo Bar", 25, "Victoria", AthleteType.cyclist.name());
     }
 
 }

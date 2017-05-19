@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -199,18 +200,21 @@ public class CSVUtils {
                             String paramsVals = SCVline.subList(1, SCVline.size())
                                     .stream()
                                     .collect(Collectors.joining(","));
+
                             try{
                                 Integer idNum = ConnectionFactory.insertStatement(TABLE_NAME, COLUMN_NAMES, paramsVals);
                                 AthleteType type = AthleteType.valueOf("swimmer");
                                 String ID = GamesAthlete.idPrefix(type) + String.format("S%04d", idNum);
                                 s = s.replace(BD_ERR_ID, ID);
-                            } catch (Exception e) {
-                                //do nothing
+                            } catch (SQLException | ClassNotFoundException e) {
+                               s = null;
                             }
                         }
                     output.println(s);
                     });
         }
     }
+
+
 
 }

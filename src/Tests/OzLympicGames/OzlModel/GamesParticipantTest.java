@@ -97,11 +97,17 @@ class GamesParticipantTest {
     }
 
     private class ConcreteGamesParticipantClass extends GamesParticipant {
+
+        @Override
+        public String getId(){
+            return super.get_id().toString();
+        }
+
         ConcreteGamesParticipantClass(String _state){
-            super("ID", "Alex Foo", 25, _state);
+             super(1, "Alex Foo", 25, _state);
         }
         ConcreteGamesParticipantClass(int _age){
-            super("ID", "Alex Foo", _age, "Victoria");
+            super(1, "Alex Foo", _age, "Victoria");
         }
     }
 

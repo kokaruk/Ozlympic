@@ -21,8 +21,13 @@ public class GamesOfficial extends GamesParticipant {
     /**
      * Public constructor, passes all parameters to parent superclass.
      */
-    public GamesOfficial(String _id, String _name, int _age, String _state) {
+    public GamesOfficial(Integer _id, String _name, int _age, String _state) {
         super(_id, _name, _age, _state);
+    }
+
+    @Override
+    public String getId() {
+        return "RE" + String.format("%04d", get_id());
     }
 
     // add reference to the game
