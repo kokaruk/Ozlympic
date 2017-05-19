@@ -4,11 +4,3 @@
 
 # IntelliJ
 out/
-JavaDoc/
-
-# Integration Testing, trialing  frameworks
-quick_integration_tests/
-database_connection_test.java
-
-#logs
-logs/
