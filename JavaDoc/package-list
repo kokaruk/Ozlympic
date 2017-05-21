@@ -1,5 +1,5 @@
-OzLympicGames
-OzLympicGames.OzlController
-OzLympicGames.OzlGamesDAL
-OzLympicGames.OzlModel
+ozlympicgames
+ozlympicgames.ozlcontroller
+ozlympicgames.ozlmodel.dal
+ozlympicgames.ozlmodel
 quick_integration_tests

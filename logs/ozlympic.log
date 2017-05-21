@@ -1,287 +1,55 @@
-[ERROR] 2017-05-15 14:51:42.337 [main] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-15 04:51:41 heartbeat - read: -7298 ms.
-[ERROR] 2017-05-16 12:53:19.449 [main] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 02:53:18 heartbeat - read: -7224 ms.
-[FATAL] 2017-05-16 14:39:47.765 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 04:39:46 heartbeat - read: -2714 ms.
-[ERROR] 2017-05-16 14:45:38.380 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:45:38.383 [main] OzlympicController - null
-[ERROR] 2017-05-16 14:50:41.289 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:50:41.292 [main] OzlympicController - null
-[ERROR] 2017-05-16 14:51:47.373 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:51:47.375 [main] OzlympicController - null
-[ERROR] 2017-05-16 14:52:41.809 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:52:41.812 [main] OzlympicController - null
-[ERROR] 2017-05-16 14:53:49.063 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:54:25.566 [main] OzlympicController - null
-[ERROR] 2017-05-16 14:55:01.919 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:55:12.515 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 04:54:59 heartbeat - read: -5171 ms.
-[ERROR] 2017-05-16 14:55:57.812 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:57:11.092 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 04:55:52 heartbeat - read: -8811 ms.
-[ERROR] 2017-05-16 14:57:26.697 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 14:57:26.701 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 04:57:25 heartbeat - read: -1642 ms.
-[ERROR] 2017-05-16 15:36:22.579 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 15:36:22.582 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@d484e531[file =/Users/dimz/Documents/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 05:36:21 heartbeat - read: -1337 ms.
-[ERROR] 2017-05-16 16:42:09.683 [main] ConnectionFactory - Parameter not set
-[ERROR] 2017-05-16 16:42:57.358 [main] ConnectionFactory - Parameter not set
-[ERROR] 2017-05-16 16:44:33.764 [main] ConnectionFactory - Parameter not set
-[ERROR] 2017-05-16 20:11:29.704 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:11:29.716 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:11:29.719 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:11:29.723 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:11:29.794 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:11:29.797 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:11:29.800 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:11:29.805 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:11:50.566 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:11:50.569 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:19:10.108 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:19:10.116 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:19:10.125 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:19:10.131 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-16 20:19:10.252 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:19:10.256 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:19:10.258 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:19:10.270 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:19:10.272 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 20:19:10.274 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-16 23:54:17.162 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 23:54:17.191 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 13:54:15 heartbeat - read: -6975 ms.
-[ERROR] 2017-05-16 23:54:51.599 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-16 23:54:51.645 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 13:54:50 heartbeat - read: -1391 ms.
-[ERROR] 2017-05-17 00:00:32.889 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:00:32.925 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:00:31 heartbeat - read: -8039 ms.
-[FATAL] 2017-05-17 00:01:49.701 [main] OzlympicController - stream has already been operated upon or closed
-[FATAL] 2017-05-17 00:01:50.098 [main] OzlympicController - stream has already been operated upon or closed
-[FATAL] 2017-05-17 00:02:20.891 [main] OzlympicController - stream has already been operated upon or closed
-[ERROR] 2017-05-17 00:21:53.254 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:21:53.285 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:21:52 heartbeat - read: -3953 ms.
-[ERROR] 2017-05-17 00:23:30.154 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:23:30.372 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:23:29 heartbeat - read: -5582 ms.
-[ERROR] 2017-05-17 00:23:39.165 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:23:39.190 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:23:38 heartbeat - read: -4590 ms.
-[ERROR] 2017-05-17 00:23:40.190 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:23:40.209 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:23:39 heartbeat - read: -5614 ms.
-[ERROR] 2017-05-17 00:23:43.159 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:23:43.182 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:23:42 heartbeat - read: -8583 ms.
-[ERROR] 2017-05-17 00:26:11.336 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:26:11.368 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:26:10 heartbeat - read: -5857 ms.
-[ERROR] 2017-05-17 00:26:34.450 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:26:34.480 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:26:33 heartbeat - read: -9176 ms.
-[ERROR] 2017-05-17 00:27:20.196 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:27:20.197 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:27:19 heartbeat - read: -4920 ms.
-[ERROR] 2017-05-17 00:35:09.779 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:35:09.807 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:35:08 heartbeat - read: -3621 ms.
-[ERROR] 2017-05-17 00:45:11.959 [main] ConnectionFactory - data exception: invalid character value for cast
-[ERROR] 2017-05-17 00:45:11.960 [main] ConnectionFactory - Parameter not set
-[ERROR] 2017-05-17 00:46:25.397 [main] ConnectionFactory - data exception: invalid character value for cast
-[ERROR] 2017-05-17 00:46:25.398 [main] ConnectionFactory - Parameter not set
-[ERROR] 2017-05-17 00:47:45.784 [main] ConnectionFactory - data exception: invalid character value for cast
-[ERROR] 2017-05-17 00:47:45.784 [main] ConnectionFactory - Parameter not set
-[ERROR] 2017-05-17 00:54:37.140 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-17 00:54:37.171 [main] OzlympicController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@c86c8c8[file =/Volumes/Study Projects/Advanced Programming/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-16 14:54:36 heartbeat - read: -7596 ms.
-[ERROR] 2017-05-18 00:05:25.982 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-18 00:05:26.042 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-18 00:05:26.102 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-18 00:05:26.162 [main] GamesOfficial - GameNeverPlayedException thrown OF01
-[ERROR] 2017-05-18 00:05:26.224 [main] GamesOfficial - GameNeverPlayedException thrown OF01
-[ERROR] 2017-05-18 00:05:26.319 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-18 00:05:26.321 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-18 00:05:26.328 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-18 00:05:26.329 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-18 00:05:26.346 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-18 00:05:26.347 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-18 00:05:26.348 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-18 00:05:26.350 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-18 00:05:26.352 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-18 00:05:26.353 [main] GamesParticipant - IllegalAustralianStateException thrown
-[WARN ] 2017-05-18 00:05:26.520 [main] OzlGame - WrongSportException thrown SW01
-[WARN ] 2017-05-18 00:05:26.522 [main] OzlGame - WrongSportException thrown CY01
-[WARN ] 2017-05-18 00:05:26.524 [main] OzlGame - WrongSportException thrown RU01
-[WARN ] 2017-05-18 00:05:26.526 [main] OzlGame - OzlGameFullException thrown SW01
-[WARN ] 2017-05-18 00:05:26.546 [main] OzlGame - NotEnoughAthletesException thrown RU01
-[WARN ] 2017-05-18 00:05:26.551 [main] OzlGame - NoRefereeException thrown RU01
-[ERROR] 2017-05-19 14:30:31.904 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-19 14:30:32.078 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-19 14:30:32.237 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-19 14:30:32.395 [main] GamesOfficial - GameNeverPlayedException thrown OF01
-[ERROR] 2017-05-19 14:30:32.557 [main] GamesOfficial - GameNeverPlayedException thrown OF01
-[ERROR] 2017-05-19 14:30:32.811 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:30:32.813 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:30:32.813 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:30:32.814 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:30:32.828 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:30:32.829 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:30:32.830 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:30:32.831 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:30:32.832 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:30:32.833 [main] GamesParticipant - IllegalAustralianStateException thrown
-[WARN ] 2017-05-19 14:30:33.003 [main] OzlGame - WrongSportException thrown SW01
-[WARN ] 2017-05-19 14:30:33.005 [main] OzlGame - WrongSportException thrown CY01
-[WARN ] 2017-05-19 14:30:33.006 [main] OzlGame - WrongSportException thrown RU01
-[WARN ] 2017-05-19 14:30:33.008 [main] OzlGame - OzlGameFullException thrown SW01
-[WARN ] 2017-05-19 14:30:33.039 [main] OzlGame - NotEnoughAthletesException thrown RU01
-[WARN ] 2017-05-19 14:30:33.041 [main] OzlGame - NoRefereeException thrown RU01
-[ERROR] 2017-05-19 14:37:34.038 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-19 14:37:34.045 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-19 14:37:34.049 [main] GamesOfficial - IllegalGameException thrown OF01
-[ERROR] 2017-05-19 14:37:34.053 [main] GamesOfficial - GameNeverPlayedException thrown OF01
-[ERROR] 2017-05-19 14:37:34.062 [main] GamesOfficial - GameNeverPlayedException thrown OF01
-[ERROR] 2017-05-19 14:37:34.117 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:37:34.119 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:37:34.120 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:37:34.122 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 14:37:34.143 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:37:34.145 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:37:34.146 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:37:34.149 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:37:34.150 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 14:37:34.151 [main] GamesParticipant - IllegalAustralianStateException thrown
-[WARN ] 2017-05-19 14:37:34.317 [main] OzlGame - OzlGameFullException thrown SW01
-[WARN ] 2017-05-19 14:37:34.321 [main] OzlGame - WrongSportException thrown SW01
-[WARN ] 2017-05-19 14:37:34.323 [main] OzlGame - WrongSportException thrown CY01
-[WARN ] 2017-05-19 14:37:34.326 [main] OzlGame - WrongSportException thrown RU01
-[WARN ] 2017-05-19 14:37:34.340 [main] OzlGame - NotEnoughAthletesException thrown RU01
-[WARN ] 2017-05-19 14:37:34.345 [main] OzlGame - NoRefereeException thrown RU01
-[ERROR] 2017-05-19 19:43:56.423 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 19:43:56.428 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 19:43:56.432 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 19:43:56.436 [main] GamesOfficial - GameNeverPlayedException thrown REF0005
-[ERROR] 2017-05-19 19:43:56.443 [main] GamesOfficial - GameNeverPlayedException thrown REF0005
-[ERROR] 2017-05-19 19:43:56.477 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 19:43:56.479 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 19:43:56.482 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 19:43:56.484 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 19:43:56.507 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 19:43:56.508 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 19:43:56.509 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 19:43:56.512 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 19:43:56.513 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 19:43:56.514 [main] GamesParticipant - IllegalAustralianStateException thrown
-[WARN ] 2017-05-19 19:43:56.671 [main] OzlGame - WrongSportException thrown SW01
-[WARN ] 2017-05-19 19:43:56.673 [main] OzlGame - WrongSportException thrown CY01
-[WARN ] 2017-05-19 19:43:56.675 [main] OzlGame - WrongSportException thrown RU01
-[WARN ] 2017-05-19 19:43:56.679 [main] OzlGame - OzlGameFullException thrown SW01
-[WARN ] 2017-05-19 19:43:56.695 [main] OzlGame - NotEnoughAthletesException thrown RU01
-[WARN ] 2017-05-19 19:43:56.699 [main] OzlGame - NoRefereeException thrown RU01
-[ERROR] 2017-05-19 20:02:17.243 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 20:02:17.248 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 20:02:17.252 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 20:02:17.256 [main] GamesOfficial - GameNeverPlayedException thrown REF0005
-[ERROR] 2017-05-19 20:02:17.263 [main] GamesOfficial - GameNeverPlayedException thrown REF0005
-[ERROR] 2017-05-19 20:02:17.294 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:02:17.296 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:02:17.297 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:02:17.299 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:02:17.315 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:02:17.316 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:02:17.317 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:02:17.319 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:02:17.320 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:02:17.321 [main] GamesParticipant - IllegalAustralianStateException thrown
-[WARN ] 2017-05-19 20:02:17.468 [main] OzlGame - WrongSportException thrown SW01
-[WARN ] 2017-05-19 20:02:17.470 [main] OzlGame - WrongSportException thrown CY01
-[WARN ] 2017-05-19 20:02:17.472 [main] OzlGame - WrongSportException thrown RU01
-[WARN ] 2017-05-19 20:02:17.475 [main] OzlGame - OzlGameFullException thrown SW01
-[WARN ] 2017-05-19 20:02:17.487 [main] OzlGame - NotEnoughAthletesException thrown RU01
-[WARN ] 2017-05-19 20:02:17.489 [main] OzlGame - NoRefereeException thrown RU01
-[ERROR] 2017-05-19 20:04:02.842 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 20:04:02.847 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 20:04:02.852 [main] GamesOfficial - IllegalGameException thrown REF0005
-[ERROR] 2017-05-19 20:04:02.856 [main] GamesOfficial - GameNeverPlayedException thrown REF0005
-[ERROR] 2017-05-19 20:04:02.863 [main] GamesOfficial - GameNeverPlayedException thrown REF0005
-[ERROR] 2017-05-19 20:04:02.901 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:04:02.903 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:04:02.904 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:04:02.905 [main] GamesParticipant - IllegalAgeException thrown
-[ERROR] 2017-05-19 20:04:02.930 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:04:02.932 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:04:02.933 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:04:02.936 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:04:02.937 [main] GamesParticipant - IllegalAustralianStateException thrown
-[ERROR] 2017-05-19 20:04:02.939 [main] GamesParticipant - IllegalAustralianStateException thrown
-[WARN ] 2017-05-19 20:04:03.101 [main] OzlGame - WrongSportException thrown SW01
-[WARN ] 2017-05-19 20:04:03.103 [main] OzlGame - WrongSportException thrown CY01
-[WARN ] 2017-05-19 20:04:03.105 [main] OzlGame - WrongSportException thrown RU01
-[WARN ] 2017-05-19 20:04:03.108 [main] OzlGame - OzlGameFullException thrown SW01
-[WARN ] 2017-05-19 20:04:03.121 [main] OzlGame - NotEnoughAthletesException thrown RU01
-[WARN ] 2017-05-19 20:04:03.124 [main] OzlGame - NoRefereeException thrown RU01
-[ERROR] 2017-05-19 21:42:31.673 [main] ConnectionFactory - integrity constraint violation: check constraint; ATHLETE_SPORT_TYPE table: PARTICIPANTS
-[FATAL] 2017-05-19 21:42:31.749 [main] GenericTestRunner - No enum constant OzLympicGames.OzlModel.AthleteType.blah
-[ERROR] 2017-05-19 21:43:38.981 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:44:32.101 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:44:32.104 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:44:32.105 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:44:55.608 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:44:55.609 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:44:55.611 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:45:48.701 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:45:48.704 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:45:48.706 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:50:29.589 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:50:29.599 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 11:50:28 heartbeat - read: -7651 ms.
-[ERROR] 2017-05-19 21:54:02.799 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:54:02.811 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 11:51:15 heartbeat - read: -5800 ms.
-[ERROR] 2017-05-19 21:56:08.647 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:56:08.658 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 11:54:38 heartbeat - read: -8208 ms.
-[ERROR] 2017-05-19 21:57:14.615 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:57:14.625 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 11:57:01 heartbeat - read: -1235 ms.
-[ERROR] 2017-05-19 21:57:43.323 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:57:43.334 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 11:57:33 heartbeat - read: -3255 ms.
-[ERROR] 2017-05-19 21:58:35.980 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:58:49.885 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 21:58:49.895 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 21:58:53.897 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:06:39.080 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:06:39.091 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:07:22.798 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:07:22.799 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:07:22.799 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:07:33.123 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:07:33.125 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:07:33.125 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:07:37.230 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:07:37.232 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:07:37.232 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:08:23.598 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:08:23.600 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:08:23.600 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:08:44.686 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:08:44.689 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 12:08:43 heartbeat - read: -3729 ms.
-[ERROR] 2017-05-19 22:09:03.605 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:09:03.616 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 12:09:02 heartbeat - read: -2654 ms.
-[ERROR] 2017-05-19 22:09:20.464 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:09:20.465 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:09:20.465 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:12:36.886 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:12:36.888 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:12:36.888 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:12:55.716 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:12:55.717 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:12:55.718 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:22:41.141 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:22:41.142 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:22:41.143 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:23:13.876 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:23:13.878 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:23:13.878 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:23:20.690 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:23:20.691 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:23:20.691 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:23:53.845 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:23:53.856 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 12:23:52 heartbeat - read: -5906 ms.
-[ERROR] 2017-05-19 22:24:08.118 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:24:08.129 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 12:24:07 heartbeat - read: -179 ms.
-[ERROR] 2017-05-19 22:24:38.067 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:24:38.078 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 12:24:35 heartbeat - read: -8187 ms.
-[ERROR] 2017-05-19 22:25:21.940 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:25:21.942 [main] AthleteDAO - can't write new athlete to database. Will throw
-[FATAL] 2017-05-19 22:25:21.942 [main] GenericTestRunner - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:25:48.915 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:25:48.916 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:25:48.917 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:27:41.425 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:27:41.427 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:27:41.428 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 22:27:41.432 [main] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
-[ERROR] 2017-05-19 23:04:03.087 [main] ParticipantDAO - can't write new participant to database. Will throw
-[FATAL] 2017-05-19 23:04:03.098 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 13:04:02 heartbeat - read: -4880 ms.
-[ERROR] 2017-05-19 23:19:55.891 [main] ParticipantDAO - can't write new participant to database. Will throw
-[FATAL] 2017-05-19 23:19:55.902 [main] GenericTestRunner - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-19 13:19:54 heartbeat - read: -540 ms.
+[ERROR] 2017-05-21 04:07:30.518 [JavaFX Application Thread] GameStatsTableController - null
+[ERROR] 2017-05-21 04:14:43.764 [JavaFX Application Thread] GameStatsTableController - null
+[ERROR] 2017-05-21 04:15:37.122 [JavaFX Application Thread] GameStatsTableController - null
+[ERROR] 2017-05-21 04:23:05.449 [JavaFX Application Thread] GameStatsTableController - null
+[ERROR] 2017-05-21 04:24:35.646 [JavaFX Application Thread] GameStatsTableController - null
+[ERROR] 2017-05-21 04:27:11.065 [JavaFX Application Thread] GameStatsTableController - null
+[FATAL] 2017-05-21 04:27:25.637 [main] GenericTestRunner - null
+[FATAL] 2017-05-21 04:27:54.798 [main] GenericTestRunner - null
+[FATAL] 2017-05-21 04:28:14.988 [main] GenericTestRunner - null
+[FATAL] 2017-05-21 04:29:03.292 [main] GenericTestRunner - null
+[FATAL] 2017-05-21 04:30:01.222 [main] GenericTestRunner - null
+[FATAL] 2017-05-21 04:31:29.777 [main] GenericTestRunner - null
+[ERROR] 2017-05-21 17:32:10.136 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 07:32:09 heartbeat - read: -3058 ms.
+[ERROR] 2017-05-21 17:32:10.138 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 07:32:09 heartbeat - read: -3058 ms.
+[ERROR] 2017-05-21 19:10:54.090 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
+[ERROR] 2017-05-21 19:13:40.667 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
+[ERROR] 2017-05-21 19:14:36.404 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
+[ERROR] 2017-05-21 19:14:47.725 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
+[ERROR] 2017-05-21 20:47:48.525 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:47:47 heartbeat - read: -4461 ms.
+[ERROR] 2017-05-21 20:47:48.527 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:47:47 heartbeat - read: -4461 ms.
+[ERROR] 2017-05-21 20:48:16.484 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:48:15 heartbeat - read: -2419 ms.
+[ERROR] 2017-05-21 20:48:16.485 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:48:15 heartbeat - read: -2419 ms.
+[ERROR] 2017-05-21 20:50:00.308 [JavaFX Application Thread] ConnectionFactory - Invalid argument in JDBC call: parameter index out of range: 1
+[ERROR] 2017-05-21 20:50:00.312 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 20:50:19.302 [JavaFX Application Thread] ConnectionFactory - Invalid argument in JDBC call: parameter index out of range: 1
+[ERROR] 2017-05-21 20:50:19.313 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 20:50:44.556 [JavaFX Application Thread] ConnectionFactory - Invalid argument in JDBC call: parameter index out of range: 1
+[ERROR] 2017-05-21 20:51:05.970 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 20:51:25.927 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 20:53:07.579 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 20:55:41.745 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 20:56:54.355 [JavaFX Application Thread] GameStatsTableController - Invalid column name
+[ERROR] 2017-05-21 21:51:22.222 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 11:51:21 heartbeat - read: -5058 ms.
+[ERROR] 2017-05-21 21:51:22.224 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 11:51:21 heartbeat - read: -5058 ms.
+[ERROR] 2017-05-22 01:27:43.065 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:27:42 heartbeat - read: -3024 ms.
+[ERROR] 2017-05-22 01:27:43.066 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:27:42 heartbeat - read: -3024 ms.
+[ERROR] 2017-05-22 01:28:44.374 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:28:43 heartbeat - read: -4335 ms.
+[ERROR] 2017-05-22 01:28:44.376 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:28:43 heartbeat - read: -4335 ms.
+[ERROR] 2017-05-22 01:29:12.873 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:29:11 heartbeat - read: -2837 ms.
+[ERROR] 2017-05-22 01:29:12.874 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:29:11 heartbeat - read: -2837 ms.
+[ERROR] 2017-05-22 05:14:08.254 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: check constraint; ATHLETE_SPORT_TYPE table: PARTICIPANTS
+[ERROR] 2017-05-22 05:14:08.263 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-22 05:14:52.371 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO PARTICIPANTS(NAME,AGE,STATE,TYPE) VALUES (?,?,?)]
+[ERROR] 2017-05-22 05:14:52.380 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-22 05:17:40.692 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO PARTICIPANTS(NAME,AGE,STATE,TYPE) VALUES (?,?,?)]
+[ERROR] 2017-05-22 05:17:40.701 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-22 05:21:09.393 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: check constraint; ATHLETE_SPORT_TYPE table: PARTICIPANTS
+[ERROR] 2017-05-22 05:21:09.394 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO PARTICIPANTS(NAME,AGE,STATE,TYPE) VALUES (?,?,?)]
+[ERROR] 2017-05-22 05:21:09.394 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO PARTICIPANTS(NAME,AGE,STATE,TYPE) VALUES (?,?,?)]
+[ERROR] 2017-05-22 05:42:42.896 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
+[ERROR] 2017-05-22 05:42:42.904 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-22 05:43:26.157 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation; UQ_ALL table: PARTICIPANTS
+[ERROR] 2017-05-22 05:43:26.166 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[WARN ] 2017-05-22 07:54:20.947 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown CY0035
+[WARN ] 2017-05-22 07:54:42.670 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown CY0035

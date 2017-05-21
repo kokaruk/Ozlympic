@@ -1,3 +1,3 @@
 <component name="DependencyValidationManager">
-  <scope name="Ozlympic" pattern="(src:OzLympicGames..*||file[OzLympicGames]:src//*)&amp;&amp;!file[OzLympicGames]:src/Tests/*" />
+  <scope name="Ozlympic" pattern="(src:ozlympicgames..*||file[ozlympicgames]:src//*)&amp;&amp;!file[ozlympicgames]:src/tests/*&amp;&amp;!file[ozlympicgames]:src/quick_integration_tests/*&amp;&amp;!file[ozlympicgames]:src/Data/*" />
 </component>

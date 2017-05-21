@@ -4,9 +4,11 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Data" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ozlympicgames/ozlmodel/dal/properties" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/tests/properties" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/src/Data" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
