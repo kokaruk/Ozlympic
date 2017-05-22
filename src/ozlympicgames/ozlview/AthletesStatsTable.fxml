@@ -7,7 +7,7 @@
 <AnchorPane minWidth="330" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ozlympicgames.ozlcontroller.AthletesStatsTableController">
     <TableView fx:id="athletesTable"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-            <TableColumn fx:id="athlName" minWidth="150.0" resizable="false" text="Name" />
+            <TableColumn fx:id="athlName2" minWidth="150.0" resizable="false" text="Name" />
             <TableColumn fx:id="arthlType" minWidth="100.0" resizable="false" text="Type" />
             <TableColumn fx:id="athlPoints" minWidth="30.0"  text="Points" />
         </columns>

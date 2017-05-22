@@ -41,9 +41,10 @@
                         <Label fx:id="winnerTime" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
-                <ButtonBar layoutX="141.0" layoutY="244.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                <ButtonBar layoutX="141.0" layoutY="244.0" prefHeight="40.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                     <buttons>
-                        <Button fx:id="activateGame" mnemonicParsing="false" onAction="#handleActivate" text="Activate" />
+                        <Button fx:id="activateGame" mnemonicParsing="false" minWidth="150.0" prefWidth="150" onAction="#handleActivate" text="Activate" />
+                        <Button disable="true" minWidth="150.0" prefWidth="150" mnemonicParsing="false" text="New Game..." />
                     </buttons>
                 </ButtonBar>
             </children>

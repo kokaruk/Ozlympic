@@ -7,9 +7,7 @@ import javafx.scene.control.Label;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ozlympicgames.Dialogues;
-import ozlympicgames.ozlmodel.GamesHelperFunctions;
-import ozlympicgames.ozlmodel.GamesOfficial;
-import ozlympicgames.ozlmodel.OzlGame;
+import ozlympicgames.ozlmodel.*;
 import ozlympicgames.ozlmodel.dal.GamesDAL;
 import ozlympicgames.ozlmodel.dal.IGamesDAL;
 
@@ -56,9 +54,15 @@ public class TableRootController {
                     .filter(gamesAthlete ->
                             gamesAthlete.getAthleteType().getSport().size() == 1 &&  gamesAthlete.getAthleteType().getSport().iterator().next() == ozlGame.getGameSport() ||  gamesAthlete.getAthleteType().getSport().size() > 1 )
                     .limit(8- ozlGame.getGameAthletes().size()).forEach(gamesAthlete -> ozlGame.addParticipant(gamesAthlete));
-            ozlGame.gamePlay();
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            try {
+                ozlGame.gamePlay();
+            } catch (NotEnoughAthletesException | NoRefereeException e) {
+                Dialogues.createExceptionDialog(e);
+            }
+
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
            // alert.initOwner(dialogStage);
             alert.setTitle("Game results");
             alert.setHeaderText("This is so hacky, its a shame :((( ");

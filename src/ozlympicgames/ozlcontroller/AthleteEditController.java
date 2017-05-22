@@ -131,6 +131,7 @@ public class AthleteEditController {
                         athlState.getText(),
                         athlType.getSelectionModel().getSelectedItem().name()
                 );
+
                 okClicked = true;
                 dialogStage.close();
             }

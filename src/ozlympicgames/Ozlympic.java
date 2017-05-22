@@ -1,6 +1,8 @@
 package ozlympicgames;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +16,10 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ozlympicgames.ozlcontroller.*;
+import ozlympicgames.ozlmodel.GamesAthlete;
 import ozlympicgames.ozlmodel.GamesHelperFunctions;
+import ozlympicgames.ozlmodel.dal.GamesDAL;
+import ozlympicgames.ozlmodel.dal.IGamesDAL;
 
 import java.io.IOException;
 
@@ -24,18 +29,45 @@ import java.io.IOException;
  * @author Marco Jakob
  */
 public class Ozlympic extends Application {
+    // function class reference
     private static Logger logger = LogManager.getLogger();
+
+    // collection
+    private ObservableList<GamesAthlete> _athletes = FXCollections.observableArrayList();
 
 
     // controllers
     private GamesOverviewController gamesOverviewController;
     private GameStatsTableController gameStatsTableController;
     private AthletesOverviewController athletesOverviewController;
-    private AthletesStatsTableController athletesStatsTableController;
     private TableRootController tableRootController;
     // stages
     private Stage primaryStage;
     private Parent rootLayout;
+    private static IGamesDAL gamesDAL;
+    static {
+        try {
+            gamesDAL = GamesDAL.getInstance();
+        } catch (Exception e) {
+
+        }
+    }
+
+
+    public ObservableList<GamesAthlete> get_athletes() {
+        return _athletes;
+    }
+
+    public Ozlympic() {
+        //_athletes.add( new GamesAthlete(1, "Alex Foo", 34, "Victoria", "superAthlete") );
+        //_athletes.add( new GamesAthlete(3, "Alex Foooo", 35,                 "Victoria", "superAthlete") );
+
+         if(gamesDAL != null){
+             _athletes.addAll(gamesDAL.get_athletes().values());
+         }
+
+    }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -118,17 +150,6 @@ public class Ozlympic extends Application {
         splitPane.setDividerPositions(0.4);
         // Set person overview into the center of root layout.
 
-
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ozlview/AthletesStatsTable.fxml"));
-        //  StackPane leftPane = new StackPane(new Label("Left"));
-        AnchorPane leftPane = loader2.load();
-        //Constrain max size of left component:
-        leftPane.maxWidthProperty().bind(splitPane.widthProperty().multiply(0.4));
-        athletesStatsTableController = loader2.getController();
-        athletesStatsTableController.setGamesOverviewController(athletesOverviewController);
-        athletesOverviewController.setAthletesStatsTableController(athletesStatsTableController);
-        splitPane.getItems().set(0,leftPane);
-
         TabPane tabPane = (TabPane)((AnchorPane) rootLayout).getChildren().get(0);
         tabPane.getTabs().get(1).setContent(splitPane);
     }
@@ -139,6 +160,8 @@ public class Ozlympic extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/AthleteEdit.fxml"));
             AnchorPane page = loader.load();
+
+            athletesOverviewController.setAthleteEditController(loader.getController());
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
