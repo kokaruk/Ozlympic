@@ -1,40 +1,20 @@
 package ozlympicgames.ozlcontroller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ozlympicgames.Dialogues;
-import ozlympicgames.ozlmodel.*;
-import ozlympicgames.ozlmodel.dal.GamesDAL;
-import ozlympicgames.ozlmodel.dal.IGamesDAL;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author dimz
  * @since 22/5/17.
  */
 public class TableRootController {
 
-    private static Logger logger = LogManager.getLogger();
-    private IGamesDAL gamesDAL;
-
-
+/*
 
     @FXML
     private void initialize() {
         showGameDetails(null);
 
-        try{
-            gamesDAL = GamesDAL.getInstance();
-        } catch (Exception e) {
-            logger.error(e.toString());
-            Dialogues.createExceptionDialog(e);
-        }
-
     }
+
+
     void showGameDetails(OzlGame ozlGame) {
         if (ozlGame != null) {
        //     activeGame.setText(ozlGame.getId() + " " + GamesHelperFunctions.firsLetterToUpper(ozlGame.getGameSport().name()));
@@ -72,6 +52,7 @@ public class TableRootController {
         }
     }
 
+
          /// this is so hacky, shame shame
         private GamesOfficial getReferee(){
             int refCount = gamesDAL.get_referees().size();
@@ -81,4 +62,6 @@ public class TableRootController {
             GamesOfficial referee = refereeList.get(refs);
             return referee;
         }
+*/
+
 }

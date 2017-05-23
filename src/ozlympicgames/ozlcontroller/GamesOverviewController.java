@@ -21,6 +21,7 @@ public class GamesOverviewController {
     private TableRootController tableRootController;
     private static Logger logger = LogManager.getLogger();
     private Ozlympic mainApp;
+    private AddRefereeController addRefereeController;
 
     @FXML
     private TableView<OzlGame> gamesTable;
@@ -40,19 +41,22 @@ public class GamesOverviewController {
     @FXML
     private Label winnerTime;
     @FXML
-    private Button activateGame;
+    private Label activeGameLabel;
+    @FXML
+    private Button activateGameButon;
+    @FXML
+    private Button addRefereeButton;
+    @FXML
+    private Button addPlayersButton;
+    @FXML
+    private Button gamePlayButton;
 
-    @FXML
-    private Label activeGame;
-    @FXML
-    private Button addReferee;
-    @FXML
-    private Button addPlayers;
-    @FXML
-    private Button gamePlay;
+    private OzlGame ozlGame; // temporary game pointer
+    private OzlGame activeGame; // game for playing
 
-
-    OzlGame ozlGame;
+    public void setAddRefereeController(AddRefereeController addRefereeController) {
+        this.addRefereeController = addRefereeController;
+    }
 
     @FXML
     private void initialize() {
@@ -106,20 +110,35 @@ public class GamesOverviewController {
             refName.setText ( entry.get_referee() != null ? entry.get_referee().getName() : null);
             gameAthletes.setText( entry.getParticipation().size() > 0 ? "" + entry.getParticipation().size() : null);
             gameWinner.setText( entry.isGamePlayed() ? entry.getGameAthletesWinnersSortedByTime().get(0).getName() : null   );
-            activateGame.setDisable(false);
-            activeGame.setText(null);
+            // if game never played
+            if (entry.isGamePlayed()) {
+                activateGameButon.setDisable(true);
+            } else  {
+                activateGameButon.setDisable(false);
+            }
         } else {
             refName.setText(null);
             gameAthletes.setText(null);
             gameWinner.setText(null);
             winnerTime.setText(null);
+            activeGameLabel.setText(null);
+        //    activeGame = null;
         }
     }
 
     @FXML
     private void handleActivate(){
         logger.trace("activate click");
-        tableRootController.showGameDetails(ozlGame);
+        activeGame = ozlGame;
+        activeGameLabel.setText(activeGame.getId() + " " + GamesHelperFunctions.firsLetterToUpper(activeGame.getGameSport().name()));
+        activateGameButon.setDisable(true);
+        if (activeGame.get_referee() == null){
+            addRefereeButton.setDisable(false);
+            if (!addPlayersButton.isDisabled()) addPlayersButton.setDisable(true);
+        } else {
+            addPlayersButton.setDisable(false);
+            if (!addRefereeButton.isDisabled()) addRefereeButton.setDisable(true);
+        }
     }
 
     public void setMainApp(Ozlympic mainApp) {
@@ -128,4 +147,27 @@ public class GamesOverviewController {
         gamesTable.setItems(mainApp.get_games());
 
     }
+
+    @FXML
+    void handleAddReferee(){
+        logger.trace("add referee");
+        boolean okClicked = mainApp.showAddRefereeDialog();
+        if (okClicked) {
+            activeGame.addParticipant( addRefereeController.getGamesReferee());
+            addRefereeButton.setDisable(true);
+        }
+        if (ozlGame==activeGame) showGameDetails(activeGame);
+    }
+
+    @FXML
+    void handleAddplayers(){
+        logger.trace("add athletes");
+    }
+
+    @FXML
+    void handlePlayGame(){
+        logger.trace("play");
+
+    }
+
 }

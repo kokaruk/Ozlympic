@@ -23,7 +23,7 @@ import java.sql.SQLException;
  * @author dimz
  * @since 22/5/17.
  */
-public class AthleteEditController {
+public class AthleteAddController {
 
     @FXML
     private Label athlName;
@@ -32,8 +32,8 @@ public class AthleteEditController {
     @FXML
     private Label athlAge;
     @FXML
-    private ComboBox<AthleteType> athlType;
-    private ObservableList<AthleteType> athlTypeData = FXCollections.observableArrayList(AthleteType.values());
+    private ComboBox<AthleteType> athlType;  //conbobox
+    private ObservableList<AthleteType> athlTypeData = FXCollections.observableArrayList(AthleteType.values()); //comboboxvalues
 
     private static Logger logger = LogManager.getLogger();
     private static IGamesDAL gamesDAL;

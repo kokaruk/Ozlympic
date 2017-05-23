@@ -20,7 +20,7 @@ public class AthletesOverviewController {
 
     private static Logger logger = LogManager.getLogger();
     private Ozlympic mainApp;
-    AthleteEditController athleteEditController;
+    AthleteAddController athleteAddController;
 
     @FXML
     private TableView<GamesAthlete> athletesTable;
@@ -43,11 +43,11 @@ public class AthletesOverviewController {
 
     @FXML
     private void handleNewAthlete() {
+        logger.trace("add athlete");
         boolean okClicked = mainApp.showNewAthleteDialog();
         if (okClicked) {
-            // not working
             mainApp.get_athletes().add(
-                    athleteEditController.getGamesAthlete()
+                    athleteAddController.getGamesAthlete()
             );
         }
     }
@@ -93,7 +93,7 @@ public class AthletesOverviewController {
         athletesTable.setItems( mainApp.get_athletes());
     }
 
-    public void setAthleteEditController (AthleteEditController athleteEditController){
-        this.athleteEditController = athleteEditController;
+    public void setAthleteAddController(AthleteAddController athleteAddController){
+        this.athleteAddController = athleteAddController;
     }
 }

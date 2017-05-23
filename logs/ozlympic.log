@@ -70,3 +70,4 @@
 [ERROR] 2017-05-22 23:00:23.329 [JavaFX Application Thread] GamesOfficial - GameNeverPlayedException thrown RE0165
 [WARN ] 2017-05-22 23:01:13.384 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown SW0004
 [ERROR] 2017-05-22 23:01:15.581 [JavaFX Application Thread] GamesOfficial - GameNeverPlayedException thrown RE0203
+[ERROR] 2017-05-24 00:21:33.447 [JavaFX Application Thread] GamesParticipant - IllegalAustralianStateException thrown

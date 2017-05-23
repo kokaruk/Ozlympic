@@ -14,7 +14,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ozlympicgames.ozlcontroller.AthleteEditController;
+import ozlympicgames.ozlcontroller.AddRefereeController;
+import ozlympicgames.ozlcontroller.AthleteAddController;
 import ozlympicgames.ozlcontroller.AthletesOverviewController;
 import ozlympicgames.ozlcontroller.GamesOverviewController;
 import ozlympicgames.ozlmodel.GamesAthlete;
@@ -135,10 +136,10 @@ public class Ozlympic extends Application {
     public boolean showNewAthleteDialog() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/AthleteEdit.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/AthleteAdd.fxml"));
             AnchorPane page = loader.load();
 
-            athletesOverviewController.setAthleteEditController(loader.getController());
+            athletesOverviewController.setAthleteAddController(loader.getController());
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
@@ -154,7 +155,7 @@ public class Ozlympic extends Application {
             int age = GamesHelperFunctions.getRandomAge();
 
             // Set the person into the controller.
-            AthleteEditController controller = loader.getController();
+            AthleteAddController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.populsteData(name, state, age );
 
@@ -166,6 +167,42 @@ public class Ozlympic extends Application {
             return false;
         }
     }
+
+    public boolean showAddRefereeDialog() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/AddReferree.fxml"));
+            AnchorPane page = loader.load();
+
+            gamesOverviewController.setAddRefereeController(loader.getController());
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Add New Referee");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+
+            String name = GamesHelperFunctions.getRandomName();
+            String state = GamesHelperFunctions.getRandomState();
+            int age = GamesHelperFunctions.getRandomAge();
+
+            // Set the person into the controller.
+            AddRefereeController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.populsteData(name, state, age );
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
 }
