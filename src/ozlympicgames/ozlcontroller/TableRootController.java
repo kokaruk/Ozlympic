@@ -2,8 +2,6 @@ package ozlympicgames.ozlcontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ozlympicgames.Dialogues;
@@ -23,21 +21,12 @@ public class TableRootController {
     private static Logger logger = LogManager.getLogger();
     private IGamesDAL gamesDAL;
 
-    @FXML
-    private Label activeGame;
-    @FXML
-    private Button addReferee;
-    @FXML
-    private Button addPlayers;
-    @FXML
-    private Button gamePlay;
+
 
     @FXML
     private void initialize() {
         showGameDetails(null);
-        addReferee.setDisable(true);
-        addPlayers.setDisable(true);
-        gamePlay.setDisable(true);
+
         try{
             gamesDAL = GamesDAL.getInstance();
         } catch (Exception e) {
@@ -48,7 +37,7 @@ public class TableRootController {
     }
     void showGameDetails(OzlGame ozlGame) {
         if (ozlGame != null) {
-            activeGame.setText(ozlGame.getId() + " " + GamesHelperFunctions.firsLetterToUpper(ozlGame.getGameSport().name()));
+       //     activeGame.setText(ozlGame.getId() + " " + GamesHelperFunctions.firsLetterToUpper(ozlGame.getGameSport().name()));
             ozlGame.addParticipant(getReferee());
             gamesDAL.get_athletes().values().stream()
                     .filter(gamesAthlete ->
@@ -79,7 +68,7 @@ public class TableRootController {
 
 
         } else {
-            activeGame.setText(null);
+
         }
     }
 

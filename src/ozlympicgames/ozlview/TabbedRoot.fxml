@@ -12,29 +12,8 @@
    <children>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
-            <Tab closable="false" text="Games">
-               <content>
-                  <VBox>
-                     <children>
-                        <AnchorPane prefHeight="93.0" prefWidth="800.0">
-                           <children>
-                              <Label layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="190.0" text="Active Game:">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="activeGame" layoutX="14.0" layoutY="44.0" text="Label" textAlignment="RIGHT" />
-                              <Button fx:id="addReferee" layoutX="509.0" layoutY="25.0" minWidth="80.0" mnemonicParsing="false" text="Add referee" />
-                              <Button fx:id="addPlayers" layoutX="607.0" layoutY="25.0" minWidth="80.0" mnemonicParsing="false" text="Add players" />
-                              <Button fx:id="gamePlay" layoutX="706.0" layoutY="25.0" minWidth="80.0" mnemonicParsing="false" text="Play" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="509.0" prefWidth="800.0" />
-                     </children>
-                  </VBox>
-               </content></Tab>
-            <Tab closable="false" text="Athletes">
-            </Tab>
+            <Tab closable="false" text="Games"/>
+            <Tab closable="false" text="Athletes"/>
          </tabs>
       </TabPane>
    </children>

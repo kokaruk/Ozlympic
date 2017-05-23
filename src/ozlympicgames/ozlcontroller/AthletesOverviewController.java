@@ -43,7 +43,7 @@ public class AthletesOverviewController {
 
     @FXML
     private void handleNewAthlete() {
-        boolean okClicked = mainApp.showPersonEditDialog();
+        boolean okClicked = mainApp.showNewAthleteDialog();
         if (okClicked) {
             // not working
             mainApp.get_athletes().add(
@@ -90,7 +90,6 @@ public class AthletesOverviewController {
     public void setMainApp(Ozlympic mainApp) {
         this.mainApp = mainApp;
         // Add data to the table
-        //items = FXCollections.observableArrayList(gamesDAL.get_athletes().entrySet());
         athletesTable.setItems( mainApp.get_athletes());
     }
 
