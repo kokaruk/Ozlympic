@@ -35,7 +35,7 @@ public class ConnectionFactory{
         String sql =
                 "INSERT INTO " + tableName + "(" + columns + ")" +
                 " VALUES (" + wildcards + ")";
-        Integer id = 0;
+        Integer id;
 
         try(Connection con  = getConnection()){
             con.setAutoCommit(false);
@@ -74,6 +74,30 @@ public class ConnectionFactory{
         }
         return crs;
     }
+
+    static void updateRow(String tableName, String updateColumns,
+                          String whereColumns, String paramsValues ) throws SQLException, ClassNotFoundException {
+        String sql =
+                "UPDATE " + tableName + " SET " + updateColumns + " WHERE " + selectColumnWildCardBuilder(whereColumns);
+        try(Connection con  = getConnection()){
+            con.setAutoCommit(false);
+            try(PreparedStatement ps = con.prepareStatement(sql)) {
+                fillParameters(ps, paramsValues);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                logger.error(e.getMessage());
+                con.rollback();
+                con.setAutoCommit(true);
+                throw e;
+            }
+            con.commit();
+            con.setAutoCommit(true);
+        } catch (SQLException | ClassNotFoundException e) {
+            logger.error(e.getMessage());
+            throw e;
+        }
+    }
+
 
     private static String whereString(String whereColumns) {
           return ( whereColumns.equals("") ) ? "" : " WHERE  " + selectColumnWildCardBuilder(whereColumns);

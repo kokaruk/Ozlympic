@@ -45,7 +45,7 @@ public class GamesDAL implements IGamesDAL {
         _games = FXCollections.observableMap(gameDAO.getGamesMap());
         _referees = FXCollections.observableMap(refereeDAO.getOfficialsMap());
         _athlets = FXCollections.observableMap(athleteDAO.getAthletesMap());
-        lookupRefereeForGame();
+        restoreRefereeParticipation();
         restoreParticipation();
     }
 
@@ -93,16 +93,14 @@ public class GamesDAL implements IGamesDAL {
     }
 
 
-    private void lookupRefereeForGame() throws SQLException, ClassNotFoundException {
-        SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("GAMEREFEREE");
 
+    private void restoreRefereeParticipation() throws SQLException, ClassNotFoundException {
+        SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("GAMEREFEREE");
         CachedRowSet rs = refereeLookupPrebuilder.getRowSetFromView("", "");
         if (rs != null) {
             while (rs.next()) {
-
                 String gameId = rs.getString("GAME_ID");
                 _games.get(gameId).addParticipant(_referees.get(rs.getString("REF_ID")));
-
             }
         }
     }
@@ -124,19 +122,24 @@ public class GamesDAL implements IGamesDAL {
                 );
 
                 game.addParticipant(athlete);
-
-                /*
-                if (((GamesAthlete) participant).getAthleteType().getSport().size() == 1
-                    && ((GamesAthlete) participant).getAthleteType().getSport().iterator().next() != this.getGameSport()) {
-                logger.warn("WrongSportException thrown " + this._id);
-                throw new WrongSportException(participant, this);
-            }
-                 */
-
-
             }
         }
 
+
+    }
+    @Override
+    public void addRefereeToGame(OzlGame game, GamesOfficial official)
+            throws SQLException, ClassNotFoundException, IOException {
+        SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("GAMEREFEREE");
+        //check if game has referee
+        if (game.get_referee() != null ){ //update
+            // not implemented yet, only allows to add new referee once
+        } else { // insert
+            String paramsVals = Integer.parseInt(game.getId().substring(2)) + ","
+                    + Integer.parseInt(official.getId().substring(2));
+            String ID = refereeLookupPrebuilder.getNewIdNum(paramsVals).toString();
+            refereeLookupPrebuilder.appendCSV(ID, paramsVals);
+        }
 
     }
 

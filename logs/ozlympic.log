@@ -10,16 +10,16 @@
 [FATAL] 2017-05-21 04:29:03.292 [main] GenericTestRunner - null
 [FATAL] 2017-05-21 04:30:01.222 [main] GenericTestRunner - null
 [FATAL] 2017-05-21 04:31:29.777 [main] GenericTestRunner - null
-[ERROR] 2017-05-21 17:32:10.136 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 07:32:09 heartbeat - read: -3058 ms.
-[ERROR] 2017-05-21 17:32:10.138 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 07:32:09 heartbeat - read: -3058 ms.
+[ERROR] 2017-05-21 17:32:10.136 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 07:32:09 heartbeat - read: -3058 ms.
+[ERROR] 2017-05-21 17:32:10.138 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 07:32:09 heartbeat - read: -3058 ms.
 [ERROR] 2017-05-21 19:10:54.090 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
 [ERROR] 2017-05-21 19:13:40.667 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
 [ERROR] 2017-05-21 19:14:36.404 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
 [ERROR] 2017-05-21 19:14:47.725 [JavaFX Application Thread] GameStatsTableController - getInt Failed on value ( Renaldo Ayala ) in column 2
-[ERROR] 2017-05-21 20:47:48.525 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:47:47 heartbeat - read: -4461 ms.
-[ERROR] 2017-05-21 20:47:48.527 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:47:47 heartbeat - read: -4461 ms.
-[ERROR] 2017-05-21 20:48:16.484 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:48:15 heartbeat - read: -2419 ms.
-[ERROR] 2017-05-21 20:48:16.485 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:48:15 heartbeat - read: -2419 ms.
+[ERROR] 2017-05-21 20:47:48.525 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:47:47 heartbeat - read: -4461 ms.
+[ERROR] 2017-05-21 20:47:48.527 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:47:47 heartbeat - read: -4461 ms.
+[ERROR] 2017-05-21 20:48:16.484 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:48:15 heartbeat - read: -2419 ms.
+[ERROR] 2017-05-21 20:48:16.485 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 10:48:15 heartbeat - read: -2419 ms.
 [ERROR] 2017-05-21 20:50:00.308 [JavaFX Application Thread] ConnectionFactory - Invalid argument in JDBC call: parameter index out of range: 1
 [ERROR] 2017-05-21 20:50:00.312 [JavaFX Application Thread] GameStatsTableController - Invalid column name
 [ERROR] 2017-05-21 20:50:19.302 [JavaFX Application Thread] ConnectionFactory - Invalid argument in JDBC call: parameter index out of range: 1
@@ -30,14 +30,14 @@
 [ERROR] 2017-05-21 20:53:07.579 [JavaFX Application Thread] GameStatsTableController - Invalid column name
 [ERROR] 2017-05-21 20:55:41.745 [JavaFX Application Thread] GameStatsTableController - Invalid column name
 [ERROR] 2017-05-21 20:56:54.355 [JavaFX Application Thread] GameStatsTableController - Invalid column name
-[ERROR] 2017-05-21 21:51:22.222 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 11:51:21 heartbeat - read: -5058 ms.
-[ERROR] 2017-05-21 21:51:22.224 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 11:51:21 heartbeat - read: -5058 ms.
-[ERROR] 2017-05-22 01:27:43.065 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:27:42 heartbeat - read: -3024 ms.
-[ERROR] 2017-05-22 01:27:43.066 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:27:42 heartbeat - read: -3024 ms.
-[ERROR] 2017-05-22 01:28:44.374 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:28:43 heartbeat - read: -4335 ms.
-[ERROR] 2017-05-22 01:28:44.376 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:28:43 heartbeat - read: -4335 ms.
-[ERROR] 2017-05-22 01:29:12.873 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:29:11 heartbeat - read: -2837 ms.
-[ERROR] 2017-05-22 01:29:12.874 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:29:11 heartbeat - read: -2837 ms.
+[ERROR] 2017-05-21 21:51:22.222 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 11:51:21 heartbeat - read: -5058 ms.
+[ERROR] 2017-05-21 21:51:22.224 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 11:51:21 heartbeat - read: -5058 ms.
+[ERROR] 2017-05-22 01:27:43.065 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:27:42 heartbeat - read: -3024 ms.
+[ERROR] 2017-05-22 01:27:43.066 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:27:42 heartbeat - read: -3024 ms.
+[ERROR] 2017-05-22 01:28:44.374 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:28:43 heartbeat - read: -4335 ms.
+[ERROR] 2017-05-22 01:28:44.376 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:28:43 heartbeat - read: -4335 ms.
+[ERROR] 2017-05-22 01:29:12.873 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:29:11 heartbeat - read: -2837 ms.
+[ERROR] 2017-05-22 01:29:12.874 [JavaFX Application Thread] GameStatsTableController - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@3cb4bd34[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/src/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-21 15:29:11 heartbeat - read: -2837 ms.
 [ERROR] 2017-05-22 05:14:08.254 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: check constraint; ATHLETE_SPORT_TYPE table: PARTICIPANTS
 [ERROR] 2017-05-22 05:14:08.263 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
 [ERROR] 2017-05-22 05:14:52.371 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO PARTICIPANTS(NAME,AGE,STATE,TYPE) VALUES (?,?,?)]
@@ -61,7 +61,7 @@
 [ERROR] 2017-05-22 14:31:00.803 [JavaFX Application Thread] TableRootController - java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: GAMES_VIEW in statement [SELECT * FROM GAMES_VIEW]
 [ERROR] 2017-05-22 14:31:13.951 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAMES_VIEW in statement [SELECT * FROM GAMES_VIEW]
 [ERROR] 2017-05-22 14:31:13.951 [JavaFX Application Thread] GameStatsTableController - user lacks privilege or object not found: GAMES_VIEW in statement [SELECT * FROM GAMES_VIEW]
-[ERROR] 2017-05-22 22:32:02.396 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@bde49801[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-22 12:32:01 heartbeat - read: -3312 ms.
+[ERROR] 2017-05-22 22:32:02.396 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@bde49801[file =/Users/dimz/Documents/Java/assignment2---ozlympicgames/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-22 12:32:01 heartbeat - read: -3312 ms.
 [WARN ] 2017-05-22 22:53:31.746 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown CY0039
 [WARN ] 2017-05-22 22:55:53.156 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown SW0015
 [WARN ] 2017-05-22 22:59:20.159 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown CY0036
@@ -71,3 +71,57 @@
 [WARN ] 2017-05-22 23:01:13.384 [JavaFX Application Thread] OzlGame - NotEnoughAthletesException thrown SW0004
 [ERROR] 2017-05-22 23:01:15.581 [JavaFX Application Thread] GamesOfficial - GameNeverPlayedException thrown RE0203
 [ERROR] 2017-05-24 00:21:33.447 [JavaFX Application Thread] GamesParticipant - IllegalAustralianStateException thrown
+[FATAL] 2017-05-24 07:43:54.907 [JavaFX Application Thread] ENGINE - statement error processing log - open continuedData/OzlympicData.log line: 12
+org.hsqldb.HsqlException: integrity constraint violation: unique constraint or index violation; SYS_PK_10092 table: PARTICIPANTS
+	at org.hsqldb.error.Error.error(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.Constraint.getException(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.index.IndexAVLMemory.insert(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.persist.RowStoreAVL.indexRow(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.TransactionManager2PL.addInsertAction(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.Session.addInsertAction(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.Table.insertNoCheckFromLog(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.persist.ScriptRunner.runScript(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.persist.ScriptRunner.runScript(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.persist.Log.processLog(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.persist.Log.open(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.persist.Logger.open(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.Database.reopen(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.Database.open(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.DatabaseManager.getDatabase(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.DatabaseManager.newSession(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at org.hsqldb.jdbc.JDBCDriver.connect(Unknown Source) ~[hsqldb-2.4.0.jar:2.4.0]
+	at java.sql.DriverManager.getConnection(DriverManager.java:664) ~[?:1.8.0_131]
+	at java.sql.DriverManager.getConnection(DriverManager.java:247) ~[?:1.8.0_131]
+	at ozlympicgames.ozlmodel.dal.ConnectionFactory.getConnection(ConnectionFactory.java:101) ~[OzLympicGames/:?]
+	at ozlympicgames.ozlmodel.dal.ConnectionFactory.getRowSet(ConnectionFactory.java:65) ~[OzLympicGames/:?]
+	at ozlympicgames.ozlmodel.dal.SQLPreBuilder.getRowSetFromView(SQLPreBuilder.java:77) ~[OzLympicGames/:?]
+	at ozlympicgames.ozlmodel.dal.GameDAO.getGamesMap(GameDAO.java:50) ~[OzLympicGames/:?]
+	at ozlympicgames.ozlmodel.dal.GamesDAL.<init>(GamesDAL.java:45) ~[OzLympicGames/:?]
+	at ozlympicgames.ozlmodel.dal.GamesDAL.getInstance(GamesDAL.java:55) ~[OzLympicGames/:?]
+	at ozlympicgames.Ozlympic.<clinit>(Ozlympic.java:52) ~[OzLympicGames/:?]
+	at java.lang.Class.forName0(Native Method) ~[?:1.8.0_131]
+	at java.lang.Class.forName(Class.java:348) ~[?:1.8.0_131]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplicationWithArgs$156(LauncherImpl.java:352) ~[jfxrt.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326) ~[jfxrt.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295) ~[jfxrt.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_131]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) [jfxrt.jar:?]
+[ERROR] 2017-05-24 16:19:08.218 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:19:08.219 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[FATAL] 2017-05-24 16:19:08.219 [JavaFX Application Thread] GamesOverviewController - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:19:31.316 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:19:31.316 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[FATAL] 2017-05-24 16:19:31.317 [JavaFX Application Thread] GamesOverviewController - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:22:21.847 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:22:24.905 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[FATAL] 2017-05-24 16:22:24.906 [JavaFX Application Thread] GamesOverviewController - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:24:34.816 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:24:51.519 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[FATAL] 2017-05-24 16:24:51.520 [JavaFX Application Thread] GamesOverviewController - user lacks privilege or object not found: GAME_OFFICIALS in statement [INSERT INTO GAME_OFFICIALS(GAME_ID, REF_ID) VALUES (?,?)]
+[ERROR] 2017-05-24 16:25:57.294 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX
+[ERROR] 2017-05-24 16:25:59.789 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX
+[ERROR] 2017-05-24 16:26:01.274 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX
+[ERROR] 2017-05-24 16:26:02.195 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX

@@ -53,5 +53,4 @@ public class RefereeDAO implements IRefereeDAO {
         }
         return officials;
     }
-
 }

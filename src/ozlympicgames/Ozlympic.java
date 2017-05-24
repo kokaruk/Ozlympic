@@ -20,11 +20,13 @@ import ozlympicgames.ozlcontroller.AthletesOverviewController;
 import ozlympicgames.ozlcontroller.GamesOverviewController;
 import ozlympicgames.ozlmodel.GamesAthlete;
 import ozlympicgames.ozlmodel.GamesHelperFunctions;
+import ozlympicgames.ozlmodel.GamesOfficial;
 import ozlympicgames.ozlmodel.OzlGame;
 import ozlympicgames.ozlmodel.dal.GamesDAL;
 import ozlympicgames.ozlmodel.dal.IGamesDAL;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Main class to start the application.
@@ -203,7 +205,9 @@ public class Ozlympic extends Application {
         }
     }
 
-
+    public void addRefereeToGame(OzlGame game, GamesOfficial official) throws IOException, ClassNotFoundException, SQLException {
+        gamesDAL.addRefereeToGame(game, official);
+    }
 
 }
 

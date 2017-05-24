@@ -6,10 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ozlympicgames.Dialogues;
 import ozlympicgames.Ozlympic;
 import ozlympicgames.ozlmodel.GamesHelperFunctions;
 import ozlympicgames.ozlmodel.OzlGame;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -114,7 +117,11 @@ public class GamesOverviewController {
             if (entry.isGamePlayed()) {
                 activateGameButon.setDisable(true);
             } else  {
-                activateGameButon.setDisable(false);
+                if (ozlGame != activeGame) {
+                    activateGameButon.setDisable(false);
+                } else {
+                    activateGameButon.setDisable(true);
+                }
             }
         } else {
             refName.setText(null);
@@ -153,8 +160,14 @@ public class GamesOverviewController {
         logger.trace("add referee");
         boolean okClicked = mainApp.showAddRefereeDialog();
         if (okClicked) {
-            activeGame.addParticipant( addRefereeController.getGamesReferee());
-            addRefereeButton.setDisable(true);
+            try {
+                mainApp.addRefereeToGame(activeGame, addRefereeController.getGamesReferee());
+                activeGame.addParticipant(addRefereeController.getGamesReferee());
+                addRefereeButton.setDisable(true);
+            } catch (IOException | SQLException | ClassNotFoundException e) {
+                logger.fatal(e.getMessage());
+                Dialogues.createExceptionDialog(e);
+            }
         }
         if (ozlGame==activeGame) showGameDetails(activeGame);
     }

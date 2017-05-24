@@ -77,6 +77,10 @@ final class SQLPreBuilder {
         return ConnectionFactory.getRowSet(VIEW_NAME, "*", whereColumns, paramsValues );
     }
 
+    void updateRow(String whereColumns, String paramsValues) throws SQLException, ClassNotFoundException{
+        ConnectionFactory.updateRow(TABLE_NAME, COLUMN_NAMES, whereColumns, paramsValues);
+    }
+
     void appendCSV(String ID, String paramsVals) {
         List<String> data = new ArrayList<>();
         data.add(ID);
