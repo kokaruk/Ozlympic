@@ -75,10 +75,10 @@ public class ConnectionFactory{
         return crs;
     }
 
-    static void updateRow(String tableName, String updateColumns,
+    static void updateRow(String tableName, String updateColumns, String updateValues,
                           String whereColumns, String paramsValues ) throws SQLException, ClassNotFoundException {
         String sql =
-                "UPDATE " + tableName + " SET " + updateColumns + " WHERE " + selectColumnWildCardBuilder(whereColumns);
+                "UPDATE " + tableName + " SET " + setColumnWildCardBuilder(whereColumns) + " WHERE " + setValues(updateColumns, updateValues) ;
         try(Connection con  = getConnection()){
             con.setAutoCommit(false);
             try(PreparedStatement ps = con.prepareStatement(sql)) {
@@ -125,6 +125,16 @@ public class ConnectionFactory{
               .getConnection(url, "master", "master");
     }
 
+    private static String setValues(String columns, String values) {
+        String[] columnsArray = columns.split(REGEX_SPLIT_OPTION);
+        String[] valuesArray = values.split(REGEX_SPLIT_OPTION);
+        StringBuilder c = new StringBuilder();
+        for (int i = 0; i < columnsArray.length; i++){
+            c.append(i==0 ? columnsArray[i] + "=" + valuesArray[i] : " AND " + columnsArray[i] + "=" + valuesArray[i]);
+        }
+        return c.toString();
+    }
+
     /**
      * Build string of ? for sql, list of wildcards
      * @param paramsValues string of parameters
@@ -149,6 +159,15 @@ public class ConnectionFactory{
         StringBuilder c = new StringBuilder();
         for (int i = 0; i < columnsArray.length; i++){
             c.append(i==0 ? columnsArray[i] + "=? " : "AND " + columnsArray[i] + "=? ");
+        }
+        return c.toString();
+    }
+
+    private static String setColumnWildCardBuilder(String columns){
+        String[] columnsArray = columns.split(REGEX_SPLIT_OPTION);
+        StringBuilder c = new StringBuilder();
+        for (int i = 0; i < columnsArray.length; i++){
+            c.append(i==0 ? columnsArray[i] + "=? " : ",  " + columnsArray[i] + "=? ");
         }
         return c.toString();
     }

@@ -32,7 +32,7 @@ public class OzlParticipation {
     }
 
     //getters (needed for stream object methods
-    GamesAthlete getGamesAthlete() {
+    public GamesAthlete getGamesAthlete() {
         return gamesAthlete;
     }
 

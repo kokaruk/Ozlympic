@@ -47,12 +47,21 @@ public class OzlGame {
         _gameSport = generateSport(_id);
     }
 
+    public int getMAX_PARTICIPANTS() {
+        return MAX_PARTICIPANTS;
+    }
+
+    public int getMIN_PARTICIPANTS() {
+        return MIN_PARTICIPANTS;
+    }
+
     public LocalDateTime getTimeRun() {
         return  timeRun == null ? null : timeRun.toLocalDateTime();
     }
 
     public void setTimeRun(Timestamp timeRun) {
         this.timeRun = timeRun;
+        gamePlayed = true;
     }
 
     public GamesOfficial get_referee() {

@@ -6,10 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.controlsfx.control.ListSelectionView;
 import ozlympicgames.Dialogues;
 import ozlympicgames.Ozlympic;
+import ozlympicgames.ozlmodel.GamesAthlete;
 import ozlympicgames.ozlmodel.GamesHelperFunctions;
 import ozlympicgames.ozlmodel.OzlGame;
+import ozlympicgames.ozlmodel.dal.CSVUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,10 +24,16 @@ import java.time.format.DateTimeFormatter;
  * @since 21/5/17.
  */
 public class GamesOverviewController {
-    private TableRootController tableRootController;
     private static Logger logger = LogManager.getLogger();
     private Ozlympic mainApp;
+    // dialogues controllers
     private AddRefereeController addRefereeController;
+    private NewGameController newGameController;
+    private AddPlayersController addPlayersController;
+    private GamePlayController gamePlayController;
+    private ListSelectionView<GamesAthlete> view;
+
+
 
     @FXML
     private TableView<OzlGame> gamesTable;
@@ -36,6 +45,8 @@ public class GamesOverviewController {
     private TableColumn<OzlGame, LocalDateTime> timeRunColumn;
 
     @FXML
+    private Label gameDetails;
+    @FXML
     private Label refName;
     @FXML
     private Label gameAthletes;
@@ -46,7 +57,8 @@ public class GamesOverviewController {
     @FXML
     private Label activeGameLabel;
     @FXML
-    private Button activateGameButon;
+    private Button activateGameButton;
+
     @FXML
     private Button addRefereeButton;
     @FXML
@@ -57,8 +69,35 @@ public class GamesOverviewController {
     private OzlGame ozlGame; // temporary game pointer
     private OzlGame activeGame; // game for playing
 
+    public OzlGame getActiveGame() {
+        return activeGame;
+    }
+
     public void setAddRefereeController(AddRefereeController addRefereeController) {
         this.addRefereeController = addRefereeController;
+    }
+
+    public void setNewGameController(NewGameController newGameController) {
+        this.newGameController = newGameController;
+    }
+
+    public void setAddPlayersController(AddPlayersController addPlayersController) {
+        this.addPlayersController = addPlayersController;
+    }
+
+    public void setGamePlayController(GamePlayController gamePlayController) {
+        this.gamePlayController = gamePlayController;
+    }
+
+    public void setMainApp(Ozlympic mainApp) {
+        this.mainApp = mainApp;
+        // Add data to the table
+        gamesTable.setItems(mainApp.get_games());
+
+    }
+
+    public void setView(ListSelectionView<GamesAthlete> view) {
+        this.view = view;
     }
 
     @FXML
@@ -102,28 +141,30 @@ public class GamesOverviewController {
 
     }
 
-    public void setTableRootController(TableRootController tableRootController) {
-        this.tableRootController = tableRootController;
-    }
-
     void showGameDetails(OzlGame entry){
         if(entry != null){
             this.ozlGame = entry;
             logger.trace("Game Accept: " + entry.getId());
+            gameDetails.setText(entry.getId() + " " + GamesHelperFunctions.firsLetterToUpper(entry.getGameSport().name()));
             refName.setText ( entry.get_referee() != null ? entry.get_referee().getName() : null);
             gameAthletes.setText( entry.getParticipation().size() > 0 ? "" + entry.getParticipation().size() : null);
-            gameWinner.setText( entry.isGamePlayed() ? entry.getGameAthletesWinnersSortedByTime().get(0).getName() : null   );
             // if game never played
             if (entry.isGamePlayed()) {
-                activateGameButon.setDisable(true);
+                gameWinner.setText( entry.getGameAthletesWinnersSortedByTime().get(0).getName() );
+                winnerTime.setText(CSVUtils.parseLine(entry.get_referee().getGameScore(entry).get(0)).get(3)  );
+                activateGameButton.setDisable(true);
             } else  {
+                gameWinner.setText( null);
+                winnerTime.setText(null  );
+
                 if (ozlGame != activeGame) {
-                    activateGameButon.setDisable(false);
+                    activateGameButton.setDisable(false);
                 } else {
-                    activateGameButon.setDisable(true);
+                    activateGameButton.setDisable(true);
                 }
             }
         } else {
+            gameDetails.setText(null);
             refName.setText(null);
             gameAthletes.setText(null);
             gameWinner.setText(null);
@@ -138,7 +179,7 @@ public class GamesOverviewController {
         logger.trace("activate click");
         activeGame = ozlGame;
         activeGameLabel.setText(activeGame.getId() + " " + GamesHelperFunctions.firsLetterToUpper(activeGame.getGameSport().name()));
-        activateGameButon.setDisable(true);
+        activateGameButton.setDisable(true);
         if (activeGame.get_referee() == null){
             addRefereeButton.setDisable(false);
             if (!addPlayersButton.isDisabled()) addPlayersButton.setDisable(true);
@@ -146,13 +187,28 @@ public class GamesOverviewController {
             addPlayersButton.setDisable(false);
             if (!addRefereeButton.isDisabled()) addRefereeButton.setDisable(true);
         }
+        if (activeGame.getMIN_PARTICIPANTS() <= activeGame.getGameAthletes().size() && activeGame.get_referee() != null) {
+            gamePlayButton.setDisable(false);
+        } else {
+            gamePlayButton.setDisable(true);
+        }
+        if (activeGame.getMAX_PARTICIPANTS() == activeGame.getGameAthletes().size() && !addPlayersButton.isDisabled()) addPlayersButton.setDisable(true);
+        if(activeGame.isGamePlayed()) gamePlayButton.setDisable(true);
+
     }
 
-    public void setMainApp(Ozlympic mainApp) {
-        this.mainApp = mainApp;
-        // Add data to the table
-        gamesTable.setItems(mainApp.get_games());
-
+    @FXML
+    private void handleNewGame(){
+        logger.trace("New Game Click");
+        boolean okClicked = mainApp.showNewGameDialog();
+        if (okClicked) {
+            ozlGame = newGameController.getGame();
+            showGameDetails(ozlGame);
+            handleActivate();
+            mainApp.get_games().add(activeGame);
+            gamesTable.scrollTo(activeGame);
+            gamesTable.getSelectionModel().selectLast();
+        }
     }
 
     @FXML
@@ -161,9 +217,10 @@ public class GamesOverviewController {
         boolean okClicked = mainApp.showAddRefereeDialog();
         if (okClicked) {
             try {
-                mainApp.addRefereeToGame(activeGame, addRefereeController.getGamesReferee());
+                mainApp.addRefereeToGameDBRecord(activeGame, addRefereeController.getGamesReferee());
                 activeGame.addParticipant(addRefereeController.getGamesReferee());
                 addRefereeButton.setDisable(true);
+                if (addPlayersButton.isDisabled()) addPlayersButton.setDisable(false);
             } catch (IOException | SQLException | ClassNotFoundException e) {
                 logger.fatal(e.getMessage());
                 Dialogues.createExceptionDialog(e);
@@ -175,11 +232,35 @@ public class GamesOverviewController {
     @FXML
     void handleAddplayers(){
         logger.trace("add athletes");
+        boolean okClicked = mainApp.showAddPlayersDialog(activeGame);
+        if (okClicked) {
+            logger.trace("ok clicked");
+            if (view.getTargetItems().size() > 0){
+                view.getTargetItems().stream()
+                        .filter(gamesAthlete -> !activeGame.getGameAthletes().contains(gamesAthlete))
+                        .limit(ozlGame.getMAX_PARTICIPANTS() - activeGame.getGameAthletes().size())
+                        .forEach(athlete -> {
+                    try {
+                        activeGame.addParticipant(athlete);
+                        mainApp.addAthletesToGameDBRecord(activeGame, athlete);
+                    } catch (Exception e){
+                        // do nothig, should never trigger
+                    }});
+                if (ozlGame == activeGame) showGameDetails(activeGame);
+                handleActivate();
+            }
+
+        }
     }
 
     @FXML
     void handlePlayGame(){
         logger.trace("play");
+        boolean okClicked = mainApp.showGamePlayDialog();
+        if (okClicked) {
+            showGameDetails(activeGame);
+            handleActivate();
+            gamesTable.scrollTo(activeGame);}
 
     }
 

@@ -125,3 +125,268 @@ org.hsqldb.HsqlException: integrity constraint violation: unique constraint or i
 [ERROR] 2017-05-24 16:25:59.789 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX
 [ERROR] 2017-05-24 16:26:01.274 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX
 [ERROR] 2017-05-24 16:26:02.195 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: unique constraint or index violation: GAMES_OFFICIALS_GAME_ID_UINDEX
+[ERROR] 2017-05-24 23:51:56.603 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: ATHLETE_ID in statement [INSERT INTO PARTICIPANTS(ID,ATHLETE_ID,GAME_ID,RESULT,SCORE) VALUES (?,?)]
+[ERROR] 2017-05-24 23:51:56.604 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-24 23:52:57.797 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: ATHLETE_ID in statement [INSERT INTO PARTICIPANTS(ID,ATHLETE_ID,GAME_ID,RESULT,SCORE) VALUES (?,?)]
+[ERROR] 2017-05-24 23:52:57.797 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-24 23:54:43.559 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO GAMES_ATHLETES(ID,ATHLETE_ID,GAME_ID,RESULT,SCORE) VALUES (?,?)]
+[ERROR] 2017-05-24 23:54:43.559 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-24 23:57:04.828 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO GAMES_ATHLETES(ATHLETE_ID,GAME_ID,RESULT,SCORE) VALUES (?,?)]
+[ERROR] 2017-05-24 23:57:04.829 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO GAMES_ATHLETES(ATHLETE_ID,GAME_ID,RESULT,SCORE) VALUES (?,?)]
+[ERROR] 2017-05-24 23:57:04.829 [JavaFX Application Thread] ConnectionFactory - row column count mismatch in statement [INSERT INTO GAMES_ATHLETES(ATHLETE_ID,GAME_ID,RESULT,SCORE) VALUES (?,?)]
+[ERROR] 2017-05-25 00:14:24.595 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: foreign key no parent; GAMES_ATHLETES_PARTICIPANTS_ID_FK table: GAMES_ATHLETES
+[ERROR] 2017-05-25 00:14:24.596 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-25 00:16:25.852 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: foreign key no parent; GAMES_ATHLETES_PARTICIPANTS_ID_FK table: GAMES_ATHLETES
+[ERROR] 2017-05-25 00:16:25.860 [JavaFX Application Thread] SQLPreBuilder - can't write new participant to database. Will throw
+[ERROR] 2017-05-25 00:16:59.767 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: foreign key no parent; GAMES_ATHLETES_PARTICIPANTS_ID_FK table: GAMES_ATHLETES
+[ERROR] 2017-05-25 00:16:59.768 [JavaFX Application Thread] ConnectionFactory - integrity constraint violation: foreign key no parent; GAMES_ATHLETES_PARTICIPANTS_ID_FK table: GAMES_ATHLETES
+[ERROR] 2017-05-25 02:44:40.086 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET SPORT WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 02:44:40.095 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET SPORT WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 02:44:40.095 [JavaFX Application Thread] GamePlayController - unexpected token: WHERE required: = in statement [UPDATE GAMES SET SPORT WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 02:46:35.520 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET SPORT WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 02:46:35.528 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET SPORT WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 02:46:35.529 [JavaFX Application Thread] GamePlayController - unexpected token: WHERE required: = in statement [UPDATE GAMES SET SPORT WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 02:47:25.522 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 02:47:25.530 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 02:47:25.530 [JavaFX Application Thread] GamePlayController - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 02:57:04.472 [JavaFX Application Thread] GamePlayController - null
+[WARN ] 2017-05-25 02:58:12.112 [JavaFX Application Thread] GamePlayController - null
+[ERROR] 2017-05-25 03:00:12.953 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:00:12.962 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 03:00:12.962 [JavaFX Application Thread] GamePlayController - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:00:54.560 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:00:54.569 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 03:00:54.569 [JavaFX Application Thread] GamePlayController - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:02:26.455 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:02:26.463 [JavaFX Application Thread] ConnectionFactory - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 03:02:26.464 [JavaFX Application Thread] GamePlayController - unexpected token: WHERE required: = in statement [UPDATE GAMES SET TIMERUN WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:19:49.061 [JavaFX Application Thread] ConnectionFactory - unexpected token: = in statement [UPDATE GAMES SET =0058 WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:19:49.069 [JavaFX Application Thread] ConnectionFactory - unexpected token: = in statement [UPDATE GAMES SET =0058 WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 03:19:49.069 [JavaFX Application Thread] GamePlayController - unexpected token: = in statement [UPDATE GAMES SET =0058 WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:21:13.043 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET GAME_ID=0058 WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:21:13.051 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET GAME_ID=0058 WHERE TIMERUN=? ]
+[WARN ] 2017-05-25 03:21:13.051 [JavaFX Application Thread] GamePlayController - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET GAME_ID=0058 WHERE TIMERUN=? ]
+[ERROR] 2017-05-25 03:22:10.569 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET TIMERUN=?  WHERE GAME_ID=0058]
+[ERROR] 2017-05-25 03:22:22.662 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET TIMERUN=?  WHERE GAME_ID=0058]
+[WARN ] 2017-05-25 03:22:22.662 [JavaFX Application Thread] GamePlayController - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET TIMERUN=?  WHERE GAME_ID=0058]
+[ERROR] 2017-05-25 03:25:03.806 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET TIMERUN=?  WHERE GAME_ID=58]
+[ERROR] 2017-05-25 03:25:03.815 [JavaFX Application Thread] ConnectionFactory - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET TIMERUN=?  WHERE GAME_ID=58]
+[WARN ] 2017-05-25 03:25:03.815 [JavaFX Application Thread] GamePlayController - user lacks privilege or object not found: GAME_ID in statement [UPDATE GAMES SET TIMERUN=?  WHERE GAME_ID=58]
+[ERROR] 2017-05-25 03:40:00.777 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@bde49801[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-24 17:39:59 heartbeat - read: -6840 ms.
+[ERROR] 2017-05-25 04:06:02.684 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.684 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.685 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.685 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.685 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.686 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.686 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.686 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.687 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.687 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.687 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.687 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.688 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.688 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.688 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.688 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.689 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.689 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.689 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.689 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.690 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.690 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.691 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.691 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.691 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.691 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.692 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.692 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:06:02.692 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:06:02.692 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.693 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:06:02.693 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.795 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.796 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.804 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.804 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.805 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.805 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.806 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.806 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.807 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.807 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.807 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.807 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.808 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.808 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.808 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.808 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.809 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.809 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.809 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.809 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.810 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.810 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.811 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.811 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.811 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.812 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.812 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.812 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:07:57.813 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:07:57.813 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.813 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:07:57.813 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.408 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.409 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.409 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.409 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.410 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.410 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.410 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.410 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.411 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.411 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.412 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.412 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.412 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.412 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.413 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.413 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.413 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.414 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.414 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.414 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.415 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.415 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.415 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.415 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.416 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.416 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.416 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.416 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:08:09.417 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:08:09.417 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.417 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:08:09.418 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:09:58.628 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:09:58.628 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.235 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.235 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.236 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.236 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.237 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.237 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.237 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.237 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.238 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.238 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.238 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.239 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.239 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.239 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.240 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.240 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.240 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.240 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.241 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.241 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.241 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.241 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.242 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.242 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.243 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.243 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:11:03.243 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:11:03.243 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.244 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:11:03.244 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.415 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.415 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.415 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.416 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.417 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.417 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.417 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.417 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.418 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.418 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.418 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.418 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.419 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.419 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.419 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.419 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.420 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.420 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.421 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.421 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.421 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.422 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.422 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.422 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.423 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.423 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.423 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.423 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:16:48.424 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:16:48.424 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.424 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:16:48.424 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.913 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.914 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.922 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.922 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.923 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.924 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.924 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.924 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.925 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.925 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.925 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.925 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.926 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.926 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.927 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.927 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.927 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.928 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.928 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.928 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.929 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.929 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.929 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.929 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.930 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.930 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.930 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.930 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:02.931 [JavaFX Application Thread] ConnectionFactory - data exception: invalid character value for cast
+[ERROR] 2017-05-25 04:19:02.932 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.932 [JavaFX Application Thread] ConnectionFactory - Parameter not set
+[ERROR] 2017-05-25 04:19:02.932 [JavaFX Application Thread] GamePlayController - Parameter not set
+[ERROR] 2017-05-25 04:19:35.022 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=314 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.023 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=314 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.023 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=314 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.024 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=347 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.024 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=347 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.024 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=347 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.025 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=306 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.025 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=306 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.025 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=306 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.026 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=308 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.026 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=308 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.026 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=308 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.027 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=312 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.027 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=312 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.027 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=312 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.028 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=299 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.028 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=299 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.028 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=299 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.029 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=310 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.029 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=310 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.029 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=310 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.030 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=296 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.030 [JavaFX Application Thread] ConnectionFactory - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=296 , GAME_ID=17]
+[ERROR] 2017-05-25 04:19:35.030 [JavaFX Application Thread] GamePlayController - unexpected token: , in statement [UPDATE GAMES_ATHLETES SET RESULT=? AND SCORE=?  WHERE ATHLETE_ID=296 , GAME_ID=17]
+[ERROR] 2017-05-25 04:31:59.533 [JavaFX Application Thread] ConnectionFactory - Database lock acquisition failure: lockFile: org.hsqldb.persist.LockFile@bde49801[file =/Users/dimz/Documents/Java/assignment2---OzLympicGames/Data/OzlympicData.lck, exists=true, locked=false, valid=false, ] method: checkHeartbeat read: 2017-05-24 18:31:58 heartbeat - read: -4510 ms.

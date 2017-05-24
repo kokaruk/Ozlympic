@@ -1,5 +1,6 @@
 package ozlympicgames.ozlmodel.dal;
 
+import ozlympicgames.ozlmodel.GamesAthlete;
 import ozlympicgames.ozlmodel.OzlGame;
 
 import javax.sql.rowset.CachedRowSet;
@@ -52,11 +53,24 @@ public class GameDAO implements IGameDAO {
         while (rs != null && rs.next()) {
             OzlGame game = new OzlGame(rs.getString(1));
             String gameTimestamp = rs.getString(3);
-            if ( gameTimestamp != null)  game.setTimeRun( Timestamp.valueOf(gameTimestamp));
+            if ( gameTimestamp != null) {
+                game.setTimeRun( Timestamp.valueOf(gameTimestamp));
+            }
             gameMap.put(game.getId(), game);
         }
         return gameMap;
     }
+
+    @Override
+    public void updateGame(OzlGame game, String timestamp)throws SQLException, ClassNotFoundException {
+        SQLPreBuilder gameUpdatePreBuilder = new SQLPreBuilder("GAMEUPDATE");
+        Integer id =  Integer.parseInt(game.getId().substring(2));
+        gameUpdatePreBuilder.updateRow( id.toString() ,
+                "TIMERUN", timestamp);
+
+    }
+
+
 
 
 

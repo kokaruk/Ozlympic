@@ -18,7 +18,7 @@
                     <columns>
                         <TableColumn fx:id="athlName2"  minWidth="140" resizable="false" text="Name"/>
                         <TableColumn fx:id="arthlType"  prefWidth="100"   resizable="false" text="Type"/>
-                        <TableColumn fx:id="athlPoints" maxWidth="74" resizable="false" text="Points"/>
+                        <TableColumn fx:id="athlPoints" maxWidth="74" resizable="true" text="Points"/>
                     </columns>
 
                 </TableView>

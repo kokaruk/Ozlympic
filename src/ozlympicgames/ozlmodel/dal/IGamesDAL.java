@@ -28,7 +28,13 @@ public interface IGamesDAL {
 
     ObservableMap<String, GamesOfficial> get_referees();
 
-    public void addRefereeToGame(OzlGame game, GamesOfficial official)
+    void addRefereeToGame(OzlGame game, GamesOfficial official)
             throws SQLException, ClassNotFoundException, IOException;
+
+    void addAthleteToGame(OzlGame game, GamesAthlete athlete)
+            throws SQLException, ClassNotFoundException, IOException;
+
+    void updateParticipation(OzlGame game, GamesAthlete athlete, Double result, Integer score)
+            throws SQLException, ClassNotFoundException;
 
 }

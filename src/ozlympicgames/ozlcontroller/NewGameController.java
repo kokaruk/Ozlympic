@@ -5,14 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ozlympicgames.ozlmodel.AthleteType;
-import ozlympicgames.ozlmodel.GamesAthlete;
+import ozlympicgames.ozlmodel.GameSports;
+import ozlympicgames.ozlmodel.OzlGame;
 import ozlympicgames.ozlmodel.dal.GamesDAL;
 import ozlympicgames.ozlmodel.dal.IGamesDAL;
 
@@ -21,22 +20,12 @@ import java.sql.SQLException;
 
 /**
  * @author dimz
- * @since 22/5/17.
+ * @since 24/5/17.
  */
-public class AthleteAddController {
-
-    @FXML
-    private Label athlName;
-    @FXML
-    private Label athlState;
-    @FXML
-    private Label athlAge;
-    @FXML
-    private ComboBox<AthleteType> athlType;  //conbobox
-    private ObservableList<AthleteType> athlTypeData = FXCollections.observableArrayList(AthleteType.values()); //comboboxvalues
-
+public class NewGameController {
     private static Logger logger = LogManager.getLogger();
     private static IGamesDAL gamesDAL;
+
     static {
         try {
             gamesDAL = GamesDAL.getInstance();
@@ -47,35 +36,28 @@ public class AthleteAddController {
 
     }
 
-
+    @FXML
+    private ComboBox<GameSports> gameSportType;  //conbobox
+    private ObservableList<GameSports> gameSportTypeData = FXCollections.observableArrayList(GameSports.values()); //comboboxvalues
     private Stage dialogStage;
-    private GamesAthlete gamesAthlete;
+    private OzlGame game;
     private boolean okClicked = false;
 
-
-
-    public void populateData(String name, String state, int age) {
-        athlName.setText(name);
-        athlState.setText(state);
-        athlAge.setText( Integer.toString(age));
-    }
-
-    public GamesAthlete getGamesAthlete() {
-        return gamesAthlete;
+    public OzlGame getGame() {
+        return game;
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         // Init ComboBox items.
-        athlType.setItems(athlTypeData);
+        gameSportType.setItems(gameSportTypeData);
 
         // Define rendering of the list of values in ComboBox drop down.
-        athlType.setCellFactory((comboBox) -> {
-            return new ListCell<AthleteType>() {
+        gameSportType.setCellFactory(comboBox -> {
+            return new ListCell<GameSports>() {
                 @Override
-                protected void updateItem(AthleteType item, boolean empty) {
+                protected void updateItem(GameSports item, boolean empty) {
                     super.updateItem(item, empty);
-
                     if (item == null || empty) {
                         setText(null);
                     } else {
@@ -86,26 +68,26 @@ public class AthleteAddController {
         });
 
         // Define rendering of selected value shown in ComboBox.
-        athlType.setConverter(new StringConverter<AthleteType>() {
+        gameSportType.setConverter(new StringConverter<GameSports>() {
             @Override
-            public String toString(AthleteType athleteType) {
-                if (athleteType == null) {
+            public String toString(GameSports gameSports) {
+                if (gameSports == null) {
                     return null;
                 } else {
-                    return athleteType.name();
+                    return gameSports.name();
                 }
             }
 
             @Override
-            public AthleteType fromString(String athleteTypeString) {
+            public GameSports fromString(String sportTypeString) {
                 return null; // No conversion fromString needed.
             }
         });
 
         // Handle ComboBox event.
-        athlType.setOnAction((event) -> {
-            AthleteType athleteType = athlType.getSelectionModel().getSelectedItem();
-            logger.trace(athleteType.name());
+        gameSportType.setOnAction((event) -> {
+            GameSports selectedPerson = gameSportType.getSelectionModel().getSelectedItem();
+            logger.trace(selectedPerson.name());
         });
     }
 
@@ -113,34 +95,22 @@ public class AthleteAddController {
         this.dialogStage = dialogStage;
     }
 
-    /**
-     * Returns true if the user clicked OK, false otherwise.
-     *
-     * @return
-     */
     public boolean isOkClicked() {
         return okClicked;
     }
 
     @FXML
     private void handleOk() throws SQLException, ClassNotFoundException, IOException {
-            if (isInputValid()) {
-                gamesAthlete = gamesDAL.getAthleteDAO().getNewAthlete(
-                        athlName.getText(),
-                        Integer.parseInt(athlAge.getText()),
-                        athlState.getText(),
-                        athlType.getSelectionModel().getSelectedItem().name()
-                );
+        if (isInputValid()) {
+            game = gamesDAL.getGameDAO().getNewGame(
+                    gameSportType.getSelectionModel().getSelectedItem().name()
+            );
 
-                okClicked = true;
-                dialogStage.close();
-            }
+            okClicked = true;
+            dialogStage.close();
+        }
     }
 
-
-    /**
-     * Called when the user clicks cancel.
-     */
     @FXML
     private void handleCancel() {
         dialogStage.close();
@@ -148,18 +118,17 @@ public class AthleteAddController {
 
     private boolean isInputValid() {
         String errorMessage = "";
-        if (athlType.getSelectionModel().getSelectedItem() == null) {
-            errorMessage += "Please Select Athlete Type";
+        if (gameSportType.getSelectionModel().getSelectedItem() == null) {
+            errorMessage += "Please Select Sport";
         }
-
         if (errorMessage.length() == 0) {
             return true;
         } else {
             // Show the error message.
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(dialogStage);
-            alert.setTitle("Invalid Type");
-            alert.setHeaderText("Please correct invalid type");
+            alert.setTitle("Invalid Game Sport");
+            alert.setHeaderText("Please correct Game Sport");
             alert.setContentText(errorMessage);
 
             alert.showAndWait();
@@ -169,3 +138,4 @@ public class AthleteAddController {
     }
 
 }
+

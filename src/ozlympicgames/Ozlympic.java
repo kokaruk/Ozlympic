@@ -6,18 +6,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ozlympicgames.ozlcontroller.AddRefereeController;
-import ozlympicgames.ozlcontroller.AthleteAddController;
-import ozlympicgames.ozlcontroller.AthletesOverviewController;
-import ozlympicgames.ozlcontroller.GamesOverviewController;
+import org.controlsfx.control.ListSelectionView;
+import ozlympicgames.ozlcontroller.*;
 import ozlympicgames.ozlmodel.GamesAthlete;
 import ozlympicgames.ozlmodel.GamesHelperFunctions;
 import ozlympicgames.ozlmodel.GamesOfficial;
@@ -27,6 +27,9 @@ import ozlympicgames.ozlmodel.dal.IGamesDAL;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Main class to start the application.
@@ -75,6 +78,12 @@ public class Ozlympic extends Application {
 
     }
 
+    // not sure if others should be speaking to DAL directly
+
+
+    public IGamesDAL getGamesDAL() {
+        return gamesDAL;
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -134,7 +143,16 @@ public class Ozlympic extends Application {
         tabPane.getTabs().get(1).setContent(splitPane);
     }
 
+    public void addRefereeToGameDBRecord(OzlGame game, GamesOfficial official) throws IOException, ClassNotFoundException, SQLException {
+        gamesDAL.addRefereeToGame(game, official);
+    }
 
+    public void addAthletesToGameDBRecord(OzlGame game, GamesAthlete athlete) throws IOException, ClassNotFoundException, SQLException {
+        gamesDAL.addAthleteToGame(game, athlete);
+    }
+
+
+    // sub-dialogues
     public boolean showNewAthleteDialog() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -145,6 +163,7 @@ public class Ozlympic extends Application {
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
+            dialogStage.setResizable(false);
             dialogStage.setTitle("Add New Athlete");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
@@ -159,7 +178,7 @@ public class Ozlympic extends Application {
             // Set the person into the controller.
             AthleteAddController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.populsteData(name, state, age );
+            controller.populateData(name, state, age );
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -169,7 +188,6 @@ public class Ozlympic extends Application {
             return false;
         }
     }
-
     public boolean showAddRefereeDialog() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -180,6 +198,7 @@ public class Ozlympic extends Application {
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
+            dialogStage.setResizable(false);
             dialogStage.setTitle("Add New Referee");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
@@ -204,10 +223,124 @@ public class Ozlympic extends Application {
             return false;
         }
     }
+    public boolean showNewGameDialog() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/NewGame.fxml"));
+            AnchorPane page = loader.load();
+            // Set the person into the controller.
+            NewGameController controller = loader.getController();
+            gamesOverviewController.setNewGameController(controller);
 
-    public void addRefereeToGame(OzlGame game, GamesOfficial official) throws IOException, ClassNotFoundException, SQLException {
-        gamesDAL.addRefereeToGame(game, official);
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setResizable(false);
+            dialogStage.setTitle("Add New Game");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            controller.setDialogStage(dialogStage);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
+    public boolean showAddPlayersDialog(OzlGame game) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/AddPlayers.fxml"));
+            AnchorPane page = loader.load();
+            // Set the person into the controller.
+            AddPlayersController controller = loader.getController();
+            gamesOverviewController.setAddPlayersController(controller);
+
+            List<GamesAthlete> myAthletes = _athletes.stream().filter( gamesAthlete ->
+                gamesAthlete.getAthleteType().getSport().size() > 1
+                        || gamesAthlete.getAthleteType().getSport().iterator().next() == game.getGameSport())
+                    .filter(gamesAthlete -> !game.getGameAthletes().contains(gamesAthlete))
+                    .collect(Collectors.toCollection(ArrayList::new));
+            ListSelectionView<GamesAthlete> view = new ListSelectionView<>();
+            view.getSourceItems().addAll(myAthletes);
+            view.getTargetItems().addAll(game.getGameAthletes());
+            view.setCellFactory(
+                    comboBox -> {
+                        return new ListCell<GamesAthlete>() {
+                            @Override
+                            protected void updateItem(GamesAthlete item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (item == null || empty) {
+                                    setText(null);
+                                } else {
+                                    setText(item.getName()
+                                            + " | GS " + item.getParticipation().size()
+                                            + " | " + item.getAthleteType().name().substring(0, 4).toUpperCase() );
+                                }
+                            }
+                        };
+                    });
+
+            VBox box = (VBox) page.getChildren().get(0);
+            box.getChildren().add(view);
+            gamesOverviewController.setView(view);
+            /*  end*/
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setResizable(false);
+            dialogStage.setTitle("Add New Game");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            controller.setDialogStage(dialogStage);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean showGamePlayDialog() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/GamePlay.fxml"));
+            AnchorPane page = loader.load();
+            // Set the person into the controller.
+            GamePlayController controller = loader.getController();
+            gamesOverviewController.setGamePlayController(controller);
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setResizable(false);
+            dialogStage.setTitle("Lets Play");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            controller.setDialogStage(dialogStage);
+            controller.setActiveGame(gamesOverviewController.getActiveGame());
+            controller.setMainApp(this);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
 }
 

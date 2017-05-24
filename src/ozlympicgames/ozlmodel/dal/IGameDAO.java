@@ -14,4 +14,5 @@ public interface IGameDAO {
     OzlGame getNewGame(String sport)
             throws SQLException, ClassNotFoundException, IOException;
     Map<String,OzlGame> getGamesMap()throws SQLException, ClassNotFoundException;
+    void updateGame(OzlGame game, String timestamp)throws SQLException, ClassNotFoundException;
 }

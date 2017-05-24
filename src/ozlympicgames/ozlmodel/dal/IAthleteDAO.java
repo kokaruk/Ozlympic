@@ -16,4 +16,5 @@ public interface IAthleteDAO {
             throws SQLException, ClassNotFoundException, IOException;
     Map<String, GamesAthlete> getAthletesMap()
             throws SQLException, ClassNotFoundException, IOException;
+    void updateAthlete(GamesAthlete athlete, String totalpoints)throws SQLException, ClassNotFoundException;
 }

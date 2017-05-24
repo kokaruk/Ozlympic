@@ -38,7 +38,7 @@ public class GamesDAL implements IGamesDAL {
     private ObservableMap<String, OzlGame> _games;
     private ObservableMap<String, GamesOfficial> _referees;
     private ObservableMap<String, GamesAthlete> _athlets;
-    private ObservableList<OzlParticipation> _participation;
+    private ObservableList<OzlParticipation> _participation = FXCollections.observableArrayList();
 
     // private constructor
     private GamesDAL() throws SQLException, ClassNotFoundException, IOException {
@@ -106,9 +106,9 @@ public class GamesDAL implements IGamesDAL {
     }
 
     private void restoreParticipation()  throws SQLException, ClassNotFoundException {
-        SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("PARTICIPATION");
+        SQLPreBuilder athlLookupPrebuilder = new SQLPreBuilder("PARTICIPATION");
 
-        CachedRowSet rs = refereeLookupPrebuilder.getRowSetFromView("", "");
+        CachedRowSet rs = athlLookupPrebuilder.getRowSetFromView("", "");
         if (rs != null){
             while (rs.next()) {
                 GamesAthlete athlete = _athlets.get(rs.getString("ATHL_ID"));
@@ -120,19 +120,31 @@ public class GamesDAL implements IGamesDAL {
                         rs.getInt("SCORE"),
                         rs.getDouble("RESULT")
                 );
-
-                game.addParticipant(athlete);
+                game.addParticipation(participation);
+                athlete.addParticipation(participation);
+                _participation.add(participation);
             }
         }
-
-
     }
+
+    @Override
+    public void addAthleteToGame(OzlGame game, GamesAthlete athlete)
+            throws SQLException, ClassNotFoundException, IOException {
+        SQLPreBuilder athlLookupPrebuilder = new SQLPreBuilder("PARTICIPATION");
+        CachedRowSet rs = athlLookupPrebuilder.getRowSetFromView("", "");
+        String paramsVals =  Integer.parseInt(athlete.getId().substring(2)) + ","
+                + Integer.parseInt(game.getId().substring(2))  +","
+                +"0,0";
+        String ID = athlLookupPrebuilder.getNewIdNum(paramsVals).toString();
+        athlLookupPrebuilder.appendCSV(ID, paramsVals);
+    }
+
     @Override
     public void addRefereeToGame(OzlGame game, GamesOfficial official)
             throws SQLException, ClassNotFoundException, IOException {
         SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("GAMEREFEREE");
         //check if game has referee
-        if (game.get_referee() != null ){ //update
+        if (game.get_referee() != null ){ //updateGame
             // not implemented yet, only allows to add new referee once
         } else { // insert
             String paramsVals = Integer.parseInt(game.getId().substring(2)) + ","
@@ -142,5 +154,18 @@ public class GamesDAL implements IGamesDAL {
         }
 
     }
+
+    @Override
+    public void updateParticipation(OzlGame game, GamesAthlete athlete, Double result, Integer score)
+            throws SQLException, ClassNotFoundException {
+        SQLPreBuilder participationUpdate = new SQLPreBuilder("PARTICIPATIONUPDATE");
+        Integer gameId = Integer.parseInt(game.getId().substring(2));
+        Integer athlId = Integer.parseInt(athlete.getId().substring(2));
+        String updatingValues = athlId.toString() + ","  + gameId.toString();
+        String newValues =  String.format("%.2f", result)  + ", " + score.toString();
+        participationUpdate.updateRow(updatingValues, "RESULT, SCORE", newValues);
+    }
+
+
 
 }

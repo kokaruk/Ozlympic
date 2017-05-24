@@ -72,4 +72,13 @@ class AthleteDAO implements IAthleteDAO {
         return athletes;
     }
 
+    @Override
+    public void updateAthlete(GamesAthlete athlete, String totalpoints)throws SQLException, ClassNotFoundException {
+        SQLPreBuilder gameUpdatePreBuilder = new SQLPreBuilder("PARTICIPANTSUPDATE");
+        Integer id =  Integer.parseInt(athlete.getId().substring(2));
+        gameUpdatePreBuilder.updateRow( id.toString() ,
+                "TOTALPOINTS", totalpoints);
+
+    }
+
 }
