@@ -61,6 +61,14 @@ public class Ozlympic extends Application {
     }
 
 
+    public AthletesOverviewController getAthletesOverviewController() {
+        return athletesOverviewController;
+    }
+
+    public GamesOverviewController getGamesOverviewController() {
+        return gamesOverviewController;
+    }
+
     public ObservableList<GamesAthlete> get_athletes() {
         return _athletes;
     }

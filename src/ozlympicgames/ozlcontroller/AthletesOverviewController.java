@@ -96,4 +96,9 @@ public class AthletesOverviewController {
     public void setAthleteAddController(AthleteAddController athleteAddController){
         this.athleteAddController = athleteAddController;
     }
+
+    public void refreshTable() {
+        athletesTable.refresh();
+    }
+
 }

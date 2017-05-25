@@ -46,7 +46,7 @@
             
                 <Button layoutX="15.0" layoutY="346.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleOk" text="OK" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
                 <Button layoutX="123.0" layoutY="359.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" AnchorPane.bottomAnchor="10.0" />
-               <Button layoutX="455.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleGameStart" prefHeight="106.0" prefWidth="131.0" text="Start" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               <Button fx:id="startButton" layoutX="455.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleGameStart" prefHeight="106.0" prefWidth="131.0" text="Start" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
             </children>
          </AnchorPane>
       </children>

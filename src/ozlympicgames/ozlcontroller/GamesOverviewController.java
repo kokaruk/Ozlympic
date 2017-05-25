@@ -254,14 +254,18 @@ public class GamesOverviewController {
     }
 
     @FXML
-    void handlePlayGame(){
+    void handlePlayGame() {
         logger.trace("play");
         boolean okClicked = mainApp.showGamePlayDialog();
         if (okClicked) {
             showGameDetails(activeGame);
             handleActivate();
-            gamesTable.scrollTo(activeGame);}
+            gamesTable.scrollTo(activeGame);
+            mainApp.getAthletesOverviewController().refreshTable();
+            gamesTable.refresh();
+        }
 
     }
+
 
 }
