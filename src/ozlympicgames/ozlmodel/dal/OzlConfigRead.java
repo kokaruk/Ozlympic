@@ -4,11 +4,13 @@ package ozlympicgames.ozlmodel.dal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
  * Reads Config Files. Implements singleton pattern to avoid sharing violation with lazy field instantiation.
+ *
  * @author dimz
  * @since 18/3/17
  */
@@ -18,9 +20,11 @@ public final class OzlConfigRead implements IOzlConfigRead {
 
     // singleton instance
     private static OzlConfigRead instance;
+
     // private constructor
     private OzlConfigRead() {
     }
+
     // lazy instantiation
     public static OzlConfigRead getInstance() {
         if (instance == null) {
@@ -31,8 +35,9 @@ public final class OzlConfigRead implements IOzlConfigRead {
 
     /**
      * Get int from config file. Interface implementation.
+     *
      * @param myPropertyName property name string
-     * @param myPropFile property
+     * @param myPropFile     property
      * @return integer from
      */
     @Override
@@ -54,8 +59,9 @@ public final class OzlConfigRead implements IOzlConfigRead {
 
     /**
      * Get string from config file. Interface implementation.
+     *
      * @param myPropertyName property name string
-     * @param myPropFile path to property file
+     * @param myPropFile     path to property file
      * @return string of property value
      * @throws configFileMissingException if passed URI doesn't exist
      */
@@ -64,7 +70,7 @@ public final class OzlConfigRead implements IOzlConfigRead {
         Properties myProp = new Properties();
 
         String myPropertyString;
-        try (InputStream in = getClass().getResourceAsStream(myPropFile) ){
+        try (InputStream in = getClass().getResourceAsStream(myPropFile)) {
             myProp.load(in);
             myPropertyString = myProp.getProperty(myPropertyName);
         } catch (IOException ex) {
@@ -77,7 +83,6 @@ public final class OzlConfigRead implements IOzlConfigRead {
     }
 
     /**
-     *
      * @param myPropFile
      * @return
      * @throws IOException
@@ -86,7 +91,7 @@ public final class OzlConfigRead implements IOzlConfigRead {
     public Properties getProperties(String myPropFile) throws IOException {
         Properties myProp = new Properties();
 
-        try (InputStream in = getClass().getResourceAsStream(myPropFile) ){
+        try (InputStream in = getClass().getResourceAsStream(myPropFile)) {
             myProp.load(in);
         }
         return myProp;

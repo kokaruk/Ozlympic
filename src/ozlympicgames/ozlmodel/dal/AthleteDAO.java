@@ -15,8 +15,10 @@ import java.util.Map;
 class AthleteDAO implements IAthleteDAO {
 
     private static String SQLContext = "PARTICIPANTS";
-    private SQLPreBuilder preBuilder = new SQLPreBuilder(SQLContext);
     private static IGamesDAL gamesDAL;
+    // singleton instance
+    private static IAthleteDAO instance;
+
     static {
         try {
             gamesDAL = GamesDAL.getInstance();
@@ -25,8 +27,7 @@ class AthleteDAO implements IAthleteDAO {
         }
     }
 
-    // singleton instance
-    private static IAthleteDAO instance;
+    private SQLPreBuilder preBuilder = new SQLPreBuilder(SQLContext);
 
     // private constructor
     private AthleteDAO() {
@@ -49,12 +50,12 @@ class AthleteDAO implements IAthleteDAO {
         GamesAthlete athlete = new GamesAthlete(idNum, name, age, state, type);
         String ID = athlete.getId();
         preBuilder.appendCSV(ID, paramsVals);
-      //  gamesDAL.addAthlete(athlete);
+        //  gamesDAL.addAthlete(athlete);
         return athlete;
     }
 
     @Override
-    public Map<String, GamesAthlete> getAthletesMap() throws SQLException, ClassNotFoundException, IOException {
+    public Map<String, GamesAthlete> getAthletesMap() throws SQLException, ClassNotFoundException {
         SQLPreBuilder AthleteLookupPrebuilder = new SQLPreBuilder("ATHLETES");
         CachedRowSet rs = AthleteLookupPrebuilder.getRowSetFromView("", "");
         Map<String, GamesAthlete> athletes = new HashMap<>();
@@ -73,10 +74,10 @@ class AthleteDAO implements IAthleteDAO {
     }
 
     @Override
-    public void updateAthlete(GamesAthlete athlete, String totalpoints)throws SQLException, ClassNotFoundException {
+    public void updateAthlete(GamesAthlete athlete, String totalpoints) throws SQLException, ClassNotFoundException {
         SQLPreBuilder gameUpdatePreBuilder = new SQLPreBuilder("PARTICIPANTSUPDATE");
-        Integer id =  Integer.parseInt(athlete.getId().substring(2));
-        gameUpdatePreBuilder.updateRow( id.toString() ,
+        Integer id = Integer.parseInt(athlete.getId().substring(2));
+        gameUpdatePreBuilder.updateRow(id.toString(),
                 "TOTALPOINTS", totalpoints);
 
     }

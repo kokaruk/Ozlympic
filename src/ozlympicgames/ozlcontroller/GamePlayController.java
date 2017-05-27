@@ -97,7 +97,6 @@ public class GamePlayController {
     }
 
 
-
     @FXML
     private void handleGameStart() {
         logger.trace("Game Start");
@@ -181,6 +180,7 @@ public class GamePlayController {
             masker.setProgress(1);
             masker.setOnMouseClicked(mouseEvent -> masker.setVisible(false));
             startButton.setDisable(true);
+            masker.setText("Done!");
         });
         new Thread(sleeper3).start();
     }

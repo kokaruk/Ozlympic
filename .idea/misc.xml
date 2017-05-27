@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <pattern value="ozlympicgames.ozlcontroller.AddPlayersController" method="initialize" />
+    <pattern value="ozlympicgames.ozlcontroller.AddPlayersController" />
+    <pattern value="ozlympicgames.ozlcontroller.AddRefereeController" method="initialize" />
+    <pattern value="ozlympicgames.ozlcontroller.AddRefereeController" />
+    <pattern value="ozlympicgames.ozlcontroller.AthleteAddController" method="initialize" />
+    <pattern value="ozlympicgames.ozlcontroller.AthleteAddController" />
+    <pattern value="ozlympicgames.ozlcontroller.AthletesOverviewController" method="initialize" />
+    <pattern value="ozlympicgames.ozlcontroller.GamePlayController" method="initialize" />
+    <pattern value="ozlympicgames.ozlcontroller.GamesOverviewController" method="initialize" />
+  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/JavaDoc" />
     <option name="OPTION_SCOPE" value="package" />

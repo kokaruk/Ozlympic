@@ -13,10 +13,11 @@ import java.io.StringWriter;
  * @since 22/5/17.
  */
 public final class Dialogues {
-    private Dialogues(){}
+    private Dialogues() {
+    }
 
     public static Dialog<ButtonType> createExceptionDialog(Throwable th) {
-        Dialog<ButtonType> dialog = new Dialog<ButtonType>();
+        Dialog<ButtonType> dialog = new Dialog<>();
 
         dialog.setTitle("Program exception");
 

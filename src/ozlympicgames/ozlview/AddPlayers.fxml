@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="200.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.111" fx:controller="ozlympicgames.ozlcontroller.AddPlayersController">
+    <VBox layoutX="263.0" layoutY="13.0" prefHeight="175.0" prefWidth="100.0" AnchorPane.bottomAnchor="50.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
 
-<AnchorPane prefHeight="200.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ozlympicgames.ozlcontroller.AddPlayersController">
-   <VBox layoutX="263.0" layoutY="13.0" prefHeight="175.0" prefWidth="100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-
-    <Button layoutX="14.0" layoutY="165.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleOk" text="OK" />
-    <Button layoutX="93.0" layoutY="165.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+    <Button layoutX="14.0" layoutY="165.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleOk" text="OK"/>
+    <Button layoutX="93.0" layoutY="165.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleCancel"
+            text="Cancel"/>
 </AnchorPane>

@@ -1,11 +1,11 @@
 package ozlympicgames.ozlmodel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ozlympicgames.ozlmodel.dal.IOzlConfigRead;
 import ozlympicgames.ozlmodel.dal.OzlConfigRead;
 import ozlympicgames.ozlmodel.dal.configFileMissingException;
 import ozlympicgames.ozlmodel.dal.modelPackageConfig;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -24,6 +24,7 @@ public final class GamesHelperFunctions {
     static private IOzlConfigRead customReader;
     private static List<String> randomNames;
     private static String REGEX_SPLIT_OPTION;
+
     static {
         try {
             REGEX_SPLIT_OPTION = getConfigReader().getConfigString("REGEX_SPLIT_OPTION", modelPackageConfig.MODEL_CONFIG_FILE);

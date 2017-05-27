@@ -1,13 +1,13 @@
 package ozlympicgames.ozlmodel;
 
-import ozlympicgames.ozlmodel.dal.IOzlConfigRead;
-import ozlympicgames.ozlmodel.dal.modelPackageConfig;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import ozlympicgames.ozlmodel.dal.IOzlConfigRead;
+import ozlympicgames.ozlmodel.dal.modelPackageConfig;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,14 +42,22 @@ class OzlGameTest {
         GamesHelperFunctions.setCustomReader(null);
     }
 
+    private String idBuilder(String sportName) {
+        return sportName.substring(0, 2).toUpperCase() + "01";
+    }
+
     @Nested
     @DisplayName("gamePlay method test")
-    class gamePlayTest{
+    class gamePlayTest {
 
-        @Mock GamesAthlete sprinter1;
-        @Mock GamesAthlete sprinter2;
-        @Mock GamesAthlete superAthlete1;
-        @Mock GamesOfficial referee;
+        @Mock
+        GamesAthlete sprinter1;
+        @Mock
+        GamesAthlete sprinter2;
+        @Mock
+        GamesAthlete superAthlete1;
+        @Mock
+        GamesOfficial referee;
 
         List<GamesAthlete> testAthletes = new ArrayList<>();
 
@@ -57,7 +65,7 @@ class OzlGameTest {
         ArgumentCaptor<OzlParticipation> argParticipation;
 
         @BeforeEach
-        void setUp(){
+        void setUp() {
             //arg captors
             argInt = ArgumentCaptor.forClass(Integer.class);
             argParticipation = ArgumentCaptor.forClass(OzlParticipation.class);
@@ -90,7 +98,7 @@ class OzlGameTest {
 
         @DisplayName("Make participants compete assert game status is played")
         @Test
-        void gamePlay_allCorrect_gamePlayedTrue(){
+        void gamePlay_allCorrect_gamePlayedTrue() {
             // assert is new game before compete
             assertFalse(testGame.isGamePlayed());
             testGame.gamePlay();
@@ -100,7 +108,7 @@ class OzlGameTest {
 
         @DisplayName("Make participants compete verify compete method is called")
         @Test
-        void gamePlay_allCorrect_SuperAthleteAsArgument(){
+        void gamePlay_allCorrect_SuperAthleteAsArgument() {
             testGame.gamePlay();
             verify(superAthlete1).compete(argParticipation.capture());
             verify(superAthlete1, times(1)).compete(argParticipation.getValue());
@@ -110,7 +118,7 @@ class OzlGameTest {
 
         @DisplayName("Make participants compete verify referee award points is called")
         @Test
-        void gamePlay_allCorrect_RefereeAwardPoints(){
+        void gamePlay_allCorrect_RefereeAwardPoints() {
             testGame.gamePlay();
 
             verify(referee, times(1)).awardPoints(testGame);
@@ -135,6 +143,7 @@ class OzlGameTest {
                         testGame.athletesCount());
                 assertEquals(expected, exception.getMessage());
             }
+
             @DisplayName("gamePlay throws NoRefereeException")
             @Test
             void gamePlay_NoReferee_ThrowsNoRefereeException() {
@@ -153,16 +162,12 @@ class OzlGameTest {
         }
     }
 
-    private String idBuilder(String sportName) {
-        return sportName.substring(0, 2).toUpperCase() + "01";
-    }
-
     @Nested
     @DisplayName("addParticipant method tests")
     class addParticipantTests {
 
         @BeforeEach
-        void configReaderSetUp(){
+        void configReaderSetUp() {
             when(configReaderMock.getConfigInt("MIN_PARTICIPANTS", modelPackageConfig.MODEL_CONFIG_FILE)).thenReturn(1);
             when(configReaderMock.getConfigInt("MAX_PARTICIPANTS", modelPackageConfig.MODEL_CONFIG_FILE)).thenReturn(1);
         }

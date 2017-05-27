@@ -15,10 +15,9 @@ import java.util.Map;
 public class RefereeDAO implements IRefereeDAO {
 
     private static String SQLContext = "PARTICIPANTS";
-    private SQLPreBuilder preBuilder = new SQLPreBuilder(SQLContext);
-
     // singleton instance
     private static IRefereeDAO instance;
+    private SQLPreBuilder preBuilder = new SQLPreBuilder(SQLContext);
 
     // private constructor
     private RefereeDAO() {
@@ -44,7 +43,7 @@ public class RefereeDAO implements IRefereeDAO {
     }
 
     @Override
-    public Map<String, GamesOfficial> getOfficialsMap() throws SQLException, ClassNotFoundException, IOException {
+    public Map<String, GamesOfficial> getOfficialsMap() throws SQLException, ClassNotFoundException {
         CachedRowSet rs = preBuilder.getRowSet("TYPE", "referee");
         Map<String, GamesOfficial> officials = new HashMap<>();
         while (rs != null && rs.next()) {

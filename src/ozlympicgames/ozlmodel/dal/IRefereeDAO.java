@@ -15,5 +15,5 @@ public interface IRefereeDAO {
             throws SQLException, ClassNotFoundException, IOException;
 
     Map<String, GamesOfficial> getOfficialsMap()
-            throws SQLException, ClassNotFoundException, IOException;
+            throws SQLException, ClassNotFoundException;
 }

@@ -73,7 +73,7 @@ public class GamesDAL implements IGamesDAL {
     }
 
     @Override
-    public void addAthlete(GamesAthlete gamesAthlete){
+    public void addAthlete(GamesAthlete gamesAthlete) {
         this._athlets.put(gamesAthlete.getId(), gamesAthlete);
     }
 
@@ -93,7 +93,6 @@ public class GamesDAL implements IGamesDAL {
     }
 
 
-
     private void restoreRefereeParticipation() throws SQLException, ClassNotFoundException {
         SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("GAMEREFEREE");
         CachedRowSet rs = refereeLookupPrebuilder.getRowSetFromView("", "");
@@ -105,11 +104,11 @@ public class GamesDAL implements IGamesDAL {
         }
     }
 
-    private void restoreParticipation()  throws SQLException, ClassNotFoundException {
+    private void restoreParticipation() throws SQLException, ClassNotFoundException {
         SQLPreBuilder athlLookupPrebuilder = new SQLPreBuilder("PARTICIPATION");
 
         CachedRowSet rs = athlLookupPrebuilder.getRowSetFromView("", "");
-        if (rs != null){
+        if (rs != null) {
             while (rs.next()) {
                 GamesAthlete athlete = _athlets.get(rs.getString("ATHL_ID"));
                 OzlGame game = _games.get(rs.getString("GAME_ID"));
@@ -132,9 +131,9 @@ public class GamesDAL implements IGamesDAL {
             throws SQLException, ClassNotFoundException, IOException {
         SQLPreBuilder athlLookupPrebuilder = new SQLPreBuilder("PARTICIPATION");
         CachedRowSet rs = athlLookupPrebuilder.getRowSetFromView("", "");
-        String paramsVals =  Integer.parseInt(athlete.getId().substring(2)) + ","
-                + Integer.parseInt(game.getId().substring(2))  +","
-                +"0,0";
+        String paramsVals = Integer.parseInt(athlete.getId().substring(2)) + ","
+                + Integer.parseInt(game.getId().substring(2)) + ","
+                + "0,0";
         String ID = athlLookupPrebuilder.getNewIdNum(paramsVals).toString();
         athlLookupPrebuilder.appendCSV(ID, paramsVals);
     }
@@ -144,9 +143,8 @@ public class GamesDAL implements IGamesDAL {
             throws SQLException, ClassNotFoundException, IOException {
         SQLPreBuilder refereeLookupPrebuilder = new SQLPreBuilder("GAMEREFEREE");
         //check if game has referee
-        if (game.get_referee() != null ){ //updateGame
-            // not implemented yet, only allows to add new referee once
-        } else { // insert
+        if (game.get_referee() == null) { //updateGame
+            // insert
             String paramsVals = Integer.parseInt(game.getId().substring(2)) + ","
                     + Integer.parseInt(official.getId().substring(2));
             String ID = refereeLookupPrebuilder.getNewIdNum(paramsVals).toString();
@@ -161,11 +159,10 @@ public class GamesDAL implements IGamesDAL {
         SQLPreBuilder participationUpdate = new SQLPreBuilder("PARTICIPATIONUPDATE");
         Integer gameId = Integer.parseInt(game.getId().substring(2));
         Integer athlId = Integer.parseInt(athlete.getId().substring(2));
-        String updatingValues = athlId.toString() + ","  + gameId.toString();
-        String newValues =  String.format("%.2f", result)  + ", " + score.toString();
+        String updatingValues = athlId.toString() + "," + gameId.toString();
+        String newValues = String.format("%.2f", result) + ", " + score.toString();
         participationUpdate.updateRow(updatingValues, "RESULT, SCORE", newValues);
     }
-
 
 
 }

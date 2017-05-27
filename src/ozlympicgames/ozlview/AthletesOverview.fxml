@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-
-
-<SplitPane dividerPositions="0.4"
-           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-           xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+<SplitPane xmlns:fx="http://javafx.com/fxml/1"
+           dividerPositions="0.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+           AnchorPane.rightAnchor="0.0"
+           AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111"
            fx:controller="ozlympicgames.ozlcontroller.AthletesOverviewController">
     <items>
         <AnchorPane>
@@ -16,9 +15,9 @@
                 <TableView fx:id="athletesTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                        <TableColumn fx:id="athlName2"  minWidth="140" resizable="false" text="Name"/>
-                        <TableColumn fx:id="arthlType"  prefWidth="100"   resizable="false" text="Type"/>
-                        <TableColumn fx:id="athlPoints" maxWidth="74" resizable="true" text="Points"/>
+                        <TableColumn fx:id="athlName2" minWidth="140" resizable="false" text="Name"/>
+                        <TableColumn fx:id="arthlType" prefWidth="100" resizable="false" text="Type"/>
+                        <TableColumn fx:id="athlPoints" maxWidth="74" text="Points"/>
                     </columns>
 
                 </TableView>

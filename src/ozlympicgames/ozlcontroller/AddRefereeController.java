@@ -17,15 +17,9 @@ import java.sql.SQLException;
  * @since 24/5/17.
  */
 public class AddRefereeController {
-    @FXML
-    private Label refName;
-    @FXML
-    private Label refState;
-    @FXML
-    private Label refAge;
-
     private static Logger logger = LogManager.getLogger();
     private static IGamesDAL gamesDAL;
+
     static {
         try {
             gamesDAL = GamesDAL.getInstance();
@@ -36,6 +30,12 @@ public class AddRefereeController {
 
     }
 
+    @FXML
+    private Label refName;
+    @FXML
+    private Label refState;
+    @FXML
+    private Label refAge;
     private Stage dialogStage;
     private GamesOfficial gamesReferee;
     private boolean okClicked = false;
@@ -43,7 +43,7 @@ public class AddRefereeController {
     public void populsteData(String name, String state, int age) {
         refName.setText(name);
         refState.setText(state);
-        refAge.setText( Integer.toString(age));
+        refAge.setText(Integer.toString(age));
     }
 
     public GamesOfficial getGamesReferee() {
@@ -51,7 +51,7 @@ public class AddRefereeController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
 
@@ -62,8 +62,6 @@ public class AddRefereeController {
 
     /**
      * Returns true if the user clicked OK, false otherwise.
-     *
-     * @return
      */
     public boolean isOkClicked() {
         return okClicked;
@@ -72,14 +70,14 @@ public class AddRefereeController {
     @FXML
     private void handleOk() throws SQLException, ClassNotFoundException, IOException {
 
-            gamesReferee = gamesDAL.getRefereeDAO().getNewReferee(
-                    refName.getText(),
-                    Integer.parseInt(refAge.getText()),
-                    refState.getText()
-            );
+        gamesReferee = gamesDAL.getRefereeDAO().getNewReferee(
+                refName.getText(),
+                Integer.parseInt(refAge.getText()),
+                refState.getText()
+        );
 
-            okClicked = true;
-            dialogStage.close();
+        okClicked = true;
+        dialogStage.close();
     }
 
     @FXML

@@ -34,7 +34,6 @@ public class GamesOverviewController {
     private ListSelectionView<GamesAthlete> view;
 
 
-
     @FXML
     private TableView<OzlGame> gamesTable;
     @FXML
@@ -104,12 +103,12 @@ public class GamesOverviewController {
     private void initialize() {
         showGameDetails(null);
         // Initialize the columns.
-        gameIdColumn.setCellValueFactory(cellData -> new SimpleStringProperty( cellData.getValue().getId()) );
+        gameIdColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
         gameSportColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(GamesHelperFunctions.firsLetterToUpper(
                         cellData.getValue().getGameSport().name()
-                ) ) );
-        timeRunColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>( cellData.getValue().getTimeRun()) );
+                )));
+        timeRunColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTimeRun()));
 
         DateTimeFormatter myDateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
@@ -121,10 +120,10 @@ public class GamesOverviewController {
                     super.updateItem(item, empty);
 
                     if (item == null || empty) {
-                        setText("Game Never Run");
-                        setStyle("-fx-background-color: lightgrey ");
+                        setText("  ");
                     } else {
                         // Format date.
+                        setStyle("-fx-background-color: lightgrey ");
                         setText(myDateFormatter.format(item));
                         setStyle("");
                     }
@@ -135,33 +134,34 @@ public class GamesOverviewController {
 // Listen for selection changes and show the game details when changed.
         gamesTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    logger.trace("Game Select " +newValue.getId());
+                    logger.trace("Game Select " + newValue.getId());
                     showGameDetails(newValue);
                 });
 
     }
 
-    void showGameDetails(OzlGame entry){
-        if(entry != null){
+    void showGameDetails(OzlGame entry) {
+        if (entry != null) {
             this.ozlGame = entry;
             logger.trace("Game Accept: " + entry.getId());
             gameDetails.setText(entry.getId() + " " + GamesHelperFunctions.firsLetterToUpper(entry.getGameSport().name()));
-            refName.setText ( entry.get_referee() != null ? entry.get_referee().getName() : null);
-            gameAthletes.setText( entry.getParticipation().size() > 0 ? "" + entry.getParticipation().size() : null);
+            refName.setText(entry.get_referee() != null ? entry.get_referee().getName() : null);
+            gameAthletes.setText(entry.getParticipation().size() > 0 ? "" + entry.getParticipation().size() : null);
             // if game never played
             if (entry.isGamePlayed()) {
-                gameWinner.setText( entry.getGameAthletesWinnersSortedByTime().get(0).getName() );
-                winnerTime.setText(CSVUtils.parseLine(entry.get_referee().getGameScore(entry).get(0)).get(3)  );
+                gameWinner.setText(entry.getGameAthletesWinnersSortedByTime().get(0).getName());
+                winnerTime.setText(CSVUtils.parseLine(entry.get_referee().getGameScore(entry).get(0)).get(3));
                 activateGameButton.setDisable(true);
-            } else  {
-                gameWinner.setText( null);
-                winnerTime.setText(null  );
+            } else {
+                gameWinner.setText(null);
+                winnerTime.setText(null);
 
                 if (ozlGame != activeGame) {
                     activateGameButton.setDisable(false);
                 } else {
                     activateGameButton.setDisable(true);
                 }
+                gamesTable.refresh();
             }
         } else {
             gameDetails.setText(null);
@@ -170,17 +170,17 @@ public class GamesOverviewController {
             gameWinner.setText(null);
             winnerTime.setText(null);
             activeGameLabel.setText(null);
-        //    activeGame = null;
+            //    activeGame = null;
         }
     }
 
     @FXML
-    private void handleActivate(){
+    private void handleActivate() {
         logger.trace("activate click");
         activeGame = ozlGame;
         activeGameLabel.setText(activeGame.getId() + " " + GamesHelperFunctions.firsLetterToUpper(activeGame.getGameSport().name()));
         activateGameButton.setDisable(true);
-        if (activeGame.get_referee() == null){
+        if (activeGame.get_referee() == null) {
             addRefereeButton.setDisable(false);
             if (!addPlayersButton.isDisabled()) addPlayersButton.setDisable(true);
         } else {
@@ -192,13 +192,14 @@ public class GamesOverviewController {
         } else {
             gamePlayButton.setDisable(true);
         }
-        if (activeGame.getMAX_PARTICIPANTS() == activeGame.getGameAthletes().size() && !addPlayersButton.isDisabled()) addPlayersButton.setDisable(true);
-        if(activeGame.isGamePlayed()) gamePlayButton.setDisable(true);
+        if (activeGame.getMAX_PARTICIPANTS() == activeGame.getGameAthletes().size() && !addPlayersButton.isDisabled())
+            addPlayersButton.setDisable(true);
+        if (activeGame.isGamePlayed()) gamePlayButton.setDisable(true);
 
     }
 
     @FXML
-    private void handleNewGame(){
+    private void handleNewGame() {
         logger.trace("New Game Click");
         boolean okClicked = mainApp.showNewGameDialog();
         if (okClicked) {
@@ -212,7 +213,7 @@ public class GamesOverviewController {
     }
 
     @FXML
-    void handleAddReferee(){
+    void handleAddReferee() {
         logger.trace("add referee");
         boolean okClicked = mainApp.showAddRefereeDialog();
         if (okClicked) {
@@ -226,26 +227,27 @@ public class GamesOverviewController {
                 Dialogues.createExceptionDialog(e);
             }
         }
-        if (ozlGame==activeGame) showGameDetails(activeGame);
+        if (ozlGame == activeGame) showGameDetails(activeGame);
     }
 
     @FXML
-    void handleAddplayers(){
+    void handleAddplayers() {
         logger.trace("add athletes");
         boolean okClicked = mainApp.showAddPlayersDialog(activeGame);
         if (okClicked) {
             logger.trace("ok clicked");
-            if (view.getTargetItems().size() > 0){
+            if (view.getTargetItems().size() > 0) {
                 view.getTargetItems().stream()
                         .filter(gamesAthlete -> !activeGame.getGameAthletes().contains(gamesAthlete))
                         .limit(ozlGame.getMAX_PARTICIPANTS() - activeGame.getGameAthletes().size())
                         .forEach(athlete -> {
-                    try {
-                        activeGame.addParticipant(athlete);
-                        mainApp.addAthletesToGameDBRecord(activeGame, athlete);
-                    } catch (Exception e){
-                        // do nothig, should never trigger
-                    }});
+                            try {
+                                activeGame.addParticipant(athlete);
+                                mainApp.addAthletesToGameDBRecord(activeGame, athlete);
+                            } catch (Exception e) {
+                                // do nothig, should never trigger
+                            }
+                        });
                 if (ozlGame == activeGame) showGameDetails(activeGame);
                 handleActivate();
             }

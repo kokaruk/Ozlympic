@@ -31,35 +31,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Main class to start the application.
- *
- * @author Marco Jakob
- */
 public class Ozlympic extends Application {
     // function class reference
     private static Logger logger = LogManager.getLogger();
+    private static IGamesDAL gamesDAL;
+
+    static {
+        try {
+            gamesDAL = GamesDAL.getInstance();
+        } catch (Exception ignored) {
+
+        }
+    }
 
     // collection
     private ObservableList<GamesAthlete> _athletes = FXCollections.observableArrayList();
     private ObservableList<OzlGame> _games = FXCollections.observableArrayList();
-
-
     // controllers
     private GamesOverviewController gamesOverviewController;
     private AthletesOverviewController athletesOverviewController;
     // stages
     private Stage primaryStage;
     private Parent rootLayout;
-    private static IGamesDAL gamesDAL;
-    static {
-        try {
-            gamesDAL = GamesDAL.getInstance();
-        } catch (Exception e) {
 
+
+    public Ozlympic() {
+
+        if (gamesDAL != null) {
+            _athletes.addAll(gamesDAL.get_athletes().values());
+            _games.addAll(gamesDAL.get_games().values());
         }
+
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     public AthletesOverviewController getAthletesOverviewController() {
         return athletesOverviewController;
@@ -73,21 +80,11 @@ public class Ozlympic extends Application {
         return _athletes;
     }
 
+    // not sure if others should be speaking to DAL directly
+
     public ObservableList<OzlGame> get_games() {
         return _games;
     }
-
-    public Ozlympic() {
-
-         if(gamesDAL != null){
-             _athletes.addAll(gamesDAL.get_athletes().values());
-            _games.addAll(gamesDAL.get_games().values());
-         }
-
-    }
-
-    // not sure if others should be speaking to DAL directly
-
 
     public IGamesDAL getGamesDAL() {
         return gamesDAL;
@@ -109,19 +106,15 @@ public class Ozlympic extends Application {
         }
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     /**
      * Initializes the root layout.
      */
     public void initRootLayout() throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/TabbedRoot.fxml"));
-            rootLayout = loader.load();
-            // Show the scene containing the root layout.
-            primaryStage.setScene(new Scene(      new BorderPane(rootLayout), 800, 600));
-            primaryStage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/TabbedRoot.fxml"));
+        rootLayout = loader.load();
+        // Show the scene containing the root layout.
+        primaryStage.setScene(new Scene(new BorderPane(rootLayout), 800, 600));
+        primaryStage.show();
 
 
     }
@@ -129,25 +122,25 @@ public class Ozlympic extends Application {
     /**
      * Shows overview inside the tab layout.
      */
-     void showGamesTable() throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/GamesOverview.fxml"));
-            AnchorPane anchorPane   = loader.load();
-            gamesOverviewController = loader.getController();
-            gamesOverviewController.setMainApp(this);
-            TabPane tabPane = (TabPane)((AnchorPane) rootLayout).getChildren().get(0);
-            tabPane.getTabs().get(0).setContent(anchorPane);
+    void showGamesTable() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/GamesOverview.fxml"));
+        AnchorPane anchorPane = loader.load();
+        gamesOverviewController = loader.getController();
+        gamesOverviewController.setMainApp(this);
+        TabPane tabPane = (TabPane) ((AnchorPane) rootLayout).getChildren().get(0);
+        tabPane.getTabs().get(0).setContent(anchorPane);
     }
 
-            /**
-            * Shows overview inside the tab layout.
-            */
+    /**
+     * Shows overview inside the tab layout.
+     */
     void showAthletesTable() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ozlview/AthletesOverview.fxml"));
-        SplitPane splitPane  = loader.load();
+        SplitPane splitPane = loader.load();
         athletesOverviewController = loader.getController();
         athletesOverviewController.setMainApp(this);
         // Set athletes overview into the center of root layout.
-        TabPane tabPane = (TabPane)((AnchorPane) rootLayout).getChildren().get(0);
+        TabPane tabPane = (TabPane) ((AnchorPane) rootLayout).getChildren().get(0);
         tabPane.getTabs().get(1).setContent(splitPane);
     }
 
@@ -186,7 +179,7 @@ public class Ozlympic extends Application {
             // Set the person into the controller.
             AthleteAddController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.populateData(name, state, age );
+            controller.populateData(name, state, age);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -196,6 +189,7 @@ public class Ozlympic extends Application {
             return false;
         }
     }
+
     public boolean showAddRefereeDialog() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -221,7 +215,7 @@ public class Ozlympic extends Application {
             // Set the person into the controller.
             AddRefereeController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.populsteData(name, state, age );
+            controller.populsteData(name, state, age);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -231,6 +225,7 @@ public class Ozlympic extends Application {
             return false;
         }
     }
+
     public boolean showNewGameDialog() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -268,9 +263,9 @@ public class Ozlympic extends Application {
             AddPlayersController controller = loader.getController();
             gamesOverviewController.setAddPlayersController(controller);
 
-            List<GamesAthlete> myAthletes = _athletes.stream().filter( gamesAthlete ->
-                gamesAthlete.getAthleteType().getSport().size() > 1
-                        || gamesAthlete.getAthleteType().getSport().iterator().next() == game.getGameSport())
+            List<GamesAthlete> myAthletes = _athletes.stream().filter(gamesAthlete ->
+                    gamesAthlete.getAthleteType().getSport().size() > 1
+                            || gamesAthlete.getAthleteType().getSport().iterator().next() == game.getGameSport())
                     .filter(gamesAthlete -> !game.getGameAthletes().contains(gamesAthlete))
                     .collect(Collectors.toCollection(ArrayList::new));
             ListSelectionView<GamesAthlete> view = new ListSelectionView<>();
@@ -287,7 +282,7 @@ public class Ozlympic extends Application {
                                 } else {
                                     setText(item.getName()
                                             + " | GS " + item.getParticipation().size()
-                                            + " | " + item.getAthleteType().name().substring(0, 4).toUpperCase() );
+                                            + " | " + item.getAthleteType().name().substring(0, 4).toUpperCase());
                                 }
                             }
                         };
@@ -347,7 +342,6 @@ public class Ozlympic extends Application {
             return false;
         }
     }
-
 
 
 }

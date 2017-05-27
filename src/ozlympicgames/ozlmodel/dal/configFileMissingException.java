@@ -4,9 +4,10 @@ import java.io.FileNotFoundException;
 
 /**
  * Thrown if config *.properties file is missing.
+ *
  * @author dimz
- * @since 1/4/17
  * @version 2.0
+ * @since 1/4/17
  */
 public class configFileMissingException extends FileNotFoundException {
 

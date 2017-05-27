@@ -25,7 +25,7 @@ public class OzlParticipation {
         this.game = game;
     }
 
-    public OzlParticipation(GamesAthlete gamesAthlete, OzlGame game, Integer score, Double result){
+    public OzlParticipation(GamesAthlete gamesAthlete, OzlGame game, Integer score, Double result) {
         this(gamesAthlete, game);
         this.score = score;
         this.result = result;

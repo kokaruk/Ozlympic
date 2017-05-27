@@ -34,19 +34,19 @@ public class GamesAthlete extends GamesParticipant {
         this._lastGameCompeteTime = _lastGameCompeteTime;
     }
 
-
-    @Override
-    public String getId() {
-        return String.format("%s%04d",idPrefix(_athleteType), get_id());
-    }
-
     /**
      * Static method to build prefix for athlete id.
+     *
      * @param athleteType - type of this athlete
      * @return string of id
      */
     public static String idPrefix(AthleteType athleteType) {
         return athleteType.name().substring(0, 2).toUpperCase();
+    }
+
+    @Override
+    public String getId() {
+        return String.format("%s%04d", idPrefix(_athleteType), get_id());
     }
 
     /**

@@ -26,7 +26,7 @@ public class GamesOfficial extends GamesParticipant {
 
     @Override
     public String getId() {
-        return String.format("%s%04d","RE", get_id());
+        return String.format("%s%04d", "RE", get_id());
     }
 
     // add reference to the game

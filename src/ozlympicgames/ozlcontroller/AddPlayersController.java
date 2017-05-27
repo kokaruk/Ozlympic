@@ -17,7 +17,7 @@ public class AddPlayersController {
 
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
 
@@ -40,8 +40,6 @@ public class AddPlayersController {
 
     /**
      * Returns true if the user clicked OK, false otherwise.
-     *
-     * @return
      */
     public boolean isOkClicked() {
         return okClicked;

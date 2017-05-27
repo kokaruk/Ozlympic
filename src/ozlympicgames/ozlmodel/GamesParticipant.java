@@ -1,9 +1,9 @@
 package ozlympicgames.ozlmodel;
 
-import ozlympicgames.ozlmodel.dal.IOzlConfigRead;
-import ozlympicgames.ozlmodel.dal.modelPackageConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ozlympicgames.ozlmodel.dal.IOzlConfigRead;
+import ozlympicgames.ozlmodel.dal.modelPackageConfig;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -56,7 +56,8 @@ public abstract class GamesParticipant {
     }
 
     public abstract String getId();
-    Integer get_id(){
+
+    Integer get_id() {
         return _id;
     }
 

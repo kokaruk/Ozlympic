@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ozlympicgames.ozlmodel.AthleteType;
 import ozlympicgames.ozlmodel.GamesAthlete;
+import ozlympicgames.ozlmodel.GamesHelperFunctions;
 import ozlympicgames.ozlmodel.dal.GamesDAL;
 import ozlympicgames.ozlmodel.dal.IGamesDAL;
 
@@ -25,18 +26,9 @@ import java.sql.SQLException;
  */
 public class AthleteAddController {
 
-    @FXML
-    private Label athlName;
-    @FXML
-    private Label athlState;
-    @FXML
-    private Label athlAge;
-    @FXML
-    private ComboBox<AthleteType> athlType;  //conbobox
-    private ObservableList<AthleteType> athlTypeData = FXCollections.observableArrayList(AthleteType.values()); //comboboxvalues
-
     private static Logger logger = LogManager.getLogger();
     private static IGamesDAL gamesDAL;
+
     static {
         try {
             gamesDAL = GamesDAL.getInstance();
@@ -47,17 +39,24 @@ public class AthleteAddController {
 
     }
 
-
+    @FXML
+    private Label athlName;
+    @FXML
+    private Label athlState;
+    @FXML
+    private Label athlAge;
+    @FXML
+    private ComboBox<AthleteType> athlType;  //conbobox
+    private ObservableList<AthleteType> athlTypeData = FXCollections.observableArrayList(AthleteType.values()); //comboboxvalues
     private Stage dialogStage;
     private GamesAthlete gamesAthlete;
     private boolean okClicked = false;
 
 
-
     public void populateData(String name, String state, int age) {
         athlName.setText(name);
         athlState.setText(state);
-        athlAge.setText( Integer.toString(age));
+        athlAge.setText(Integer.toString(age));
     }
 
     public GamesAthlete getGamesAthlete() {
@@ -65,7 +64,7 @@ public class AthleteAddController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         // Init ComboBox items.
         athlType.setItems(athlTypeData);
 
@@ -79,7 +78,7 @@ public class AthleteAddController {
                     if (item == null || empty) {
                         setText(null);
                     } else {
-                        setText(item.name());
+                        setText(GamesHelperFunctions.firsLetterToUpper(item.name()));
                     }
                 }
             };
@@ -88,11 +87,11 @@ public class AthleteAddController {
         // Define rendering of selected value shown in ComboBox.
         athlType.setConverter(new StringConverter<AthleteType>() {
             @Override
-            public String toString(AthleteType athleteType) {
-                if (athleteType == null) {
+            public String toString(AthleteType item) {
+                if (item == null) {
                     return null;
                 } else {
-                    return athleteType.name();
+                    return GamesHelperFunctions.firsLetterToUpper(item.name());
                 }
             }
 
@@ -115,8 +114,6 @@ public class AthleteAddController {
 
     /**
      * Returns true if the user clicked OK, false otherwise.
-     *
-     * @return
      */
     public boolean isOkClicked() {
         return okClicked;
@@ -124,17 +121,17 @@ public class AthleteAddController {
 
     @FXML
     private void handleOk() throws SQLException, ClassNotFoundException, IOException {
-            if (isInputValid()) {
-                gamesAthlete = gamesDAL.getAthleteDAO().getNewAthlete(
-                        athlName.getText(),
-                        Integer.parseInt(athlAge.getText()),
-                        athlState.getText(),
-                        athlType.getSelectionModel().getSelectedItem().name()
-                );
+        if (isInputValid()) {
+            gamesAthlete = gamesDAL.getAthleteDAO().getNewAthlete(
+                    athlName.getText(),
+                    Integer.parseInt(athlAge.getText()),
+                    athlState.getText(),
+                    athlType.getSelectionModel().getSelectedItem().name()
+            );
 
-                okClicked = true;
-                dialogStage.close();
-            }
+            okClicked = true;
+            dialogStage.close();
+        }
     }
 
 

@@ -19,9 +19,8 @@ import ozlympicgames.ozlmodel.GamesHelperFunctions;
 public class AthletesOverviewController {
 
     private static Logger logger = LogManager.getLogger();
-    private Ozlympic mainApp;
     AthleteAddController athleteAddController;
-
+    private Ozlympic mainApp;
     @FXML
     private TableView<GamesAthlete> athletesTable;
     @FXML
@@ -55,18 +54,18 @@ public class AthletesOverviewController {
     @FXML
     private void initialize() {
         showGameDetails(null);
-       // Initialize the columns.
-        athlPoints.setCellValueFactory(cellData -> new SimpleIntegerProperty( cellData.getValue().getTotalPoints()).asObject() );
-        athlName2.setCellValueFactory(cellData -> new SimpleStringProperty( cellData.getValue().getName()) );
+        // Initialize the columns.
+        athlPoints.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTotalPoints()).asObject());
+        athlName2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
 
         arthlType.setCellValueFactory(cellData -> new SimpleStringProperty(GamesHelperFunctions.firsLetterToUpper(
                 cellData.getValue().getAthleteType().name()
-        ) ) );
+        )));
 
         // Listen for selection changes and show the person details when changed.
         athletesTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    logger.trace("Athlete Select " +newValue.getId());
+                    logger.trace("Athlete Select " + newValue.getId());
                     showGameDetails(newValue);
                 });
 
@@ -87,13 +86,14 @@ public class AthletesOverviewController {
             totalAge.setText(null);
         }
     }
+
     public void setMainApp(Ozlympic mainApp) {
         this.mainApp = mainApp;
         // Add data to the table
-        athletesTable.setItems( mainApp.get_athletes());
+        athletesTable.setItems(mainApp.get_athletes());
     }
 
-    public void setAthleteAddController(AthleteAddController athleteAddController){
+    public void setAthleteAddController(AthleteAddController athleteAddController) {
         this.athleteAddController = athleteAddController;
     }
 

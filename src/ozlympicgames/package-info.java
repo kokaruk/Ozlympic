@@ -1,4 +1,4 @@
 /**
- *  Root Package, contains only main launcher class.
+ * Root Package, contains only main launcher class.
  */
 package ozlympicgames;

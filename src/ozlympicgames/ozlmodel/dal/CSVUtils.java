@@ -160,7 +160,7 @@ public class CSVUtils {
         }
     }
 
-    static boolean findBrokenID(String CSV_PATH, String BD_ERR_ID){
+    static boolean findBrokenID(String CSV_PATH, String BD_ERR_ID) {
         // check if csv file has unpopulated entries, and fix
         Path path = Paths.get(CSV_PATH);
         try (Stream<String> lines = Files.lines(path)) {
@@ -171,8 +171,7 @@ public class CSVUtils {
         return true;
     }
 
-    static void fixBrokenID(String CSV_PATH, String BD_ERR_ID, String TABLE_NAME, String COLUMN_NAMES) throws IOException
-    {
+    static void fixBrokenID(String CSV_PATH, String BD_ERR_ID, String TABLE_NAME, String COLUMN_NAMES) throws IOException {
         Path path = Paths.get(CSV_PATH);
         List<String> lines = Files.readAllLines(path);
         try (PrintWriter output = new PrintWriter(CSV_PATH, "UTF-8")) {
@@ -186,9 +185,9 @@ public class CSVUtils {
                                     .stream()
                                     .collect(Collectors.joining(","));
 
-                            try{
+                            try {
                                 Integer idNum = ConnectionFactory.insertStatement(TABLE_NAME, COLUMN_NAMES, paramsVals);
-                                String ID = String.format("%s%04d",SCVline.get(SCVline.size()-1).substring(0,2).toUpperCase(),
+                                String ID = String.format("%s%04d", SCVline.get(SCVline.size() - 1).substring(0, 2).toUpperCase(),
                                         idNum);
                                 s = s.replace(BD_ERR_ID, ID);
                             } catch (SQLException | ClassNotFoundException e) {
@@ -196,11 +195,10 @@ public class CSVUtils {
                                 s = "";
                             }
                         }
-                    output.println(s);
+                        output.println(s);
                     });
         }
     }
-
 
 
 }

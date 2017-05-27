@@ -56,7 +56,7 @@ public class OzlGame {
     }
 
     public LocalDateTime getTimeRun() {
-        return  timeRun == null ? null : timeRun.toLocalDateTime();
+        return timeRun == null ? null : timeRun.toLocalDateTime();
     }
 
     public void setTimeRun(Timestamp timeRun) {
@@ -234,12 +234,10 @@ public class OzlGame {
      * @return list of athletes
      */
     public List<GamesAthlete> getGameAthletes() {
-        List<GamesAthlete> gameAthletes = this.getParticipation().stream()
+        return this.getParticipation().stream()
                 .filter(Objects::nonNull)
                 .map(OzlParticipation::getGamesAthlete)
                 .collect(Collectors.toCollection(ArrayList::new));
-
-        return gameAthletes;
     }
 
     /**

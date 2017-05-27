@@ -11,6 +11,7 @@ import javafx.util.StringConverter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ozlympicgames.ozlmodel.GameSports;
+import ozlympicgames.ozlmodel.GamesHelperFunctions;
 import ozlympicgames.ozlmodel.OzlGame;
 import ozlympicgames.ozlmodel.dal.GamesDAL;
 import ozlympicgames.ozlmodel.dal.IGamesDAL;
@@ -61,7 +62,7 @@ public class NewGameController {
                     if (item == null || empty) {
                         setText(null);
                     } else {
-                        setText(item.name());
+                        setText(GamesHelperFunctions.firsLetterToUpper(item.name()));
                     }
                 }
             };
@@ -70,11 +71,11 @@ public class NewGameController {
         // Define rendering of selected value shown in ComboBox.
         gameSportType.setConverter(new StringConverter<GameSports>() {
             @Override
-            public String toString(GameSports gameSports) {
-                if (gameSports == null) {
+            public String toString(GameSports item) {
+                if (item == null) {
                     return null;
                 } else {
-                    return gameSports.name();
+                    return GamesHelperFunctions.firsLetterToUpper(item.name());
                 }
             }
 

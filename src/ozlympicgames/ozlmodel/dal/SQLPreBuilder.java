@@ -1,8 +1,8 @@
 package ozlympicgames.ozlmodel.dal;
 
-import ozlympicgames.ozlmodel.GamesHelperFunctions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ozlympicgames.ozlmodel.GamesHelperFunctions;
 
 import javax.sql.rowset.CachedRowSet;
 import java.io.IOException;
@@ -24,24 +24,25 @@ final class SQLPreBuilder {
     private final String COLUMN_NAMES;
     private final String REGEX_SPLIT_OPTION;
     private Logger logger = LogManager.getLogger();
-    SQLPreBuilder(String sqlContext){
-            Properties props = new Properties();
-            IOzlConfigRead configReader = GamesHelperFunctions.getConfigReader();
-            try {
-                props = configReader.getProperties(modelPackageConfig.MODEL_CONFIG_FILE);
-            } catch (IOException e) {
-                logger.fatal(e.getMessage());
-                System.exit(1);
-            }
-            REGEX_SPLIT_OPTION = props.getProperty("REGEX_SPLIT_OPTION");
-            BD_ERR_ID = props.getProperty("BD_ERR_ID");
-                        TABLE_NAME = props.getProperty(sqlContext + "_TABLE_NAME");
-            VIEW_NAME = props.getProperty(sqlContext + "_VIEW_NAME");
-            COLUMN_NAMES = props.getProperty(sqlContext + "_COLUMN_NAMES");
-            CSV_PATH = props.getProperty(sqlContext + "_CSV");
+
+    SQLPreBuilder(String sqlContext) {
+        Properties props = new Properties();
+        IOzlConfigRead configReader = GamesHelperFunctions.getConfigReader();
+        try {
+            props = configReader.getProperties(modelPackageConfig.MODEL_CONFIG_FILE);
+        } catch (IOException e) {
+            logger.fatal(e.getMessage());
+            System.exit(1);
+        }
+        REGEX_SPLIT_OPTION = props.getProperty("REGEX_SPLIT_OPTION");
+        BD_ERR_ID = props.getProperty("BD_ERR_ID");
+        TABLE_NAME = props.getProperty(sqlContext + "_TABLE_NAME");
+        VIEW_NAME = props.getProperty(sqlContext + "_VIEW_NAME");
+        COLUMN_NAMES = props.getProperty(sqlContext + "_COLUMN_NAMES");
+        CSV_PATH = props.getProperty(sqlContext + "_CSV");
     }
 
-    Integer getNewIdNum(String paramsVals) throws SQLException, ClassNotFoundException, IOException {
+    Integer getNewIdNum(String paramsVals) throws SQLException, ClassNotFoundException {
         String ID = "ID";
         SQLException error = null;
         try {
@@ -69,15 +70,15 @@ final class SQLPreBuilder {
         return null;
     }
 
-    CachedRowSet getRowSet(String whereColumns, String paramsValues ) throws SQLException, ClassNotFoundException{
-        return ConnectionFactory.getRowSet(TABLE_NAME, "*", whereColumns, paramsValues );
+    CachedRowSet getRowSet(String whereColumns, String paramsValues) throws SQLException, ClassNotFoundException {
+        return ConnectionFactory.getRowSet(TABLE_NAME, "*", whereColumns, paramsValues);
     }
 
-    CachedRowSet getRowSetFromView(String whereColumns, String paramsValues ) throws SQLException, ClassNotFoundException{
-        return ConnectionFactory.getRowSet(VIEW_NAME, "*", whereColumns, paramsValues );
+    CachedRowSet getRowSetFromView(String whereColumns, String paramsValues) throws SQLException, ClassNotFoundException {
+        return ConnectionFactory.getRowSet(VIEW_NAME, "*", whereColumns, paramsValues);
     }
 
-    void updateRow(String updateValues, String whereColumns, String paramsValues) throws SQLException, ClassNotFoundException{
+    void updateRow(String updateValues, String whereColumns, String paramsValues) throws SQLException, ClassNotFoundException {
         ConnectionFactory.updateRow(TABLE_NAME, COLUMN_NAMES, updateValues, whereColumns, paramsValues);
     }
 
